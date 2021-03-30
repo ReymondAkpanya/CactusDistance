@@ -1,0 +1,272 @@
+#############################################################################
+##
+##  SimplicialSurface package
+##
+##  Copyright 2012-2018
+##    Markus Baumeister, RWTH Aachen University
+##    Alice Niemeyer, RWTH Aachen University 
+##
+## Licensed under the GPL 3 or later.
+##
+#############################################################################
+
+#! @Chapter Chapter0
+#! @ChapterLabel Chapter0
+#! 
+#! This chapter presents examples of how the simplicial surfaces package can be
+#! used to get certain jobs done. Whereby we want to focus on the
+#! several functions and attributes presented in this manual.
+
+#! @Section TODO
+#! @SectionLabel TODO
+#! As a first task let us create the following three simplicial surfaces in GAP:
+#! Exercise 1: the barycentric subdivision of a tetrahedron 
+#! Exercise 2: the subdivision of the double 6-gon dividing each face into two faces 
+#! so that the resulting sherical surface has vertex counter v_4^6v_6^8
+#! Exercise 3: The underlying simplicial surface of the coloured mmm-structure given by
+#! symmetric group S_4 in its regular action with respect to the generators 
+#! a:=(1,2), b:=(2,3),c:=(3,4)
+#!
+#! Notice that all these surfaces can be constructed from their incidence
+#! structure by using the function <A>PolygonalComplexByDownwardIncidence</A>,
+#! but this is not the intention of presenting this chapter. 
+
+#! @BeginGroup Exercise 1
+#! @Description
+#! We want to construct a barycentric subdivision of asimplicial surface as
+#! it is described in <Ref Sect="Flags_FlsgComplex">.
+#! There are several ways to construct the barycentric subdivision of a
+#! tetrahedron. Let us try to find the tetrahedron in the simplicial surfaces
+#! package. The easiest way would be to hope that the surface is saved under  
+#! its name in the library.
+#!
+#! @BeginExampleSession 
+#! gap> Tetrahedron
+#! Tetrahedron  
+#! gap> Tetrahedron 
+#! @EndExampleSession
+#!
+#! Another way of finding the tetrahedron is to use the the library of surfaces
+#! through the function <A>AllSimplcialSurfaces</A>.
+#! Therefore we have to gather useful information about our surface 
+#!
+#! <Alt Only="TikZ">
+#!   \begin{tikzpicture}[vertexStyle, edgeStyle=nolabels, faceStyle]
+#!       \input{Image_Tetrahedron_Net.tex}
+#!   \end{tikzpicture}
+#! </Alt>
+#!
+#! Let us start with saying that the tetraheron is a surface with 4 faces, 
+#! 4 vertices and 6 edges, which is closed and each vertex has edge degree 3 and
+#! face degree 4. Just using the the number of faces leads to
+#!
+#! @BeginExampleSession
+#! gap> AllSimplicialSurfaces(4);
+#! [ simplicial surface (3 vertices, 6 edges, and 4 faces)
+#!   , 
+#!  simplicial surface (4 vertices, 6 edges, and 4 faces) 
+#! ]
+#! gap> T:=last[2];
+#! simplicial surface (4 vertices, 6 edges, and 4 faces)
+#! @EndExampleSession
+#!
+#! whereby the first surface is not in our interest because it only has 3 
+#! vertices. Because of 
+#!
+#! @BeginExampleSession
+#! gap> FaceDegreesOfVertices(T);
+#! [ 3, 3, 3, 3 ]
+#! @EndExampleSession
+#!
+#! the surface <A>T</A> must be isomorph to the tetrahedron. Now applying
+#! <A>FlagComplex</A> to the surface <A>T</A> leads us to the barycentric
+#! subdivision of the tetrahedron.
+#!
+#! @BeginExampleSession
+#! gap> baryT:=FlagComplex(T);
+#! tame coloured surface (MMM with 14 vertices, 36 edges and 24 faces)
+#! @EndExampleSession
+#!
+#! <Alt Only="TikZ">
+#!   \begin{tikzpicture}[vertexStyle, edgeStyle=nolabels, faceStyle]
+#!       \input{Image_Tetrahedron_example.tex}
+#!   \end{tikzpicture}
+#! </Alt>
+#! @EndGroup
+
+#! @BeginGroup Exercise 2
+#! Let us at first find the double 6-gon in the library. Using the function
+#! AllSimplicialSurfaces (######) leads us to
+#!
+#! @BeginExampleSession
+#! gap> AllSimplicialSurfaces(12,EulerCharacteristic,2,IsConnected,IsClosedSurface);
+#! [ simplicial surface (8 vertices, 18 edges, and 12 faces)
+#!    , 
+#!  simplicial surface (8 vertices, 18 edges, and 12 faces) 
+#! ]
+#! @EndExampleSession
+#!
+#! Up to 14 faces a vertex-faithful simplicial surface I characterized up to
+#! isomorphism by its vertex counter. So by taking a closer look at the vertex
+#! counter of the two surfaces, we get the surface which we were looking for
+#!
+#! @BeginExampleSession
+#! gap> VertexCounter(L[1]);
+#! [ [ 4, 6 ], [ 6, 2 ] ]
+#! gap> VertexCounter(L[2]);
+#! [ [ 4, 4 ], [ 5, 4 ] ]
+#! gap> 6gon:=L[1];
+#! simplicial surface (8 vertices, 18 edges, and 12 faces)
+#! @EndExampleSesion
+#!
+###############################3neumachen
+#! So based on this suface, we have to construct a surface which vertex
+#! counter v_4^6v_6^8. The idea of this construction is to devide the faces
+#! pairs of two faces which are both adjacent to a vertex with face-degree 6
+#! and replace each pair of faces with the following surface:
+gap> surf:=SimplicialSurfaceByVerticesInFaces([[1,2,5],[2,3,5],[1,4,5],
+[3,4,5]]);
+simplicial surface (5 vertices, 8 edges, and 4 faces)
+
+##########################################
+
+bild surf
+
+###############################
+#! neighbouring faces with are both adjacent to the vertex with 
+
+gap> 6gonRemove1:=RemoveFace(6gon,1);
+simplicial surface (8 vertices, 18 edges, and 11 faces)
+gap> 6gonRemove12:=RemoveFace(6gonRemove1,2);
+simplicial surface (8 vertices, 17 edges, and 10 faces)
+
+###################
+
+bild 6gonRemove12
+
+###################
+
+###############
+
+
+
+################
+gap>help:= DisjointUnion(6gonRemove12,surf);
+[ simplicial surface (13 vertices, 25 edges, and 14 faces)
+    , 18 ]
+
+############################bishier
+##########################
+
+Erklaerung Mender , cutter 
+
+#########################
+ 
+######################################################################
+#Prozedur fuer ein Paar von Flaechen erklaeren und dann iterieren 
+
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!! new try
+bild surface2
+gap> 6gon;
+simplicial surface (8 vertices, 18 edges, and 12 faces)
+
+gap> temp1:=CraterCut(6gon,1);
+simplicial surface (8 vertices, 19 edges, and 12 faces)
+
+gap> temp1:=CraterCut(6gon,3);
+simplicial surface (8 vertices, 19 edges, and 12 faces)
+
+gap> temp2:=RipCut(temp1,4);
+simplicial surface (9 vertices, 20 edges, and 12 faces)
+
+gap> SimplicialSurfaceByVerticesInFaces([[1,2,3],[2,3,4]]);
+simplicial surface (4 vertices, 5 edges, and 2 faces)
+
+gap> butterfly:=SimplicialSurfaceByVerticesInFaces([[1,2,3],[2,3,4]]);
+simplicial surface (4 vertices, 5 edges, and 2 faces)
+
+gap> temp3:=DisjointUnion(temp2,butterfly)[1];
+simplicial surface (13 vertices, 25 edges, and 14 faces)
+gap> EdgesOfFaces(temp3);
+[ [ 1, 15, 19 ], [ 1, 16, 21 ], [ 2, 17, 20 ], [ 2, 18, 22 ], [ 5, 7, 9 ], 
+  [ 5, 8, 10 ], [ 6, 7, 12 ], [ 6, 8, 13 ], [ 9, 11, 15 ], [ 10, 11, 17 ], 
+  [ 12, 14, 16 ], [ 13, 14, 18 ],,,,,,,,,,, [ 23, 24, 25 ], [ 25, 26, 27 ] ]
+gap> SplitMendableFlagPairs(temp3);
+[ [ [ 7, 19 ], [ 8, 22 ] ], [ [ 7, 19 ], [ 10, 22 ] ], 
+  [ [ 7, 19 ], [ 23, 23 ] ], [ [ 7, 19 ], [ 23, 24 ] ], 
+  [ [ 7, 19 ], [ 24, 23 ] ], [ [ 7, 19 ], [ 24, 26 ] ], 
+  [ [ 7, 19 ], [ 25, 24 ] ], [ [ 7, 19 ], [ 25, 27 ] ], 
+  [ [ 7, 19 ], [ 26, 26 ] ], [ [ 7, 19 ], [ 26, 27 ] ], 
+  [ [ 7, 20 ], [ 8, 21 ] ], [ [ 7, 20 ], [ 9, 21 ] ], 
+  [ [ 7, 20 ], [ 23, 23 ] ], [ [ 7, 20 ], [ 23, 24 ] ], 
+  [ [ 7, 20 ], [ 24, 23 ] ], [ [ 7, 20 ], [ 24, 26 ] ], 
+  [ [ 7, 20 ], [ 25, 24 ] ], [ [ 7, 20 ], [ 25, 27 ] ], 
+  [ [ 7, 20 ], [ 26, 26 ] ], [ [ 7, 20 ], [ 26, 27 ] ], 
+  [ [ 8, 21 ], [ 10, 20 ] ], [ [ 8, 21 ], [ 23, 23 ] ], 
+  [ [ 8, 21 ], [ 23, 24 ] ], [ [ 8, 21 ], [ 24, 23 ] ], 
+  [ [ 8, 21 ], [ 24, 26 ] ], [ [ 8, 21 ], [ 25, 24 ] ], 
+  [ [ 8, 21 ], [ 25, 27 ] ], [ [ 8, 21 ], [ 26, 26 ] ], 
+  [ [ 8, 21 ], [ 26, 27 ] ], [ [ 8, 22 ], [ 9, 19 ] ], 
+  [ [ 8, 22 ], [ 23, 23 ] ], [ [ 8, 22 ], [ 23, 24 ] ], 
+  [ [ 8, 22 ], [ 24, 23 ] ], [ [ 8, 22 ], [ 24, 26 ] ], 
+  [ [ 8, 22 ], [ 25, 24 ] ], [ [ 8, 22 ], [ 25, 27 ] ], 
+  [ [ 8, 22 ], [ 26, 26 ] ], [ [ 8, 22 ], [ 26, 27 ] ], 
+  [ [ 9, 19 ], [ 10, 22 ] ], [ [ 9, 19 ], [ 23, 23 ] ], 
+  [ [ 9, 19 ], [ 23, 24 ] ], [ [ 9, 19 ], [ 24, 23 ] ], 
+  [ [ 9, 19 ], [ 24, 26 ] ], [ [ 9, 19 ], [ 25, 24 ] ], 
+  [ [ 9, 19 ], [ 25, 27 ] ], [ [ 9, 19 ], [ 26, 26 ] ], 
+  [ [ 9, 19 ], [ 26, 27 ] ], [ [ 9, 21 ], [ 10, 20 ] ], 
+  [ [ 9, 21 ], [ 23, 23 ] ], [ [ 9, 21 ], [ 23, 24 ] ], 
+  [ [ 9, 21 ], [ 24, 23 ] ], [ [ 9, 21 ], [ 24, 26 ] ], 
+  [ [ 9, 21 ], [ 25, 24 ] ], [ [ 9, 21 ], [ 25, 27 ] ], 
+  [ [ 9, 21 ], [ 26, 26 ] ], [ [ 9, 21 ], [ 26, 27 ] ], 
+  [ [ 10, 20 ], [ 23, 23 ] ], [ [ 10, 20 ], [ 23, 24 ] ], 
+  [ [ 10, 20 ], [ 24, 23 ] ], [ [ 10, 20 ], [ 24, 26 ] ], 
+  [ [ 10, 20 ], [ 25, 24 ] ], [ [ 10, 20 ], [ 25, 27 ] ], 
+  [ [ 10, 20 ], [ 26, 26 ] ], [ [ 10, 20 ], [ 26, 27 ] ], 
+  [ [ 10, 22 ], [ 23, 23 ] ], [ [ 10, 22 ], [ 23, 24 ] ], 
+  [ [ 10, 22 ], [ 24, 23 ] ], [ [ 10, 22 ], [ 24, 26 ] ], 
+  [ [ 10, 22 ], [ 25, 24 ] ], [ [ 10, 22 ], [ 25, 27 ] ], 
+  [ [ 10, 22 ], [ 26, 26 ] ], [ [ 10, 22 ], [ 26, 27 ] ], 
+  [ [ 23, 23 ], [ 25, 27 ] ], [ [ 23, 23 ], [ 26, 27 ] ], 
+  [ [ 23, 24 ], [ 24, 26 ] ], [ [ 23, 24 ], [ 26, 26 ] ], 
+  [ [ 24, 23 ], [ 25, 27 ] ], [ [ 24, 23 ], [ 26, 27 ] ], 
+  [ [ 24, 26 ], [ 25, 24 ] ], [ [ 25, 24 ], [ 26, 26 ] ] ]
+gap> temp4:=SplitMend(temp3,last[3]);
+simplicial surface (11 vertices, 24 edges, and 14 faces)
+gap> RipMendableEdgePairs(temp4);
+[ [ 20, 22 ], [ 20, 24 ], [ 21, 22 ], [ 21, 26 ], [ 24, 27 ], [ 26, 27 ] ]
+gap> temp5:=RipMend(temp4,[21,26]);
+simplicial surface (10 vertices, 23 edges, and 14 faces)
+gap> RipMendableEdgePairs(temp5);
+[ [ 20, 22 ], [ 20, 24 ], [ 22, 27 ], [ 24, 27 ] ]
+gap> temp6:=RipMend(temp5,[20,24]);
+simplicial surface (9 vertices, 22 edges, and 14 faces)
+gap> CraterMendableEdgePairs(temp6);
+[ [  ], [ 22, 27 ] ]
+gap> temp7:=CraterMend(temp6,[22,27]);
+simplicial surface (9 vertices, 21 edges, and 14 faces)
+
+gap> AllSimplicialSurfaces(24,IsClosedSurface,IsConnected,EulerCharacteristic,2,NumberOfVertices,[14]);;
+gap> L:=last;;
+gap> Filtered(L,g->Size(VertexCounter(g))=2);
+[ simplicial surface (14 vertices, 36 edges, and 24 faces)
+    , simplicial surface (14 vertices, 36 edges, and 24 faces)
+    , simplicial surface (14 vertices, 36 edges, and 24 faces)
+    , simplicial surface (14 vertices, 36 edges, and 24 faces)
+    , simplicial surface (14 vertices, 36 edges, and 24 faces)
+    , 
+  simplicial surface (14 vertices, 36 edges, and 24 faces) 
+ ]
+gap> FL:=last;
+[ simplicial surface (14 vertices, 36 edges, and 24 faces)
+    , simplicial surface (14 vertices, 36 edges, and 24 faces)
+    , simplicial surface (14 vertices, 36 edges, and 24 faces)
+    , simplicial surface (14 vertices, 36 edges, and 24 faces)
+    , simplicial surface (14 vertices, 36 edges, and 24 faces)
+    , 
+  simplicial surface (14 vertices, 36 edges, and 24 faces) 
+ ]
+gap> List(FL,VertexCounter);
+[ [ [ 4, 6 ], [ 6, 8 ] ], [ [ 4, 6 ], [ 6, 8 ] ], [ [ 4, 10 ], [ 8, 4 ] ], 
+  [ [ 4, 6 ], [ 6, 8 ] ], [ [ 5, 12 ], [ 6, 2 ] ], [ [ 4, 12 ], [ 12, 2 ] ] ]

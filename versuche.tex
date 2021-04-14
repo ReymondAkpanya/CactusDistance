@@ -1,0 +1,46 @@
+\documentclass[10pt]{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usetikzlibrary{positioning,arrows}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+\begin{document}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1}
+\definecolor{ffffww}{rgb}{1,1,0.4}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+\begin{axis}[
+x=1cm,y=1cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-6.167729502119443,
+xmax=8.361425400849182,
+ymin=-6.845824105722052,
+ymax=5.182670149458948,
+xtick={-6,-5,...,8},
+ytick={-6,-5,...,5},]
+\clip(-6.167729502119443,-6.845824105722052) rectangle (8.361425400849182,5.182670149458948);
+\draw [shift={(-4.485846546051608,4.50189201388817)},line width=2pt,color=ududff]  plot[domain=0.03563075095460158:3.1772234045443946,variable=\t]({1*0.6145435096629188*cos(\t r)+0*0.6145435096629188*sin(\t r)},{0*0.6145435096629188*cos(\t r)+1*0.6145435096629188*sin(\t r)});
+\draw [shift={(-2.3534306659370485,2.9985488241760825)},line width=2pt]  plot[domain=-0.29454638299942904:0.8631631030001808,variable=\t]({1*1.4719929384034496*cos(\t r)+0*1.4719929384034496*sin(\t r)},{0*1.4719929384034496*cos(\t r)+1*1.4719929384034496*sin(\t r)});
+\draw[- width=2pt,thick] (3,0) [loop, in=300,out=230,distance=0.2cm] to (4,0) ;
+ % \path[thick,densely dotted, bend left=50,color=ffffww] (2,0) -- (5,0);
+  \draw[line width=2pt,color=ffffww,bend left= 50](2,0) -- (5,0);
+ % \draw [arrow, bend left, bend angle=45]  (1,0) to (3,0);
+\begin{scriptsize}
+\draw [fill=ffffww] (-5.1,4.48) circle (2.5pt);
+\draw[color=ffffww] (-4.980707042726582,4.82656341164109) node {$A$};
+\draw [fill=ududff] (-3.871693092103217,4.52378402777634) circle (2.5pt);
+\draw[color=ududff] (-3.746203684958006,4.858217343891567) node {$B$};
+\draw[color=black] (-4.363455363842294,5.396334192149664) node {$c$};
+\draw [fill=ududff] (-2.3534306659370485,2.9985488241760825) circle (2.5pt);
+\draw[color=ududff] (-2.226814936935143,3.3388285958687027) node {$C$};
+\draw [fill=ududff] (-0.9448306807908525,2.5712207387946524) circle (2.5pt);
+\draw[color=ududff] (-0.8182149517889473,2.9115005104872727) node {$D$};
+\draw [fill=ududff] (-1.2297160710451394,4.31218701257085) circle (2.5pt);
+\draw[color=ududff] (-1.1031003420432341,4.652466784263471) node {$E$};
+\draw[color=black] (-0.786561019538471,3.7028488167491806) node {$d$};
+\end{scriptsize}
+\end{axis}
+\end{tikzpicture}
+\end{document}

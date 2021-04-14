@@ -1,0 +1,96 @@
+\documentclass[10pt]{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+\begin{document}
+\definecolor{cqcqcq}{rgb}{0.7529411764705882,0.7529411764705882,0.7529411764705882}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1}
+\definecolor{ffffww}{rgb}{1,1,0.4}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+\clip(-2.5,-1.) rectangle (4.2,1);
+
+\coordinate (V1) at (0.5, 0.8660254037844386);
+\coordinate (V2) at (0, 0);
+\coordinate (V3) at (1, 0);
+\coordinate (V4) at (0.5, -0.8660254037844386);
+
+\coordinate (V12) at (-1.5, 0.5);
+\coordinate (V22) at (-1, 0);
+\coordinate (V32) at (-2, 0);
+\coordinate (V42) at (-1.25, -0.5);
+\coordinate (V52) at (-1.8, 0.4);
+\coordinate (V62) at (-0.15, -0.4);
+
+
+\coordinate (V13) at ( 3.8090169943749475, 0.5877852522924731);
+\coordinate (V23) at ( 3.3090169943749475, 0.9510565162951535 );
+\coordinate (V33) at ( 2.69, 0.9510565162951536 );
+\coordinate (V43) at ( 2.19, 0.5877852522924732 );
+\coordinate (V53) at ( 2,0 );
+\coordinate (V63) at ( 2.191, -0.587785252292473 );
+\coordinate (V73) at ( 2.691, -0.9510565162951535 );
+\coordinate (V83) at ( 3.3090169943749472, -0.9510565162951536 );
+\coordinate (V93) at ( 3.8090169943749473, -0.5877852522924734 );
+\coordinate (V103) at ( 4, 0);
+\coordinate (z) at ( 3, 0);
+
+\fill[line width=2pt,color=ffffww,fill=ffffww,fill opacity=0.93]  (V3) -- (V1) -- (V2) -- cycle;
+\fill[line width=2pt,color=ffffww,fill=ffffww,fill opacity=0.93]  (V3) -- (V4) -- (V2) -- cycle;
+%\node[faceLabel] at (barycentric cs:V3=1,V4=1,V2=1) {};
+
+\fill[line width=2pt,color=ffffww,fill=ffffww,fill opacity=0.93]  (V32) -- (V12) -- (V22) -- cycle;
+%\node[faceLabel] at (barycentric cs:V32=1,V12=1,V22=1) {};
+\fill[line width=2pt,color=ffffww,fill=ffffww,fill opacity=0.93]  (V32) -- (V42) -- (V22) -- cycle;
+%\node[faceLabel] at (barycentric cs:V32=1,V12=1,V22=1) {};
+\fill[line width=2pt,color=ffffww,fill=ffffww,fill opacity=0.93]  (V52) -- (V32) -- (V12) -- cycle;
+\fill[line width=2pt,color=ffffww,fill=ffffww,fill opacity=0.93]  (V62) -- (V42) -- (V22) -- cycle;
+
+\fill[line width=2pt,color=ffffww,fill=ffffww,fill opacity=0.93]  (z) -- (V13) -- (V23) -- cycle;
+\fill[line width=2pt,color=ffffww,fill=ffffww,fill opacity=0.93]  (z) -- (V23) -- (V33) -- cycle;
+\fill[line width=2pt,color=ffffww,fill=ffffww,fill opacity=0.93]  (z) -- (V33) -- (V43) -- cycle;
+\fill[line width=2pt,color=ffffww,fill=ffffww,fill opacity=0.93]  (z) -- (V43) -- (V53) -- cycle;
+\fill[line width=2pt,color=ffffww,fill=ffffww,fill opacity=0.93]  (z) -- (V53) -- (V63) -- cycle;
+\fill[line width=2pt,color=ffffww,fill=ffffww,fill opacity=0.93]  (z) -- (V63) -- (V73) -- cycle;
+\fill[line width=2pt,color=ffffww,fill=ffffww,fill opacity=0.93]  (z) -- (V73) -- (V83) -- cycle;
+\fill[line width=2pt,color=ffffww,fill=ffffww,fill opacity=0.93]  (z) -- (V83) -- (V93) -- cycle;
+\fill[line width=2pt,color=ffffww,fill=ffffww,fill opacity=0.93]  (z) -- (V93) -- (V103) -- cycle;
+%\node[faceLabel] at (barycentric cs:V3=1,V1=1,V2=1) {};
+%\node[faceLabel] at (barycentric cs:V32=1,V12=1,V22=1) {};
+\draw[line width=1pt] (V1) -- (V2);
+\draw[line width=1pt] (V1) -- (V3);
+\draw[line width=1pt] (V3) -- (V2);
+\draw[line width=1pt] (V4) -- (V2);
+\draw[line width=1pt] (V3) -- (V4);
+
+\draw[line width=1pt] (V62) -- (V42);
+\draw[line width=1pt] (V62) -- (V22);
+\draw[line width=1pt] (V12) -- (V22);
+\draw[line width=1pt] (V12) -- (V32);
+\draw[line width=1pt] (V32) -- (V22);
+\draw[line width=1pt] (V42) -- (V22);
+\draw[line width=1pt] (V32) -- (V42);
+\draw[line width=1pt] (V12) -- (V52);
+\draw[line width=1pt] (V32) -- (V52);
+%\draw[edge=black] (V32) -- (V42);
+
+ \foreach \x in {V13,V23,V33,V43,V53,V63,V73,V83,V93,V103}{
+                    \draw[line width=1pt] (z) -- (\x);
+                }
+
+\draw[line width=1pt] (V13) -- (V23);
+\draw[line width=1pt] (V23) -- (V33);
+\draw[line width=1pt] (V33) -- (V43);
+\draw[line width=1pt] (V43) -- (V53);
+\draw[line width=1pt] (V53) -- (V63);
+\draw[line width=1pt] (V63) -- (V73);
+\draw[line width=1pt] (V73) -- (V83);
+\draw[line width=1pt] (V83) -- (V93);
+\draw[line width=1pt] (V93) -- (V103);
+
+
+
+\end{tikzpicture}
+
+\end{document}

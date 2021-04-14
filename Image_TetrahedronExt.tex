@@ -1,0 +1,34 @@
+\documentclass[10pt]{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+\begin{document}
+\definecolor{ffffww}{rgb}{1,1,0.4}
+\definecolor{ccffww}{rgb}{1,1,0.4}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1}
+\begin{tikzpicture}
+\clip(-7.389565664895192,-7.289968563274136) rectangle (8.5360237990878,5.894615306689942);
+\fill[line width=2pt,color=ccffww,fill=ccffww,fill opacity=0.91] (-1.011487688549136,3.6058932881573114) -- (-1,0) -- (-7,0) -- (-7.006731277790231,3.590481350909905) -- cycle;
+\fill[line width=2pt,color=ffffww,fill=ffffww,fill opacity=0.91] (1,0) -- (7,0) -- (7.033543554597013,3.575069413662499) -- (0.9766522163662917,3.590481350909905) -- cycle;
+\draw [line width=2pt] (-5,1)-- (-3,1);
+\draw [line width=2pt] (-3,1)-- (-4,2.5);
+\draw [line width=2pt] (-4,2.5)-- (-5,1);
+\draw [line width=2pt] (3,1)-- (5,1);
+\draw [line width=2pt] (5,1)-- (4.0128,2.68118);
+\draw [line width=2pt] (4.0128,2.68118)-- (3,1);
+\draw [line width=2pt] (4.0128,1.61775)-- (4.0128,2.68118);
+\draw [line width=2pt] (4.0128,1.61775)-- (3,1);
+\draw [line width=2pt] (4.0128,1.61775)-- (5,1);
+\begin{scriptsize}
+\draw [fill=ududff] (-5,1) circle (2.5pt);
+\draw [fill=ududff] (-3,1) circle (2.5pt);
+\draw [fill=ududff] (-4,2.5) circle (2.5pt);
+\draw [fill=ududff] (3,1) circle (2.5pt);
+\draw [fill=ududff] (5,1) circle (2.5pt);
+\draw [fill=ududff] (4.0128,2.68118) circle (2.5pt);
+\draw [fill=ududff] (4.0128,1.61775) circle (2.5pt);
+\end{scriptsize}
+\end{tikzpicture}
+\end{document}

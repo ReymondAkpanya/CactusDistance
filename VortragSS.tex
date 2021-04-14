@@ -1,0 +1,72 @@
+\documentclass{beamer} 
+\usetheme{Warsaw}             % Falls Ihnen das Layout nicht gefÃ¤llt, kÃ¶nnen Sie hier
+                              % auch andere Themes wÃ¤hlen. Ein Verzeichnis der mÃ¶glichen 
+                              % Themes finden Sie im Kapitel 15 des beameruserguide.
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\AtBeginSection[]{\frame<beamer>{\frametitle{Ãœbersicht} \tableofcontents[current]}}
+
+\newcommand{\defin}[1]{\textit{\color{blue}#1}}
+
+% ========== AbkÃ¼rzungen ==========
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+\author{Vorname Nachname}
+\title{Vortragstitel}
+\date{Datum \\[.5\baselineskip] Vortrag zum Seminar zur Funktionentheorie}
+
+\begin{document}
+\frame{\maketitle}
+
+\section{Erster Abschnitt}
+
+\subsection{Erster Unterabschnitt}
+
+\frame{\frametitle{Definitionen: Stetigkeit}
+\begin{block}{(1.1) Definition}
+Eine Funktion $f: D \to \R$ mit $D \subset \R$ heiÃŸt \defin{stetig} in einem Punkt $x_0 \in D$, wenn zu jedem $\varepsilon > 0$ ein $\delta > 0$ existiert, so dass fÃ¼r alle $x \in D$ mit $|x - x_0| < \delta$ stets $|f(x) - f(x_0)| < \varepsilon$ gilt.
+\end{block}
+
+\begin{block}{(1.2) Definition}<2->
+Eine Funktion $f: D \to \R$ mit $D \subset \R$ heiÃŸt \defin{stetig} (auf ihrem Definitionsbereich), wenn $f$ in jedem $x_0 \in D$ stetig ist.
+\end{block}
+
+
+\frame{\frametitle{Stetigkeit unter arithmetischen VerknÃ¼pfungen}
+\begin{alertblock}{(1.3) Lemma}
+Seien $f, g: D \to \R$ stetig, $D \subset \R$. Dann sind auch die folgenden Funktionen stetig:
+\begin{itemize}
+\item<2-> $f + g$
+\item<3-> $f - g$
+\item<4-> $f \cdot g$
+\end{itemize}
+\end{alertblock}
+
+\begin{exampleblock}{(1.4) Beispiel}<5->
+Die Funktion $f: \R \to \R$, $x \mapsto 2 \cdot x + 3$ ist stetig, da die IdentitÃ¤t und die konstanten Funktionen stetig sind.
+\end{exampleblock}
+}
+
+\subsection{Zweiter Unterabschnitt}
+
+\frame{\frametitle{Definition: gleichmÃ¤ÃŸige Stetigkeit}
+\begin{block}{(1.6) Definition}
+Eine Funktion $f: D \to \R$ mit $D \subset \R$ heiÃŸt \defin{gleichmÃ¤ÃŸig stetig}, wenn zu jedem $\varepsilon > 0$ ein $\delta > 0$ existiert, so dass fÃ¼r alle $x, y \in D$ mit $|x - y| < \delta$ stets $|f(x) - f(y)| < \varepsilon$ gilt.
+\end{block}
+
+\vspace*{3ex}
+\uncover<2->{Es macht keinen Sinn, von einer gleichmÃ¤ÃŸigen Stetigkeit in einem Punkt zu sprechen.}
+}
+
+\section{Zweiter Abschnitt}
+
+\end{document}

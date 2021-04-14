@@ -1,0 +1,130 @@
+
+\documentclass[12pt,titlepage,twoside,cleardoublepage]{article}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,lmargin={4cm},rmargin={2cm},
+tmargin={2.5cm},bmargin = {2.5cm}]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pdfpages} 
+%\usepackage[pdftex,article]{geometry}
+\usepackage{amsthm}
+%\usepackage{ngerman,amsthm}
+\usepackage{lineno} 
+\usepackage{lineno, blindtext} 
+\usepackage{cleveref}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{thmtools}
+\usepackage{tabularx}
+\linespread{1.25}
+\usepackage{color}
+\usepackage{verbatim}
+\newcommand{\gelb}{0.550000011920929}
+\usepackage{pgf,tikz,pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+%\numberwithin{equation}{chapter}
+%\usepackage{scrheadings}
+\pagestyle{headings}
+\usepackage{titlesec}     
+\usepackage{tikz}           % für Kontrolle der Abschnittüberschriften
+\begin{comment}
+\makeatother
+\theoremstyle{nummermitklammern}
+\theorembodyfont{\rmfamily}
+\theoremsymbol{\ensuremath{\diamond}}
+\newtheorem{temp}{}[section]
+\newtheorem{vor}[temp]{Vorüberlegung}
+\newtheorem{lemma}[temp]{Lemma}
+\newtheorem{folgerung}[temp]{Folgerung}
+\newtheorem{bsp}[temp]{Beispiel}
+\newtheorem{herleitung}[temp]{Herleitung}
+\newtheorem{definition}[temp]{Definition}
+\newtheorem{bemerkung}[temp]{Bemerkung}
+\newtheorem{satz}[temp]{Satz}
+\newtheorem{beweisidee}[temp]{Beweisidee}
+\theoremsymbol{\ensuremath{\square}}
+\end{comment}
+%\begin{comment}
+\newtheorem{zahl}{}[section]
+%\setcounter{zahl}{1}
+%\newtheorem{section}{section}[section]
+\newtheorem{definition}[zahl]{Definition}
+\newtheorem{vor}[zahl]{Vorüberlegung}
+\newtheorem{lemma}[zahl]{Lemma}
+\newtheorem{folgerung}[zahl]{Folgerung}
+\newtheorem{bsp}[zahl]{Beispiel}
+\newtheorem{herleitung}[zahl]{Herleitung}
+\newtheorem{bemerkung}[zahl]{Bemerkung}
+\newtheorem{satz}[zahl]{Satz}
+\newtheorem{beweisidee}[zahl]{Beweisidee}
+\numberwithin{equation}{section}
+
+
+%-----------------------------------------------
+
+%\end{comment}
+ %Nummerierung mit Kapitelnummern
+%-------------------------
+%\newcommand{\secnumbering}[1]{% 
+ % \setcounter{chapter}{0}% 
+  %\setcounter{section}{0}% 
+  %\renewcommand{\thechapter}{\csname #1\endcsname{chapter}.}% nach Duden gehört 
+                                  % der Punkt hier hin bei gemischten Zählungen 
+%  \renewcommand{\thesection}{\thechapter\csname #1\endcsname{section}}% 
+%}
+%------------------------------
+\begin{document}
+\subsection{Facegraphen von Multi-Tetraedern}
+In Kapitel 3 haben wir uns Facegraphen von simplizialer Flächen gewidmet. In diesem Abschnitt betrachten wir im Genauen die Facegraphen von Multitetraedern. Es lässt sich nämlich ein Zusammenhang zwischen dem Facegraphen eines Multitetraeders und der Sphäre, die durch eine Tetraedererweiterung konstruiert wird, erkennen.\\\\
+Den Facegraphen des Tetraeders haben wir bereits kennengelernt. Dieser wird bis auf Isomorphie durch $G_T=(V,E)$ mit $V=\{F_1,F_2,F_3,F_4\}$ und $E=Pot_2(V)$ dargestellt.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=0cm 20.5cm 14cm 23cm]{Image_FaceGraphTetraeder}
+\end{center}
+\caption{Face-Graph des Tetraeders}
+\end{figure}
+
+Durch eine Tetraedererweitung am Tetraeder wird der Double-Tetraeder mit zugehörigem Facegraph $G_{DT}$ konstruiert. Diesen enthalten wir bis auf Isomorphie durch die Ecken $V=\{F_1,\ldots,F_6\}$ und die Kanten 
+\[
+\{\{F_1,F_2\},\{F_1,F_3\},\{F_1,F_4\},\{F_2,F_3\},\{F_2,F_4\},\{F_3,F_5\},\{F_3,F_6\},\{F_4,F_6\},\{F_5,F_6\}\}.
+\]
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=0cm 20.5cm 14cm 23cm]{Image_FaceGraphdoubleTetraeder}
+\end{center}
+\caption{Face-Graph des Tetraeders}
+\end{figure}
+Durch genaueres Hinschauen lässt sich erkennen, dass der zu $F_3$ zugehörige Knoten im ursprünglichen Graphen des Tetraeders unter Berücksichtigung der Inzidenzen in drei weitere Knoten aufgeteilt wurde. Im Allgemeinen ist dieses Phänomen weiterhin erkennbar, weshalb wir dieses an dieser Stelle beschreiben wollen.\\
+Sei $X$ ein Multi-Tetraeder mit zugehörigem Facegraph $G_X$ und $F\in X_2$ eine Fläche mit $X_2(X_1(F))=\{F_1,F_2,F_3\}.$ 
+Da für die Skizzierung des erwähnten Zusammenhangs nur die Knoten der Flächen $F,F_1,F_2,F_3$ relevant sind, wird in den folgenden Abbildungen auch nur dieser Ausschnitt des Facegraphen dargestellt. Der Facegraph kann mehr Knoten und Inzidenzen enthalten, diese sind aber für unsere Zwecke nicht von Bedeutung.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=3cm 19.6cm 14cm 23cm]{Image_fg1}
+\end{center}
+\caption{Ausschnitt eines Facegraphen eines Multitetraeders}
+\end{figure}
+Auf Ebene der simplizialen Flächen wird bei einer Tetraedererweiterung die Fläche $F$ entfernt und durch den 3-gon mit den Flächen $\{F_a,F_b,F_c\}$ so ersetzt, dass $F_1$ und $F_a$, $F_2$ und $F_b$ bzw. $F_3$ und $F_c$ benachbarte Flächen in der konstruierten Sphäre sind. Dieses Vorgehen muss nun nur noch auf der Ebene der Facegraphen nachgeahmt werden.\\
+Bei einer Tetraedererweiterung wird in einem ersten Schritt der Knoten $F$ durch die Knoten $F_a,F_b,F_c$ ersetzt, wobei $F_a,F_b,F_c$ die Flächen des angehängten Tetraeders sind. Dann werden die Kanten $\{F,F_1\},\{F,F_2\}$ und $\{F,F_3\}$ in dem Graphen gelöscht.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=3cm 19.7cm 14cm 23cm]{Image_fg2}
+\end{center}
+\caption{Ausschnitt eines Facegraphen eines Multitetraeders}
+\end{figure}
+Zuletzt werden die Inzidenzen 
+\[
+\{F_a,F_b\},\{F_a,F_c\},\{F_b,F_c\},\{F_1,F_a\},\{F_2,F_b\},\{F_3,F_c\}
+\] 
+in dem Graphen hergestellt, um so schließlich den Facegraphen des Multitetraeders, der durch die Tetraedererweiterung entstanden ist, zu erzeugen.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=3cm 19.7cm 14cm 23cm]{Image_fg3}
+\end{center}
+\caption{Ausschnitt eines Facegraphen eines Multitetraeders}
+\end{figure}
+\end{document}

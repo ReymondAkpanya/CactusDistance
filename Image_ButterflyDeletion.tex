@@ -1,0 +1,36 @@
+\documentclass[10pt]{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+\begin{document}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1}
+\definecolor{ffffww}{rgb}{1,1,0.4}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+\clip(-4.073049453868574,-3.3737491704174283) rectangle (4.07434692709512,3.3713720164370464);
+\fill[line width=2pt,color=ffffww,fill=ffffww,fill opacity=0.91] (-2,-2) -- (2,-2) -- (2,2) -- (-2,2) -- cycle;
+\draw [line width=2pt] (-1,0)-- (1,0);
+\draw [line width=2pt] (1,0)-- (0,1.5);
+\draw [line width=2pt] (0,1.5)-- (-1,0);
+\draw [line width=2pt] (-1,0)-- (0,-1.5);
+\draw [line width=2pt] (1,0)-- (0,-1.5);
+\begin{scriptsize}
+\draw [fill=ududff] (-1,0) circle (2.5pt);
+\draw[color=ududff] (-1.219312430063074106,0.01896273513221396) node {$V_4$};
+\draw [fill=ududff] (1,0) circle (2.5pt);
+\draw[color=ududff] (1.24745430308361572,0) node {$V_2$};
+\draw [fill=ududff] (0,1.5) circle (2.5pt);
+\draw[color=ududff] (0.07165001226437327,1.7895292994516216) node {$V_1$};
+\draw[color=black] (0.02727421498243593,-0.132251635087547054) node {$e_1$};
+\draw[color=black] (0.6485353769295588,0.9351407456586869) node {$e_2$};
+\draw[color=black] (-0.5851117875082994,0.9351407456586869) node {$e_5$};
+\draw [fill=ududff] (0,-1.5) circle (2.5pt);
+\draw[color=ududff] (0.07165001226437327,-1.80102745968073422) node {$V_3$};
+\draw[color=black] (-0.6851117875082994,-0.8245140726857695) node {$e_4$};
+\draw[color=black] (0.6851117875082994,-0.8245140726857695) node {$e_3$};
+\draw[color=black] (0,0.5245140726857695) node {$F_1$};
+\draw[color=black] (0,-0.7245140726857695) node {$F_2$};
+\end{scriptsize}
+\end{tikzpicture}
+\end{document}

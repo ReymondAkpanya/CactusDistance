@@ -1,0 +1,189 @@
+\documentclass[12pt,titlepage]{article}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,lmargin={4cm},rmargin={2cm},
+tmargin={2.5cm},bmargin = {2.5cm}]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{cleveref}
+\usepackage{enumerate}
+\usepackage{thmtools}
+\linespread{1.25}
+\usepackage{color}
+\usepackage{verbatim}
+\newcommand{\gelb}{0.550000011920929}
+\usepackage{pgf,tikz,pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+%\usepackage{scrheadings}
+\pagestyle{headings}
+\usepackage{titlesec}                % für Kontrolle der Abschnittüberschriften
+\declaretheorem[name=Lemma]{lemma}
+\declaretheorem[name=Folgerung]{folgerung}
+\declaretheorem[name=Beispiel]{bsp}
+\declaretheorem[name=Satz]{satz}
+\declaretheorem[name=Herleitung]{herleitung}
+\declaretheorem[name=Definition]{definition}
+\declaretheorem[name=Bemerkung]{bemerkung}
+
+\begin{document}
+\thispagestyle{empty}
+\pagenumbering{arabic}
+%\begin{titlepage}
+\noindent\rule{\textwidth}{0.5pt}
+\centerline{\textbf{\large{Funkana}}}
+\centerline{Reymond Akpanya}
+\noindent\rule{\textwidth}{0.5pt}
+\newline
+%\farb
+\section{Kapitel 1}
+\subsection{Allgemeine Begriffe}
+\begin{definition}[Prähilbertraum]
+Sei $H$ ein Vektorraum über $\mathbb{R}$. Es sei Abbildung $\langle \cdot  , \cdot \rangle:H \times H \to \mathbb{R}, (x,y) \mapsto \langle x,y \rangle_H$ erklärt, die folgende Eigenschaften besitzt:
+\begin{enumerate}
+\item $\forall (x,y) \in H \times H, \forall \alpha \in \mathbb{R}:\langle \alpha x, y \rangle_H = \alpha\langle x, y \rangle_H$ 
+\item $\forall (x,y) \in H \times H:\langle x, y \rangle_H=\langle y,x \rangle_H$
+\item $\forall x_1,x_2,y \in H:\langle x_1+x_2, y \rangle_H=\langle x_1, y \rangle_H+\langle x_2, y \rangle_H$
+\item $\forall x \in H\setminus \{0\}:\langle x, x \rangle_H>0,\langle x, x \rangle_H=0 \Leftrightarrow x=0.$
+\end{enumerate}
+$(H,\langle \cdot, \cdot \rangle_H)$ heißt Prähilbertraum, die Abbildung $(x,y)\mapsto \langle x, y \rangle_H$ heißt Skalarprodukt. 
+\end{definition}
+\begin{folgerung}
+\begin{itemize}
+\item $\langle x,\alpha y \rangle_H=\alpha\langle x, y \rangle_H$
+\item $\langle x, y_1+y_2 \rangle_H=\langle x, y_1 \rangle_H+\langle x, y_2 \rangle_H$
+\item Aufgabe: zeige, dass $\Vert x \Vert_H=\sqrt{\langle x, x \rangle_H}$ eine Norm ist.
+\item Beweise die Parallelogrammeigenschaft:
+\[
+\Vert x+y \Vert_H^2+\Vert x-y \Vert_H^2=\Vert x \Vert_H^2+\Vert y \Vert_H^2
+\]
+\end{itemize}
+\end{folgerung}
+\begin{bsp}
+\begin{enumerate}
+\item Sei $\Omega\subset \mathbb{R}^n$ eine beschränkte und offene Menge. Definiere auf $C^0(\bar{\Omega})$:
+\[
+\langle f,g \rangle := \int f(x)g(x)dx
+\]
+Dann wird $C^0(\bar{\Omega})$ zu einem Prähilbertraum.
+\item Sei $\Omega \subset \mathbb{R}^n$ beschränkt, wegzusammenhängend und offen und außerdem $H=\{f \in C^1(\Omega)\mid f_{|\partial \Omega}=0\}$. Dann definere $\langle f,g \rangle:=\int_\Omega \nabla f(x) \nabla g(x)dx$. Dann ist $\Vert f\Vert =\int_\Omega \vert \nabla f(x)\vert^2dx^{\frac{1}{2}}$ und es gilt $\Vert f \Vert =0 \Leftrightarrow \nabla f(x)=0 \Rightarrow f=const \Rightarrow const =0\Rightarrow$ H ist ein Prähilbertraum.
+\end{enumerate}
+\end{bsp}
+\begin{definition}
+Ein Prähilbertraum $H$ heißt Hilbertraum, wenn der normierte Raum $(H,\Vert \cdot Vert_H)$ vollständig ist, d.h. wenn jede Cauchy-Folge in $H$ Grenzwert in $H$ hat.
+\end{definition}
+\begin{bsp}
+Es sei $l_2:=\{a=(a_n)_n \mid a_n \in \mathbb{R}, \sum_{n=1}^{\infty} konvergiert \}$. Wir definieren die Addition und die skalare Multiplikation auf $l_2$ durch 
+\[
+a+b:=(a_n+b_n)_n \qquad a,b \in l_2
+\]
+und 
+\[
+\alpha \cdot a:= (\alpha\cdot a_n)_n \qquad \alpha \in \mathbb{R}
+\]
+Damit wird $l_2$ zu einem reellen Vektorraum. Durch $\langle  a,b\rangle_{l_2}:= \sum_{n=1}^{\infty}a_nb_n$ definieren wir ein Skalarprodukt auf $l_2$.Dies induziert durch $\Vert a \Vert_{l_2}::=\sqrt{\langle  a,a\rangle_{l_2}}$ eine Norm auf $l_2$.\\
+Ist $l_2$ bezüglich $\Vert \cdot \Vert_{l_2}$ vollständig? $\rightarrow$ Übung $\Rightarrow$ $l_2$ ist ein Hilbertraum.
+\end{bsp}
+\begin{bemerkung}
+Es sei $B_1(0)=\{x\in \mathbb{R}^n\mid \Vert x \Vert \leq 1\}$. Dann ist $\bar{B_1(0)}$ kompakt in $\mathbb{R}^n$. In $\infty$-dimensionalen Räumen ist dies im Allgemeinen falsch. Die Einheitskugel in $l_2$ ist nicht kompakt. Warum nicht? Als normierter Raum ist $l_2$ auch ein metrischer Raum. Deshalb gilt $K \subset l_2$ kompakt $\Leftrightarrow$ $K$ ist folgenkompakt $\Leftrightarrow $ jede Folge in $K$ hat eine konvergente Teilfolge.
+Setze $a^k=(a^k_n)_n$ mit $a^k_n=
+ \left\{
+\begin{array}{ll}
+1 & k =n \\
+0 & k \neq n \\
+\end{array}
+\right.$ . Rechne $\Vert a^k \Vert_{l_2} =1 \Rightarrow a^k \in K$ für alle $K\in \mathbb{N}$. Für $k\neq l$ gilt $\Vert a^k-a^l \Vert_{l_2}=(1+1)^{\frac{1}{2}}=\sqrt{2} \Rightarrow (a^k)_n \subset l_2$ besitzt keinen Häufungspunkt in $K$. Also lässt sich keine konvergente Teilfolge auswählen. Somit ist $K$ nicht folgenkompakt und damit ebenfalls nicht kompakt.
+\end{bemerkung}
+\begin{definition}{Orthonormalsystem}
+Es sei $H$ ein Prähilbertraum. Ein endliches oder abzählbar unendliches System $\{\phi_1,\phi_2,\ldots\}\subset H$ heißt orthonormiert, falls $\langle \phi_i,\phi_j \rangle_H= \delta_{ij}$ ist.
+\end{definition}
+\begin{definition}
+Es sein $H$ ein Prähilbertraum. Es sei $\{\phi_1,\phi_2,\ldots\}\subset H$ ein Orthonormalsystem. Dann heißt $f_k:=\langle f, \phi_k\rangle_H$ der $k-te$ Fourierkoeffizient von $f$.
+\end{definition}
+ \begin{bsp}
+ Sei $L^2(-\pi, \pi)$ der Raum aller $p-$mal Lebesgue-integrierbaren Funktion auf $(-\pi,\pi)$. Dies ist ein reeller Vektorraum mit dem Skalarprodukt $\langle f, g\rangle:=\int_{-\pi}^\pi f(x)g(x)dx$. Betrachte die Familie
+ $\{1\} \cup \{sin(nx),cos(nx)\mid n \in \mathbb{N}\}$. die Funktionen sind in $L^2$. Was ist mit dem Skalarprodukt im Hinblick auf Definition $\textcolor{red}{1.1.6}$?
+ \begin{itemize}
+ \item $\langle 1,cos(nx) \rangle=\int_{-\pi}^\pi cos(nx)dx=\frac{1}{n}sin(nx)|_{-\pi}^\pi=0$
+ \item $\langle 1,sin(nx) \rangle=\int_{-\pi}^\pi sin(nx)dx=\frac{1}{n}cos(nx)|_{-\pi}^\pi=0$
+ \item \begin{align*}
+ \langle cos(nx),cos(mx) \rangle&=\int_{-\pi}^\pi cos(nx)cos(mx)dx\\
+ &=\int_{-\pi}^\pi\frac{1}{2}cos((n-m)x)+\frac{1}{2}cos((n+m)x)dx\\
+& \overset{n \neq m}{=} \frac{1}{2}[\frac{1}{n-m}sin((n-m)x)+\frac{1}{n+m}sin((n+m)x)]_{-\pi}^\pi=0
+ \end{align*}
+ Ähnlich zeigt man $0=\langle sin(nx), sin(mx)\rangle \overset{n\neq m }{=} \langle sin(nx),cos(mx)\rangle.$
+ \end{itemize}
+ Beachte nun, dass
+ \begin{itemize}
+\item $\Vert 1 \Vert_{L^2}^2=2\pi $,
+ \item $\Vert cos(nx) \Vert_{L^2}^2=\int_{-\pi}^\pi cos^2(nx)dx=\int_{-\pi}^\pi \frac{1}{2}(1+cos(2nx))dx =\pi$,
+ \item  $\Vert sin(nx) \Vert_{L^2}^2=\int_{-\pi}^\pi \frac{1}{2}(1-cos(2nx))dx =\pi$ ist.
+ \end{itemize} 
+ Normiert man nun, so erhält man das Orthonormalsystem $\{\frac{1}{\sqrt{2}}\}\cup \{\frac{1}{\sqrt{\pi}}cos(nx),\frac{1}{\sqrt{\pi}}sin(nx)\mid n \in \mathbb{N}\}$ im Sinne von Definition $\textcolor{red}{1.1.6}$.
+ \end{bsp}
+ \begin{satz}
+ Es sei $H$ ein Prähilbertraum und $f \in H$. Es seien $\phi_1,\ldots,\phi_N \in H$ orthonormiert und $c_1 \ldots C_N \in \mathbb{R}$. Setze nun $f_k=\langle f, \phi_k\rangle_H$ für $k=1,\ldots N$. Dan gilt:
+ \begin{enumerate}
+ \item $\Vert f- \sum_{k=1}^Nf_k\phi_k\Vert_H^2=\Vert f\Vert_H^2- \sum_{k=1}^N \vert f_k\vert^2$
+ \item $\Vert f- \sum_{k=1}^Nc_k\phi_k\Vert_H^2=\Vert f\Vert_{H}^2-\sum_{k=1}^N \vert f_k\vert^2+\sum_{k=1}^N \vert c_k- f_k\vert^2$
+ \end{enumerate}
+ \end{satz}
+ \begin{bemerkung}
+ Insbesondere besagt $(2)$, dass die Approximation von $f$ durch Linearkombination der $\phi_1, \ldots \phi_N$ bestmödlich ist, wenn die Koeffizienten $c_i$ gerade die Fourierkoeffizienten sind
+  \end{bemerkung}
+  \begin{satz}[Besselsche Ungleichung]
+  Es sei $H$ ein Prähilbertraum und $\{\phi_1,\phi_2, \ldots\}$ ein Orthonormalsystem. Dann ist $\sum_{k=1}^{\infty} \vert f_k \vert^2 \leq \Vert f \Vert_H^2$ und Gleichheit gilt genau dann, wenn $\underset{N\rightarrow \infty}{\lim}\Vert f-\sum_{k=1}^{N}f_k \phi_k\Vert=0 ist, d.h. f= \sum_{k=1}^{\infty}f_k \phi_k$
+  \end{satz}
+  \begin{proof}
+  Nutze $(1)$ aus $\textcolor{red}{1.1.9}$:
+  \[
+0\leq   \Vert f- \sum_{k=1}^N f_k\phi_k\Vert^2= \Vert f \Vert^2-\sum_{k=1}^{N} \vert f_k \vert^2
+  \]
+  Also gilt für alle $n \in \mathbb{N}:$
+  \[
+  \sum_{k=1}^{N} \vert f_k \vert^2 \leq \Vert f \Vert^2.
+  \]
+  D.h. die Reihe konvergiert und die Ungleichung im Satz gilt. Außerdem ist \begin{align*}
+  &\Vert f \Vert^2=\underset{N \Rightarrow \infty}{\lim}\sum_{k=1}^N\\
+  \overset{\textcolor{red}{1.1.9}}{\Leftrightarrow}& \Vert f- \sum_{k=1}^Nf_k\phi_k \Vert^2=0\\
+ \Leftrightarrow &f=\sum_{k=1}^{\infty}f_k\phi_k
+  \end{align*}
+   \end{proof}
+ \begin{definition}[vollst. Orthogonalsystem]
+ Sei $H$ ein Prähilbertraum. Ein Orthogonalsystem $(\phi_1,\phi_2, \ldots)$ heißt vollständig in $H$ genau dann, wenn für jedes $f \in H$ gilt: $\sum_{k=1}^{\infty}\vert f_k\vert^2=\Vert f \Vert^2=\langle f,f \rangle.$
+ \end{definition}
+ \begin{bsp}
+ Die orthonormierte Familie $\{\frac{1}{\sqrt{2}}\}\cup \{\frac{1}{\sqrt{\pi}}cos(nx),\frac{1}{\sqrt{\pi}}sin(nx)\mid n \in \mathbb{N}\}$ ist ein VONS für $L^2((-\pi,\pi))=\{f:(-\pi,\pi)\to \mathbb{R} \mid f \, messbar, \int_{-\pi}^\pi \vert f \vert^2 < \infty\}$. Der Beweis kann jetzt noch nicht geführt werden.
+ \end{bsp}
+\begin{bemerkung}
+Es sei $H$ ein Prähilbertraum und $(\phi_1,\phi_2,\ldots)$ sei ein Orthonormalsystem. Dann gilt: $(\phi_1,\phi_2,\ldots)$ ist vollständig $\Leftrightarrow$ Zu jedem $f\in H$ und jedem $\epsilon>0 $ gibt es ein $N(\epsilon,f) \in \mathbb{N}$ und $c_1 ,\ldots,c_N$, so dass $ \Vert f- \sum_{k=1}^N c_kf_k \Vert <\epsilon$
+\end{bemerkung}
+\begin{proof}
+"$\Rightarrow$" Wähle $c_k=f_k$\\
+"$\Leftarrow$" Nach $\textcolor{red}{1.1.9}$ folgt $\Vert f \Vert^2=\sum_{k=1}^{\infty}\vert f_k\vert^2 $. Das liefert die Vollständigkeit.
+\end{proof}
+\begin{satz}[Cauchy-Ungleichung]
+Es sei $H$ ein Prähilbertraum und es seien $f,g \in H$. Dann gilt 
+\[
+\vert \langle f,g \rangle\vert \leq \Vert f \vert \Vert g\Vert.
+\]
+\end{satz}
+\begin{proof}
+Siehe Aufgabe 4 Blatt 1
+\end{proof}
+\begin{bemerkung}
+Es sei $H$ ein Prähilbertraum und $x_n,x,y_n,y\in H$ für $n\in \mathbb{N}$.
+\begin{enumerate}
+\item  Die folgenden Aussagen sind äquivalent:
+\begin{itemize}
+\item $\underset{n \rightarrow \infty}{\lim} x_n=x$
+\item $\underset{n \rightarrow \infty}{\lim} \Vert x_n \Vert =\Vert x \Vert$ und für alle $y\in H$ gilt $\underset{n \rightarrow \infty}{\lim} \langle x_n,y \rangle= \langle x,y \rangle$
+\end{itemize}
+\item Es sei $\underset{n \rightarrow \infty}{\lim} x_n =x$ und $\underset{n \rightarrow \infty}{\lim} y_n=y$. Dann gilt auch $\underset{n \rightarrow \infty}{\lim} \langle x_n, y_n \rangle = \langle x,y \rangle.$
+\end{enumerate}
+\end{bemerkung}
+ %\docite{*}\bibliography{literatur}
+%\bibliographystyle{plain}
+\end{document}

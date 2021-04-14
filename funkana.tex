@@ -1,0 +1,953 @@
+\documentclass[12pt,titlepage]{article}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,lmargin={4cm},rmargin={2cm},
+tmargin={2.5cm},bmargin = {2.5cm}]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{cleveref}
+\usepackage{enumerate}
+\usepackage{thmtools}
+\linespread{1.25}
+\usepackage{color}
+\usepackage{verbatim}
+\newcommand{\gelb}{0.550000011920929}
+\usepackage{pgf,tikz,pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+%\usepackage{scrheadings}
+\pagestyle{headings}
+\usepackage{titlesec}                % für Kontrolle der Abschnittüberschriften
+\begin{comment}
+\declaretheorem[name=Lemma]{lemma}
+\declaretheorem[name=Folgerung]{folgerung}
+\declaretheorem[name=Beispiel]{bsp}
+\declaretheorem[name=Satz]{satz}
+\declaretheorem[name=Wiederholung]{wiederholung}
+\declaretheorem[name=Herleitung]{herleitung}
+\declaretheorem[name=Definition]{definition}
+\declaretheorem[name=Bemerkung]{bemerkung}
+\declaretheorem[name=Notation]{notation}
+\end{comment}
+\newtheorem{zahl}{}[subsection]
+%\setcounter{zahl}{1}
+%\newtheorem{section}{section}[section]
+\newtheorem{definition}[zahl]{Definition}
+\newtheorem{vor}[zahl]{Vorüberlegung}
+\newtheorem{lemma}[zahl]{Lemma}
+\newtheorem{folgerung}[zahl]{Folgerung}
+\newtheorem{bsp}[zahl]{Beispiel}
+\newtheorem{herleitung}[zahl]{Herleitung}
+\newtheorem{bemerkung}[zahl]{Bemerkung}
+\newtheorem{satz}[zahl]{Satz}
+\newtheorem{beweisidee}[zahl]{Beweisidee}
+\numberwithin{equation}{section}
+%\declaretheorem[name=Wiederholung]{wiederholung}
+\newtheorem{notation}[zahl]{Notation}
+\newtheorem{wiederholung}[zahl]{Wiederholung}
+\newcommand{\R}{\mathbb{R}}
+
+
+\begin{document}
+\thispagestyle{empty}
+\pagenumbering{arabic}
+%\begin{titlepage}
+\noindent\rule{\textwidth}{0.5pt}
+\centerline{\textbf{\large{Funkana}}}
+\centerline{Reymond Akpanya}
+\noindent\rule{\textwidth}{0.5pt}
+\newline
+%\farb
+\section{Kapitel 1}
+\subsection{Allgemeine Begriffe}
+\begin{definition}[Prähilbertraum]
+Sei $H$ ein Vektorraum über $\mathbb{R}$. Es sei eine Abbildung $\langle \cdot  , \cdot \rangle:H \times H \to \mathbb{R}, (x,y) \mapsto \langle x,y \rangle_H$ erklärt, die folgende Eigenschaften besitzt:
+\begin{enumerate}
+\item $\forall (x,y) \in H \times H, \forall \alpha \in \mathbb{R}:\langle \alpha x, y \rangle_H = \alpha\langle x, y \rangle_H$ 
+\item $\forall (x,y) \in H \times H:\langle x, y \rangle_H=\langle y,x \rangle_H$
+\item $\forall x_1,x_2,y \in H:\langle x_1+x_2, y \rangle_H=\langle x_1, y \rangle_H+\langle x_2, y \rangle_H$
+\item $\forall x \in H\setminus \{0\}:\langle x, x \rangle_H>0,\langle x, x \rangle_H=0 \Leftrightarrow x=0.$
+\end{enumerate}
+$(H,\langle \cdot, \cdot \rangle_H)$ heißt Prähilbertraum, die Abbildung $(x,y)\mapsto \langle x, y \rangle_H$ heißt Skalarprodukt. 
+\end{definition}
+\begin{folgerung}
+\begin{itemize}
+\item $\langle x,\alpha y \rangle_H=\alpha\langle x, y \rangle_H$
+\item $\langle x, y_1+y_2 \rangle_H=\langle x, y_1 \rangle_H+\langle x, y_2 \rangle_H$
+\item Aufgabe: zeige, dass $\Vert x \Vert_H=\sqrt{\langle x, x \rangle_H}$ eine Norm ist.
+\item Beweise die Parallelogrammeigenschaft:
+\[
+\Vert x+y \Vert_H^2+\Vert x-y \Vert_H^2=2(\Vert x \Vert_H^2+\Vert y \Vert_H^2)
+\]
+\end{itemize}
+\end{folgerung}
+\begin{bsp}
+\begin{enumerate}
+\item Sei $\Omega\subset \mathbb{R}^n$ eine beschränkte und offene Menge. Definiere auf $C^0(\bar{\Omega})$:
+\[
+\langle f,g \rangle := \int_{\bar{\Omega}} f(x)g(x)dx
+\]
+Dann wird $C^0(\bar{\Omega})$ zu einem Prähilbertraum.
+\item Sei $\Omega \subset \mathbb{R}^n$ beschränkt, wegzusammenhängend und offen und außerdem $H=\{f \in C^1(\Omega)\mid f_{|\partial \Omega}=0\}$. Dann definiere $\langle f,g \rangle:=\int_\Omega \nabla f(x) \nabla g(x)dx$. Dann ist $\Vert f\Vert =\int_\Omega \vert \nabla f(x)\vert^2dx^{\frac{1}{2}}$ und es gilt $\Vert f \Vert =0 \Leftrightarrow \nabla f(x)=0 \Rightarrow f=const \Rightarrow const =0\Rightarrow$ H ist ein Prähilbertraum.
+\end{enumerate}
+\end{bsp}
+\begin{definition}
+Ein Prähilbertraum $H$ heißt Hilbertraum, wenn der normierte Raum $(H,\Vert \cdot \Vert_H)$ vollständig ist, d.h. wenn jede Cauchy-Folge in $H$  einen Grenzwert in $H$ hat.
+\end{definition}
+\begin{bsp}
+Es sei $l_2:=\{a=(a_n)_n \mid a_n \in \mathbb{R}, \sum_{n=1}^{\infty} konvergiert \}$. Wir definieren die Addition und die skalare Multiplikation auf $l_2$ durch 
+\[
+a+b:=(a_n+b_n)_n \qquad a,b \in l_2
+\]
+und 
+\[
+\alpha \cdot a:= (\alpha\cdot a_n)_n \qquad \alpha \in \mathbb{R}
+\]
+Damit wird $l_2$ zu einem reellen Vektorraum. Durch $\langle  a,b\rangle_{l_2}:= \sum_{n=1}^{\infty}a_nb_n$ definieren wir ein Skalarprodukt auf $l_2$. Dies induziert durch $\Vert a \Vert_{l_2}:=\sqrt{\langle  a,a\rangle_{l_2}}$ eine Norm auf $l_2$.\\
+Ist $l_2$ bezüglich $\Vert \cdot \Vert_{l_2}$ vollständig? $\rightarrow$ Übung $\Rightarrow$ $l_2$ ist ein Hilbertraum.
+\end{bsp}
+\begin{bemerkung}
+Es sei $B_1(0)=\{x\in \mathbb{R}^n\mid \Vert x \Vert < 1\}$. Dann ist $\overline{B_1(0)}$ kompakt in $\mathbb{R}^n$. In $\infty$-dimensionalen Räumen ist dies im Allgemeinen falsch. Die Einheitskugel in $l_2$ ist nicht kompakt. Warum nicht? Als normierter Raum ist $l_2$ auch ein metrischer Raum. Deshalb gilt $K \subset l_2$ kompakt $\Leftrightarrow$ $K$ ist folgenkompakt $\Leftrightarrow $ jede Folge in $K$ hat eine konvergente Teilfolge.
+Setze $a^k=(a^k_n)_n$ mit $a^k_n=
+ \left\{
+\begin{array}{ll}
+1 & k =n \\
+0 & k \neq n \\
+\end{array}
+\right.$ . Rechne $\Vert a^k \Vert_{l_2} =1 \Rightarrow a^k \in K$ für alle $K\in \mathbb{N}$. Für $k\neq l$ gilt $\Vert a^k-a^l \Vert_{l_2}=(1+1)^{\frac{1}{2}}=\sqrt{2} \Rightarrow (a^k)_n \subset l_2$ besitzt keinen Häufungspunkt in $K$. Also lässt sich keine konvergente Teilfolge auswählen. Somit ist $K$ nicht folgenkompakt und damit ebenfalls nicht kompakt.
+\end{bemerkung}
+\begin{definition}{(Orthonormalsystem)}
+Es sei $H$ ein Prähilbertraum. Ein endliches oder abzählbar unendliches System $\{\phi_1,\phi_2,\ldots\}\subset H$ heißt orthonormiert, falls $\langle \phi_i,\phi_j \rangle_H= \delta_{ij}$ ist.
+\end{definition}
+\begin{definition}
+Es seien $H$ ein Prähilbertraum. und $\{\phi_1,\phi_2,\ldots\}\subset H$ ein Orthonormalsystem. Dann heißt $f_k:=\langle f, \phi_k\rangle_H$ der $k-te$ Fourierkoeffizient von $f$.
+\end{definition}
+ \begin{bsp}
+ Sei $L^p(-\pi, \pi)$ der Raum aller $p-$mal Lebesgue-integrierbaren Funktion auf $(-\pi,\pi)$. Dies ist ein reeller Vektorraum mit dem Skalarprodukt $\langle f, g\rangle:=\int_{-\pi}^\pi f(x)g(x)dx$. Betrachte die Familie
+ $\{1\} \cup \{sin(nx),cos(nx)\mid n \in \mathbb{N}\}$. die Funktionen sind in $L^2$. Was ist mit dem Skalarprodukt im Hinblick auf Definition $\textcolor{red}{1.1.6}$?
+ \begin{itemize}
+ \item $\langle 1,cos(nx) \rangle=\int_{-\pi}^\pi cos(nx)dx=\frac{1}{n}sin(nx)|_{-\pi}^\pi=0$
+ \item $\langle 1,sin(nx) \rangle=\int_{-\pi}^\pi sin(nx)dx=-\frac{1}{n}cos(nx)|_{-\pi}^\pi=0$
+ \item Außerdem ist \begin{align*}
+ \langle cos(nx),cos(mx) \rangle&=\int_{-\pi}^\pi cos(nx)cos(mx)dx\\
+ &=\int_{-\pi}^\pi\frac{1}{2}cos((n-m)x)+\frac{1}{2}cos((n+m)x)dx\\
+& \overset{n \neq m}{=} \frac{1}{2}[\frac{1}{n-m}sin((n-m)x)+\frac{1}{n+m}sin((n+m)x)]_{-\pi}^\pi=0
+ \end{align*}
+ Ähnlich zeigt man $0=\langle sin(nx), sin(mx)\rangle \overset{n\neq m }{=} \langle sin(nx),cos(mx)\rangle.$
+ \end{itemize}
+ Beachte nun, dass
+ \begin{itemize}
+\item $\Vert 1 \Vert_{L^2}^2=2\pi $,
+ \item $\Vert cos(nx) \Vert_{L^2}^2=\int_{-\pi}^\pi cos^2(nx)dx=\int_{-\pi}^\pi \frac{1}{2}(1+cos(2nx))dx =\pi$,
+ \item  $\Vert sin(nx) \Vert_{L^2}^2=\int_{-\pi}^\pi \frac{1}{2}(1-cos(2nx))dx =\pi$ ist.
+ \end{itemize} 
+ Normiert man nun, so erhält man das Orthonormalsystem $\{\frac{1}{\sqrt{2\pi}}\}\cup \{\frac{1}{\sqrt{\pi}}cos(nx),\frac{1}{\sqrt{\pi}}sin(nx)\mid n \in \mathbb{N}\}$ im Sinne von Definition $\textcolor{red}{1.1.6}$.
+ \end{bsp}
+ \begin{satz}
+ Es sei $H$ ein Prähilbertraum und $f \in H$. Es seien $\phi_1,\ldots,\phi_N \in H$ orthonormiert und $c_1 \ldots C_N \in \mathbb{R}$. Setze nun $f_k=\langle f, \phi_k\rangle_H$ für $k=1,\ldots N$. Dann gilt:
+ \begin{enumerate}
+ \item $\Vert f- \sum_{k=1}^Nf_k\phi_k\Vert_H^2=\Vert f\Vert_H^2- \sum_{k=1}^N \vert f_k\vert^2$
+ \item $\Vert f- \sum_{k=1}^Nc_k\phi_k\Vert_H^2=\Vert f\Vert_{H}^2-\sum_{k=1}^N \vert f_k\vert^2+\sum_{k=1}^N \vert c_k- f_k\vert^2$
+ \end{enumerate}
+ \end{satz}
+ \begin{bemerkung}
+ Insbesondere besagt $(2)$, dass die Approximation von $f$ durch Linearkombination der $\phi_1, \ldots \phi_N$ bestmöglich ist, wenn die Koeffizienten $c_i$ gerade die Fourierkoeffizienten sind
+  \end{bemerkung}
+  \begin{satz}[Besselsche Ungleichung]
+  Es seien $H$ ein Prähilbertraum und $\{\phi_1,\phi_2, \ldots\}$ ein Orthonormalsystem. Dann ist $\sum_{k=1}^{\infty} \vert f_k \vert^2 \leq \Vert f \Vert_H^2$ und Gleichheit gilt genau dann, wenn $\underset{N\rightarrow \infty}{\lim}\Vert f-\sum_{k=1}^{N}f_k \phi_k\Vert=0$ ist, d.h. $f= \sum_{k=1}^{\infty}f_k \phi_k$
+  \end{satz}
+  \begin{proof}
+  Nutze $(1)$ aus $\textcolor{red}{1.1.9}$:
+  \[
+0\leq   \Vert f- \sum_{k=1}^N f_k\phi_k\Vert^2= \Vert f \Vert^2-\sum_{k=1}^{N} \vert f_k \vert^2
+  \]
+  Also gilt für alle $n \in \mathbb{N}:$
+  \[
+  \sum_{k=1}^{N} \vert f_k \vert^2 \leq \Vert f \Vert^2.
+  \]
+  D.h. die Reihe konvergiert und die Ungleichung im Satz gilt. Außerdem ist \begin{align*}
+  &\Vert f \Vert^2=\underset{N \Rightarrow \infty}{\lim}\sum_{k=1}^Nf_k \phi_k\\
+  \overset{\textcolor{red}{1.1.9}}{\Leftrightarrow}& \Vert f- \sum_{k=1}^Nf_k\phi_k \Vert^2=0\\
+ \Leftrightarrow &f=\sum_{k=1}^{\infty}f_k\phi_k
+  \end{align*}
+   \end{proof}
+ \begin{definition}[vollst. Orthogonalsystem]
+ Sei $H$ ein Prähilbertraum. Ein Orthogonalsystem $(\phi_1,\phi_2, \ldots)$ heißt vollständig in $H$ genau dann, wenn für jedes $f \in H$ gilt: $\sum_{k=1}^{\infty}\vert f_k\vert^2=\Vert f \Vert^2=\langle f,f \rangle.$
+ \end{definition}
+ \begin{bsp}
+ Die orthonormierte Familie $\{\frac{1}{\sqrt{2}}\}\cup \{\frac{1}{\sqrt{\pi}}cos(nx),\frac{1}{\sqrt{\pi}}sin(nx)\mid n \in \mathbb{N}\}$ ist ein VONS für $L^2((-\pi,\pi))=\{f:(-\pi,\pi)\to \mathbb{R} \mid f \, messbar, \int_{-\pi}^\pi \vert f \vert^2 < \infty\}$. Der Beweis kann jetzt noch nicht geführt werden.
+ \end{bsp}
+\begin{bemerkung}
+Es sei $H$ ein Prähilbertraum und $(\phi_1,\phi_2,\ldots)$ sei ein Orthonormalsystem. Dann gilt: $(\phi_1,\phi_2,\ldots)$ ist vollständig $\Leftrightarrow$ Zu jedem $f\in H$ und jedem $\epsilon>0 $ gibt es ein $N(\epsilon,f) \in \mathbb{N}$ und $c_1 ,\ldots,c_N$, so dass $ \Vert f- \sum_{k=1}^N c_k \phi_k \Vert <\epsilon$
+\end{bemerkung}
+\begin{proof}
+"$\Rightarrow$" Wähle $c_k=f_k$\\
+"$\Leftarrow$" Nach $\textcolor{red}{1.1.9}$ folgt $\Vert f \Vert^2=\sum_{k=1}^{\infty}\vert f_k\vert^2 $. Das liefert die Vollständigkeit.
+\end{proof}
+\begin{satz}[Cauchy-Ungleichung]
+Es sei $H$ ein Prähilbertraum und es seien $f,g \in H$. Dann gilt 
+\[
+\vert \langle f,g \rangle\vert \leq \Vert f \vert \Vert g\Vert.
+\]
+\end{satz}
+\begin{proof}
+Siehe Aufgabe 4 Blatt 1
+\end{proof}
+\begin{bemerkung}
+Es sei $H$ ein Prähilbertraum und $x_n,x,y_n,y\in H$ für $n\in \mathbb{N}$.
+\begin{enumerate}
+\item  Die folgenden Aussagen sind äquivalent:
+\begin{itemize}
+\item[a)] $\underset{n \rightarrow \infty}{\lim} x_n=x$
+\item[b)] $\underset{n \rightarrow \infty}{\lim} \Vert x_n \Vert =\Vert x \Vert$ und für alle $y\in H$ gilt $\underset{n \rightarrow \infty}{\lim} \langle x_n,y \rangle= \langle x,y \rangle$
+\end{itemize}
+\item Es sei $\underset{n \rightarrow \infty}{\lim} x_n =x$ und $\underset{n \rightarrow \infty}{\lim} y_n=y$. Dann gilt auch $\underset{n \rightarrow \infty}{\lim} \langle x_n, y_n \rangle = \langle x,y \rangle.$
+\end{enumerate}
+\end{bemerkung}
+\begin{proof}
+$1)"\, a) \Rightarrow b)"$: Es ist $\underset{n \rightarrow \infty}{\lim} x_n =x$ äquivalent zu $\underset{n \rightarrow \infty}{\lim} \Vert x_n -x\Vert=0$. Also gilt 
+\[
+0 \leq \underset{n \rightarrow \infty}{\lim} \vert \Vert x_n \Vert  -\Vert x\Vert \vert \leq \underset{n \rightarrow \infty}{\lim} \Vert x_n -x\Vert =0.
+\]
+Daraus folgt $\underset{n \rightarrow \infty}{\lim}\Vert  x_n \Vert =\Vert x \Vert$.\\
+Aufgrund der Cauchy-Ungleichung $\textcolor{red}{1.1.14}$ erhält man für alle $y \in H$
+\begin{align*}
+0 &\leq \underset{n \rightarrow \infty}{\lim} \vert \langle x_n , y \rangle - \langle x,y\rangle\vert \\
+&= \underset{n \rightarrow \infty}{\lim}\vert \langle x_n -x,y\rangle \vert\\
+\overset{\textcolor{red}{1.1.14}}{\leq} \underset{n \rightarrow \infty}{\lim}\Vert x_n-x\Vert \Vert y\Vert=0
+\end{align*}
+$b) \Rightarrow a):$ Man erhält 
+\begin{align*}
+0 &\leq \underset{n \rightarrow \infty}{\lim} \Vert x_n -x \Vert^2 =\underset{n \rightarrow \infty}{\lim} \langle x_n-x, x_n-x \rangle\\
+&=\underset{n \rightarrow \infty}{\lim} [\langle x_n, x_n \rangle+\langle x,x \rangle-2\langle x_n, x \rangle]\\
+&=\underset{n \rightarrow \infty}{\lim} [\Vert x_n \Vert^2 +\Vert x \Vert^2 -2\langle x_n, x \rangle] \\
+&=\Vert x \Vert^2+\Vert x \Vert^2-2\Vert x \Vert^2=0\\
+&\Rightarrow \underset{n \rightarrow \infty}{\lim} x_n=x 
+\end{align*}
+2) Nutze 1) um zu folgern, dass 
+\[
+\underset{n \rightarrow \infty}{\lim} \Vert y_n\Vert=\Vert y\Vert.
+\] Also gibt es ein $M \in \mathbb{R}^+$, so dass für alle $n\in \mathbb{N}$ 
+\[
+\Vert y_n\Vert \leq M
+\]gilt. Es ist dann 
+\begin{align*}
+\vert \langle x_n,y_n \rangle-\langle x,y \rangle\vert&=\vert \langle x_n,y_n\rangle-\langle x,y_n \rangle+\langle x,y_n\rangle-\langle x,y \rangle\vert\\
+&\leq \vert \langle x_n-x,y_n \rangle\vert +\vert \langle x,y_n-y \rangle \vert \\
+&\overset{\textcolor{red}{1.1.14}}{\leq} \Vert x_n-x\Vert \Vert y_n\Vert+\Vert x\Vert\Vert y_n-y \Vert\\
+&\leq M\Vert x_n-x\Vert +\Vert x\Vert\Vert y_n-y \Vert \underset{n \rightarrow \infty}{\rightarrow} 0
+\end{align*}
+$\Rightarrow$ die Behauptung.
+\end{proof}
+\begin{wiederholung}
+\begin{enumerate}
+\item \textbf{Schmidtsches Orthogonalisierungsverfahren}\\
+Es seien ein $H$ ein Prähilbertraum und $f_1, \ldots f_N \in H$ linear unabhängig. Dann gibt es ein orthonormiertes System $\phi_1,\ldots \phi_N \in H$ mit 
+\begin{align*}
+&f_1=c_{11}\phi_1\\
+&f_2=c_{21}\phi_1+ c_{22}\phi_2\\
+&\vdots\\
+&f_N=c_{N1}+\ldots+c_{NN}f_N,
+\end{align*}
+wobei die $c_{ij}$ reelle Koeffizienten sind.
+\item Sei $V$ ein reeller Vektorraum. Die Abbildung $\Vert \cdot \Vert:V\to \mathbb{R}^+$ heißt Norm, falls 
+\begin{enumerate}[(i)]
+\item $\Vert\lambda x \Vert =\vert \lambda \vert \Vert x\Vert \qquad \forall x \in V, \forall \lambda \in \mathbb{R}$
+\item $\Vert x+y\Vert\leq \Vert x \Vert+\Vert y\Vert\qquad$ (Dreiecksungleichung)
+\item $\Vert x\Vert=0 \Leftrightarrow x=0$
+\end{enumerate}
+Ohne (iii) ist $\Vert \cdot\Vert$ eine Halbnorm.
+\item Es sei $X$ eine beliebige Menge. Eine Abbildung $d:X \times X \to \mathbb{R}^+$ heißt Metrik, falls für alle $x,y,z \in X$ gilt:
+\begin{enumerate}[(i)]
+\item $d(x,x)=0$
+\item $d(x,y)=0 \Rightarrow x=y$
+\item $d(x,y)=d(y,x)$
+\item $d(x,z)\leq d(x,y)+d(y,z)$
+\end{enumerate}
+\item Jede Norm auf einem Vektorraum induziert eine Metrik durch 
+\[
+d(x,y):=\Vert x-y\Vert.
+\]
+$\textcolor{red}{Aber}$: Eine Metrik induziert nicht unbedingt eine Norm!
+\item Jeder metrische Raum ist ein topologischer Raum. (Die folgende Definition bezieht sich nicht nur auf Hilberträume.) 
+\end{enumerate}
+\end{wiederholung}
+\begin{definition}
+Ein Hilbertraum (oder allg. topologischer Raum) heißt separabel, wenn er eine abzählbar dichte Teilmenge besitzt.
+\end{definition}
+\begin{bemerkung}
+Für einen Hilbertraum bedeutet dies: Es gibt eine abzählbar dichte Teilmenge $S=\{f_1,f_2,\ldots\}\subset H$ mit der Eigenschaft, dass es für jedes $\epsilon >0$ und für jedes $f\in H$ ein $f_k \in S$ gibt, so dass $\Vert f-f_k\Vert < \epsilon$.
+\end{bemerkung}
+\begin{satz}
+Es seien $(X,d)$ ein separabler, metrischer Raum und $M \subset X$. Dann ist $M$ mit der Teilraumtopologie versehen separabel.
+\end{satz}
+\begin{proof}
+Wir versehen $M$ mit der Teilraumtopologie, indem wir jede offene Menge $X$ mit $M$ schneiden. Ist also $(X,\tau)$ ein topologischer Raum, so ist 
+\[
+\tau_M=\{U\cap M \mid U\in \tau\} 
+\] die Teilraumtopologie auf M.\\
+Es ist $X$ separabel, also gibt es eine abzählbare Menge $A=\{a_1,a_2,\ldots\}$ mit $\overline{A}=X$.
+Setze $\Gamma=\{(m,n)\in \mathbb{N} \times \mathbb{N}\mid \{g\in X\mid d(a_m,g)<\frac{1}{n}\}\cap M \neq \emptyset\}$. Nach Konstruktion gibt es zu jedem $(m,n)\in \Gamma$(abzählbare. Menge !!) ein $g_{mn}\in M$ mit $d(a_m,g_{mn})< \frac{1}{n}$. Wir zeigen, dass die $g_{mn}$ dicht in $M$ liegen. Es sei $g \in M , n \in \mathbb{N}$. Da $\overline{A}=X$ ist, gibt es ein $a_m \in A$ mit $d(a_m,g)< \frac{1}{n}$. Also ist $(m,n)\in \Gamma$, d.h. es existiert ein $g_{mn}\in M$ mit $d(a_m,g_{mn})< \frac{1}{n}$. Dadurch erhält man 
+\[
+d(g,g_{mn})\leq d(g,a_m)+d(a_m,g_{mn})\leq  \frac{1}{n}+\frac{1}{n},
+\]
+d.h. $B:=\{g_{mn}\mid (m,n)\in \Gamma\}$ ist eine dichte abzählbare Teilmenge in $M$.
+\end{proof}
+Für Hilberträume gilt insbesondere
+\begin{satz}
+Es sei $H$ ein Prähilbertraum (unendlicher Dimension). Dann gilt: 
+$H$ ist separabel genau dann, wenn es ein abzählbar unendliches VONS $\{\phi_1,\phi_2,\ldots\}\subset H$ gibt.
+\end{satz}
+\begin{proof}
+$"\Rightarrow"$ Nach Voraussetzung existiert ein abzählbar unendliches System $(\Psi_1,\Psi_2,\ldots)$, welches dicht in $H$ liegt. O.B.d.A gelte $\Psi_1\neq 0.$ Streiche nun aus der Familie diejenigen Elemente heraus, die sich als endliche Linearkombination anderer Familienmitglieder mit kleinerem Index schreiben lassen. Dies sind genau die $\Psi_k$ für die es Indizes $k_1,k_2,\ldots,k_N< k$ und Koeffizienten $c_{k_1},\ldots,c_{k_N}\in \mathbb{R}$ gibt, so dass 
+\[
+\Psi_k=\sum_{j=1}^Nc_{k_j}\Psi_{k_j}
+\] ist.
+ Da $H$ unendliche Dimension hat, entsteht dadurch wieder ein abzählbar unendliches System $\{\mathcal{X}_1 ,\mathcal{X}_2 ,\ldots \}$. Für dieses System gilt: Jeweils endlich viele $\mathcal{X}_1 ,\mathcal{X}_2 ,\ldots $ sind linear unabhängig. Die endliche Linearkombinationen
+\[
+\sum_{k=1}^{N} c_k \mathcal{X}_k, \quad c_k \in \mathbb{R},N\in \mathbb{N}
+\] liegen dicht in $H$.\\
+Nach dem Schmidtschen Orthogonalisierungsverfahren $\textcolor{red}{1.1.16}$ gibt es ein abzählbar unendliches Orthonormalsystem $(\phi_1,\phi_2,\ldots)$ derart, dass die endlichen Linearkombinationen der $\phi_1,\phi_2,\ldots$ dicht in $H$ liegen. Wende $\textcolor{red}{1.1.13}$ an. Dann ist $\{\phi_1,\phi_2,\ldots\}$ ein VONS.\\
+$"\Leftarrow"$ Sei $(\phi_1,\phi_2,\ldots)$ ein abzählbar unendliches VONS  in $H$. Setze $N=\{\lambda_1^{(n)}\phi_1+\ldots+\lambda_n^{(n)}\phi_n\mid \lambda_k^{(n)}\in \mathbb{Q},n\in \mathbb{N}\}$. Dann ist $N$ abzählbar und ebenfalls dicht in $H$. Dazu: Sei $f\in H$ und $\epsilon >0$. Da $(\phi_1,\phi_2,\ldots)$ ein VONS ist, kann man ein $n \in \mathbb{N}$ wählen, so dass 
+\[
+\Vert f- \sum_{k=1}^n \langle f, \phi_k\rangle \phi_k  \Vert<\frac{\epsilon}{2}.
+\]
+Wähle $\lambda_k^{(n)}\in \mathbb{Q}$, so dass 
+\[
+\Vert \sum_{k=1}^n [\langle f, \phi_k\rangle -  \lambda_k^{(n)}]\phi_k\Vert <\frac{\epsilon}{2}.
+\]
+Betrachte $g=\sum_{k=1}^n \lambda_k^{(n)}\phi_k \in N$. Dann ist 
+\begin{align*}
+\Vert f-g\Vert &=\Vert f-\sum_{k=1}^n \langle f, \phi_k\rangle \phi_k +\sum_{k=1}^n \langle f, \phi_k\rangle \phi_k-\sum_{k=1}^n \lambda_k^{(n)}\phi_k\Vert\\
+&\leq \Vert f-\sum_{k=1}^n \langle f, \phi_k\rangle \phi_k\Vert +\Vert \sum_{k=1}^n \langle f, \phi_k\rangle \phi_k-\sum_{k=1}^n \lambda_k^{(n)}\phi_k\Vert\\
+&\leq \frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon. 
+\end{align*}
+$\Rightarrow$ N liegt dicht in $H$
+\end{proof}
+\begin{satz}[Parsevalsche Gleichung]
+Sei $H$ ein separabler Prähilbertraum und $(\phi_1,\phi_2,\ldots)$ ein VONS. Dann gilt für $f,g \in H$
+\[
+\langle f,g\rangle =\sum_{k=1}^{\infty}f_k g_k,
+\]
+wobei $f_k$ und $g_k$ die Fourierkoeffizienten von $f$ und $g$ sind.
+\end{satz}
+\begin{proof}
+Hilfsmittel sind die Besselungleichung $\textcolor{red}{1.1.10}$ und die Hölder-Ungleichung.
+\begin{itemize}
+\item $\sum_{k=1}^N \vert f_kg_k\vert\overset{Hoelderungl.}{\leq} \left( \sum_{k=1}^N \vert f_k\vert^2\right)^\frac{1}{2}\cdot \left( \sum_{k=1}^N \vert g_k\vert^2\right)^\frac{1}{2}\overset{Bessel}{\leq}\Vert f\Vert \Vert g\Vert$\\
+$\Rightarrow$ Die Reihe $\sum_{k=1}^{\infty}f_kg_k$ ist absolut konvergent.
+\item $f_k+g_k=\langle f,\phi_k\rangle +\langle g,\phi_k\rangle =\langle f+g,\phi_k\rangle =(f+g)_k$. Außerdem gilt $\Vert f+g\Vert^2=\ldots =\Vert f \Vert^2+\Vert g\Vert^2+ 2\langle f,g \rangle$
+\item $\Vert f+g\Vert^2 \overset{VONS}{=}\sum_{k=1}^{\infty}\vert(f+g)_k\vert^2=\sum_{k=1}^{\infty} (\vert f_k\vert^2+\vert g_k \vert^2+2g_kf_k)=\Vert f\Vert^2+\Vert g\Vert^2+2\sum_{k=1}^{\infty}g_kf_k $
+\end{itemize}
+Der Vergleich von 2) und 3) impliziert die Behauptung.
+\end{proof}
+\begin{satz}
+Es seien $H$ ein Hilbertraum und $(\phi_1,\phi_2,\ldots)$ ein abzählbar unendliches Orthonormalsystem. $(\phi_1,\phi_2,\ldots)$ ist genau dann vollständig, wenn aus $\langle f,\phi_i \rangle=0$ für alle $i\in \mathbb{N}$ und für ein $f\in H$ schon folgt, dass $f=0$ ist.
+\end{satz}
+\begin{proof}
+$"\Rightarrow"$ Es sei $f \in H$ und $\langle f, \phi_i \rangle=0$ für alle $i \in \mathbb{N}.$ Da $(\phi_1,\phi_2,\ldots)$ vollständig ist, gilt in der Bessel-Ungleichung $\textcolor{red}{1.1.10}$ die Gleichheit. Also 
+\[
+\Vert f \Vert^2= \sum_{i=1}^{\infty} \vert \langle f,\phi_i\rangle\vert^2 =0\Rightarrow f=0
+\]
+$"\Leftarrow"$
+Es sei $f\in H$. Nach der Besselschen Ungleichung gilt
+\[
+\sum_{i=1}^{\infty} \vert \langle f,\phi_i\rangle\vert^2\leq \Vert f\Vert^2< \infty
+\]
+Setze $a_n:= \sum_{i=1}^n \langle f,\phi_i\rangle \phi_i$.
+\begin{enumerate}
+\item $(a_n)_n$ ist eine Cauchy Folge in $H$. Dazu sei $m>n$.
+\begin{align*}
+\Vert a_n -a_m\Vert^2&=\Vert \sum_{i=n+1}^m\langle f,\phi_i \rangle \phi_i\Vert^2\\
+&=\langle \sum_{i=n+1}^m\langle f,\phi_i \rangle \phi_i,\sum_{j=n+1}^m\langle f,\phi_j \rangle \phi_j \rangle\\
+&=\sum_{i=n+1}^m \sum_{j=n+1}^m \langle f,\phi_i \rangle\langle f,\phi_j \rangle \langle \phi_i,\phi_j \rangle\\
+&=\sum_{i=n+1}^m \vert\langle f,\phi_i \rangle \vert^2
+\end{align*}
+Da die Reihe $\sum_{i=n+1}^{\infty} \vert\langle f,\phi_i \rangle \vert^2$ konvergiert, bilden die Partialsummen eine Cauchy Folge und damit auch die $a_n$.
+\item $H$ ist ein Hilbertraum - also vollständig - und damit konvergiert die Folge $(a_n)_n$ in $H$ gegen ein $a\in H.$ Man kann $a:=\sum_{i=1}^{\infty}\langle f,\phi_i\rangle\phi_i$ setzen. (Das geht in Prähilberträumen nicht.)
+\item Wir benutzen die Orthonormalität der $\phi_i$. Dann ist
+\begin{align*}
+\langle a-f, \phi_k \rangle &= \langle \sum_{i=1}^{\infty}\langle f,\phi_i\rangle\phi_i,\phi_k\rangle-\langle f,\phi_k \rangle\\
+&=\sum_{i=1}^{\infty}\langle f,\phi_i\rangle\langle \phi_i,\phi_k \rangle -\langle f,\phi_k\rangle\\
+&=\langle f,\phi_k\rangle- \langle f,\phi_k \rangle=0,
+\end{align*}
+für alle $k \in \mathbb{N}.$ Nach Voraussetzung der Rückrichtung ist also $a=f=\sum_{i=1}^{\infty}\langle f,\phi_i\rangle\phi_i$. Nach $\textcolor{red}{1.1.13}$ ist also $(\phi_1,\phi_2,\ldots)$ ein VONS.
+\end{enumerate}
+\end{proof}
+\begin{bemerkung}
+Es sei $H$ ein Hilbertraum mit einem abzählbar unendlichen VONS $(\phi_1,\phi_2,\ldots)$. Definiere die Abbildung
+\[
+J:l_2 \to H, (x_i)_i \mapsto \sum_{i=1}^{\infty} x_i\phi_i.
+\]
+$J$ ist ein bijektiver, normerhaltender Vektorraumhomomorphismus von $l_2$ in $H$, der auch das Skalarprodukt erhält.
+\begin{proof}
+$J$ ist injektiv: Es sei 
+\begin{align*}
+\sum_{i=1}^{\infty} x_i \phi_i=\sum_{i=1}^{\infty} y_i \phi_i &\Leftrightarrow \sum_{i=1}^{\infty} (x_i-y_i) \phi_i=0\\
+&\Leftrightarrow \sum_{i=1}^{\infty} \langle (x_i-y_i) \phi_i ,\phi_k\rangle =0\quad \text{ für alle }k\in \mathbb{N}\\
+&\Leftrightarrow x_k-y_k=0 \quad \text{ für alle }k\in \mathbb{N}
+\end{align*}
+Surjektivität: Es sei $x\in H$, setze $x_i=\langle x,\phi_i\rangle$. Dann ist $\sum_{i=1}^{\infty} \vert x_i\vert^2$ konvergent (Bessel) und $x=\sum_{i=1}^{\infty}x_i \phi_i$. $J$ erhält das Skalarprodukt: Seien $x=(x_i)_i,(y_i)_i=y\in l_2$. Dann ist 
+\begin{align*}
+\langle J(x),J(y) \rangle=\langle \sum_{i=1}^{\infty}x_i \phi_i,\sum_{j=1}^{\infty}y_j \phi_j \rangle&=\sum_{i=1}^{\infty}\sum_{j=1}^{\infty} x_i y_j\langle \phi_i,\phi_j \rangle\\
+&\sum_{j=1}^{\infty}x_iy_i=\langle x,y\rangle_{l_2}
+\end{align*}
+\end{proof}
+\end{bemerkung}
+\subsection{Orthogonale Projektion}
+\begin{notation}
+Im Folgenden ist $H$ ein Hilbertraum. $M$ bezeichnet einen Teilraum, d.h. einen Untervektorraum von $H$ und $M^{\perp}=\{g\in H \mid \langle f,g\rangle=0 \,\forall f \in M\}$.
+\end{notation}
+\begin{satz}
+Sei $M$ ein abgeschlossener Unterraum von $H$. Dann gibt es zu jedem $f\in H$ ein $f_1\in M$ und ein $f_2\in M^{\perp}$, so dass $f=f_1+f_2$ ist. Die Elemente $f_1$ und $f_2$ sind eindeutig bestimmt durch $f$.
+\end{satz}
+\begin{proof}
+Existenz der Zerlegung:\\
+Es sei $f \in H$, $d:=\underset{\tilde{g}\in M}{\inf}\Vert f-\tilde{g}\Vert$. Es sei $(g_n)_n$ eine Folge in $M$ mit 
+\[
+\underset{n \rightarrow \infty}{\lim}\Vert f-g_n\Vert =d. 
+\]
+Wir zeigen zunächst $g:=\underset{n \rightarrow \infty}{\lim}g_n \in M$. Setzt man in der Parallelogrammidentität 1.1.2
+\[
+\Vert\frac{x-y}{2} \Vert^2+\Vert \frac{x+y}{2}\Vert^2=\frac{1}{2}(\Vert x\Vert^2+\Vert y\Vert^2)
+\]
+für $x=f-g_n$ und für $y=f-g_m$ ein, so erhält man
+\begin{align*}
+\Vert\frac{g_m-g_n}{2} \Vert^2+\Vert f-\frac{g_n+g_m}{2}\Vert^2=\frac{1}{2}(\Vert f-g_n\Vert^2+\Vert f-g_m\Vert^2)\\
+\Leftrightarrow  \Vert\frac{g_m-g_n}{2} \Vert^2=\frac{1}{2}(\Vert f-g_n\Vert^2+\Vert f-g_m\Vert^2)-\Vert f-\frac{g_n+g_m}{2}\Vert^2
+\end{align*}
+Da $M$ ein Teilraum von $H$ ist, liegt mit $g_m$ und $g_n$ auch $\frac{g_m+g_n}{2}$ in $M$.\\
+$\Rightarrow \Vert f-\frac{g_n+g_m}{2}\Vert^2 \geq d^2$\\
+$\Rightarrow \Vert \frac{g_n-g_m}{2}\Vert^2 \leq \frac{1}{2}(\Vert f-g_n\Vert^2+\Vert f-g_m\Vert^2)-d^2 =\frac{1}{2}(\Vert f-g_n\Vert^2-d^2)+\frac{1}{2}(\Vert f-g_m\Vert^2-d^2)$\\
+Wähle zu vorgegebenen $\epsilon > 0$ ein $N \in \mathbb{N}$, so dass für $m,n>N$ beide "Klammern" $< \epsilon$ sind.\\
+$\Rightarrow \Vert \frac{g_,-g_n}{2} \Vert^2< \epsilon \quad \forall m,n >N$
+$\Rightarrow (g_n)_n$ ist eine Cauchy Folge in $H$. Da $H$ vollständig ist, gibt es ein $g\in H$, so dass $g=\underset{n \rightarrow \infty}{\lim} g_n$ Wegen Abgeschlossenheit von $M$ folgt $g\in M.$ Es ist dann $d=\Vert f-g \Vert $ und für jedes $h\in M$ gilt 
+\[
+\Vert f-h \Vert \geq \Vert f-g \Vert.
+\]  
+Setze $f_1 := g,f_2:= f-g$. Zu zeigen bleibt $f_2 \in M^{\perp}$,
+ d.h. $\langle f_2, \phi\rangle=0 \quad \forall \phi \in M$. Sei also $\phi \in M$ vorgegeben.
+ Wähle $\epsilon>0$. Wähle $\alpha\in \{-1,1\}$, so dass $\alpha \langle f_2,\phi\rangle=\vert \langle f_2,\phi\rangle\vert$ ist. Da $\phi \in M$ und $M$ ein Unterraum ist, ist auch $g+\epsilon \alpha \phi \in M.$ Nach der Definition von $g$ gilt 
+ \[
+\Vert f_2-(g+\epsilon \alpha \phi )\Vert^2\geq \Vert f-g\Vert^2 
+ \]
+ Also ist $\Vert f_2- \epsilon \alpha \phi\Vert^2\geq \Vert f\Vert^2$. Damit ist 
+ \[
+ \langle f_2-\epsilon \alpha \phi ,f_2-\epsilon \alpha \phi\rangle=\Vert f_2\Vert^2+\epsilon^2\alpha^2 \Vert \phi\Vert^2-2\epsilon \alpha \langle f_2,\phi \rangle.
+ \]
+ Dies ist äquivalent zu 
+ \[
+\epsilon\Vert \Phi \Vert^2 \geq 2 \alpha \langle f_2,\phi \rangle=2\vert \langle f_2,\phi\rangle\vert. 
+ \]
+ Für $\epsilon \rightarrow 0$ erhält man $\vert \langle f_2,\phi\rangle\vert=0 \Rightarrow f_2 \perp \phi $ und d.h. $f_2 \in M^{\perp}$.\\\\
+ Eindeutigkeit\\
+ Es sei $f=f_1+f_2=f_1'+f_2'$ mit $f_1,f_1'\in M$ und $f_2,f_2'\in M^{\perp}$. Dann ist $0=f_1-f_1'+f_2-f_2'$, also 
+ \[
+0=\langle f_1-f_1'+f_2-f_2',f_1-f_1' \rangle= \Vert  f_1-f_1'\Vert^2+ \langle f_2-f_2',f_1-f_1'\rangle=\Vert  f_1-f_1'\Vert^2,
+ \]da $f_1-f_1'\in M$ und $f_2-f_2'\in M^{\perp} \,ist \Rightarrow f_1=f_1'$ und somit auch $f_2=f_2'$. Die Zerlegung ist eindeutig!
+\end{proof}
+\begin{satz}
+Es sei $M$ ein Teilraum eines Hilbertraums $H$. Dann gilt:
+\[
+M^{\perp}=(\overline{M})^{\perp}=\overline{M^{\perp}}\quad und \quad {(M^{\perp})}^{\perp}=\overline{M}
+\]
+\end{satz}
+\begin{proof}
+\begin{enumerate}
+\item Es sei $f \in M^{\perp},g\in \overline{M},g=\underset{n \rightarrow \infty}{\lim} g_n$ für $ g_n\in M$. Nach 1.1.15 2) gilt
+\[
+\langle g,f \rangle= \underset{n \rightarrow \infty}{\lim} \langle g_n, f \rangle =0.
+\]
+$\Rightarrow f\in \overline{M}^{\perp}\Rightarrow M^{\perp} \subset \overline{M}^{\perp}$\\
+Es sei umgekehrt $f'\in (\overline{M})^{\perp}$. Dann gilt für alle $g \in \overline{M}$: $\langle g,f' \rangle=0.$ Da $M \subset \overline{M}$ gilt dies insbesondere für alle $g \in M$. Also ist $(\overline{M})^{\perp}\subset M^{\perp}.$
+\item $M^{\perp}$ ist abgeschlossen: Sei $g\in M$ beliebig und $(f_n)_n\subset M^{\perp}$ mit $\underset{n \rightarrow \infty }{\lim}f_n=f.$ Dann ist 
+\[
+0=\underset{n \rightarrow \infty }{\lim} \langle f_n, g\rangle=\langle f,g \rangle.
+\] Also ist $f\in M^{\perp}$, d.h. $M^{\perp}=\overline{{M^{\perp}}}$
+\item Zeige $(M^{\perp})^{\perp}=\overline{M}.$
+\begin{itemize}
+\item[$"\supseteq "$] Es ist $M \subset (M^{\perp})^{\perp}$,  denn für $f \in M \, und \,g\in M^{\perp}$ gilt $\langle f,g\rangle=0$, also ist $f \in (M^{\perp})^{\perp}$. Nach 2) ist $(M^{\perp})^{\perp}$ abgeschlossen, also ist $ \overline{M} \subset (M^{\perp})^{\perp}$ 
+\item[$"\subseteq "$] Nach Satz 1.2.2 gibt es zu $f\in (M^{\perp})^{\perp}$ eindeutig bestimmte $f_1 \in \overline{M},f_2 \in (\overline{M})^{\perp}=M^{\perp}$ mit $f=f_1+f_2$. Es gilt (wegen $f\in (M^{\perp})^{\perp}$ und $f_2 \in M^{\perp}$)
+\[
+0 =\langle f,f_2 \rangle= \langle f_1, f_2 \rangle+ \langle f_2,f_2 \rangle )=0+ \Vert f_2 \Vert^2
+\] 
+$\Rightarrow f_2=0 \Rightarrow f=f_1 \in \overline{M}.$
+\end{itemize}
+\end{enumerate}
+\end{proof}
+\begin{satz}
+Es sei $M$ ein Teilraum eines Hilbertraums $H$. Es gilt: $M$ ist dicht in $H$ $\Leftrightarrow$ $M^{\perp}=\{0\}.$ D.h. falls ein $g \in H$ mit $\langle f,g \rangle =0 \,\forall f\in M $ existiert, dann folgt $ g=0$.
+\end{satz}
+\begin{proof}
+Übung.
+\end{proof}
+\textbf{Einschub}
+\begin{definition}
+Ein topologischer Vektorraum über $\mathbb{R}$ ist ein Vektorraum $X$, ausgestattet mit einer Topologie $\tau $, so dass gilt:
+\begin{enumerate}
+\item Die Abbildung $X \times X \to X:(x,y)\mapsto x+y$ ist stetig.
+\item Die Abbildung $\mathbb{R}\times X\to X:(\alpha,x) \mapsto \alpha x$ ist stetig.
+\end{enumerate}
+\end{definition}
+\begin{lemma}
+Es sei $X$ ein topologischer Vektorraum. Für gegebenes $a\in X$ und $s\in \mathbb{R}\setminus \{0\}$ ist die Translationsabbildung
+\[
+T_a:X \to X,x \mapsto x+a
+\] und die Multiplikationsabbildung
+\[
+M_s:X\to X,x\mapsto sx
+\] ein Homöomorphismus von $X$ auf $X$.
+\end{lemma}
+\begin{proof}
+Übung
+\end{proof}
+\begin{bemerkung}
+Aus dem Lemma folgt insbesondere: Sei $V$ eine Umgebung von $a$, dann ist $b-a+V$ für alle $a,b \in X$ eine Umgebung von $b$.
+\end{bemerkung}
+\subsection{Beschränkte lineare Funktionale auf H (HBR)}
+\begin{definition}
+Es sei $H$ ein Hilbertraum. Eine Abbildung $A:H \to \mathbb{R}$ heißt lineares Funktional, wenn $A$ homogen linear ist, d.h wenn für $f,g \in H$ und $\alpha,\beta\in \mathbb{R}$ 
+\[
+A(\alpha f+ \beta g)=\alpha A(f)+\beta A(g).
+\]gilt.
+\end{definition}
+\begin{bsp}
+$H=L^2(\Omega),\Omega \subset \mathbb{R}, g \in L^2(\Omega) $ vorgegeben. Dann ist 
+\[ 
+f\mapsto \int_{\Omega} f(x)g(x)dx
+\] ein lineares Funktional
+\end{bsp}
+
+\textbf{Fortsetzung von 1.3.1}
+$A:H \to \mathbb{R}$ heißt beschränkt, falls es eine konstante $c\in \mathbb{R}$ gibt, sodass für alle $f \in H$ gilt: $\vert A(f) \vert \leq c \Vert f \Vert .$\\
+Für beschränkte $A$ setze 
+\[
+\Vert A \Vert = \underset{f\in H\setminus \{0\}}{\sup} \frac{\vert A(f)\vert}{\Vert f\Vert }=\underset{f\in H,\Vert f\Vert=1}{\sup}\vert A(f)\vert.
+\]
+Falls $A$ nicht beschränkt ist, setze $\Vert A \Vert =\infty.$ $A:H\to \mathbb{R}$ heißt stetig, falls aus $f_n \rightarrow f$ in $H$ stets $A(f_n)\rightarrow A(f)$ folgt.
+\begin{bemerkung}
+Sei $A:H \to \mathbb{R}$ ein lineares Funktional. Dann gilt $A$ stetig $\Leftrightarrow$ $A$ beschränkt.\\
+Diese Äquivalenz beruht auf den folgenden Aussagen über topologische Vektorräume.
+\begin{enumerate}
+\item Es seien $X$ und $Y$ topologische Vektorräume. Die Abbildung $T:X\to Y$ sei linear. Dann sind folgende Aussagen äquivalent:
+\begin{enumerate}[(i)]
+\item $T$ ist stetig.
+\item $T$ ist stetig in $0$.
+\item $T$ ist stetig für ein $x\in X.$
+\end{enumerate}
+\end{enumerate}
+\end{bemerkung}
+\begin{proof}
+$(i) \Rightarrow (ii)$: klar\\
+Wir zeigen nun: Für $x,y\in X$ sei $T$ stetig in $x$. Dann ist $T$ auch stetig in $y$. Sei dazu $V_y$ eine Umgebung von $T(y)$. Dann ist $V_x=\{z\in Y\mid z=v+(T(x)-T(y)),v\in V_y\}$ eine Umgebung von $T(x)$, weil die Abbildung 
+\[
+L_{T(x)-T(y)}:Y \to X,v \mapsto v+(T(x)-T(y))
+\]  ist ein Homöomorphismus(siehe Einschub). $T$ ist stetig in $x$, also gibt es eine Umgebung $U_x$ von $x$ mit $T(U_x) \subset V_x$ $\textcolor{red}{(noch zeigen)}$. Setze $U_y=\{ z\in X \mid z =u+(y-x),u\in U_x\}.$ $U_y$ ist eine Umgebung von $y$ , da 
+\[
+L_{y-x}:x \to X, u \mapsto u+(y-x)
+\] ein Homöomorphismus ist. Zeige $T(U_y) \subset V_y!!$. Es sei $z=u+(y-x) \in U_y.$ Dann gilt $T(z)= T(u+(y-x))=T(u)+T(y)-T(x).$ Da $T(u)\in V_x$ ist, gibt es ein $v\in V_y$ mit $T(u)=v+(T(x)-T(y)).$ Also ist 
+\[
+T(z)=v+(T(x)-T(y))+T(y)-T(x)=v\in V_y
+\]
+$\Rightarrow T(U_y) \subset V_y\Rightarrow T$ ist stetig in $x$. 
+
+\end{proof}
+$2)$ Es seien $X$ und $Y$ normierte Räumen $T:X \to Y$ linear. Dann gilt 
+\[
+T \text{ stetig in }0 \Leftrightarrow \exists c \geq 0 \forall x\in X :\Vert T(x) \Vert \leq c \Vert x \Vert .
+\]
+\begin{proof}
+$"\Leftarrow"$ klar.\\
+$"\Rightarrow"$ Zu $\epsilon=1$ gibt es ein $\delta>0$, so dass $\Vert T(x)\Vert <1$ für $\Vert x \Vert < \delta$ gilt. Dann erhält man für $x\neq 0$:
+\begin{align*}
+1 &\geq \Vert T(\frac{\delta x}{2 \Vert x \Vert }) \Vert =\frac{1}{2 \Vert x \Vert }\cdot \delta \Vert T(x) \Vert\\
+&\Leftrightarrow \Vert T(x) \Vert \leq \frac{2}{\delta} \Vert x \Vert.
+\end{align*}
+Diese Ungleichung gilt auch für $x=0$. Mit $c=\frac{2}{\delta}$ ist die Konstante also gefunden. 
+\end{proof}
+\begin{bsp}
+Es sei $g \in H$ fest. Durch $A:H\to \mathbb{R},f\mapsto \langle f,g\rangle$ wird ein lineares Funktional auf $H$ definiert. Es ist $\vert A(f)\vert=\vert \langle f,g \rangle \vert\leq\Vert f\Vert \Vert g\Vert$. Also ist $A$ stetig und es gilt 
+\[
+\Vert A \Vert = \underset{f\in H\setminus \{0\}}{\sup} \frac{\vert A(f)\vert}{\Vert f\Vert } \leq  \underset{f\in H\setminus \{0\}}{\sup} \Vert g \Vert =\Vert g \Vert \Rightarrow \Vert A \Vert \leq \Vert g \Vert
+\]
+Falls $g\neq 0$ ist \\\\
+$\left.\begin{matrix}
+\vert A(g) \vert =\vert \langle g,g\rangle \vert=\Vert g\Vert^2\\
+\Vert g \Vert = \frac{\vert A(g) \vert }{\Vert g \Vert}\leq \underset{g\in H\setminus \{0\}}{\sup} \frac{\vert A(g)\vert}{\Vert g\Vert }=\Vert A \Vert\\
+\end{matrix} \right\rbrace \Rightarrow \Vert A \Vert = \Vert g \Vert.$
+\end{bsp}
+\begin{satz}[Rieszscher Darstellungssatz]
+Es sei $A$ ein beschränktes Funktional auf $H$. Dann gibt es genau ein $g \in H$, so dass für alle $f \in H$ gilt
+\[
+A(f)=\langle f,g \rangle.
+\]
+Insbesondere ist $\Vert A \Vert =\Vert g\Vert $. $g \in H$ heißt erzeugendes Element von $A$.
+\end{satz}
+\begin{bsp}
+$L^2(\Omega)\supset W_0$, $W_0$ Hilbertraum\\
+$\int_{\Omega} \nabla u \Delta v dx=\langle u,v\rangle_{W_0}, f\in W_0, \, lineare \,Abbildung \,A_f(v):W_0 \to \mathbb{R}, v \mapsto \int_{\Omega} fvdx$\\
+$\int_{\Omega} fv dx=\int_{\Omega}\nabla u \nabla v dx =\int \Delta uv dx \Rightarrow \Delta u=f$
+\end{bsp}
+\begin{proof}
+Existenz von $g$:\\
+Es sei $M:=\{f\in H\mid A(f)=0\}=A^{-1}(\{0\})$. Da $A$ stetig ist, ist $M$ abgeschlossen. Falls $M=H$ ist, so setze $g=0.$ Es sei nun $M\neq H.$ Dann gibt es für jedes $f \in H$ eine Zerlegung $f=f_1+f_2$ mit $f_1\in M$ und $f_2 \in M^{\perp}$(Satz 1.2.3).\\
+Aber es ist $M^{\perp}\neq \{0\}.$ Sei $h\neq 0$ ein Element in $M^{\perp}.$ Setze $g:=\frac{A(h)}{\Vert h \Vert^2}h.$ Dann ist
+\[
+\Vert g \Vert^2=\frac{\vert A(h)\vert^2}{\Vert h \Vert^4}\Vert h \Vert ^2=\frac{\vert A(h)\vert^2}{\Vert h \Vert^2}.
+\]Des weiteren ist 
+\[ 
+A(g)=A(\frac{A(h)}{\Vert h \Vert^2}h)=\frac{A(h)}{\Vert h \Vert^2}A(h)=\frac{\vert A(h)\vert^2}{\Vert h \Vert^2}=\Vert g \Vert^2 \neq 0 .
+\]$\Rightarrow \Vert A \Vert \geq \Vert g \Vert$\\
+2) Behauptung: $\forall f\in H$ gilt $A(f)=\langle f,g\rangle.$\\
+\begin{enumerate}[(a)]
+\item $\forall f\in M: 0=A(f)=\langle f,g \rangle$
+\item Sei nun aber $f \notin M.$ Definiere $c:=\frac{A(f)}{A(g)}.$ Dann ist 
+\begin{align*}
+A(f-cg)=A(f)- cA(g)=A(f)-A(f)=0\\
+\Leftrightarrow \hat{f}:=f-cg \in M \Leftrightarrow f=\hat{f}+cg.
+\end{align*}
+Damit ist 
+\[
+A(f)=A(\hat{f})+cA(g)=\overset{wegen\, a)}{\langle \hat{f},g\rangle}+ \overset{siehe\, 1. schritt}{c\langle g,g\rangle}=\langle \hat{f}+cg,g \rangle=\langle f,g \rangle
+\]
+\end{enumerate}
+Eindeutigkeit:\\
+Es sei $A(f)=\langle f, g_1 \rangle = \langle f,g_2 \rangle.$
+Dann ist 
+\begin{align*}
+&\langle f, g_1 \rangle = \langle f,g_2 \rangle\\
+\Leftrightarrow &\langle f, g_1-g_2 \rangle =0 \quad \forall f \in H\\
+\Leftrightarrow & g_1-g_2 \in H^{\perp}=\{0\}
+\end{align*}
+\end{proof}
+\textbf{Zusatz:}
+Es sei $C^0 (\overline{\Omega})$ der Raum der stetigen Funktionen auf $\overline{\Omega}$. $C^0 (\overline{\Omega})$ ist mit $\langle f,g \rangle = \int_{\Omega} f(x)g(x) dx$ ein Prähilbertraum.\\
+Wir definieren ein lineares Funktional $\delta_a:C^0 (\overline{\Omega})\to \mathbb{R}$ durch $\delta_a (f)=f(a).$ Die Abbildung $\delta_a$ heißt Dirac Funktional oder Auswertungsfunktional.
+\begin{bemerkung}
+$C^0 (\overline{\Omega})$ ist mit $\Vert f\Vert_{C^0 (\overline{\Omega})}= \underset{x\in \overline{\Omega}}{\sup}\vert f(x)\vert$ ein normierter Raum.\\
+Rechne 
+\begin{align*}
+\vert & \delta_a (f) \vert = \vert f(a) \vert \leq \Vert f\Vert_{C^0 (\overline{\Omega})}\\
+\Leftrightarrow &\Vert \delta_a(f)\Vert \leq 1 , \delta_a(1)=1\\
+\Leftrightarrow &\Vert \delta_a(f)\Vert = 1
+\end{align*}
+aber 
+\[
+\delta(f) \neq \int_{\Omega} fg dx
+\]
+für ein $g \in C^0.$
+\end{bemerkung}
+\subsection{Lineare Operatoren in $H$}
+\begin{definition}
+Es sei $H$ ein Hilbertraum und $D$ sei ein Teilraum. Ein linearer Operator $T$ ist eine Abbildung $T:D\to H$, d.h. für $f,g \in D$ und $\alpha, \beta\in \mathbb{R}$ gilt
+\[
+T(\alpha f+\beta g )=\alpha T(f)+\beta T(g).
+\]
+Dabei ist $D:=D(T)$ der Definitionsbereich und $T(D(T))=:R(T) $ der Wertebereich von $T$.
+\end{definition}
+\begin{bsp}
+\begin{enumerate}
+\item Seien $H=L^2(a,b),D=C^0([a,b])$ und $K:[a,b]\times [a,b]\to \mathbb{R}$ eine stetige Funktion. Dann ist 
+\[
+T:D\to H,f \mapsto \int_a^b k(x,y)f(y)dy \in C^0([a,b])
+\] ein linearer Operator. (Integraloperator)
+\item Seien $H=L^2(a,b)\, und  \, D=C^2_0$. Es sei $p \in C^1([a,b],\mathbb{R}), q \in C^0([a,b],\mathbb{R}).$ Für $x \in [a,b]$ sei $p(x)>0$. Setze
+\[
+T:D\to H, f \mapsto (-p(x)f'(x))'+q(x)f(x).
+\]Dann ist $T$ ein linearer Operator.(Differentialoperator)
+\end{enumerate}
+\end{bsp}
+\begin{definition}[(beschränkter Operator,Norm des Operators)]
+Es sei $H$ ein Hilbertraum und $T$ ein linearer Operator mit Definitionsbereich $D(T)$. $T$ heißt beschränkt, falls es eine konstante $c>0$ gibt, so dass für alle $f \in D(T)$
+\[
+\Vert Tf\Vert \leq c\Vert f\Vert 
+\] gilt.
+Man setze 
+\[
+\Vert T\Vert = \underset{f\in D(T),f\neq 0}{\sup}\frac{\Vert Tf\Vert }{\Vert f \Vert }=\underset{f \in D(T),\Vert f \Vert =1}{\sup}\Vert Tf\Vert.
+\] 
+\end{definition}
+\begin{bemerkung}
+$T:D(T)\to H$ ist beschränkt $\Leftrightarrow$ T ist stetig
+\end{bemerkung}
+\begin{proof}
+Beweis. Satz 1.3.2 (2)
+\end{proof}
+\begin{bsp}
+Differentialoperatoren sind im Allgemeinen nicht stetig! Warum?\\
+Sei $T:C^1:([-2,2],\mathbb{R})\to L^2([-2,2]=,f\mapsto f'$ der Differentialoperator. und $\phi \in \phi^{\infty}_0([-2,2]).$ $\phi$ genüge zudem der Bedingung $\phi (x)=0$ für $\vert x \vert \geq 1$ und $\int_{-2}^2\phi (x)=1$
+\\"$\textcolor{red}{Setze \, \phi_k(x)=\phi(kx).}$"\\
+Dann ist $T\phi_k=k T\phi=k\phi'$ und $\Vert \phi_k \Vert^2_{L^2(-2,2)}=\int_{-2}^2\vert \phi_k\vert^2dx=\int_{-2}^2\vert \phi(kx)\vert^2dx=\int_{-\frac{1}{k}}^{\frac{1}{k}}\vert \phi(kx)\vert^2dx$ $\overset{y=kx}{=}\frac{1}{k}\int_{-1}^1\vert \phi(y)\vert^2dy=\frac{1}{k}\Vert \phi \Vert_{L^2(-2,2)}^2$. Auf ähnliche Weise erhält man $\Vert T\phi_k\Vert_{L^2(-2,2)}=\int_{-2}^2\vert \phi_k'(x)\vert^2dx=k^2 \int_{-2}^2\vert \phi'(kx)\vert dx\overset{y=kx}{=}k^2\frac{1}{k}\inf_{-1}^1\vert \phi'(y)\vert^2dy$ \\$=k\Vert \phi' \Vert_{L^2(-2,2)}^2.$ Dann ist
+\[
+\frac{\Vert T\phi_k\Vert_{L^2(-2,2)}^2}{\Vert \phi_k \Vert_{L^2(-2,2)}^2}=\frac{k \Vert \phi'\Vert_{L^2(-2,2)}^2}{\frac{1}{k}\Vert \phi \Vert_{L^2(-2,2)}^2}=k^2\frac{\Vert\phi' \Vert_{L^2(-2,2)}^2}{\Vert \phi \Vert_{L^2(-2,2)}^2 }
+\]
+Also ist $T$ nicht beschränkt.
+\end{bsp}
+\textbf{Fortsetzung Definition 1.4.6}\\
+Sei $H$ ein Hilbertraum. Zudem seien $T$ und $\tilde{T}$ lineare Operatoren mit Definitionsbereichen $D(T)$ und $D(\tilde{T}).$ $\tilde{T}$ heißt Fortsetzung von $T\, (T\subset \tilde{T})$, falls 
+\begin{enumerate}
+\item $D(T) \subset D(\tilde{T}),$
+\item $\forall f \in D(T): Tf=\tilde{T}f.$
+\end{enumerate} 
+Eine spezielle Fortsetzung ist die Abschließung.
+\begin{satz}[Satz über Eindeutigkeit und Existenz der Abschließung]
+Sei $H$ ein Hilbertraum und $T:D(T)\to H$ ein beschränkter linearer Operator. $D(T)$ sei außerdem dicht in $H$. Dann gibt es genau einen beschränkten linearen Operator $\overline{T}:H\to H$, der $T$ auf $H$ fortsetzt (d.h. $T \subset \overline{T}).$ $\overline{T}$ heißt Abschließung von $T$ von $H$. Es ist $\Vert \overline{T} \Vert =\Vert T \Vert $.
+\end{satz}
+\begin{proof}
+\begin{enumerate}
+\item Existenz:\\
+ Es sei $f \in H$, $(f_n)_n\subset D(T)$ mit $f=\underset{n \rightarrow \infty}{\lim}f_n.$ Dann ist $\Vert T(f_n-f_m)\Vert \leq c \Vert f_n-f_m\Vert\Rightarrow (Tf_n)_n $ ist eine Cauchy-Folge in $H$. Also ist sie konvergent. Setze nun $\overline{T}f=\underset{n \rightarrow \infty}{\lim}Tf_n.$ Dann ist $\overline{T}$ wohldefiniert. Denn sei $(\tilde{f}_n)_n$ eine weitere Folge in $D(T)$ mit $f=\underset{n \rightarrow \infty}{\lim}\tilde{f}_n.$ So folgt $\underset{n \rightarrow \infty}{\lim}f_n-\tilde{f}_n=0.$
+Also ist auch 
+\[
+\underset{n \rightarrow \infty}{\lim}Tf_n-T\tilde{f}_n=0
+\]
+$\Rightarrow \overline{T}f=\underset{n \rightarrow \infty}{\lim}Tf_n=\underset{n \rightarrow \infty}{\lim}T\tilde{f}_n$
+\item Eindeutigkeit:\\
+Es sei $f\in H$ und $f_n\in D(T)$ mit $f=\underset{n \rightarrow \infty}{\lim}f_n.$ Angenommen es existiert eine weitere Fortsetzung $\tilde{T}$ von $T$ auf $H$. Dann gilt
+\[
+\tilde{T}f=\underset{n \rightarrow \infty}{\lim}\tilde{T}f_n=\underset{n \rightarrow \infty}{\lim}Tf_n=\overline{T}f
+\]
+\item Es bleibt noch $\Vert \overline{T}\Vert =\Vert T \Vert $ zu zeigen. \\
+Aus $\Vert \overline{T}f\Vert =\underset{n \rightarrow \infty}{\lim}\Vert Tf_n\Vert \leq \underset{n \rightarrow \infty}{\lim}\Vert f_n \Vert \Vert T \Vert =\Vert f \Vert \Vert T \Vert$ folgt $\Vert \overline{T}\Vert\leq \Vert T \Vert . $ Und da $\overline{T}$ eine Fortsetzung von $T$ ist, gilt auch 
+\begin{align*}
+\Vert T \Vert \underset{f\in D(T),\Vert f \Vert =1}{\sup}\Vert Tf \Vert =\underset{f\in D(T),\Vert f \Vert =1}{\sup}\Vert \overline{T}f \Vert \leq\underset{f\in D(\overline{T}),\Vert f \Vert =1}{\sup}\Vert \overline{T}f \Vert =\Vert \overline{T} \Vert
+\end{align*}
+$\Rightarrow \Vert T \Vert =\Vert \overline{T}\Vert $
+\end{enumerate}
+\end{proof}
+\textbf{Einschub}:\\
+Es sei $\Omega \subset \mathbb{R}^n$ offen und beschränkt.
+\begin{enumerate}
+\item Die Menge $C^m (\overline{\Omega})$ sei gegeben durch \begin{align*} C^m(\overline{\Omega})=\{f:\Omega\to \mathbb{R}\mid &\text{ f ist auf m-mal stetig diffbar }\\
+& \text{und für} \, \vert s \vert < m \, ist \,{\partial}^s f\, auf \,
+  \overline{\Omega}\, stetig \, fortsetzbar\}.
+\end{align*}  
+Hierbei ist $\partial^s=\frac{\partial^{s_1}}{\partial x_1^{s_1}}\cdot \ldots \cdot \frac{\partial^{s_n}}{\partial x_n^{s_n}}f $ und $ \Vert s \vert =s_1+\ldots+ s_n.$ Mit der Norm 
+\[
+\Vert f \Vert_{C^m(\overline{\Omega})}:=\sum_{\vert s \vert \leq m }\Vert \partial^s f \Vert_{C^0(\overline{\Omega})}
+\] wird $C^m (\overline{\Omega})$ zu einem vollständig normierten Raum, wobei $C^0 (\overline{\Omega})$ gegeben ist durch 
+\[
+C^0 (\overline{\Omega}):=\{f:\Omega \to \mathbb{R}\, ist \, stetig \, und \,auf \, \overline{\Omega}\, stetig \,fortsetzbar\}
+\]
+  \item Die Menge $C^m(\Omega)$ ist definiert durch\begin{align*}
+  C^m(\Omega)=\{f:\Omega\to \mathbb{R}\mid &\text{ f ist auf m-mal stetig diffbar }\\
+& \text{und für} \, \vert s \vert < m \, ist \,{\partial}^s f\in C^0(\Omega)\},
+\end{align*}  wobei $C^0(\Omega)$ durch 
+\[
+C^0(\Omega):=\{f:\Omega \to \mathbb{R}\mid f \, ist \, stetig\}
+\] und die Norm $\Vert f \Vert_{C^0(\Omega)}:= \underset{x\in \Omega}{\sup}\vert f(x)\vert $ beschrieben wird. Die Elemente in $C^0(\Omega)$ sind nicht unbedingt normbeschränkt.\\
+\textbf{Zusatz:}\\
+Die Menge $C^{0,\alpha}$ sei für $0\leq \alpha \leq 1$ beschrieben durch 
+\[C^{0,\alpha}=\{f\in C^0(\overline{\Omega})\mid \underset{x,y\in \overline{\Omega},x\neq y}{\sup}\frac{\vert f(x)-f(y)\vert}{\vert x-y \vert^{\alpha}}\}
+\] und die Norm 
+\[
+\Vert f \Vert_{C^{0,\alpha}}:=\Vert f \Vert_{C^0(\Omega)}+\underset{x,y\in\overline{\Omega},x\neq y}{\sup}\frac{\vert f(x)-f(y)\vert}{\vert x-y \vert^{\alpha}}
+\]
+\item Der Träger einer Funktion $f:\Omega\to \mathbb{R}$ ist definiert als 
+\[
+supp(f)=\overline{\{x \in \Omega \mid f(x) \neq 0\}}.
+\] Damit definiert man 
+\[
+C^0_0:=\{f\in C^0(\Omega)\mid supp(f) \subset \Omega \, kompakt\}.
+\]
+\end{enumerate}
+\begin{lemma}
+Es sei $ \Omega \subset \mathbb{R}^n $ offen und beschränkt. Dann ist $C^{\infty}_0(\Omega)$ dicht in $L^p(\Omega) $ für $1\leq p < \infty.$
+\end{lemma}
+\begin{definition}[Dirac-Folge]
+Eine Folge $(\phi_k)_{k \in\mathbb{N}} \subset L^1(\mathbb{R}^n)$ heißt Dirac-Folge, falls folgende Eigenschaften erfüllt sind:
+\begin{itemize}
+\item $\phi_k\geq 0 \quad \forall k\in \mathbb{N}$,
+\item $\int_{\mathbb{R}^n}\phi_k dx=1 \quad \forall k \in \mathbb{N}$,
+\item $\int_{\mathbb{R}\setminus B_{\rho}(0)}\phi_k \overset{k \rightarrow \infty }{\rightarrow}0 \quad \forall \rho > 0$.
+\end{itemize}
+\end{definition}
+"\textbf{Zusatz zur Dichtheit}"\\
+Es sei $\Omega \subset \mathbb{R}^n$ offen und beschränkt.
+\begin{lemma}
+Es sei $C_0^{\infty} (\Omega)=C^{\infty}\cap C_0^0(\Omega)$,
+ wobei $C^0_0(\Omega):=\{u \in C^0(\Omega)\mid supp(u) \subset \Omega\}$.
+ Außerdem sei $1 \leq p \leq \infty$. Dann ist $C^{\infty}_0(\Omega)$ dicht in $L^p(\Omega).$
+\end{lemma}
+Für die Bedingungen einer Dirac-Folge denke man an $\phi_k's$ mit $supp(\phi_k)\subset B_{s_k}(0)$ mit $\underset{k \rightarrow \infty}{\lim} =0.$\\
+\textbf{Typisches Beispiel}\\
+Sei $\phi \in L^1(\mathbb{R}^1)$, mit $\phi \geq 0$ und 
+\[ 
+\int_{\mathbb{R}^n}\phi(x)dx =1.
+\]
+Man fordert zusätzlich $\phi \in C^{\infty}_0(B_1(0))$. Setze nun $\phi_{\epsilon}(x)=\epsilon^{-n}\phi(\frac{x}{\epsilon})$für $\epsilon >0 .$ Dann gilt 
+\[
+\int_{\mathbb{R}^n}\phi_{\epsilon}(x)dx =1
+\]und ebenfalls
+\[
+\int_{\mathbb{R}^n\setminus B_{\epsilon}(0)}\phi_{\epsilon}(x)dx =0.
+\]
+Dann ist $(\phi_k)_k$ für jede Nullfolge $(\epsilon_k)_k$ eine Dirac-Folge.
+\begin{proof}
+Sei $f \in L^p(\Omega)$. Wir setzen $f$ durch "Null" auf $\mathbb{R}^n$ fort. Es sei $(\phi_k)_k$ eine Dirac-Folge wie oben. Dann ist $( \phi_{\epsilon} \ast f)(x)=\int_{\mathbb{R}^n}\phi_{\epsilon} (x-y)f(y)dy$. Diese Faltung ist in $C_0^{\infty}(\mathbb{R}^n)$ aber nicht notwendigerweise in $C^{\infty}_0(\Omega).$\\
+\textbf{Idee:} Wir schneiden $f$ auf der Menge $\Omega_{\delta}$ ab, die einen positiven Abstand von $\partial \Omega$ hat. Für $\delta >0$ setze $\Omega_{\delta}=\{ x \in \mathbb{R}^n\mid B_{\delta}(x)\subset \Omega\}.$ und definiere für $\epsilon>0$ mit $\epsilon <\delta$
+\[
+T_{\epsilon,\delta}f(x):=\int_{\mathbb{R}^n}\phi_{\epsilon}(x-y)\chi_{\Omega}(y)f(y)dy \in C_0^{\infty}(\Omega)
+\]
+Beachte $T_{\epsilon,\delta}=(\phi_{\epsilon}\ast (\chi_{\Omega} f))(x)$ für $x \in \mathbb{R}^n.$ Dann ist $T_{\epsilon,\delta}f\in C_0^{\infty}(B_{\epsilon}(\Omega_{\delta}))\subset C_0^{\infty}(\Omega)$ für $\epsilon$ klein genug (Genauer: Für $\epsilon <\delta$, da dann $\overline{B_{\epsilon}(\Omega_{\delta})} \subset \Omega$ gilt). Es ist 
+\begin{align*}
+&(T_{\epsilon,\delta}f-f)(x)\\
+=&\int_{\mathbb{R}^n}\phi_{\epsilon}(x-y)f(y)dy-\int_{\mathbb{R}^n}\phi_{\epsilon}(x-y)\chi_{\Omega\setminus \Omega_{\delta}}(y)f(y)dy-\int_{\mathbb{R}^n}\phi_{\epsilon}(x-y)f(x)dy\\
+=&\int_{\mathbb{R}^n}\phi_{\epsilon}(x-y)[f(y)-f(x)]dy-\int_{\mathbb{R}^n}\phi_{\epsilon}(x-y)\chi_{\Omega\setminus \Omega_{\delta}}(y)f(y)dy
+\end{align*}
+Es ist nun zu zeigen: $\Vert T_{\epsilon,\delta}f-f\Vert \underset{\epsilon,\delta \rightarrow 0}{\rightarrow}0$. Hierfür benötigen wir folgende Tatsache aus der Lebesgue-Theorie:\\
+Es sei $f\in L^p(\Omega).$ Dann gilt 
+\[
+\Vert f(\cdot + h)-f(\cdot)\Vert_{L^p(\mathbb{R}^n)}\underset{\Vert h \Vert \rightarrow 0}{\rightarrow}0,
+\]wobei $h\in \mathbb{R}^n$ und mit $f(\cdot +h)$ die Funktion $x \mapsto f(x+h)$ gemeint ist. \\
+Nun ist $\vert \vert x \vert + \vert y\vert \vert=2^p\vert \frac{1}{2}\vert x \vert + \frac{1}{2}\vert y\vert \vert^p\underset{konv}{\leq}2^{p-1}(\vert x\vert^p+ \vert y\vert ^p)$.\\
+Für $p \geq 1$ erhält man
+\begin{align*}
+&\int_{\Omega} \vert(T_{\epsilon,\delta}f-f)(x) \vert^p dx\\
+\leq  &\int_{\mathbb{R}^n}\left\vert\int_{\mathbb{R}^n}\phi_{\epsilon}(x-y)\vert f(y)-f(x)\vert dy+\int_{\Omega\setminus \Omega_{\delta}}\phi_{\epsilon}(x-y)\chi_{\Omega\setminus \Omega_{\delta}}(y)\vert f(y) \vert dy \right\vert^p dx\\
+\leq & 2^{p-1}\int_{\mathbb{R}^n}\left\vert \int_{\mathbb{R}^n} \phi_{\epsilon}(x-y)\vert f(x)-f(y) \vert dy \right\vert^pdx + 2^{p-1}\int_{\mathbb{R}^n}\left\vert \int_{\Omega\setminus \Omega_{\Omega}} \phi_{\epsilon}(x-y)\vert f(y)\vert dy \right\vert^p dx \\
+=:&c(p) I_1+c(p)I_2
+\end{align*} 
+Dies nutzt man um die beiden Integrale getrennt zu betrachten.\\
+\textbf{Zu $I_1$:}\\
+\begin{align*}
+&I_1 \overset{y=x-z}{=}\int_{\mathbb{R}^n}\left\vert \int_{\mathbb{R}^n} \phi_{\epsilon}(z)\vert f(x)-f(x-z)  \vert dz \right\vert^pdx\\
+=&\int_{\mathbb{R}^n}\left\vert \int_{\mathbb{R}^n} \phi_{\epsilon}(y)\vert f(x)-f(x-y) \vert dy  \right\vert^pdx\\
+\overset{\frac{1}{q}+\frac{1}{p}=1}{=}&\int_{\mathbb{R}^n}\left\vert \int_{\mathbb{R}^n} \phi_{\epsilon}(y)^{\frac{1}{q}}\phi_{\epsilon}(y)^{\frac{1}{p}}\vert f(x)-f(x-y)  \vert dy \right\vert^pdx\\
+\overset{Hoelder}{\leq}&\int_{\mathbb{R}^n}\left\vert \left(\int_{\mathbb{R}^n}\phi_{\epsilon}(y)\vert f(x)-f(x-y)  \vert^p dy \right)^{\frac{1}{p}}\cdot\left(\int_{\mathbb{R}^n} \phi_{\epsilon}(y)dy\right)^{\frac{1}{q}}\right\vert^{p}  dx\\
+=&\left(\int_{\mathbb{R}^n} \phi_{\epsilon}(y)dy\right)^{\frac{p}{q}}\cdot \int_{\mathbb{R}^n}\left\vert \left(\int_{\mathbb{R}^n}\phi_{\epsilon}(y)\vert f(x)-f(x-y)  \vert^p dy \right)^{\frac{1}{p}}\right\vert^{p}  dx\\
+=&\int_{\mathbb{R}^n}\phi_{\epsilon}(y)\vert f(x)-f(x-y)  \vert^p dy  dx\\
+\leq &\underset{\underset{y\in B_{\epsilon}(x)}{y \in supp(\phi_{\epsilon})}}{sup}\int_{\mathbb{R}^n} \vert f(x)-f(x-y)\vert^p dx \cdot\int_{\mathbb{R}^n}\phi_{\epsilon}(y) dy \\
+\leq &\underset{\vert h\vert < \epsilon}{sup} \Vert f(\cdot + h)-f(\cdot)\Vert_{L^p(\mathbb{R}^n)}^p\underset{\epsilon \rightarrow 0}{\rightarrow}0. 
+\end{align*}
+Für das zweite Integral erhalten wir:
+\begin{align*}
+I_2=\int_{\mathbb{R}^n}\left\vert \int_{\Omega\setminus \Omega_{\Omega}} \phi_{\epsilon}(x-y)\vert f(y)\vert dy \right\vert^p dx\\
+\leq \int_{\mathbb{R}^n}\left\vert \int_{\Omega\setminus \Omega_{\Omega}} \phi_{\epsilon}(x-y)\vert f(y)\vert dy \right\vert^p dx \textcolor{red}{hier stmimt was net}
+\end{align*}
+Das erste Integral $I_1$, wobei $f(y)$ durch $g(y):=\chi(y)f(y)$ ausgetauscht wurde. Es strebt  für $\epsilon, \delta \rightarrow 0$ gegen Null. Für $I_3$ erhält man:
+\begin{align*}
+I_3&=\int_{\mathbb{R}^n}\chi_{\Omega\setminus \Omega_{\delta}}(x)\vert f(x) \vert^p \left(\int_{\mathbb{R}^n}\phi_{\epsilon}(x-y)dy\right)^pdx\\
+&=\int_{\Omega\setminus \Omega_{\delta}}\vert f(x) \vert dx \underset{\delta\rightarrow 0}{\rightarrow}0
+\end{align*}
+\end{proof}
+Zum Schluss die Hölder Räume:\\
+Es sei $\Omega \subset \mathbb{R}^n$ offen, $u:\Omega\to \mathbb{R}$ eine Funktion und $0< \alpha \leq 1$. Definiere hierzu 
+\[
+h(u,\alpha)=\underset{x\neq y}{\sup}\left\lbrace \frac{\vert u(x)-u(y)\vert}{{\vert x-y \vert }^{\alpha}}\right\rbrace.
+\] Dann ist der Raum $C^{k,\alpha}(\overline{\Omega})$ definiert durch 
+\[
+C^{k,\alpha}(\overline{\Omega}):=\{u \in C^k(\overline{\Omega})\mid h(\partial^su, \alpha)<\infty \, \vert s\vert \leq k\}
+\]und für $k=0$ setzt man 
+\[
+C^{0,\alpha}(\overline{\Omega}):=\{u \in C^0(\overline{\Omega})\mid h(u, \alpha)<\infty \, \}.
+\]Vorsicht: Für eine offene Menge $\Omega$ ist 
+\[C^{0,\alpha}(\overline{\Omega}):=\{u \in C^0(\overline{\Omega})\mid h(u_{|K}, \alpha)<\infty \text{für jede kompakte Menge }K\subset \Omega  \}.
+\]
+\begin{bemerkung}
+Es seien $T_1,T_2:H \to H$ linear mit $D(t_1),D(T_2) \subset H.$ Setze $D(T_1\circ T_2)=\{g \mid g \in D(T_2),T_2g \in D(T_1)\}$. Dann ist $T_1 \circ T_2(kurz \, T_1T_2)$ ein linearer Operator in $H$ mit Definitionsbereich $D(T_1T_2)$. Wenn $T_1,T_2$ beschränkt sind, so ist 
+\[
+\Vert T_1 T_2 f \Vert \leq \Vert T_1 \Vert \cdot\Vert T_2 f \Vert\leq \Vert T_1 \Vert \Vert  T_2 \Vert \Vert f \Vert,
+\]also ist $\Vert T_1 T_2 \Vert \leq \Vert T_1 \Vert \cdot \Vert T_2 \Vert $. Insbesondere gilt
+\[
+D(T_1)=D(T_2)=H \Rightarrow D(T_1T_2)=H.
+\]
+\end{bemerkung}
+\textbf{Wollen}: Für einen Linearen Operator $A:H \to H$ und $y \in H$ Bedingungen finden, so dass $Ax=y$ eine eindeutige Lösung hat.\\
+
+Es sei $H$ ein Hilbertraum, $T:H\to H$ ein linearer beschränkter Operator mit $D/T)=H$. Dann gibt es genau einen linearen beschränkten Operator $T^*:H\to H $, sodass 
+\[
+\langle Tx, y\rangle= \langle x,T^*y \rangle 
+\] für alle $x,y \in H$ gilt. $T^*$ heißt die Adjungierte von $T^*$. $T^*$ ist beschränkt und es gilt $\Vert T\Vert = \Vert T^* \Vert$. Weiterhin ist $T^{**}={T^*}^*=T$.
+\begin{proof}
+\item Existenz: Es sei $y \in H$ beliebig. Setze $A_y:H\to H,x \mapsto \langle Tx,y\rangle.$ $A_y$ ist ein lineares Funktional. Es gilt $\vert A_yx \vert = \vert \langle Tx,y\rangle \vert \overset{1.1.14}{=}\Vert T\Vert \Vert x\Vert \Vert y\Vert$. Also ist $A_y$ ein linearer beschränkter Operator. Nach dem Rieszschen Darstellungssatz (1.3.4) gibt es genau ein $y^* \in H$ mit $A_yx=\langle x,y^* \rangle$. Durch das Setzen von $T^*:H \to H, y \mapsto y^*$, folgt $D(T^*)=H.$ Es sei $x \in H$ vorgegeben. es seien $y_1,y_2\in H$ und $\alpha, \beta \in \mathbb{R}$. Dann gilt 
+\begin{align*}
+&\langle x,\alpha T^*y_1+ \beta T^*y_2 \rangle\\
+=&\alpha\langle x,y_1^* \rangle+ \beta\langle x, y_2^* \rangle\\
+=&\alpha\langle Tx ,y_1 \rangle + \beta \langle Tx,y_2 \rangle\\
+=&\langle Tx ,\alpha y_1+\beta y_2 \rangle\\
+=& A_{\alpha y_1+\beta y_2}(x)\\
+=& \langle x, T^*(\alpha y_1+\beta y_2) \rangle\\
+\Rightarrow &  T^*(\alpha y_1+\beta y_2)=T^*y_1+ \beta T^*y_2
+\end{align*}
+\textbf{Eindeutigkeit} Für alle $x,y \in H$ gelte 
+\begin{align*}
+&\langle x,T^*y\rangle =\langle x, S^*y \rangle\\
+\Rightarrow &\langle x, T^*y-S^*y \rangle=0\\
+\Rightarrow &\forall y \in H: T^*y=S^*y.
+\end{align*}
+\textbf{Beschränktheit} $\vert \langle T^*y,x\rangle\vert =\langle Tx, y \rangle \leq \Vert T \Vert \Vert x \Vert \Vert y\Vert. $ Setze $x=T^*y, $ dann folgt 
+\begin{align*}
+\Vert T^*y\Vert^2 \leq \Vert T \Vert \Vert T^*y\Vert \Vert y\Vert \\
+\frac{\Vert T^*y\Vert}{\Vert y \Vert }\leq \Vert T \Vert \Rightarrow \Vert T^* \Vert \leq \Vert T \Vert.  
+\end{align*}
+Es gilt $T^{**}=T$, denn wegen $\langle Tx, y\rangle=\langle T^*y,x \rangle= \langle y , (T^*)^*x \rangle= \langle (T^*)^*x,y \rangle \quad \forall y \in H$, gilt $T=T^{**}=(T^*)^*$.\\
+Außerdem ist $\Vert T \Vert = \Vert T^* \Vert,$
+denn mit obiger Eigenschaft gilt $\Vert T^*\Vert  \leq \Vert T \Vert $ und $\Vert T^{**}\Vert  \leq \Vert T^* \Vert $.
+\end{proof}
+\begin{bemerkung}
+Sei $H$ ein Hilbertraum und $S,T:H \to H$ beschränkte lineare Operatoren. Setze 
+\[
+N(T)=\{f \in H \mid T(f)=0\}
+\] und 
+\[
+R(T)=\{g \in H \mid \exists f \in H : T(f)=g\}.
+\]
+Dann gelten folgende Eigenschaften
+\begin{enumerate}
+\item $(ST)^*=T^*S^*$
+\item $(S+T)^*=S^*+T^*$
+\item $N(T)=R(T^*)^{\perp}$
+\item $\overline{R(T^*)}=N(T)^{\perp}(\Rightarrow H=\overline{R(T^*)})\oplus N(T) \, S.1.2.2)$
+\item Im Allgemeinen ist $R(T^*)\neq N(T)^{\perp}.$
+\end{enumerate}
+\end{bemerkung}
+\begin{proof}
+1) Es ist $\langle STx,y \rangle=\langle Tx,S^*y \rangle=\langle x,T^*S^* y \rangle$.\\
+2) $\langle (S+T)x ,y \rangle= \langle Sx ,y \rangle+\langle Tx,y \rangle=\langle x,T^*y \rangle+\langle x,S^*y \rangle=\langle x,(S^*+T^*)y \rangle$ $\Rightarrow (S+T)^*=S^*+T^*.$\\
+3)$"\subset"$ Sei $g \in N(T)$ und $f\in R(T^*).$ Dann gibt es ein $\tilde{f}\in H$ mit $T^*\tilde{f}=f$. Weil $g \in N(T)$ ist, gilt $Tg=0.$ Dann folgt $\langle f,g \rangle=\langle T^* \tilde{f},g \rangle\langle \tilde{f},Tg \rangle=\langle \tilde{f},0 \rangle=0\Rightarrow g \in R(T^*)^{\perp}$\\
+$"\subset"$ Es sei $g \in R(T^*)^{\perp}$, das heißt für $f \in R(T^*)$ gilt $\langle f,g \rangle=0.$ Für $\tilde{f}\in H$ ist $T^*\tilde{f}=f.$ also gilt für alle $\tilde{f}\in H:$
+$0=\langle f,g \rangle=\langle T^*\tilde{f},g \rangle=\langle \tilde{f}, Tg \rangle.$ Da dies für alle $\tilde{f} \in H$ gilt, folgt $Tg=0$. Also ist $g \in N(T)$.\\
+4) Nach 3) ist $N(T)=R(T^*)^{\perp}$. Satz 1.2.3 gibt dann $N(T)^{\perp}=(R(T^*)^{\perp})^{\perp}=\overline{R(T^*)}.$ 
+5) Sei $T.l_2 \to l_2, (a_n) \mapsto (\frac{a_n}{n}).$ Dann ist $T$ injektiv, denn ist $T(a_n)_n=0$, dann ist $a_n=0$ für alle $n\in \mathbb{N}.$ Also ist $N(T)=0.$ Weiterhin ist $T^*=T:$\\
+$\langle T(a_n)_n,(b_n)_n \rangle=\sum_{n=1}^{\infty}\frac{a_nb_n}{n}=\langle (a_n)_n,T(b_n)_n \rangle. $ $T$ ist aber nicht surjektiv denn $(a_n)_n=(\frac{1}{n})_n \notin R(T).$ Also ist $R(T)=R(T^*) \neq l_2 =\{0\}^{\perp}=N(T)^{\perp}$
+\end{proof}
+\begin{bemerkung}
+Es sei $A$ eine $n \times n $ Matrix. Dann ist $A^*=A^T.$
+\end{bemerkung}
+\begin{bsp}
+\begin{enumerate}
+\item Es seien $S$ und $T$ die rechts und links Shiftoperatoren.
+\begin{align*}
+S(a_1,a_2,a_3,\ldots)=(=,a_1,a_2,\ldots)\\
+T(a_1,a_2,a_3,\ldots)=(a_2,a_3,\ldots)
+\end{align*}
+Dann ist $T=S^*$, denn $\langle a, Sb \rangle_{l_2}=a_2b_1+a_3b_2+\ldots=\langle Ta,b\rangle$.
+\item Es sei $K:L^2(0,1) \to L^2(0,1)$ ein Integraloperator der Form $Kf(x)=$ \\$ \int_0^1k(x,y)f(y)dy$, wobei $k.[0,1]\times [0,1]\to \mathbb{R}$ eine stetige Funktion ist. Der adjungierte Operator ist $K^*f(x)=\int_0^1k(y,x)f(y)dy.$ Spezialfall: $k$ ist symmetrisch, dann ist $K=K^*$ und man nennt $K$ dann selbstadjungiert.
+\item Die Adjungierte ist wichtig für die Frage der Lösbarkeit (eindeutig!) linearer Gleichungen vom Typ $Ax=y$. Sei nämlich $z\in H $ irgendeine Lösung der sogenannten homogenen adjungierten Gleichung 
+\[
+A^*z =0.
+\]Dann gilt $\langle Ax,z\rangle =\langle x, A^*z \rangle=0.$ Also ist eine notwendige Bedingung für die Lösbarkeit von $Ax=y$ die Bedingung 
+\[
+\langle y,z\rangle =0\qquad \forall z \in N(A^*).
+\] 
+Das heißt notwendige Bedingung für Lösbarkeit ist $y \in N(A^*)^{\perp}.$ Dies ist aber im Allgemeinen nicht hinreicheind für Lösbarkeit (S1.4.10)
+\[
+N(A^*)^{\perp}=\overline{R(A)}\supset R(A)
+\]Besser ist die Lage, falls 
+\[
+R(A)=\overline{R(A)}
+\] gilt. Dann ist $H=R(A) \oplus N(A^*).$Forderung an $A$: $A$ hat in $H$ ein abgeschlossenes Bild. Dann erhalten wir
+\end{enumerate}
+\end{bsp}
+\begin{satz}
+Angenommen $A:H \to H$ ist ein beschränkter linearer Operator mit abgeschlossenem Bild $R(A)= \overline{R(A)}.$ Dann besitzt die Gleichung $Ax=y$ eine Lösung $x \in H$ genau dann, wenn $y \perp N(A^*)$
+\end{satz}
+\newpage
+	1. Meiner Meinung nach ist es wichtig sich als Person ständig weiterzuentwickeln, neue Herausforderungen zu suchen und diese überwiegend eigenständig zu bewältigen. Einen Teil meines Studiums im Ausland zu verbringen, ist deshalb die nächste Herausforderung, der ich mich stellen möchte, um mich sowohl kulturell als auch menschlich weiterzuentwickeln. 
+Ein weiteres Ziel meines Aufenthaltes im Ausland ist ebenfalls, meine Englischkenntnisse zu verbessern.  Um besser im Umgang mit der englischen Sprache zu werden, ist es sinnvoll vermehrt englisch zu sprechen. 
+ %\docite{*}\bibliography{literatur}
+%\bibliographystyle{plain}
+\end{document}

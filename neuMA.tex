@@ -1,0 +1,2198 @@
+\documentclass[12pt,titlepage,twoside,cleardoublepage]{article}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,lmargin={4cm},rmargin={2cm},
+tmargin={2.5cm},bmargin = {2.5cm}]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pdfpages} 
+%\usepackage[pdftex,article]{geometry}
+\usepackage{amsthm}
+%\usepackage{ngerman,amsthm}
+\usepackage{lineno} 
+\usepackage{lineno, blindtext} 
+\usepackage{cleveref}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{thmtools}
+\usepackage{tabularx}
+\linespread{1.25}
+\usepackage{color}
+\usepackage{verbatim}
+\newcommand{\gelb}{0.550000011920929}
+\usepackage{pgf,tikz,pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+%\numberwithin{equation}{chapter}
+%\usepackage{scrheadings}
+\pagestyle{headings}
+\usepackage{titlesec}     
+\usepackage{tikz}           % für Kontrolle der Abschnittüberschriften
+\begin{comment}
+\makeatother
+\theoremstyle{nummermitklammern}
+\theorembodyfont{\rmfamily}
+\theoremsymbol{\ensuremath{\diamond}}
+\newtheorem{temp}{}[section]
+\newtheorem{vor}[temp]{Vorüberlegung}
+\newtheorem{lemma}[temp]{Lemma}
+\newtheorem{folgerung}[temp]{Folgerung}
+\newtheorem{bsp}[temp]{Beispiel}
+\newtheorem{herleitung}[temp]{Herleitung}
+\newtheorem{definition}[temp]{Definition}
+\newtheorem{bemerkung}[temp]{Bemerkung}
+\newtheorem{satz}[temp]{Satz}
+\newtheorem{beweisidee}[temp]{Beweisidee}
+\theoremsymbol{\ensuremath{\square}}
+\end{comment}
+%\begin{comment}
+\newtheorem{zahl}{}[section]
+%\setcounter{zahl}{1}
+%\newtheorem{section}{section}[section]
+\newtheorem{definition}[zahl]{Definition}
+\newtheorem{vor}[zahl]{Vorüberlegung}
+\newtheorem{lemma}[zahl]{Lemma}
+\newtheorem{folgerung}[zahl]{Folgerung}
+\newtheorem{bsp}[zahl]{Beispiel}
+\newtheorem{herleitung}[zahl]{Herleitung}
+\newtheorem{bemerkung}[zahl]{Bemerkung}
+\newtheorem{satz}[zahl]{Satz}
+\newtheorem{beweisidee}[zahl]{Beweisidee}
+\numberwithin{equation}{section}
+
+
+%-----------------------------------------------
+
+%\end{comment}
+ %Nummerierung mit Kapitelnummern
+%-------------------------
+%\newcommand{\secnumbering}[1]{% 
+ % \setcounter{chapter}{0}% 
+  %\setcounter{section}{0}% 
+  %\renewcommand{\thechapter}{\csname #1\endcsname{chapter}.}% nach Duden gehört 
+                                  % der Punkt hier hin bei gemischten Zählungen 
+%  \renewcommand{\thesection}{\thechapter\csname #1\endcsname{section}}% 
+%}
+%------------------------------
+\begin{document}
+\begin{titlepage}
+    \begin{center}
+      \large
+      \textsc{Rheinisch-Westf\"alische Technische Hochschule Aachen}\\
+      Lehrstuhl B für Mathematik \\
+      Univ.-Prof. Dr.  Alice Niemeyer\\
+      \vspace{3 cm}
+      \huge  Thema \\
+      \vspace{1 cm}
+      \large Masterarbeit\\
+      %\large Bachelor's Thesis\\
+      \vspace{2 cm}
+       \vspace{1 cm}
+      \Large Reymond Oluwaseun Akpanya\\
+      \large Matrikelnummer: 357115\\
+      %\vspace{2 cm}
+      %\large Vorgelegt am: 28.09.2018
+      \vspace{3.5 cm}
+%      last build:
+ %    \today \\[4em]
+\begin{flalign*}
+&\text{Vorgelegt am:}&\text{...}&\\
+&\text{Gutachter:}&\text{Prof. Dr. Alice Niemeyer}&\\
+&\text{Zweitgutachter:}&\text{Prof. Dr. Wilhelm Plesken}&\\[1em]
+\end{flalign*}
+    \end{center}
+% \begin{flalign*}
+ %&\text{ } &\text{ 25.09.2018 }
+ %\end{flalign*}
+\end{titlepage}
+%---------------------------
+%\farb
+%\section*{Inhaltsverzeichnis}
+\newpage 
+\thispagestyle{empty}
+\quad 
+\newpage
+\thispagestyle{empty}
+
+\tableofcontents
+%\addcontentsline{toc}{section}{Einleitung}
+\newpage
+\setcounter{page}{1}
+%\cleardoubelepage
+\section{Einleitung}
+\subsection{Herangehensweise}
+\subsection{Aufbau dieser Arbeit}
+\subsection{Vorkenntnisse und Notationen}
+\section{Grundlagen} 
+Zunächst werden in diesem Kapitel grundlegende Definitionen und einführende Beispiele präsentiert, um ein tieferes Verständnis von simplizialen Flächen zu entwickeln. Diese basieren auf dem Skript \emph{Simplicial Surfaces of Congruent Triangles}. Da dieses Kapitel nur als Einführung in die Thematik dienen soll, werden die benötigten Resultate ohne Beweise angeführt. Da in diesem Teil der Arbeit keine neuen Resultate präsentiert werden, sondern lediglich bekannte Erkenntnisse reproduziert werden, kann dieses Kapitel bei bereits vorhandener Vertrautheit mit simplizialen Flächen übersprungen werden.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=3cm 22.8cm 14cm 23cm]{new}
+\end{center}
+%\caption{Kantendrehung}
+\end{figure}
+\subsection{Definition}
+\textbf{Resultate} \\
+$\fbox{
+\parbox{14cm}{\begin{itemize}
+\item Definition einer simplizialen Flaeche 
+\item elementare Eigenschaften simplizialer Flaechen
+\end{itemize}
+}}$\\
+\begin{definition}  \label{def1} 
+Seien $X_0,X_1,X_2$ nichtleere Mengen so, dass $X=X_{0} \biguplus X_{1} \biguplus X_{2}$ eine abzählbare Menge und $<$ eine transitive Relation auf  $(X_{0}\times X_{1}) \cup (X_{1}\times X_{2})\cup (X_{0}\times X_{2})$ ist.
+ Man nennt $X_{0}$ \emph{die Menge der Ecken}, $X_{1}$ \emph{die Menge der Kanten}, $X_{2}$ \emph{die Menge der Flächen} und $<$ die \emph{Inzidenz} einer \emph{simplizialen Fläche} $(X,<)$, falls folgende Axiome erfüllt sind:
+ \begin{enumerate}
+\item Für jede Kante $e \in X_{1}$ existieren genau zwei Ecken $V_1,V_2 \in X_{0}$ mit $V_1,V_2 < e$. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=0cm 25.5cm 4cm 27cm]{Image_Def11}
+\end{center}
+%\caption{Kantendrehung}
+\end{figure}
+\item Für jede Fläche $F\in X_2$ gibt es genau drei Kanten $e_1,e_2,e_3 \in X_{1}$ mit der Eigenschaft $e_1,e_2,e_3 < F$.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=0cm 25.5cm 4cm 26.5cm]{Image_Def12}
+\end{center}
+%\caption{Kantendrehung}
+\end{figure} 
+\item Für jede Kante $e \in X_{1}$ gibt es entweder genau zwei Flächen $F_{1},F_{2} \in X_{2}$ mit $e <F_{1},F_2$ oder
+genau eine Fläche $F \in X_{2}$ mit $e < F$. Im ersten Fall sind $F_{1}$ und $F_{2}$ \emph{$(e)$-Nachbarn} und $e$ ist eine \emph{innere Kante}, im zweitem Fall ist $e$ eine \emph{Randkante}. 
+ \item Für jede Ecke $V \in X_{0}$ existieren endlich viele Flächen $F\in X_{2}$ mit $V < F$.
+  Diese $F_{i}\in X_2$ können in einem Tupel $(F_{1},\ldots,F_{n})$ für ein $n \in \mathbb{N}$ angeordnet werden so, dass $e_i<F_{i}$ und $e_i<F_{i+1}$ für $i=1,\ldots,n-1$ ist, wobei $e_i\in X_1$ eine Kante  in $X$ ist, für die ebenfalls $V<e_i$ gilt. 
+  Das Tupel $(F_1,\ldots,F_n)$ wird auch \emph{Schirm} genannt. Falls es auch eine Kante $e\in X_1$ mit $e<F_{1},F_{n}$ gibt, so ist $V$ eine \emph{innere Ecke}. Ist $V$ keine innere Ecke, so ist er eine Randecke.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=0cm 24cm 5cm 27cm]{Image_Def14}
+\end{center}
+%\caption{Kantendrehung}
+\end{figure} 
+ \item Seien $V \in X_0$ eine Ecke in $X$ und $(F_1,\ldots,F_n)$ der zu $V$ gehörige Schirm, wobei die $F_i$ für $i=1,\ldots ,n$ und $n\in \mathbb{N}$ Flächen in $X$ sind. Dann ist n der \emph{Grad der Ecke} $V$. Für den Grad einer Ecke $V$ in $X$ schreibt man $\deg_X(V)$. Falls $X$ aus dem Kontext heraus klar ist, so schreibt man nur $\deg(V)$.
+
+\end{enumerate}
+\end{definition}
+
+\begin{bemerkung}
+\begin{itemize}
+%\item Die Menge aller inneren Knoten einer Kante $e \in X_1$ bezeichnet man mit $X_0^0(e).$
+\item Für eine gegebene Ecke $V \in X_0$ einer simplizialen Fläche gibt es eine endliche Anzahl von Schirmen. Diese sind jedoch alle äquivalent, da sie durch zyklische Permutationen umgeordnet werden können.
+\item Zur Vereinfachung identifiziert man $(X,<)$ mit der Menge $X$. 
+\item Die Definition einer simpizialen Fläche $(X,<)$ lässt abzählbar unendliche Mengen $X_i$ für $i=0,1,2$ zu, jedoch sind für diese Arbeit nur endliche simpliziale Flächen von Interesse. Das heißt im Folgendem sei ohne Einschränkung $\vert X_0\vert,\vert X_1\vert,\vert X_2\vert < \infty$.
+\end{itemize}
+\end{bemerkung}
+ 
+ \begin{bsp}
+ \begin{enumerate}
+\item 
+ Bis auf Isomorphie gibt es genau eine simpliziale Fläche bestehend aus einer Fläche, welche durch 
+\begin{align*}
+D_{0}=\{\,V_{1}&,V_{2},V_{3}\,\}, D_{1}=\{\,e_{1},e_{2},e_{3}\,\}, D_{2}=\{\,F_{1}\,\} \text{ und } x<y \Leftrightarrow \\
+ (x,y)\in \{\,&(e_{1},F_{1}),(e_{2},F_{1}),(e_{3},F_{1}),(V_{1},e_{2}),(V_{1},e_{3}),(V_{1},F_{1}),(V_{2},e_{1}), (V_{2},e_{3}),\\ &(V_{2},F_{1}),
+ (V_{3},e_{1}),(V_{3},e_{2}),(V_{3},F_{1})\,\} 
+\end{align*} 
+beschrieben wird. Man nennt diese simpliziale Fläche \emph{Dreieck}. 
+%--------------------------Bild-------------------------
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=1cm 25.5cm 4cm 27cm]{oneface}
+\end{center}
+\caption{Dreieck}
+\end{figure}
+%-------------------------------------------------------
+ \item
+ Für $n \in \mathbb{N}$ definieren wir das \emph{n-fache Dreieck} $n \Delta$ durch die Mengen $n\Delta_0, n\Delta_1,n\Delta_2$, wobei
+ \begin{align*}
+  n\Delta_0=\{& \,V_{j}^{k}\,\vert\, j=1,2,3 ;k=1,\ldots,n\,\}, n\Delta_1=\{\,e_{j}^{k}\,\vert\, j=1,2,3 ;k=1,\ldots,n\,\},\\
+   n\Delta_2=\{&F_{1},\ldots,F_{n}\} \text{ und } x<y \Leftrightarrow \\
+ (x,y)\in \{\,&(e_{1}^k,F_{k}),(e_{2}^k,F_{k}),(e_{3}^k,F_{k}),(V_{1}^k,e_{2}^k),(V_{1}^k,e_{3}^k),(V_{1}^k,F_{k}), (V_{2}^k,e_{1}^k),\\ &(V_{2}^k,e_{3}^k),(V_{2}^k,F_{k}),(V_{3}^k,e_{1}^k),(V_{3}^k,e_{2}^k),(V_{3}^k,F_{k})\mid k=0,\ldots,n\} 
+\end{align*}
+ \begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=1cm 21cm 4cm 26.5cm]{ndelta}
+\end{center}
+\caption{$n\Delta$ im Fall $n=3$}
+\end{figure}
+ \item 
+ Der \emph{Janus-Head} ist eine geschlossene simpliziale Fläche, die aus zwei Flächen besteht. Sie besitzt 3 innere Ecken und 3 innere Kanten und wird definiert durch
+ \begin{align*}
+ J_{0}=\{\,&V_{1},V_{2},V_{3}\,\} ,J_{1}=\{\,e_{1},e_{2},e_{3}\,\},J_{2}=\{\, F_{1},F_{2}\,\}  \text{ und } x<y \Leftrightarrow \\
+ (x,y)\in\{&\,(e_{1},F_{1}),(e_{1},F_{2}),(e_{2},F_{1}),(e_{2},F_{2}),(e_{3},F_{1}),(e_{3},F_{2}),(V_{1},e_{2}),(V_{1},e_{3}),\\ &(V_{1},F_{1}),
+  (V_{1},F_{2}),(V_{2},e_{1}),(V_{2},e_{3}),(V_{2},F_{1})
+ (V_{2},F_{2}), (V_{3},e_{1}), (V_{3},e_{2}),\\&(V_{3},F_{1}),(V_{3},F_{2}) \,\}.
+ \end{align*}
+
+ %----bild----------------------------
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=1cm 25cm 3cm 27cm]{JanusHead}
+\end{center}
+\caption{Janus-Head}
+\end{figure}
+ %------------------------------------
+ \item 
+ Der \emph{Open-Bag} ist eine simpliziale Fläche, die aus dem \emph{Janus-Head} hervorgeht, wenn man die Kante $e_{2}$ verdoppelt, das heißt sie wird beschrieben durch
+%\begin{figure}[h]
+ \begin{align*}
+  OB_{0}=\{\,V_{1},&V_{2},V_{3}\,\},OB_{1}=\{\,e_{1},e_{2},e_{3},e_{4} \,\}, OB_{2}=\{\,F_{1},F_{2}\,\} \text{ und } x<y \Leftrightarrow\\
+ (x,y)\in\{&\,(e_{1},F_{1}),(e_{1},F_{2}),(e_{2},F_{1}),(e_{3},F_{1}),(e_{3},F_{2}),(e_{4},F_{2}),(V_{1},e_{2}),(V_{1},e_{3}),\\ &(V_{1},e_{4}),
+  (V_{1},F_{1}),(V_{1},F_{2}),(V_{2},e_{1}),(V_{2},e_{3})
+ (V_{2},F_{1}), (V_{2},F_{2}), (V_{3},e_{1}),\\&(V_{3},e_{2}),(V_{3},e_{4}),(V_{3},F_{1}),(V_3,F_2) \,\}.
+ \end{align*}
+ \end{enumerate}
+%--------------------------------------------
+Um simpliziale Flächen vollständig und vor allem einfacher beschreiben zu können, führt man eine weitere Notation ein. Diese hängt von der Nummerierung der Knoten, Kanten und Flächen ab. Abgesehen davon ist sie eindeutig.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=1cm 25cm 3cm 27cm]{OB}
+\end{center}
+\caption{Open-Bag}
+\end{figure}
+\end{bsp}
+%\newpage
+\begin{definition}
+ Sei $(X,<)$ eine simpliziale Fläche, deren Knoten $V_{1},\ldots,V_{n}$, Kanten $e_{1},\ldots,e_{k}$ und Flächen $F_{1},\ldots,F_{m}$ ausgehend von ihrer Nummerierung linear geordnet sind. Das \emph{Symbol} von $(X,<)$ ist definiert durch 
+\[
+\mu((X,<)):=(n,k,m;(X_{0}(e_{1}),\ldots,X_{0}(e_{k})),(X_{1}(F_{1}),\ldots,X_{1}(F_{m}))).
+\]
+Man kann im Symbol die Knoten $V_{i}$ durch $i$, die Kanten $e_{j}$ durch $j$ und die Flächen $F_{l}$ durch $l$ ersetzen und nennt dann das resultierende Symbol das \emph{ordinale Symbol} $\omega((X,<))$ von $(X,<)$.
+\end{definition}
+\begin{bsp}
+Beispielsweise kann der Tetraeder $(T,<)$ durch das Symbol 
+\begin{align*}
+\mu ((T,<)):=(4,6,4;&(\{1,2\}, \{1,3\},\{1,4\},\{2,3\},\{2,4\},\{2,4\},\{3,4\})\\
+;&(\{4,5,6\},\{2,3,6\},\{1,3,5\},\{1,2,4\}))
+\end{align*}
+beschrieben werden.
+\end{bsp}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=1.5cm 24cm 5cm 26cm]{ET_Example1}
+\end{center}
+\caption{Tetraeder}
+\end{figure}
+
+Diese Notation wird später behilflich sein, einen vereinfachten Zugang zu der Manipulation simplizialer Flächen zu finden. Hier soll nun für gewisse Sphären skizziert werden, wie diese durch die Inzidenzen zwischen den Ecken und Flächen bis auf Isomorphie Eindeutig festgelegt werden können. Hierzu benötigt man jedoch folgende Definition.
+\begin{definition}
+Für eine simpliziale Fläche $(X,<)$ definiert man die Euler-Charakteristik $\chi (X)$ als 
+\[
+\chi(X):=\vert X_0\vert-\vert X_1\vert+\vert X_2\vert.
+\]
+\end{definition}
+\begin{bsp}
+\begin{enumerate}
+Betrachtet man die im obigem Beispiel eingeführten simplizialen Flächen, so erhält man folgende Euler-Charakteristiken:
+\item $\chi(D):=\vert D_0\vert-\vert D_1\vert+\vert D_2\vert=3-3+1=1$
+\item $\chi(n\Delta):=\vert n\Delta_0\vert-\vert n\Delta_1\vert+\vert n\Delta_2\vert=3n-3n+n=n$
+\item $\chi(J):=\vert J_0\vert-\vert J_1\vert+\vert J_2\vert=3-3+2=2$
+\item $\chi(OB):=\vert OB_0\vert-\vert OB_1\vert+\vert OB_2\vert=4-6+4=2$
+\end{enumerate}
+\end{bsp}
+
+
+%\begin{vor}
+%Man kann eine genauere Aussage über die Anzahl der Kanten und %Flächen einer geschlossenen simplizialen Fläche treffen, indem man sich folgendes überlegt:
+%\begin{itemize}
+%\item
+%abzahlargument 
+%\end{itemize}
+
+%\end{vor}
+\begin{bemerkung}
+Die Anzahl der Flächen einer geschlossenen simplizialen Fläche ist durch $2$ teilbar, da
+\[
+\vert X_{2} \vert = \frac{2\vert X_{1}\vert}{3}
+\]
+gilt.
+Die Anzahl der Kanten ist insbesondere durch 3 teilbar. 
+Genauer gesagt, existiert ein $\epsilon \in \mathbb{N}$ mit der Eigenschaft, dass
+\[
+\vert X_2 \vert=2\epsilon,
+\vert X_1 \vert=3\epsilon,
+\vert X_0 \vert=\epsilon+\chi(X)
+\]
+Man nennt $\epsilon$ den Flächen-Kanten-Parameter. Dieser erfüllt die Identitäten
+\[
+\epsilon=ggt(\vert X_1\vert,\vert X_2\vert)=\frac{\vert X_1\vert}{3}=\frac{\vert X_2\vert}{2}=\vert X_1\vert-\vert X_2\vert .
+\] 
+\end{bemerkung}
+%\begin{lemma}
+%Sei $X$ eine geschlossene simpliziale Fläche und $\epsilon$ der Flächen-Kantenparameter von $X$. Dann gilt 
+%\[
+%\epsilon=ggt(\vert X_1 \vert,\vert X_2\vert).
+%\] 
+%\end{lemma}
+%\begin{proof}
+%Um die obige Aussage zu nachzuprüfen, beweist man zunächst $\epsilon\vert ggt(\vert X_1 \vert,\vert X_2\vert)$ und dann $\epsilon\vert ggt(\vert X_1 \vert,\vert X_2\vert)$. 
+% Der Flächen-Kanten-Parameter $\epsilon$ teilt $\vert X_2 \vert$ und er teilt $\vert X_2 \vert$ nach obiger Bemerkung. Daraus kann man $\epsilon \vert ggt(\vert X_1\vert ,\vert X_2\vert)$ schließen. \newline
+% Man nehme nun $ ggt(\vert X_1\vert ,\vert X_2\vert) \nmid \epsilon$ an. Dann existiert ein $a \in \mathbb{N}\setminus \{1\}$, sodass $\epsilon=a* ggt(\vert X_1\vert ,\vert X_2\vert)$ gilt. Durch Nachrechnen erhält man 
+% \[kgV(\vert X_1\vert,\vert X_2\vert)=2*3*\epsilon
+% \]
+%  und 
+% \[
+% kgV(\vert X_1\vert,\vert X_2\vert)=\frac{\vert X_1\vert \vert X_2\vert}{ggt(\vert X_1\vert,\vert X_2\vert)}=\frac{2*3*\epsilon^2 *a}{a*ggt(\vert X_1\vert,\vert X_2\vert)}=2*3*a*\epsilon.
+% \]
+%  Also ist $2*3*\epsilon=2*3*a*\epsilon$, was $a=1$ impliziert und den gewünschten Widerspruch erzeugt.
+
+%\end{proof}
+%Insbesondere ist $\epsilon=\frac{\vert X_1 \vert}{3}.$
+
+
+
+
+ %------------------------------------
+%\newpage
+
+\begin{definition} 
+Sei $(X,<)$ eine simpliziale Fläche und $i,j \in \{\,0,1,2\,\}$ mit $i \neq j$. Dann definiert man für ein $x \in X_{i}$ die Menge $X_{j}(x)$ als
+\[
+X_{j}(x):=\{\,y \in X_{j}\,|\,x < y\,\} \text{, falls $i < j$  }
+\]
+bzw. 
+\[
+X_{j}(x):=\{\,y \in X_{i}\,|\,y < x\}, \text{ falls $j<i$}.
+\]
+Für $S \subseteq X_{i}$ ist 
+\[
+X_j(S):= \bigcup_{x\in S}X_{j}(x).
+\]
+\end{definition}
+%\newpage
+\begin{bemerkung}
+Für eine simpliziale Fläche $(X,<)$ können die Axiome aus \Cref{def1} mit obiger Definition neu umformuliert werden:
+\begin{itemize}
+\item $\vert X_{0}(e)\vert=2$ für alle $e \in X_{1}$,
+\item $\vert X_{0}(F)\vert=3$ für alle $F \in X_{2}$,
+\item $\vert X_{1}(F)\vert=3$ für alle $F \in X_{2}$,
+\item $1\leq  \vert X_{2}(e)\vert \leq 2$ für alle $e \in X_{1}$.
+
+\end{itemize}
+\end{bemerkung}
+\begin{definition}  Eine \emph{geschlossene} simpliziale Fläche ist eine simpliziale Fläche, deren Kanten alle innere Kanten sind. Eine geschlossene simpliziale Fläche der Euler-Charakteristik  2 nennt man \emph{Sphäre}.
+\end{definition} 
+\begin{definition}
+Sei $X$ eine simpliziale Fläche.
+
+ Falls es verschiedene Kanten $e_1,e_2$ in $X$ mit $X_0(e_1)=X_0(e_2)$ gibt, dann nennt man $(e_1,e_2)$ einen 2-Waist.
+ \begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=0cm 25.5cm 5cm 26.5cm]{Image_2Waist}
+\end{center}
+%\caption{Kantendrehung}
+\end{figure} 
+ Falls es paarweise verschiedene Kanten $e_1,e_2,e_3$ in $X$ gibt, die $\vert X_0(e_1)\cup X_0(e_2)\cup X_0(e_3) \vert=3$ und $X_2(e_i)\cap X_2(e_j)=\emptyset$ für $i \neq j\in\{1,2,3\}  $ erfüllen, dann nennt man $(e_1,e_2,e_3)$ einen 3-Waist. 
+\end{definition}
+Mit dem Open-Bag ist bereits ein Beispiel für eine simpliziale Fläche mit einem 2-Waist bekannt. Beispiele für simpliziale Flächen mit einem 3-Waist folgen mit der Einführung der Multi-Tetraeder. 
+\begin{definition} \label{2waistk}
+Sei $X$ eine Sphäre mit einem 3-Waist $(e_1,e_2,e_3)$. Dann lässt sich $X_2$ in  Mengen $M_1,M_2$ aufteilen, die Folgendes erfüllen:
+\begin{itemize}
+\item $M_1,M_2$ sind nichtleer und disjunkt
+\item $M_1\cup M_2=X_2$
+\item $\vert M_i \cap X_2(e_j)\vert =1$ für $i=1,2$ und $j=1,2,3.$
+\item $M_1,M_2$ sind maximal bezüglich Inklusion mit der Eigenschaft, dass es für jedes $F$ in $M_1$ bzw. $M_2$ eine benachbarte Fläche $F'$ in $M_1$ bzw. $M_2$ gibt.
+\end{itemize}  
+Man nennt $M_1,M_2$ die \emph{3-Waist Komponenten}. 
+\end{definition}
+Analog definiert man auch \emph{2-Waist Komponenten}.
+\begin{definition}
+Sei $X$ eine Sphäre mit einem 2-Waist $(e_1,e_2)$. Dann lässt sich $X_2$ in  Mengen $M_1,M_2$ aufteilen, die Folgendes erfüllen:
+\begin{itemize}
+\item $M_1,M_2$ sind nichtleer und disjunkt
+\item $M_1\cup M_2=X_2$
+\item $\vert M_i \cap X_2(e_j)\vert =1$ für $i=1,2$ und $j=1,2.$
+\item $M_1,M_2$ sind maximal bezüglich Inklusion mit der Eigenschaft, dass es für jedes $F$ in $M_1$ bzw. $M_2$ eine benachbarte Fläche $F'$ in $M_1$ bzw. $M_2$ gibt.
+\end{itemize}  
+Man nennt $M_1,M_2$ die \emph{2-Waist Komponenten}. 
+\end{definition}
+\subsection{Homomorphismen}
+\textbf{Resultate}\\
+$\fbox{
+\parbox{14cm}{\begin{itemize}
+\item elementare Eigenschaften von Homorphismen simplizialer Flaechen
+\end{itemize}
+}}$\\
+Nachdem im letzten Abschnitt ein grundlegendes Verständnis für simpliziale Flächen erzielt wurde, führen wir in diesem Abschnitt Homomorphismen zwischen simplizialen Flächen ein.
+aus.
+\begin{definition} Seien $(X,<)$ und $(Y,\prec)$ simpliziale Flächen.
+\begin{enumerate}
+ \item Man nennt eine bijektive Abbildung $\alpha: X \to Y$ einen Isomorphismus, falls $A<B$ in $(X,<)$ genau dann gilt, wenn $\alpha(A) \prec \alpha(B)$ in $(Y,\prec)$ gilt. In diesem Fall schreibt man $X \cong Y$.
+\item Eine surjektive Abbildung $\alpha: X \to Y$ heißt Überdeckung, falls aus $A<B$ in $(X,<)$ folgt, dass $\alpha(A) \prec \alpha(B)$ in $(Y,\prec)$ gilt. 
+\end{enumerate}
+\end{definition}
+\begin{bemerkung}
+\begin{itemize}
+\item
+
+Für $i=0,1,2$ induziert eine Überdeckung $\alpha:X\to Y$ surjektive Abbildungen $X_{i} \to Y_{i}$.
+\item 
+Für $i=0,1,2$ induziert ein Isomorphismus $\beta:X \to Y$  bijektive Abbildungen $X_{i} \to Y_{i}$.
+\item
+Für eine simpliziale Fläche $X$ und eine Fläche $F$ in $X$ sei $X(F)$ die simpliziale Fläche, die mit 
+\begin{align*}
+&X(F)_0:=X_0(F)\\
+&X(F)_1:= X_1(F)\\
+&X(F)_2:= \{F\} 
+\end{align*}
+ identifiziert wird.
+Dann gilt für simpliziale Flächen $X$ und $Y$ mit Flächen $F \in X_2$ und $F' \in Y_2$, dass $X(F)$ und $Y(F')$ isomorph sind. Für einen Isomorphismus $\alpha : X(F)\mapsto Y(F')$ gibt es genau 6 Möglichkeiten.
+\item
+ Zwei isomorphe simpliziale Flächen $(X,<)$ und $(Y, \prec)$ haben dieselbe Euler-Charakteristik, denn eine bijektive Abbildung $\alpha:X \to Y$ impliziert, wie oben schon erwähnt, bijektive Abbildungen  $X_i \to Y_i$ für $i=0,1,2$. Damit ist $\vert X_i \vert =\vert Y_i \vert $, woraus man
+ \[
+\chi(X) =\vert X_0 \vert - \vert X_1\vert +\vert X_2 \vert = \vert Y_0 \vert - \vert Y_1\vert +\vert Y_2 \vert =\chi(Y)
+ \]
+ folgern kann. \\
+ Die Umkehrung gilt im Allgemeinen nicht.
+\end{itemize}
+\end{bemerkung}
+\begin{definition}
+Sei $X$ eine simpliziale Fläche. Einen Isomorphismus $\phi$ von
+$X$ nach $X$ nennt man Automorphismus. Die Menge aller Automorphismen von $X$ nach $X$ mit der Verkettung von Abbildungen als Verknüpfung nennt man Automorphismengruppe von $X$ und bezeichnet sie mit $Aut(X)$. 
+\end{definition}
+\begin{bsp}
+Die Automorphismengruppe des Dreiecks $D$ besteht aus drei 
+Spiegelungen und 3 Drehungen. Also ist
+\[
+Aut(D)\cong D_3.
+\]
+\end{bsp}
+\begin{bemerkung}
+Sei $X$ eine Sphäre und $F$ eine Fläche in $X.$ Für $i=0,1$ sei 
+\[
+f:X_i(F)\mapsto X_i(F)  
+\] 
+eine bijektive Abbildung. Dann gibt es höchstens einen Automorphismus $\phi \in Aut(X)$ mit 
+\[
+\phi(x)=f(x) 
+\]
+für $x\in X_i(F).$
+\end{bemerkung}
+
+
+\subsection{Vertex-treue Sphären}
+Vom besonderem Interesse sind jene simpliziale Flächen für die es reicht, die Menge der Ecken der zu den jeweiligen Flächen anzugeben, um so die Kanten und Flächen und somit auch die simpliziale Fläche eindeutig festzulegen. An dieser Stelle werden einführende Beispiel und Definitionen präsentiert, damit im Kapitel .. und Kapitel .. tiefere Resultate formuliert werden können.
+\begin{definition}
+Man nennt eine simpliziale Fläche $(X,<)$ $\emph{vertex-treu}$, falls die Abbildung
+\[
+X_1 \cup X_2 \to Pot(X_0),S \mapsto X_0(S)
+\]
+ injektiv ist. 
+
+Falls dies der Fall ist, identifiziert man die Kanten und Flächen mit ihren Bildern unter obiger Abbildung, das heißt $X_1 \subseteq Pot_2(X_0)$ bzw. $X_2\subseteq Pot_3(X_0)$. 
+\end{definition}
+\begin{bsp}
+\begin{itemize}
+\item Eine simpliziale Fläche mit einem 2-Waist ist nicht vertex-treu.
+\item Der Janus-Head ist nicht vertex-treu, da die beiden Flächen zu den selben drei Ecken inzident sind.
+\end{itemize}
+\end{bsp}
+\begin{definition}
+Sei $P$ eine endliche Menge mit mindestens 3 Elementen. Eine nicht-leere Menge $\xi \subseteq Pot_3(P)$ für die $P=\bigcup_{F\in \xi} F$ gilt, nennt man einen \emph{Flächenträger} auf $P$, falls für alle $V\in P$ die Menge aller $F_i \in \xi$ mit $V \in F_i$ in einen Zykel  $(F_1,\ldots ,F_n)$ geschrieben werden kann, sodass $\vert F_i \cap F_{i+1}\vert=2 $ für $i=1,\ldots n-1$ gilt und aus $\vert F_i \cap F_{i+1}\vert=2$ entweder $\vert i-j\vert =1$ oder $\{i,j\}=\{1,n\}$ folgt.  
+\end{definition}
+\begin{lemma}
+Sei $P$ eine endliche Menge und $\xi \subseteq Pot_3(P)$ ein Flächenträger. Dann definiert $\mathcal{S}(\xi)$ mit den Mengen 
+\[
+\mathcal{S}(\xi)_i:=\{A\subseteq F\mid F\in \xi,\vert A\vert=i+1\}\text{ fuer }i=0,1,2 
+\]eine vertex-treue simpliziale Fläche, wobei die Inzidenz $<$ durch Mengeninklusion gegeben ist. Man nennt $\mathcal{S},$ die durch $\xi$ getragene Fläche.
+\end{lemma}
+\begin{proof}
+Der Beweis kann dem Skript Simplicial Surfaces of Congruent Triangles entnommen werden.
+\begin{comment}
+Man muss nachweisen, dass $S(\xi)$ die Axiome in \Cref{def1} erfüllt.
+\begin{itemize}
+\item Das es zu jeder Kante genau zwei Ecken gibt, die inzident zu dieser sind, ist klar, denn zu einer 2-elementigen gibt es genau zwei 1-elementigen Teilmengen.
+\item Da es zu einer 3-elementigen Menge genau drei 1-elementigen Teilmengen gibt, gibt es in $\mathcal{S}$ zu jeder Fläche genau drei Knoten. 
+\item Eine Kante ist durch die Mengeninklusion inzident zu mindestens einen Fläche und durch obige Definition eines Flächenträgers erhält man, dass eine Kante zu höchstens zwei Flächen inzident ist. 
+\item Die Anordnung der Flächen einer Ecke in einem Schirm wird in Definition 4.3 verlangt und ist somit klarerweise erfüllt.
+\end{itemize}
+\end{comment}
+\end{proof}
+\begin{bsp} \label{bspO}
+\begin{enumerate}
+Der Flächenträger 
+\[
+\zeta=\{\{1,2,3\},\{1,3,4\},\{1,2,4\},\{2,3,4\}\}
+\]
+bildet eine getragene simpliziale Fläche, die zum Tetraeder isomorph ist.
+\item Der Butterfly lässt sich durch 
+\[
+\zeta =\{\{1,2,3\},\{2,3,4\}\}
+\] darstellen.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=1cm 25cm 5cm 27cm]{Butterfly}
+\end{center}
+\caption{Butterfly}
+\end{figure}
+\item 
+
+Für $n\geq 3$ definiert man den Double-n-gon $(n)^2$ durch den Flächenträger  
+\[
+\zeta=\{\{1,i,i+1\},\{i,i+1,n+2\}\mid i=2\ldots n-1\}\cup \{\{1,2,n+1\},\{2,n+1,n+2\}\}
+\]  
+\item
+Für $n=4$ erhält man beispielsweise den Oktaeder $O$ mit dem  Flächenträger
+\[
+\zeta=\{\{1,2,3\},\{1,3,4\},\{1,4,5\},\{1,2,5\},\{6,2,3\},\{6,3,4\},\{6,4,5\},\{6,2,5\}\}
+\]
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=17cm 17cm 5cm 20cm]{Image_Octahedron}
+\end{center}
+\caption{Oktaeder}
+\end{figure} 
+\end{enumerate}
+\end{bsp}
+
+%\begin{definition}
+ % Seien $(X^1,<_1)\ldots (X^n,<_n)$ für $n\in \mathbb{N}$ und simpliziale Flächen, die $X^j\cap X^i=\emptyset $ fuer $i\neq j$ erfüllen. Dann bildet die Menge $Y=\bigcup_{i=1}^{n}X^i$ mit den Identitaeten
+%\begin{align*}
+%  Y_0&=\bigcup_{i=1}^{n}X_0^i\\
+%  Y_1&=\bigcup_{i=1}^{n}X_1^i\\
+%  Y_2&=\bigcup_{i=1}^{n}X_2^i\\
+%\end{align*}   
+%und der Relation 
+%\[
+%x<y \text{ in } Y \Leftrightarrow x <_i y \text{ in } X^i \text{ fuer } 1\leq i\leq n 
+%\]
+%die simpliziale Fläche $(Y,<)$.
+%  \end{definition}
+\section{Der Face-graph simplizialer Flächen}
+\textbf{benötigte Vorkenntnisse}\\
+$\fbox{
+\parbox{14cm}{\begin{itemize}
+\item Definition einer simplizialen Flaeche 
+\item elementare Eigenschaften simplizialer Flaechen
+\end{itemize}
+}}$\\\\
+In diesem Abschnitt der Arbeit wird der Face-graph einer simplizialen Fläche behandelt. Genauer gesagt wird thematisiert, wie viel Struktur die Kanten-Flächen-Inzidenzen einer smplizialen Fläche liefern können.  
+Für diesen Abschnitt nehme man ohne Einschränkung an, dass die Flächenmenge einer simplizialen Fläche mit $n$ Flächen  durch $\{1,\ldots,n\}$ gegeben ist.\\\\
+\textbf{Hauptresultate}\\
+$\fbox{
+\parbox{14cm}{\begin{itemize}
+\item Definition einer simplizialen Flaeche 
+\item elementare Eigenschaften simplizialer Flaechen
+\end{itemize}
+}}$\\
+\begin{definition}
+Sei $X$ eine Sphäre, dann definiert man den Face-Graph $G_X=(V,E)$ von $X$ durch durch die Knotenmenge $V=X_2$ und die Kantenmenge $E=X_1.$ Zwei Knoten $F,F'$ des Graphen sind adjazent, falls es eine Kante $e\in X_1$ gibt, die $X_2(e)=\{F,F'\}$ erfüllt. 
+\end{definition}
+\begin{bsp}
+Der Face-Graph des Tetraeders bildet einen vollständigen Graphen mit vier Knoten.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=0cm 20.5cm 14cm 23cm]{Image_FaceGraphTetraeder}
+\end{center}
+\caption{Face-Graph des Tetraeders}
+\end{figure}
+\end{bsp}
+\begin{bemerkung}
+Abgesehen vom Tetraeder ist jeder Facegraph einer Sphäre mit höchstens $3$ Farben färbbar.
+\end{bemerkung}
+\begin{definition}
+Sei $X$ eine Sphäre. Dann definiert man die Matrix 
+$F_X\in \{0,1\}^{n \times n}$ durch
+\[
+F_{i,j}=
+\Biggl\{
+\begin{tabular}[l]{lcr}
+1,&\textcolor{black}{falls $\{i,j\}\in X_2(X_1)$} \\
+0,& sonst\\
+\end{tabular}
+\] und nennt $F_X$ die Flächen-Inzidenz-Matrix. 
+\end{definition}
+\begin{bsp}
+Für den Oktaeder wie in \Cref{bspO} beschrieben, erhält man die Flächen-Inzidenz-Matrix 
+\[
+F_O=
+\left( \begin{array}{rrrrrrrr}
+0 & 1 & 0 & 1 & 1 & 0 & 0 & 0\\ 
+1 & 0 & 1 & 0 & 0 & 1 & 0 & 0\\
+0 & 1 & 0 & 1 & 0 & 0 & 1 & 0\\
+1 & 0 & 1 & 0 & 0 & 0 & 0 & 1\\ 
+1 & 0 & 0 & 0 & 0 & 1 & 0 & 1\\
+0 & 1 & 0 & 0 & 1 & 0 & 1 & 0\\
+0 & 0 & 1 & 0 & 0 & 1 & 0 & 1\\
+0 & 0 & 0 & 1 & 1 & 0 & 1 & 0\\
+\end{array}
+\right)
+\]
+
+\end{bsp}
+
+\begin{bemerkung}
+\begin{itemize}
+\item In jeder Spalte und Zeile der Flächen-Inzidenz-Matrix einer vertex-treuen simplizialen Fläche befinden sich genau 3 Einsen. 
+\item Die Flächen-Inzidenz-Matrix einer simplizialen Fläche  ist symmetrisch.
+\item $\lambda =3$ ist ein Eigenwert der Flächen-Inzidenz-Matrix einer vertex-treuen Sphäre. 
+\end{itemize}
+\end{bemerkung}
+\begin{lemma}
+Seien $X$ und $Y$ zwei isomorphe simpliziale Flächen. Dann existiert eine Permutationsmatrix $P\in \{0,1\}^{n \times n}$ so, dass 
+\[
+F_X=PF_YP^{-1}
+\] 
+\end{lemma}
+\begin{proof}
+Sei $\alpha:X \to Y $ ein Isomorphismus von $X$ nach $Y$. Dieser induziert eine bijektive Abbildung $\beta :X_2\to Y_2$, wobei $X_2=Y_2=\{1,\ldots,n\}$ gilt. Mithilfe der Abbildung $\beta,$ kann die Permutationsmatrix $P\in \{0,1\}^n$ mit
+\[
+P_{i,j}=
+\Biggl\{
+\begin{tabular}[l]{lcr}
+1,&\textcolor{black}{$\beta(i)=j$} \\
+0,& sonst\\
+\end{tabular}
+\]
+konstruiert werden.
+Dies liefert die obige Behauptung, denn es gilt
+\[
+(PM_YP^{-1})_{ij}=(M_Y)_{\beta(i),\beta(j)}=(M_X)_{i,j}
+\] .
+\end{proof}
+\begin{bemerkung}
+Die Umkehrung ist jedoch nur richtig, wenn man sich auf den Fall $\chi(X)=2$ beschränkt.  Dies wird hier jedoch nicht ausgeführt. Von größerem Interesse ist an dieser Stelle, der Zusammenhang zwischen einer Sphäre und einer aus dieser durch Anwenden einer der oben eingeführten Operationen hervorgehenden Sphäre.  
+Sei $X$ eine Sphäre mit zugehörigen Inzidenz-Matrizen $F_X$ und $U_X$
+\begin{enumerate}
+\item Butterfly Deletion
+\begin{itemize}
+\item Sei $e$ eine Kante in $X$ für die die Butterfly Deletion durchführbar ist und $X_2(e)=\{i_1,i_2\}.$ Dann gibt es genau zwei Flächen $j_1,j_2,$ die zu $i_2$ verschieden sind und zu $i_1$ adjazent sind. Analog gibt es $j_3,j_4,$ die zu $i_1$ verschieden sind und zu $i_2$ adjazent sind.
+Sei zudem $F\in \{0,1\}^{n\times n}$ die Matrix, die durch
+ \[
+F_{i,j}=
+\Biggl{\{\begin{tabular}[l]{lcr}
+1,&\textcolor{black}{$(i,j)\in \{(j_1,j_2),(j_2,j_1)\}$} \\
+1,&\textcolor{black}{$(i,j)\in \{(j_3,j_4),(j_4,j_3)\}$} \\
+$(F_{X})_{i,j}$,& sonst\\
+\end{tabular}}
+\] entsteht. Dann geht die Flächen-Inzidenz-Matrix $F_{{}^e\beta(X)}$  durch Streichen der $i_1-$und $i_2-$ten Zeilen und Spalten aus $F$ hervor.
+\end{itemize}
+\item Butterfly Insertion
+\begin{itemize}
+\item Für Kanten $e_1,e_2$ für die eine Butterfly Insertion durchführbar ist und $X_2(e_1)=\{i_1,j_1\}$ und $X_2(e_2)=\{i_2,j_2\}$ erhält man die Matrix $F_{\beta_{e_1,e_2}}$ durch die Matrix 
+\[
+F_{i,j}=
+\Biggl{\{\begin{tabular}[l]{lcr}
+0,&\textcolor{black}{$(i,j)\in \{(i_1,j_1),(j_1,i_1)\}$} \\
+0,&\textcolor{black}{$(i,j)\in \{(i_2,j_2),(j_2,i_2)\}$} \\
+$(F_{X})_{i,j}$,& sonst\\
+\end{tabular}}
+\]
+den Vektor $v\in \{0,1\}^n $
+\[
+v_{i}=
+\Biggl{\{\begin{tabular}[l]{lcr}
+1,& $i=i_1,j_1$\\
+0,& sonst\\
+\end{tabular}}
+\]
+und den Vektor $w\in \{0,1\}^n $
+\[
+w_{i}=
+\Biggl{\{\begin{tabular}[l]{lcr}
+1,& $i=i_2,j_2$\\
+0,& sonst\\ 
+\end{tabular}}
+\]
+indem man diese zur Blockmatrix 
+\[
+\left[ 
+\begin{array}{c|cc} 
+  F & v& w \\ 
+  \hline 
+  v^{tr}& 0 &1 \\
+  w^{tr} &1 &0  \\
+\end{array} 
+\right]
+\]
+zusammensetzt.
+\end{itemize} 
+\item Kantendrehung
+\begin{itemize} 
+
+\item Sei $e \in X_1$ eine drehbare Kante. Dann ist $X_2(e)=\{i_1,i_2\}$ und $X_2(X_1(\{i_1,i_2\}))-\{i_1,i_2\}=\{j_1,j_2,j_3,j_4\}$ für paarweise verschiedene $i_1,i_2,j_1,j_2,j_3,j_4,$ die 
+
+\begin{align*}
+&X_0(e)\cap X_0(j_1) \cap X_0(j_2)\neq \emptyset\\
+\textcolor{black}{und} &X_0(e)\cap X_0(j_3) \cap X_0(j_4)\neq \emptyset\\
+\end{align*}
+erfüllen. Die Flächen-Inzidenz-Matrix $F_{X^e}\in \{0,1\}^{n\times n}$ erhält man durch
+\[
+{F_{X^e}}_{i,j}=
+\Biggl{\{\begin{tabular}[l]{lcr}
+1,&\textcolor{black}{$(i,j)\in \{(i_1,j_2),(j_2,i_1)\}$} \\
+0,&\textcolor{black}{$(i,j)\in \{(i_1,j_3),(j_3,i_1)\}$} \\
+1,&\textcolor{black}{$(i,j)\in \{(i_2,j_3),(j_3,i_2)\}$} \\
+0,&\textcolor{black}{$(i,j)\in \{(i_2,j_2),(j_2,i_2)\}$} \\
+$(F_{X})_{i,j}$,& sonst\\
+\end{tabular}}
+\]
+\end{itemize}
+\item Tetraedererweiterung
+\begin{itemize}  
+\item Sei $X_2(i)=\{j,k,l\}$ für paarweise verschiedene $j,k,l.$ Dann erhält man die Matrix $F_{T^i(X)}$ durch 
+die Matrix $F$ die durch Streichen der i-ten Zeilen und Spalten aus $F_{T^i(X)}$ hervorgeht und durch die Zusammensetzung
+\[
+\left[ 
+\begin{array}{c|ccc} 
+  F & e_j& e_k &e_l \\ 
+  \hline 
+  {e_j}^{tr} & 0 & 1 & 1  \\
+  {e_k}^{tr} & 1 & 0 & 1 \\
+  {e_l}^{tr} & 1 & 1 & 0 \\
+\end{array} 
+\right]
+\]
+wobei $e_j,e_k,e_l$ die jeweiligen Einheitsvektoren mit $n-1$ Eintragen sind. 
+\item Sei $V\in X_0$ eine Ecke vom Grad 3 in $X.$ Dann ist $X_2(V)=\{i_1,i_2,i_3\}$ und $X_2(X_1(X_2(V)))-X_2(V)=\{j,k,l\}\subset X_2$
+Sei $F\in \{0,1\}^{n-3\times n-3}$ die Matrix, die durch Streichen der $i_1-ten,i_2-ten$ und $i_3-ten$ Zeilen und Spalten  aus $F_X$ entsteht und $v\in \{0,1\}^{n-3}$ der Vektor mit
+\[
+v_{i}=
+\Biggl{\{\begin{tabular}[l]{lcr}
+1,&\textcolor{black}{$i\in \{j,k,l\}$} \\
+0& sonst\\
+\end{tabular}}
+\] Dann erhält man $F_{T_V(X)}$ durch 
+\[
+\left[ 
+\begin{array}{c|ccc} 
+  F & v \\ 
+  \hline 
+  {v}^{tr} & 0\\
+\end{array} 
+\right]
+\]
+\end{itemize}
+\end{enumerate}
+
+\end{bemerkung}
+\begin{definition}
+Für $k\leq l$ und $k\leq m$ definiert man $I^{l,m}_k\in \{0,1\}^{l \times m}$ als
+\[
+\left( 
+\begin{array}{cccc} 
+  I_k & 0_{k,m-k} \\
+  0_{l-k,k} & 0_{l-k,m-k}\\
+\end{array} 
+\right).
+\]
+\end{definition}
+
+\begin{satz}
+Sei $X$ eine Sphäre mit einem 2-Waist. Dann gibt es eine Permutationsmatrix $P\in \{0,1\}^{n\times n}$ so, dass $F_X$ sich auf die Gestalt 
+\[
+PF_XP^{-1}=
+\left[ 
+\begin{array}{c|c} 
+  A & I^{k,n-k}_2 \\ 
+  \hline 
+  I^{k,n-k}_2 & B 
+\end{array} 
+\right]
+\] 
+bringen lässt, wobei $k$ die Anzahl der Flächen in der 2-Waist Komponente $M_1$ ist.
+\end{satz}
+\begin{proof}
+Seien $M_1=\{i_1,\ldots,i_k\}$, $M_1=\{j_1,\ldots,j_{n-k}\}$ die 2 Waist Komponenten des 2-Waists $(e_1,e_2)$ in $X$. Seien ohne Einschränkung $i_1,j_1$ $e_1-$Nachbarn und $i_2,j_2$ $e_2-$Nachbarn. Man vertauscht die folgenden Zeilen und Spalten:
+\begin{itemize}
+\item Man tauscht die $j_1-te$ Zeile mit der ersten Zeile und die  $j_1-$Spalte mit der ersten Spalte.
+\item Man tauscht die $j_2-te$Zeile mit der zweiten Zeile und die  $j_1-$Spalte mit der zweiten Spalte.
+\item Falls die $3\leq i \leq k$ in $M_2$ ist, dann tauscht man die $i-$te Zeile mit einer der letzten $n-k$ Zeilen, die zu einer Fläche in $M_1$ gehört. Selbiges gilt für die $i-$te Spalte.
+\end{itemize} 
+So erhält man eine Flachen Matrix, in der die ersten $k$ Zeilen bzw. Spalten zu  Flächen in $M_1$ gehören und die restlichen $n-k$ Zeilen zu Flächen in $M_2$. Beim genaueren betrachten erkennt man, dass die durch Permutationen entstandene Matrix die gewünschte Gestalt hat. Da diese Gestalt ausschließlich durch simultanes Vertauschen der Zeilen bzw. Spalten der Matrix $F_X$ erzielt wurde, existiert also eine Permutationsmatrix $P$, sodass die Multiplikation von links und die Multiplikation des Inversen von rechts  die skizzierte Form hervorbringt.
+\end{proof}
+
+\begin{satz}
+Sei $X$ eine Sphäre mit einem 3-Waist. Dann gibt es eine Permutationsmatrix $P\in \{0,1\}^{n \times n}$ so, dass $F_X$ sich auf die Gestalt 
+\[
+PF_XP=
+\left[ 
+\begin{array}{c|c} 
+  A & I^{l,n-l}_3 \\ 
+  \hline 
+  I^{n-l,l}_3 & B 
+\end{array} 
+\right]
+\] 
+bringen lässt, wobei $A\in \{0,1\}^{l}$ und $B\in \{0,1\}^{n-l}$.
+\end{satz}
+\begin{proof}
+
+Analog
+\end{proof}
+$\textcolor{red}{zusmmenhang-zwischen-den-Flaechengraphen-eines-Multitetraeders}$ $\textcolor{red}{ -und-seinem-Kind}$
+
+\section{Manipulation simplizialer Flächen}
+Dieses Kapitel beschreibt das Manipulieren simplizialer Flächen, um neue simpliziale Flächen konstruieren. Im Genauerem werden nun die Operationen
+\begin{itemize}
+\item Butterfly Deletion,
+\item Kantendrehung,
+ \item Butterfly Insertion
+ \item und Tetraedererweitung
+\end{itemize} 
+ eingeführt.
+Diese Operationen kann man ebenfalls dem Skript entnehmen und sind somit nur als eine Wiederholung zu verstehen. Im Teil der die Kantendrehung näher erläutert, ist es Ziel die Transitivität dieser Operation unter strikteren Bedingungen zu formulieren und zu beweisen.
+Für die Definition der Konstruktionen nimmt man an, dass $X$ eine simpliziale Fläche mit $\vert X_2 \vert \geq 4$ ist.
+
+%Zur Einfachhalt halber nimmt man an, dass eine simpliziale Fläche $X$ mit k Ecken, m Kanten und n Flächen durch die Menge 
+%\[
+%X_0\cup X_1\cup X_2=\{V_1\ldots V_k\}\cup\{e_1\ldots e_m\}\cup\{F_1\ldots F_n\}
+%\] 
+%dargestellt wird.
+  \subsection{Tetraeder}
+ Um das Erweitern durch Tetraeder zu beschreiben, wird die zusätzliche Annahme getroffen, dass die betrachteten Sphären vertex-treu sind. Es ist möglich, eine Definition der Erweiterungen auch in dem allgemeinen Fall anzugeben, aber hierauf wird an dieser Stelle verzichtet.
+ Hilfreich hierfür ist die Definition von getragenen Flächen. Man betrachte zunächst folgendes Lemma.
+\begin{lemma}
+Seien $U,P,Q$ endliche Mengen für die $U=P\cup Q$ und $\vert P\cap Q \vert \geq 3$ gilt. Außerdem sind $U\setminus P\neq \emptyset$ und $U\setminus Q \neq \emptyset$. Weiter seien $\xi \subseteq Pot_3(P)$ ein Flächenträger auf P und $\zeta \subseteq Pot_3(Q)$ ein Flächenträger auf $Q$ so, dass $\zeta \cap \xi$ ein Flächenträger auf $P \cap Q$ ist. Dann ist die symmetrische Differenz $\pi :=\xi \Delta \zeta$ ein Flächenträger einer simplizialen Fläche, falls es einen Knoten gibt, der in all den Mengen $\mathcal{S}(\xi),\mathcal{S}(\zeta),\mathcal{S}(\xi\cap\zeta)$ liegt. 
+\end{lemma}
+
+\begin{definition}
+Sei $X$ eine vertex-treue Sphäre, beschrieben durch den Flächenträger $\xi$ und $F$ eine Fläche in $X$ mit $X_0(F)=\{V_1,V_2,V_3\}.$ Sei nun $P\notin X_0$, dann definieren wir einen Tetraeder durch den Flächenträger
+\[
+\xi_T=\{\{V_1,V_2,V_3\},\{P,V_1,V_2\},\{P,V_1,V_3\},\{P,V_2,V_3\}\}
+\] 
+und damit die simpliziale Fläche $Y$, die durch $\xi \Delta \xi_T$ getragen wird. Man sagt $Y$ entsteht durch das Anhängen eines Tetraeders an $X$ an der Fläche $F$ und bezeichnet sie mit $T^F(X)$.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=20cm 18cm 5cm 22cm]{Image_TetrahedronExt}
+\end{center}
+\caption{Tetraedererweiterung}
+\end{figure}
+
+\end{definition}
+
+\begin{definition}
+Sei $X$ eine vertex-treue Sphäre, die durch den Träger $\xi$ beschrieben wird und $P\in X_0$ eine Ecke vom Grad 3. Dann gibt es Ecken $V_1,V_2,V_3,$ sodass
+\[
+X_0(X_2(P))=\{P,V_1,V_2,V_3\}
+\] 
+ist. Da $X$ vertex-treu ist, identifiziert man die Flächen in $X_2$  mit den inzidenten Ecken.  Man definiert nun einen Tetraeder durch den Träger 
+\[
+\xi_T=\{\{V_1,V_2,V_3\},\{P,V_1,V_2\},\{P,V_1,V_3\}\{P,V_2,V_3\}\}.
+\]  Dadurch entsteht die simpliziale Fläche $Y$, die durch $\xi \Delta \xi_T$ getragen wird. Man sagt $Y$ ist dadurch entstanden, das der Tetraeder an der Stelle $P$ entfernt wurde und bezeichnet sie mit $T_P(X)$.
+\end{definition}
+
+  \subsection{Butterfly Deletion}
+ \begin{definition}
+ Sei $X$ eine Sphäre mit paarweise verschiedenen Ecken $V_1\ldots ,V_4$, Kanten $e_1,\ldots,e_5$ und Flächen $F_1,F_2$,
+ % und $V_1,V_2,V_3,V_4$ Ecken, $e_1,e_2,e_3,e_4,e_5$  Kanten und  $F_1,F_2,$ Flächen 
+ die folgende Relationen erfüllt: 
+ \begin{itemize}
+ \item $X_2(e_1)=\{F_1,F_2\}$
+ \item $X_0(X_2(e_1))=\{V_1,V_2,V_3,V_4\}$
+ \item $X_1(X_2(e_1))=\{e_1,e_2,e_3,e_4,e_5\}$
+ \item   $(X_0(e_1),X_0(e_2),X_0(e_3),X_0(e_4),X_0(e_5)) = (\{V_2,V_4\},\{V_1,V_2\},\{V_2,V_3\},\{V_3,V_4\},$ $\{V_1,V_4\})$
+ \item $(X_1(F_1),X_1(F_2))=(\{e_1,e_2,e_5\},\{e_1,e_3,e_4\})$
+\end{itemize}  
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=13cm 19cm 5cm 22cm]{Image_ButterflyDeletion}
+\end{center}
+\caption{Ausschnitt einer simplizialen Fläche}
+\end{figure}
+
+Man erhält die simpliziale Fläche ${}^{e_1}\beta(X)$, die durch das Symbol $\mu({}^{e_1}\beta(X))$ beschrieben wird, durch das Anwenden der folgenden Schritte beim ordinalen Symbol $\mu((X,<))$: 
+\begin{itemize}
+\item die Anzahl der Ecken wird um 1, die Flächenanzahl um 2 und die Kantenanzahl um 3 verringert.
+\item der Eintrag $X_0(e_1)$ an der Stelle $e_1$, der Eintrag $X_0(e_2)$ an der Stelle $e_2$ und Eintrag $X_0(e_3)$ an der Stelle $e_2$ werden gelöscht. 
+\item der Eintrag $X_1(F_1)$ an der Stelle $F_1$ und der Eintrag $X_1(F_2)$ an der Stelle $F_2$ werden gelöscht. 
+\
+\item an jeder Stelle $\bar{F}$ in der $e_2$ in $X_1(\bar{F})$ vorkommt, wird $e_2$ durch $e_5$ ersetzt
+\item an jeder Stelle $\bar{F}$ in der $e_3$ in $X_1(\bar{F})$ vorkommt, wird $e_3$ durch $e_4$ ersetzt,
+\item an jeder Stelle $\bar{e}$ an der $V_2$ in $X_0(\bar{e})$ vorkommt, wird $V_2$ durch $V_4$ ersetzt.
+\end{itemize}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=22cm 12cm 5cm 17cm]{Image_ButterflyDeletion2}
+\end{center}
+\caption{Butterfly Deletion}
+\end{figure}
+Zur Durchführung der Butterfly-Deletion reicht jedoch die Angabe der Kante $e_1$, da die Flächen durch $X_2(e_1)$, die Kanten durch $X_1(X_2(e_1))$ und die Ecken $X_0(X_2(e_1))$ eindeutig festgelegt sind. Es gibt 2 Möglichkeiten die obigen Kanten und Flächen zu wählen, doch beide Wahlen liefern isomorphe simpliziale Flächen.
+ \end{definition}
+ Dies soll an dieser Stelle mit dem Oktaeder $O$ und der Kante 1 durchgeführt werden. Außerdem gebraucht, wird die Wahl 
+\begin{align*}
+&(V_1,V_2,V_3,V_4,e_1,e_2,e_3,e_4,e_5,F_1,F_2)=\\&(3,1,5,2,1,2,4,6,5,1,3)
+\end{align*}
+ Dieser wird durch das Symbol
+ \begin{align*}
+ \mu((O,<))=&(6,12,8;(\{1,2\},\{1,3\},\{1,4\},\{1,5\},\{2,3\},\{2,5\},\\
+ &\{2,6\},\{3,4\},\{3,6\},\{4,5\},\{4,6\},\{5,6\});\\
+ &(\{1,2,5\},\{6,7,12\},\{1,4,6\},\{5,7,9\},\{3,4,10\},\{8,9,11\},\{2,3,8\},\{10,11,12\}))
+ \end{align*}
+ beschrieben. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=17cm 17cm 5cm 20cm]{Image_Octahedron}
+\end{center}
+\caption{Oktaeder}
+\end{figure} 
+ Zunächst werden die Anzahlen der Ecken, Kanten und Flächen angepasst.
+ \begin{align*}
+ &(5,9,6;(\{1,2\},\{1,3\},\{1,4\},\{1,5\},\{2,3\},\{2,5\},\\
+ &\{2,6\},\{3,4\}\{3,6\},\{4,5\},\{4,6\},\{5,6\});\\
+ &(\{1,2,5\},\{6,7,12\},\{1,4,6\},\{5,7,9\},\{3,4,10\},\{8,9,11\},\{2,3,8\},\{10,11,12\}))
+ \end{align*}
+ Nun werden die Einträge $X_0(1),X_0(2),X_0(4)$ gelöscht 
+ \begin{align*}
+ &(5,9,6;(\{1,4\},\{2,3\},\{2,5\},\\
+ &\{2,6\},\{3,4\}\{3,6\},\{4,5\},\{4,6\},\{5,6\});\\
+ &(\{1,2,5\},\{6,7,12\},\{1,4,6\},\{5,7,9\},\{3,4,10\},\{8,9,11\},\{2,3,8\},\{10,11,12\}))
+ \end{align*}
+ Löschen der Einträge $X_1(1),X_1(3)$ führt zu:
+\begin{align*}
+ &(5,9,6;(\{1,4\},\{2,3\},\{2,5\},\\
+ &\{2,6\},\{3,4\}\{3,6\},\{4,5\},\{4,6\},\{5,6\});\\
+ &(\{6,7,12\}\{5,7,9\},\{3,4,10\},\{8,9,11\},\{2,3,8\},\{10,11,12\}))
+ \end{align*} 
+ Nun ersetzte in der Beschreibung für die Kanten-Flächen-Inzidenz jedes Vorkommen der Kante 2 bzw. 4 durch die Kante 5 bzw. 6.
+ \begin{align*}
+ &(5,9,6;(\{1,4\},\{2,3\},\{2,5\},\\
+ &\{2,6\},\{3,4\}\{3,6\},\{4,5\},\{4,6\},\{5,6\});\\
+ &(\{6,7,12\},\{5,7,9\},\{3,6,10\},\{8,9,11\},\{3,8,10\},\{10,11,12\}))
+ \end{align*}
+ Durch Ersetzen der Ecke 1 durch die Ecke 2 in der Beschreibung der Ecken-Kanten-Inzidenz erhält man letztlich das ordinale Symbol:
+ \begin{align*}
+ &(5,9,6;(\{2,4\},\{2,3\},\{2,5\},\\
+ &\{2,6\},\{3,4\}\{3,6\},\{4,5\},\{4,6\},\{5,6\});\\
+ &(\{6,7,12\},\{5,7,9\},\{3,6,10\},\{8,9,11\},\{3,8,10\},\{10,11,12\})),
+ \end{align*}
+ welches eine simpliziale Fläche beschreibt, die isomorph zum Double-Tetraeder ist.
+ \begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=22cm 12cm 5cm 17cm]{Image_DoubleTetraeder}
+\end{center}
+\caption{Double-Tetraeder}
+\end{figure}
+ \subsection{Butterfly Insertion }
+ \begin{definition}
+ Sei $X$ eine Sphäre Fläche mit paarweise verschiedenen Ecken $V,V_1,V_2$, Kanten  $e_1,\ldots, e_5\in X_1$ und Flächen $F,F_1,F_2\in X_2$, die $ X_0(e_1)\cap X_0(e_2) =\{V\}$ erfüllen. 
+ 
+ Falls $X_2(e_1)\cap X_2(e_2)=\{F\}$ für ein $F\in X_2$ ist, dann kann man folgende Relationen festsetzen: 
+\begin{itemize}
+\item $(X_0(e_1),X_0(e_2))=(\{V,V_1\},\{V,V_2\})$
+\item $(X_2(e_1),X_2(e_2))=(\{F,F_1\},\{F,F_2\})$ für Flächen $F_1,F_2$.
+%\item $(X_1(F_1),X_1(F_2),X_1(F))=(\{e_1,e_1,e_2\},\{e_2,e_3,e_4\},\{e_1,e_2,e_5\})$ 
+\end{itemize}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=15cm 17cm 5cm 21cm]{Image_ButterflyInsertion1}
+\end{center}
+\caption{Ausschnitt einer simplizialen Fläche}
+\end{figure}
+Die simpliziale Fläche $\beta(X)_{e_1,e_2}$ wird dann durch
+\[
+\beta(X)_{e_1,e_2}= T^F(X)
+\]
+definiert.
+\begin{comment}
+Man erhält das ordinale Symbol der simplizialen Fläche $\beta(x)_{e_1,e_2}$ nun, indem eine neue Ecke $V'$, neue Kanten $e,e_1',e_2'$ und  Flächen $F',F''$ eingeführt werden und beim ordinale Symbol $\mu((X,<))$
+ \begin{itemize}
+ %%\item die Einträge $X_0(e_1)$ und $X_0(e_2)$ löscht,
+%% \item an der Stelle $F_1$ beim Eintrag $X_0(F_1)$ die Kante $e_1$ durch $e_1'$ ersetzt,
+ %%\item an der Stelle $F_2$ beim Eintrag $X_0(F_2)$ die Kante $e_2$ durch $e_2'$ ersetzt,
+% \item an der Stelle $F$ den Eintrag $X_1(F)$ durch $\{e_1',e_2',e_5\}$ ersetzt,
+\item die Eckenanzahl wird um 1, die Flächenanzahl um $2$ und die Kantenanzahl um $3$ erhöht, 
+\item an der Stelle $F$ in $X_1(F)$ die Kante $e_1$ durch $e_1'$ und die Kante $e_2$ durch $e_2'$ ersetzt,
+ \item an jeder Stelle $\bar{e}$, in der $V$ in $X_0(\bar{e})$ vorkommt, $V$ durch $V'$ ersetzt,  
+\item  bei der Beschreibung  für die Ecken-Kanten-Inzidenz $\{V',V''\}$ für die Kante $e$, $\{V,V_1\}$ für die Kante $e_1'$ und  $\{V,V_2\}$ für die Kante $e_2'$ hinzufügt,
+\item und bei der Beschreibung für die Kanten-Flächen Inzidenz  man $\{e,e_1,e_1'\}$ für die Fläche $F'$ und $\{e,e_2,e_2'\}$ für die Fläche $F''$ hinzugefügt wird.
+ \end{itemize}
+ \end{comment}
+Falls aber $X_2(e_1)\cap X_2(e_2)=\emptyset$ ist, so erhält man folgende Relationen: 
+\begin{itemize}
+\item $(X_0(e_1),X_0(e_2))=(\{V,V_1\},\{V,V_2\})$
+\item $(X_2(e_1),X_2(e_2))=(\{F_1^1,F_1^2\},\{F_2^1,F_2^2\})$ für Flächen $F_1^1,F_1^2,F_2^1,F_2^2$.
+%\item $(X_1(F_1^1),X_1(F_1^2),X_1(F_2^1),X_1(F_2^2))=(\{e_1,e_1,e_2\},\{e_2,e_3,e_4\},\{e_1,e_2,e_5\})$ 
+\item $(F_1^1,F_1^2,\ldots F_2^2,F_2^1\ldots)$ ist der zu V zugehörige Schirm.
+\item Es gibt Kanten $M=\{i_1,\ldots,i_k\}$, sodass $\{e_j,i_j\}=X_1( F_j^2)$ und $i_l,i_{l+1}$ in $X_2(F)$ für ein $F\in X_2(V)$ gilt. Außerdem ist
+\[
+X_0(e_1)\cap X_0(i_1)\cap \ldots \cap X_0(i_k)\cap X_0(e_2)=\{V\}.
+\]
+\end{itemize}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=22cm 14cm 5cm 21cm,scale=0.8]{Image_ButterflyInsertion2}
+\end{center}
+\caption{Ausschnitt einer simplizialen Fläche}
+\end{figure}
+
+Man erhält die simpliziale Fläche $\beta(X)_{e_1,e_2}$, welche durch das ordinale Symbol $\mu(\beta(X)_{e_1,e_2})$ beschrieben wird, indem man eine neue Ecke $V'$, Kanten $e,e_1',e_2'$ und Flächen $F',F''$ einführt und beim ordinale Symbol $\mu((X,<))$
+
+ \begin{itemize}
+ \item Die Eckanzahl wird um 1, die Flächenanzahl um $2$ und die Kantenanzahl um $3$ erhöht 
+ %\item die Einträge $X_0(e_1)$ und $X_0(e_2)$ löscht,
+ \item an der Stelle $F_1^1$ beim Eintrag $X_0(F_1^1)$ die Kante $e_1$ durch $e_1'$ ersetzt,
+ \item an der Stelle $F_2^1$ beim Eintrag $X_0(F_2^1)$ die Kante $e_2$ durch $e_2'$ ersetzt,
+ %\item an der Stelle $F$ den Eintrag $X_1(F)$ durch $\{e_1^1,e_2^1,e_5\}$ ersetzt,
+ \item an jeder Stelle $i$ aus $M$ in der $V$ in $X_0(i)$ vorkommt, ersetzt man $V$ durch $V'$,  
+\item  bei der Beschreibung  für die Ecken-Kanten-Inzidenz fügt man $\{V,V'\}$ für die Kante $e$, $\{V,V_1\}$ für die Kante $e_1'$ und $\{V,V_2\}$ für die Kante $e_2'$ hinzufügt,
+%\item und bei der Beschreibung für die Kanten-Flächen Inzidenz fügt man $\textcolor{red}{X}_1(F')=\{e,e_1^1,e_1^2\}$ und $\textcolor{red}{X}_1(F'')=\{e,e_2^1,e_2^2\}$ hinzu
+\item und bei der Beschreibung für die Kanten-Flächen Inzidenz  man $\{e,e_1,e_1'\}$ für die Fläche $F'$ und $\{e,e_2,e_2'\}$ für die Fläche $F''$ hinzufügt
+ \end{itemize}
+  Klarerweise sind Butterfly Deletion und Butterfly Insertion invers zueinander.
+ \end{definition}
+
+ \subsection{Kantendrehungen}
+Dieses Kapitel soll als Wiederholung der Resultate der Bachelorarbeit "Manipulation diskreter simplizialer Flächen"  dienen und zugleich einen anderen Zugang zu der Thematik der Kantendrehungen liefern. Dort wurde der Zugang durch die Mender- und Cutteroperatoren ermöglicht, wohingegen hier versucht wird, die symmetrische Differenz zur Durchführung der Kantendrehungen auszunutzen. Deshalb werden hier zunächst die einführenden Definitionen umformuliert und die daraus entstehenden Resultate ohne Beweis zusammengefasst, um so die Transitivität der Kantendrehungen auf der Menge der Sphären ohne 2-Waist unter strikteren Einschränkungen zu beweisen. 
+\begin{comment} 
+ \begin{definition}
+ Sei $(X,<)$ eine geschlossene simpliziale Fläche mit paarweise verschiedenen Ecken $V_1\ldots V_4$, Kanten $e_1,\ldots,e_5$ und Flächen $F_1,F_2$ in $X$,
+  die folgendes erfüllen:
+\begin{itemize}
+\item $X_2(e_1))=\{F_1,F_2\}$
+ \item $X_0(X_2(e_1))=\{V_1,V_2,V_3,V_4\}$
+\item $deg(V)\neq 2$ für  alle $V\in X_0(e_1)=\{V_2, V_4\}$
+\item $(X_0(e_2),X_0(e_3),X_0(e_4),X_0(e_5))=(\{V_1,V_2\},\{V_2,V_3\},\{V_3,V_4\},\{V_1,V_4\})$
+\item $(X_1(F_1),X_1(F_2))=(\{e_1,e_2,e_5\},\{e_1,e_3,e_4\})$
+\end{itemize} 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=13cm 19cm 5cm 22cm]{Image_ButterflyDeletion}
+\end{center}
+\caption{Dreieck}
+\end{figure}
+  Dann definiert man die durch die Kantendrehung $e_1$ entstandene simpliziale Fläche $X^{e_1}$ durch das ordinale Symbol $\mu (X^{e_1})$, welches entsteht, wenn man beim ordinalen Symbol $\mu((X,<))$
+ \begin{itemize}
+ \item an der Stelle $e_1$ den Eintrag $X_0(e_1)$ durch $\{V_1,V_3\}$ ersetzt,
+ \item an der Stelle $F_1$ den Eintrag $X_1(F_1)$ durch $\{e_1,e_2,e_3\}$ ersetzt, 
+ \item und an der Stelle $F_2$ den Eintrag $X_1(F_2)$ durch den Eintrag $\{e_1,e_4,e_5\}$ ersetzt.
+ \begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=18cm 12cm 5cm 17cm]{Image_Edgeturn}
+\end{center}
+\caption{Dreieck}
+\end{figure}
+ \end{itemize}
+  Für $X^{e_1}$ gilt dann 
+ \[
+X_i =X^{e_1}_i \text{ fuer i=0,1,2}
+ \]
+ und 
+ \[
+\chi (X)=\chi(X^{e_1}). 
+ \]
+ \end{definition}
+\end{comment}
+
+
+\begin{definition}
+Sei $X$ eine vertex-treue Sphäre. Man nennt eine Kante $e$ \emph{drehbar}, falls die simpliziale Fläche $Y,$ die durch die Ecken $Y_0= X_0(X_2(e))$, die Kanten $Y_1= X_1(X_2(e))$ und die Flächen $Y_2=X_2(e)$ beschrieben wird, zu einem Butterfly isomorph ist und es keine Kante $e'$ mit $X_0(e')=X_0(X_2(e))-X_0(e)$ gibt.
+\end{definition}
+\begin{definition}
+Sei $X$ eine vertex-treue Sphäre, $\xi$ der zugehörige Flächenträger und $e$ eine drehbare Kante in $X$. Dann definiert man die durch die Kantendrehung $e$ entstandene Sphäre $X^e$ durch den Flächenträger $\xi \Delta Pot_3(X_0(X_2(e))).$
+\end{definition}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=18cm 12cm 5cm 17cm]{Image_Edgeturn}
+\end{center}
+\caption{Kantendrehung}
+\end{figure}
+ Man führt nun die Kantendrehung am Beispiel des $(6)^2$  durch, welcher durch den Flächenträger
+\begin{align*}
+\xi=\{&\{1,2,3\},\{1,3,4\},\{1,4,5\},\{1,5,6\},\{1,6,7\},\{1,2,7\},\\ 
+&\{8,2,3\},\{8,3,4\},\{8,4,5\},\{8,5,6\},\{8,6,7\},\{8,2,7\}\}
+\end{align*}
+dargestellt wird. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=12cm 11cm 18cm 18cm]{Double6gon}
+\end{center}
+\caption{Double-6-gon }
+\end{figure}
+Durch näheres Betrachten erkennt man, dass alle Kanten des Double-6-gons drehbar sind. Bis auf Isomorphie gibt es jedoch nur zwei Kanten in dem Double-6-gon, nämlich 
+\begin{itemize}
+\item Kanten, die zu zwei Ecken vom Grad 4 inzident sind und
+\item Kanten, die zu einer Ecke vom Grad 6 und zu einer Ecke vom Grad 4 inzident sind.
+\end{itemize}
+\begin{itemize}
+\item Die Kante $e$, die zu den Ecken 3 und 4 inzident ist, gehört zu den ersteren Kanten und durch Drehen dieser erhält man den Flächenträger 
+\begin{align*}
+\xi=\{&\{1,2,3\},\{1,3,8\},\{1,4,5\},\{1,5,6\},\{1,6,7\},\{1,2,7\},\\ 
+&\{8,2,3\},\{8,1,4\},\{8,4,5\},\{8,5,6\},\{8,6,7\},\{8,2,7\}\}
+\end{align*}
+und die zugehörige Fläche ${((6)^2)}^e.$
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=0cm 20cm 9cm 25cm]{Edgeturn2}
+\end{center}
+\caption{Kantendrehung am $(6)^2$ }
+\end{figure}
+\item Durch Drehen der Kante $e',$ die zu den Ecken 1 und 2 inzident ist, wird der Flächenträger 
+\begin{align*}
+\xi=\{&\{1,3,7\},\{1,3,8\},\{1,4,5\},\{1,5,6\},\{1,6,7\},\{2,3,7\},\\ 
+&\{8,2,3\},\{8,1,4\},\{8,4,5\},\{8,5,6\},\{8,6,7\},\{8,2,7\}\}
+\end{align*}
+erzeugt und somit die Sphäre ${((6)^2)}^{e'}$ konstruiert.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=0cm 19cm 9cm 28cm]{Edgeturn}
+\end{center}
+\caption{Kantendrehung am $(6)^2$ }
+\end{figure}
+\end{itemize}
+Beachte, die obigen Sphären sind nicht isomorph und enthalten beide nicht drehbare Kanten.
+\begin{definition}
+Für eine Sphäre $(X,<)$ und Kanten $e_1,\ldots,e_n$ in $X$ führt man die folgende Konstruktion durch
+\begin{itemize}
+\item Sei $e_1$ eine drehbare Kante in $X$ und $e_2$ eine drehbare Kante in $X^{e_1},$ dann definiert man $X^{(e_1,e_2)}$ als $(X^{e_1})^{e_2}$.
+\item Falls $e_{i+1}$ eine drehbare Kante in $X^{(e_1,\ldots,e_{i})}$ ist, dann definiert man für $2\leq i\leq n-1$ die Sphäre $X^{(e_1,\ldots,e_{i+1})}$ als $(X^{(e_1,\ldots,e_{i})})^{e_{i+1}}$.
+\end{itemize}
+Man nennt $E=(e_1,\ldots,e_n)$ eine drehbare Kantensequenz in $X$ und $X^E$ die durch die Kantensequenz entstandene simpliziale Fläche. 
+\end{definition}
+
+\begin{bemerkung}
+Kantendrehungen sind nicht kommutativ. Das heißt im Allgemeinen gilt für drehbare Kanten $e_1,e_2$ in $X$ zwischen $X^{(e_1,e_2)}$ und $X^{(e_2,e_1)}$ keine Gleichheit. 
+
+\end{bemerkung}
+
+WIe oben schon erwähnt wurden die Kantendrehungen in der Bachelorarbeit "Manipulation diskreter simplizialer Flächen" allgemeiner formuliert. Es wurde zugelassen, dass Kantendrehungen auch an nicht vertex-treuen Sphären durchgeführt werden konnten. Für die Formulierung des Hauptresultates der Bachelorarbeit bezeichnet man diese Kantensequenzen mit \emph{allgemeinen Kantensequenzen}.
+\begin{satz}
+Sei $(X,<)$ eine Sphäre. Dann ist das iterierte Anwenden von Kantendrehungen auf $X$ transitiv, 
+ das heißt für alle Sphären $Y$ mit $\vert X_2\vert=\vert Y_2\vert$ existiert eine allgemeine Kantensequenz $E$ in $X$ so, dass 
+\[
+X^E \cong Y
+\]
+ist. 
+\end{satz}
+Einen Beweis dieser Aussage haben wir bereits in der Bachelorarbeit "Manipulation diskreter simplizialer Flächen"  gesehen. An dieser Stelle wird nun ein weiterer Beweis vorgestellt, der erlaubt die Voraussetzungen des Satzes schärfer zu formulieren. Doch hierfür benötigt man zunächst noch etwas Vorarbeit.
+\begin{comment}
+\begin{bemerkung}
+Um den folgenden Beweis einfacher zu Gestalten  führt man folgende Vereinfachung ein: Falls Sphären $X$ und $Y$ isomorph sind, nehmen wir $X=Y$ bezüglich ihrer Mengen und Relationen an. 
+ 
+\end{bemerkung}
+\begin{satz}
+Sei $X$ eine Sphäre mit $n$ Flächen ohne Ecken vom Grad 2. Dann existiert eine Kantensequenz $E=(e_1,\ldots,e_m)$ in $X,$ sodass  $X^E$ zum Double n-gon isomorph ist. Zudem ist für alle  $1\leq i\leq k$ in der simplizialen Fläche $X^{(e_1,\ldots,e_i)}$ keine Ecke vom Grad 2 enthalten.
+\end{satz}
+\begin{proof}
+
+Man führt den Beweis induktiv. 
+Für $n=4,6$ ist nichts zu zeigen. Also sei $n>6$. Falls $X\cong (n)^2$ ist, ist nichts zu zeigen. Deshalb nimmt man an, das $X$ nicht zum $(n)^2$ isomorph ist. Ziel ist es eine Ecke vom Grad 3 durch Kantendrehungen zu erzeugen. Falls $X$ keine Ecke mit Flächengrad 3 hat, dann wählt man eine Ecke $V$ in $X$, die 
+\[
+deg_X(V)\leq deg_X(V') \text{ für alle }V'\in X_0
+\]
+erfüllt. Sei also hierzu $X_1(V)=\{e_1,\ldots,e_m\}$ die Menge der Kanten, die zu $V$ inzident sind. Dann ist $X^{e_1}$ eine simpliziale Fläche mit 
+\[
+deg_{X^{e_1}}(V')=deg_{X}(V')-1 \text{ für } V'\in X_0(e_1)
+\]
+Falls diese Kantendrehung keine Ecke vom Grad 3 erzeugt hat, wiederholt man die obige Prozedur mit einer der Kanten in $X^{e_1}_1(V)=\{e_2,\ldots,e_{m}\}$. Nach endlich vielen Schritten erhält man eine durch Kantendrehungen entstandene simpliziale Fläche Y mit einer Ecke $V^*$ vom Grad 3. Also kann man ohne Einschränkung der Allgemeinheit annehmen, dass $X$ eine Ecke vom Grad 3 hat. Außerdem gilt für $V'\in X_0(X_2(V^*))$, dass $deg(V')>3$ ist, da $Y$ nicht zum Tetraeder isomorph ist. Man definiert nun $Z$ als die simpliziale Fläche, die durch Entfernen des Tetraeders an $V^*$ entsteht, also $Z={}_{V*}T(X)$. Da $\vert Z_2 \vert =n-2$ ist, existiert nach Induktionsvoraussetzung eine Kantensequenz $E=(e_1,\ldots,e_m)$ in $Z\subset X$, sodass 
+\[
+Z^E\cong (n-1)^2
+\]
+ist. 
+
+Man muss die Kantensequenz $E$ in $Z$ nun so in eine Kantensequenz $E'$ in $X$ abändern, dass Anhängen des Tetraeders und Anwenden einer Kantendrehung vertauschbar sind.
+\[
+bild 
+\] 
+Sei dafür die Sphäre $X^0:=X$ und $X^i$ und die Kantensequenz $E_i=(e_1,\ldots,e_l)$ in $X$ für $0\leq i \leq m$ schon konstruiert. Sei $F$ die Fläche, die beim Entfernen des Tetraeders den Tetraeder ersetzt. Man führt folgende Fallunterscheidung durch
+\begin{itemize}
+\item Falls die Kante $e_i$ der Kantensequenz $E$ nicht zu F inzident ist, so wähle $X^{i+1}:={(X^i)}^{e_i}$ und $E_{i+1}:=(e_1,\ldots,e_l,e_i)$. Damit ist 
+\[
+T(Z^{(e_1,\ldots,e_l,e_i)})^F\cong X^{E_{i+1}}
+\]
+und für alle Ecken $V\in X^{E_{i+1}}$ gilt $deg_{X^{E_{i+1}}}(V)\geq deg_S(V)\geq 3,$ wobei $S=T(Y^{(e_1,\ldots,e_i)})^F$ ist.
+\item Falls die Kante $e_i$ der Kantensequenz $E$ zu F inzident ist, muss man Kantendrehungen anwenden, die die oben erwähnte Vertauschbarkeit liefern. 
+Seien $F_1,F_2,F_3,$ die zu $V^*$ inzidenten Flächen. Sei ohne Einschränkung $e_i<F_1$ und $e$ die Kante, die $\vert {(X^i)^{e_i}}_2(e)\cup \{F_1,F_2,F_3\}\vert =1$ erfüllt.
+\[
+bild
+\]
+
+Dann definiert man $X^{i+1}:={X^i}^{(e_i,e)}$ und $E^{i+1}:=(e'_1,\ldots,e_l',e_i,e').$ Dann ist ebenfalls
+\[
+T(Y^{(e_1,\ldots,e_i)})^F\cong X^{E_{i+1}}
+\] 
+\end{itemize}
+Nach endlich vielen Schritten erhält man also eine Kantensequenz $E^*$ in $X$ sodass 
+\[X^{E^*}\cong T(Z^E)^F \cong T((n-1)^2)^F
+\]ist. 
+Sei $e$ die Kante, die die beiden Ecken mit Grad 5 verbindet. Dann ist $(X^{E^*})^e\cong (n)^2.$ Für alle $V\in X_0 \setminus \{V^*\}$ gilt 
+\[
+deg_{X^E_{i}}(V)=geq deg_{T(Z^{(e_1,\ldots,e_i)})}(V)\geq 3.
+\] 
+und Anwenden der beiden Kantendrehungen im zweitem Fall sorgen, dafür das $deg(V^*)$ erst um 1 erhöht und dann um 1 verringert wird. Damit ist die Aussage gezeigt.
+\end{proof}
+
+
+
+Sei $X$ eine vertex-treue Sphäre und $E=(e_1,\ldots ,e_n)$ eine Kantensequenz in $X$. Man nennt $E$ eine vertex-treue Kantensequenz, falls für alle $1\leq i \leq n$ die Sphäre $X^{(e_1,\ldots,e_i)}$ vertex-treu ist.
+\end{definition}
+\end{comment}
+\begin{bemerkung}
+Der nun folgende Beweis beruht auf der Beobachtung, dass man eine Sphäre mit 2-Waist wie in \Cref{2waistk} in zwei Komponenten aufteilen kann. Zur Vereinfachung des Beweises lässt man nun auch allgemeine Kantendrehung im folgendem Sinne zu: \\
+Sei $X$ eine Sphäre, $E=(e_1,\ldots,e_n)$ eine drehbare Kantensequenz in $X$ und $e_{n+1}\in X_1$ eine nicht drehbare Kante in $X^E$, die $deg_{X^E}(V)\geq 3 $ für $V\in X^E_0(e_{n+1})$ erfüllt. Dann entsteht durch das Drehen der Kante $e_{n+1}$ $X^E$ eine Sphäre mit einem 2-Waist. Man schreibt in diesem Fall $[e_1,\ldots,e_{n+1}].$
+
+ Führen wir diese allgemeine Kantendrehung am Beispiel des Tetraeders durch, indem wir das Symbol der resultierenden Sphäre angeben. Das Symbol des Tetraeders
+\begin{align*}
+\mu(T)=(4,6,4;&(\{1,2\}, \{1,3\},\{1,4\},\{2,3\},\{2,4\},\{2,4\},\{3,4\})\\
+;&(\{4,5,6\},\{2,3,6\},\{1,3,5\},\{1,2,4\}))
+\end{align*} ist aus vorherigen Beispielen bereits bekannt.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=1cm 24cm 5cm 27cm]{ET_Example1}
+\end{center}
+\caption{Tetraeder}
+\end{figure}
+Die Kante 1 des Tetraeders ist nicht drehbar, aber ist zu zwei Ecken inzident deren Grad 3 ist. Durch Drehen der Kante erhält man die Sphäre $T^{[1]}$, die durch folgendes Symbol beschrieben wird.
+\begin{align*}
+\mu ((T,<)):=(4,6,4;&(\{3,4\},\{1,3\},\{1,4\},\{2,3\},\{2,4\},\{3,4\})\\
+;&(\{4,5,6\},\{2,3,6\},\{1,2,3\},\{1,4,5\}))
+\end{align*}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=1cm 24cm 5cm 27cm]{ET_Example2}
+\end{center}
+\caption{Kantendrehung am Tetraeder}
+\end{figure}
+
+\end{bemerkung}
+\begin{lemma}\label{grad3}
+Für  jede vertex-treue Sphäre $X$ existiert eine Kantensequenz $E=(e_1,\ldots,e_n),$ sodass $X^E$ eine vertex-treue Sphäre ist und es in $X^E$ eine Ecke vom Grad 3 gibt.
+\end{lemma}
+\begin{comment}
+Beweisskizze\\
+Die Idee des Beweises ist es, eine Folge von Ecken und damit auch eine Folge von vertex-treuen Sphären, entstanden durch das Anwenden von Kantensequenzen an $X$, zu konstruieren, sodass nach endlich vielen Schritten eine Ecke vom Grad 3 erzwungen wird. Hierfür wendet man iterativ Kantendrehungen an den Kanten ausgewählter Ecken der Sphäre an.
+Falls dadurch eine Ecke an einer nicht drehbaren Kante liegt, gibt es 2 Fälle, die auftreten können. Entweder es gibt bereits eine Ecke vom Grad 3 oder die beiden anderen Ecken des von der Kante induzierten Butterflys sind adjazent.
+ Falls also durch Anwenden einer allgemeinen Kantendrehung ein 2-Waist entsteht, kann man die Sphäre in zwei 2-Waist Komponenten unterteilen. Diese liefern den Schlüssel zum Nachweis der Aussage. Denn durch leichtes Abändern liefern diese Komponenten in der Sphäre, die eine Kantendrehung von der Sphäre mit dem 2-Waist entfernt ist, die Information, welche Ecken zum konstruieren Folge geeignet sind.
+\end{comment}
+\begin{proof} 
+
+Falls $X$ eine Ecke vom Grad 3 hat, so ist nichts zu zeigen. Sei also $X$ eine vertex-treue Sphäre ohne Ecken vom Grad 3, $V$ eine beliebige Ecke in $X$ und $X_1(V)=\{e_1,\ldots,e_k\}$ die Menge der Kanten, die zu $V$ inzident sind.
+Es gilt $deg_X(V)=\vert X_1(V) \vert.$ Für $V'\in X_0(e_1)$ gilt dann ebenfalls
+\[
+deg_{X^{e_1}}(V')=deg_{X}(V')-1
+\]
+ Falls also Kanten $e_1\ldots, e_i \in X_1(V)$ existieren, sodass $E=(e_1,\ldots,e_i)$ eine drehbare Kantensequenz ist und es in $X^E$ eine Ecke vom Grad 3 gibt, so ist die Aussage gezeigt. Andernfalls gibt es ein $1\leq r \leq k$, sodass $X^{[e_1,\ldots ,e_r]}$ einen 2-Waist $(e_r,e)$ mit zugehörigen 2-Waist Komponenten $M^1,M^2$ hat und $(e_1,\ldots, e_{r-1})$ eine drehbare  Kantensequenz ist. Es muss $\vert M^1 \vert,\vert M^2 \vert >2$ gelten, denn sonst gibt es in $X^{[e_1,\ldots,e_{r}]}$ eine Ecke vom Grad 2, woraus man auf eine Ecke vom Grad 3 in $X^{(e_1,\ldots,e_{r-1})}$ schließen kann.
+Man definiert nun 
+\begin{align*}
+&Y^1:=X^{(e_1,\ldots,e_{r-1})}\\
+&M^1:=M_1 - {({X}^{[e_1,\ldots,e_r]})}_2(\{e_r,e\})\\
+&E^1:=(e_1,\ldots,e_{r-1})
+\end{align*}
+und $V^1$ als einen Knoten in ${Y^1}_0(M_1)-{Y^1}_0({Y^1}_2(\{e_r,e\})).$
+ Sei also nun für $j\in \mathbb{N}$ die vertex-treue Sphäre $Y^j$ und die Menge $M^j$ zusammen mit einer drehbaren Kantensequenz $E^j=(e_1,\ldots, e_l)$ und einer Ecke $V^j$ in ${Y^j}_0(M^j)$ schon gegeben. 
+Falls Kanten $e'_1,\ldots,e'_m\in {Y^j}_1(V^i)$ existieren,
+ sodass $(e_1,\ldots ,e_l,e'_1,\ldots e'_m)$ eine drehbare Kantensequenz ist und ${Y^i}^{(e'_1,\ldots e'_m)}$
+  eine Ecke vom Grad 3 besitzt, so folgt die Behauptung. Falls dies nicht der Fall ist, so gibt es ein $1\leq i \leq m$, sodass $(e'_1,\ldots e'_{i-1})$ eine drehbare Kantensequenz und $(e'_{i},e')$ ein 2-Waist in ${Y^i}^{[e'_1,\ldots e'_{i}]}$ ist. Durch Anwenden der Kantensequenz $(e'_1,\ldots e'_{i})$ erhält man also die 2-Waist Komponenten $M,M',$ wobei $M \subseteq M^i$ ist. Falls $\vert M \vert >2$ ist, so wählt man
+  \begin{align*}
+  Y^{j+1}:={Y^j}^{(e'_1,\ldots e'_{i-1})}\\
+  M^{j+1}:=M-{({Y^j}^{[e_1,\ldots, e_r]})}_2(\{e_r,e\})\\
+  E^{i+1}:=(e_1,\ldots e_l,e'_1 \ldots, e'_{i-1})\\
+\end{align*}   
+und $V^{i+1}$ als eine Ecke in ${Y^{j+1}}_0(M)-{Y^{j+1}}_0({Y^{j+1}}_2(\{e'_i,e'\}))$ Für die absteigende 
+\[
+M^{j+1}\subset M^j\subset \ldots \subset M_1 
+\]
+muss nach endlich vielen Schritten der Fall $\vert M^k \vert=2$ eintreten, was bedeutet, das $E^{k}=[e_1,\ldots ,e_{n}]$ eine solche Kantensequenz ist, sodass reduzieren auf $(e_1, \ldots e_{n-1})$ eine drehbare Kantensequenz liefert und $X^{(e_1,\ldots,e_{n-1})}$ eine Ecke vom Grad 3 liefert.  
+\end{proof}
+\begin{satz}
+Sei $X$ eine vertex-treue Sphäre mit $n$ Flächen. Dann existiert eine drehbare Kantensequenz $E,$ sodass $X^E$ zum Double-$n$-gon isomorph ist. 
+\end{satz}
+\begin{proof}
+Man beweist die Aussage induktiv. Für $n=4$ ist nichts zu zeigen. Sei nun also $n>4$ und $X$ eine vertex-treue Sphäre, die nicht zum Double n-gon isomorph ist. 
+Wegen \Cref{grad3} kann man die Existenz einer Ecke $V$ vom Grad 3 in $X$ annehmen. Für $Y=T_V(X)$ gilt dann 
+\[
+\vert Y_2\vert=n-2.
+\]
+Deshalb existiert eine drehbare Kantensequenz $E=(e_1,\ldots e_m)$ in $Y,$ sodass $Y^E\cong (n-1)^2$ ist. Sei $F$ die Fläche, die in $Y$ den Tetraeder ersetzt. Ziel ist es, aus der Kantensequenz in $Y$ eine Kantensequenz $E'=(e'_1,\ldots e'_k)$ in $X$ zu konstruieren, die folgendes erfüllt:
+\begin{itemize}
+\item $E'$ ist eine drehbare Kantensequenz.
+\item Für alle $1\leq i\leq m$ existiert ein $1\leq j \leq k,$ sodass 
+\begin{align*}
+T^F(Y^{(e_1,\ldots, e_i)})&\cong X^{(e'_1,\ldots,e'_j)} \\
+\Leftrightarrow Y^{(e_1,\ldots, e_i)}&\cong T_V(X^{(e'_1,\ldots,e'_j)})
+\end{align*} 
+ist. 
+\end{itemize}
+Sei dafür $X^0:=X$ und $E_0:=().$ Man konstruiert die Kantensequenz wie folgt: Seien die Sphären $X^i$ und die Kantensequenz $E_i=(e_1,\ldots,e_l)$ in $X$ für $0\leq i \leq m$ schon konstruiert. Man führt folgende Fallunterscheidung durch:
+\begin{itemize}
+\item Falls die Kante $e_i$ der Kantensequenz $E$ nicht zu F inzident ist, so wähle $X^{i+1}:={(X^i)}^{e_i}$ und $E_{i+1}:=(e_1,\ldots,e_l,e_i)$. Damit ist 
+\[
+T^F(Y^{(e_1,\ldots,e_i)})\cong X^{E_{i+1}}
+\]
+und in $X^{E_{i+1}}$ existiert kein 2-Waist, denn sonst wäre dieser schon in $Y^{(e_1,\ldots,e_i)}$ enthalten. Damit ist $E_{i+1}$ drehbar.
+\item Falls die Kante $e_i$ der Kantensequenz $E$ zu F inzident ist, muss man Kantendrehungen wie im Folgendem beschrieben anwenden.
+Seien $F_1,F_2,F_3,$ die zu $V$ inzidenten Flächen. Sei ohne Einschränkung $e_i<F_1$ und $e$ die Kante, die $\vert {(X^i)^{e_i}}_2(e)\cup \{F_1,F_2,F_3\}\vert =1$ erfüllt.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=18cm 20cm 5cm 23cm]{proof}
+\end{center}
+\caption{Kantendrehung}
+\end{figure}
+Dann definiert man $X^{i+1}:={X^i}^{(e_i,e)}$ und $E^{i+1}:=(e'_1,\ldots,e'_l,e_i,e).$ Dies liefert erneut
+\[
+T^F(Y^{(e_1,\ldots,e_i)})\cong X^{E_{i+1}}
+\] 
+\end{itemize}
+ Durch das Drehen der Kanten $e_i$ und $e$ können keine 2-Waists entstehen, wodurch $E_{i+1}$ drehbar ist.
+Nach endlich vielen Schritten erhält man also eine vertex-treue Kantensequenz $E^*$ in $X$ sodass 
+\[X^{E^*}\cong T^F(Y^E) \cong T^F((n-1)^2
+\]ist.
+Sei $e$ nun die Kante, die die beiden Ecken vom Grad 5 verbindet. Dann ist $(X^{E^*})^e\cong (n)^2.$
+\end{proof}
+\begin{bemerkung}
+Seien $X$ und $Y$ vertex-treue Sphären und $\phi$ ein Isomorphismus von $X$ nach $Y.$ Für alle Kanten $e\in X_1$ und $e'\in Y_1$ mit $\phi(e)=e'$gilt dann
+\[ 
+X^e \cong Y^{e'} 
+\]
+Für eine Kantensequenz $E=(e_1,\ldots,e_n)$ in $X$ bedeutet dies 
+\[
+X^E\cong Y^{(\phi(e_1),\ldots,\phi(e_n))}
+\]
+\end{bemerkung}
+\begin{satz} \label{kantendrehung}
+Seien $X$ und $Y$ vertex-treue Sphären mit $\vert X_2\vert=\vert Y_2\vert=n\in \mathbb{N}$.
+Dann existiert eine drehbare Kantensequenz $E=(e_1,\ldots,e_n)$ in $X,$ sodass  $X^E$ zu $Y$ isomorph ist. 
+\end{satz}
+\begin{proof}
+Nach vorherigem Satz existieren drehbare Kantensequenzen $E=(e_1,\ldots,e_m)$ in $X$ und $E'=(e'_1,\ldots,e'_{k})$ in $Y$, sodass 
+\[
+x^E\cong (n)^2 \cong Y^{E'}
+\] ist.
+Da $X^E$ und $Y^{E'}$ isomorph sind, existiert ein Isomorphismus 
+\[
+\phi: X^E\to Y^{E'}
+\]
+Somit bildet $E^*=(e_1,\ldots,e_m,\phi^{-1}(e'_{k}),\ldots,\phi^{-1}(e'_{1}))$ eine Kantensequenz in $X$ und es gilt:
+\begin{align*}
+X^{E^{*}} = &X^{(e_1,\ldots,e_m,\phi^{-1}(e'_{k}),\ldots,\phi^{-1}(e'_{1}))}\\
+&\cong (X^{(e_1,\ldots,e_m)})^{(\phi^{-1}(e'_{k}),\ldots,\phi^{-1}(e'_{1}))}\\
+&\cong ((n)^2)^{(\phi^{-1}(e'_{k}),\ldots,\phi^{-1}(e'_{1}))}\\
+&\cong ((\phi^{-1}(Y^{E'})))^{(\phi^{-1}(e'_{k}),\ldots,\phi^{-1}(e'_{1}))}\\
+&\cong Y .
+\end{align*}
+Da $E$ und $E'$ drehbar sind, gilt dies auch für Kantensequenz $E^*.$
+\end{proof}
+$\textcolor{red}{ist-es-allgemein-kuerzer-X-in-Y-mit-oder-ohne-das}$
+
+$\textcolor{red}{-Erzeugen-von-2-Waists-umzuformen}$
+
+$\textcolor{red}{Sprich:ist-das-Erzeugen-eines-2-Waists-ein-Umweg?}$
+\section{Kantendrehung als Gruppenoperation}
+Ziel dieses Kapitels ist es die oben definierte Kantendrehung als Operation einer Gruppe auf den Sphären aufzufassen. Als erste Beobachtung wird skizziert, wie man die Kantendrehung mithilfe von Transpositionen bewerkstelligen kann. Hierzu benötigt man folgende Definition. 
+\begin{definition}
+Sei $X$ eine geschlossene simpliziale Fläche und $V\in X_0$ eine Ecke in $X.$ Dann definiert man $u(V)$ als $((F_1, \ldots , F_n)),$ wobei $(F_1,\ldots,F_n)$ der zu $V$ zugehörige Schirm in $X$ ist und nennt $u(V)$ den \emph{Schirmzeiger} von $V.$ Der \emph{Schirmzeiger} $U(X)$ von $X$ definiert man als 
+\[
+U(X):=\{u(V) \mid V\in X_0\}
+\]
+\end{definition}
+\begin{bsp}
+\begin{itemize}
+\item 
+Den Schirmzeiger eines Tetraeders formt die Menge 
+\[
+U(T)=\{ ((1,2,3)),((1,2,4)),((1,3,4)),((2,3,4))\}
+\]
+\item Der Janus-Head hat den Schirmzeiger 
+\[
+\{((1,2))\}
+\]
+\end{itemize}
+\end{bsp}
+\begin{bemerkung}
+Falls der Minimalgrad einer geschlossenen simplizialen Fläche $X$ 3 ist, so lässt sich $X$ aus dem Schirmzeiger rekonstruieren. Dieser Sachverhalt kann dem Skript \emph{Simplicial Surfaces of Congruent Triangles} entnommen werden und wird deshalb hier nicht ausgeführt.
+\end{bemerkung}
+\begin{lemma}
+Sei $X$ eine vertex-treue Sphäre, $U(X)$ der Schirmzeiger von $X$ und $e\in X_1$ eine drehbare Kante in $X$ mit $X_0(e)=\{F_1,F_2\}.$ Für eine Ecke $V\in X_0$ definiert man  
+\[
+u_V:=
+\Biggl\{
+\begin{tabular}[l]{lcr}
+u(V),& $(F_1,F_2)u(V)(F_1,F_2)=u(V)$ \\
+$(F_1,F_2) u(V)$ ,& sonst \\
+
+\end{tabular}
+\]
+Dann ist der Schirmzeiger von $X^e$ gegeben durch 
+\[
+\{ u_V\mid V \in X_0\}.
+\]
+\end{lemma}
+\begin{proof}
+Es gibt genau 4 Ecken in $X$ bei denen $F_1$ oder $F_2$ im zugehörigen Schirm vorkommen. Genauer gilt: Es existieren $V_1,V_2,V_3,V_4,$ sodass 
+\begin{itemize}
+\item $\{F_1,F_2\} \cap X_0(V_1)=\{F_1\}$ 
+\item $\{F_1,F_2\} \cap X_0(V_2)=\{F_2\}$
+\item und $\{F_1,F_2\} \cap X_0(V_3)=\{F_1,F_2\} \cap X_0(V_4)=\{F_1,F_2\}$ gilt.
+\end{itemize}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=30cm 15cm 0cm 21cm]{Image_ET}
+\end{center}
+\caption{Ausschnitt einer simplizialen Fläche}
+\end{figure}
+In der Sphäre $X^e$ gilt dann bis auf Isomorphie  
+\begin{itemize}
+\item $\{F_1,F_2\} \cap X_0(V_3)=\{F_1\}$ 
+\item $\{F_1,F_2\} \cap X_0(V_4)=\{F_2\}$
+\item und $\{F_1,F_2\} \cap X_0(V_1)=\{F_1,F_2\} \cap X_0(V_2)=\{F_1,F_2\}$ gilt.
+\end{itemize}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=30cm 15cm 0cm 21cm]{Image_ET1}
+\end{center}
+\caption{Ausschnitt einer simplizialen Fläche}
+\end{figure}
+Beim Übertragen der obigen Beobachtung auf den Schirmzeiger von $X^e$ erkennt man:
+\begin{itemize}
+\item Für alle $V\in X_0-\{V_1,V_2,V_3,V_4\}$ gilt $u_V=u(V)=(F_1,F_2)u(V) (F_1,F_2)$.
+\end{itemize}
+Für alle $V\in \{V_1,V_2,V_3,V_4\}$ gilt 
+\[
+(F_1,F_2)u_X(V)(F_1,F_2) \neq u_X(V)
+\]
+Genauer gilt:
+\begin{itemize} 
+\item $u_{X^e}(V_1)=(F_1,F_2,F,\ldots)=(F_1,F_2)(F_2,F_3,\ldots)=(F_1,F_2)U_X(V_1)$
+\item $u_{X^e}(V_2)=(F_2,F_1,F,\ldots)=(F_1,F_2)(F_1,\tilde{F},\ldots)=(F_1,F_2)U_X(V_2)$
+\item $u_{X^e}(V_3)=(F_1,F,\ldots)=(F_1,F_2)(F_1,F_2)(F_1,F,\ldots)=(F_1,F_2)(F_2,F_1,\ldots)=(F_1,F_2)U_X(V_3)$
+\item $u_{X^e}(V_4)=(F_2,F,\ldots)=(F_1,F_2)(F_1,F_2)(F_2,F,\ldots)=(F_1,F_2)(F_1,F_2,\ldots)=(F_1,F_2)U_X(V_3)$
+
+\end{itemize}
+Somit folgt die Behauptung.
+\end{proof}
+$\textcolor{red}{Sphaeren-so-auffassen,-dass-man-die-Menge-der-Sphaeren}$
+
+$\textcolor{red}{-als-Bahn-unter- einer- Gruppenoperation-auffassen- kann}$
+%--------------------------------------------------------
+\section{Multi-Tetraeder}\label{kapitelmultitetraeder}
+\textbf{benötigte Vorkenntnisse} \\
+$\fbox{
+\parbox{14cm}{\begin{itemize}
+\item Grundlagen
+\item vertex-treue Sph\"aren
+\item Kantendrehungen 
+\end{itemize}
+}}$\\
+
+In diesem Kapitel werden die sogenanntem \emph{Multi-Tetraeder} thematisiert. Diese bilden eine Klasse von vertex-treuen Sphären. Die hier einführenden Definitionen sind ebenfalls dem Skript \emph{Simplicial Surfaces of Congruent Triangles} zu entnehmen. Außerdem wird die Kaktusdistanz einer vertex-treuen Sphäre als die minimale Anzahl an Kantendrehungen, um aus der Sphäre einen Multi-Tetraeder zu erschaffen, definiert. Ziel dieses Kapitels ist es einen Algorithmus für die Bestimmung des Kaktusabstandes anzugeben zu können. \\\\
+
+\subsection{Konstruktion und Klassifikation}
+\textbf{Hauptresultate}\\
+$\fbox{
+\parbox{14cm}{Liste aller Multi-Tetraeder mit bis zu 28 Flaechen}}$
+\begin{definition}
+Sei $X$ eine vertex-treue Sphäre mit $\vert X_0\vert \geq 6.$
+\begin{enumerate}
+\item Man definiert die simpliziale Fläche, die durch Entfernen aller Tetraeder entsteht durch $X^{(1)}$. Für $i>1$ definiert man analog 
+\[
+X^{(i)}:=(X^{(i-1)})^{(1)}.
+\]
+\item Man nennt $X$ einen Multi-Tetraeder vom \emph{Grad} $k$, falls $X^{(k-1)}$ ein Tetraeder oder ein Doppel-Tetraeder ist. Hierfür bezeichne $a_0$ die Anzahl der Ecken vom Grad 3 in $X_0$ oder anders gesagt die Anzahl der Tetraeder, die von $X$ entfernt wurden und analog bezeichne $a_i$ die Anzahl der Ecken vom Grad 3 in $X^{(i)}$. Falls $X^{(i)}$ ein Tetraeder ist, so definiert man $a_i$ als 1. Das damit konstruierte Tupel $(a_0,a_1,\ldots,a_k)$ nennt man den \emph{Typ} von $X$. und $T:=\sum_{i=0}^{k} a_i$ nennt man die \emph{Tetraeder-Zahl} von $X$.\\
+\end{enumerate}
+\end{definition}
+\begin{bsp} \label{bspCactus}
+\begin{itemize}
+\item Per Definition bilden der Tetraeder und der Doppel-Tetraeder Multi-Tetraeder.
+\item Bis auf Isomorphie gibt es genau einen Multi-Tetraeder mit 8 Flächen. Dieser wird durch den Flächenträger $\xi:=Pot_3(\{1,2,3,4\})\cup Pot_3(\{2,3,4,5\})\cup Pot_3(\{3,4,5,6\})$ beschrieben. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=19cm 19cm 0cm 22cm]{Image_MultiTetraeder1}
+\end{center}
+\caption{Multi-Tetraeder mit 8 Flächen}
+\end{figure}
+\item Alle vertex-treuen Sphären ohne Ecken vom Grad 3 erfüllen $X^{(1)}=X$ und bilden damit keine Multi-Tetraeder.
+\item Der simpliziale Parallelepiped $P$ ist eine Sphäre, beschrieben durch 
+\begin{align*}
+\xi=&\{ \{1, 2, 5 \}, \{ 1, 2, 7 \}, \{ 1, 3, 4 \}, \{ 1, 3, 7 \}, \{ 1, 4, 5 \},\{ 2, 3, 6 \},\\ &\{2, 3, 7 \}, 
+\{ 2, 5, 6 \}, \{ 3, 4, 6 \}, \{ 4, 5, 8 \},\{ 4, 6, 8 \}, \{ 5, 6, 8 \} \}.
+\end{align*}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=24cm 14cm 0cm 20cm]{Image_Parallelepiped}
+\end{center}
+\caption{Parallelepiped}
+\end{figure}
+Also ist $deg_P(7)=deg_P(8)=3.$ Aber $P$ bildet dennoch keinen Multi-Tetraeder, da $P^{(1)}$ ein Oktaeder ist und damit $P^{(2)}=P^{(1)}$ gilt.
+\end{itemize}
+\end{bsp}
+\begin{bemerkung}
+\begin{itemize}
+\item Multi-Tetraeder enthalten Ecken vom Grad 3 und somit auch 3-Waists.
+
+\item
+Da beim Anhängen von Tetraedern keine 2-Waists entstehen, sind Multi-Tetraeder Sphären ohne 2-Waist.
+\item
+Multi-Tetraeder sind vertex-treue Sphären.
+\end{itemize}
+\end{bemerkung}
+\begin{bemerkung}
+Sei $X$ ein Multi-Tetraeder, $(a_0,\ldots,a_k)$ der Typ von $X$ und $n=\sum_{i=1}^{k}a_i$ die Tetraeder-Zahl von $X$. Dann gelten folgende Aussagen: 
+\begin{itemize}
+\item $X$ hat genau $2(n+1)$ Flächen. Insbesondere ist $\epsilon(X)=n+1.$
+\item Der Typ $(a_0,\ldots,a_k)$ von $X$ ist monoton fallend und es gilt $a_i\neq 1$ für $i=0,\ldots k-1.$
+\item  Für alle $n \in \mathbb{N}$ existiert eine simpliziale Fläche mit Tetraeder-Zahl $n$.
+\end{itemize}
+\end{bemerkung}
+\begin{proof}
+\begin{itemize}
+\item klar
+\item Sei $0\leq i \leq k-1$ mit $1<a_i <a_{i+1}.$ Das heißt es werden mindestens zwei Ecken vom Grad 3 in $X^{i+1}$ von einem Tetraeder überdeckt. Somit existieren mindestens zwei benachbarte Knoten, die in $X^i$ Grad $5$ und in $X^{i+1}$ Knotengrad $3$ haben. Damit muss aber $X^{i+1}$ zum Tetraeder isomorph sein, was $a_{i+1}=1$ impliziert und damit einen Widerspruch erzeugt.
+ \item Der Tetraeder $T$ bildet den kleinsten Multi-Tetraeder  und durch iteratives Anheften eines Tetraeders folgt die Behauptung.
+\end{itemize}
+\end{proof}
+\begin{definition}
+Seien $X$ und $Y$ Multi-Tetraeder. Man nennt $Y$ ein Kind von $X$, falls $T_V(Y)\cong X$ für ein $V\in Y_0$ ist.
+\end{definition}
+Es stellt sich die Frage wie viele Kinder ein Multi-Tetraeder bis auf Isomorphie haben kann, da das Erweitern durch Tetraeder an verschiedenen Flächen nicht zwangsläufig isomorphe Multi-Tetraeder hervorbringt, muss hierfür etwas Vorarbeit geleistet werden.
+\begin{bemerkung} 
+Sei $X$ eine vertex-treue Sphäre und $G$ die Automorphismengruppe von $X$. Dann wird durch 
+\[
+\Phi_X:G \times X\mapsto X,(\phi, x)\to \phi(x)
+\] eine Gruppenoperation definiert. Denn klarerweise ist
+\begin{itemize}
+\item id(x)=x für alle $x\in X$ und
+\item $\phi_1(\phi_2 (x))=(\phi_1 \circ\phi_2)(x)$ für alle $\phi_1,\phi_2 \in G$ und $x\in X.$
+\end{itemize}
+Aber auch die Einschränkung   
+\[
+\Phi_{X_i}:G \times X_i\mapsto X_i,(\phi, x)\to \phi(x)
+\] für $i\in \{0,1,2\}$ liefert eine Gruppenoperation, da für ein $x\in X_i$ und ein $\phi\in G$ stets $\phi(x)\in X_i$ gilt. Mithilfe dieser Gruppenoperation kann man nun die Anzahl der Kinder eines Multi-Tetraeders bestimmen.
+\end{bemerkung} 
+\begin{lemma}
+Sei $X$ ein Multi-Tetraeder. Dann ist die Anzahl der Kinder von $X$ die Anzahl der Bahnen der Gruppenoperation $\Phi_{X_2}.$
+\end{lemma}
+\begin{proof}
+Man muss zunächst zeigen, dass Erweitern durch Tetraeder an Flächen, die in einer Bahn unter $\Phi_{X_2}$ liegen isomorphe Kinder von $X$ hervorbringt. Seien also $F_1,F_2$ solche Flächen, dann existiert also ein $\phi \in Aut(X),$ der $F_1$ auf $F_2$ abbildet. Dieser Isomorphismus lässt sich dann aber durch Ergänzen der fehlenden Bilder des zuletzt angehängten Tetraeders zu einem Isomorphismus 
+\[
+\phi':T^{F_1}(X)\mapsto T^{F_2}(X)
+\]
+ erweitern. \\
+ Seien also nun $F_1$ und $F_2$ zwei Flächen aus verschieden Bahnen. Angenommen es existiert ein Isomorphismus $\phi':T^{F_1}(X)\mapsto T^{F_2}(X),$ dann erhält man dadurch durch leichtes Abändern einen Automorphismus, der $F_1$ auf $F_2$ abbildet, was ein Widerspruch ist. 
+\end{proof}
+\begin{definition}
+Seien $X$ und $Y$ Multi-Tetraeder. Falls $X=Y^{(1)}$ ist, dann nennt man $X$ eine Wurzel von $Y$ und $Y$ ein Blatt von $X$. 
+\end{definition}
+Hier stellt sich nun die Frage, wie viele Blätter ein Multi-Tetraeder besitzt. Hierfür wird folgende Beobachtung nützlich sein.
+\begin{bemerkung}\label{bemgruppe}
+Sei $X$ eine Sphäre und G die Automorphismengruppe von $X$. Dann kann man eine Gruppenoperation auf $Pot_k(X_2)$ für $k \leq \vert X_2 \vert  $ durch 
+\[
+G\times Pot_k(X_2) \to Pot_k(X_2),(\phi , M)\mapsto \{\phi(x)\mid x\in M\}
+\]
+definieren. Die Wohldefiniertheit der Gruppenoperation folgt, da $\vert M\vert=\vert\{\phi (x)\mid x\in M\}\vert$ für ein $M\in Pot_k(X_2)$ gilt.
+\end{bemerkung}
+\begin{definition}
+Sei $X$ ein Multi-Tetraeder vom Typ $(a_0,\ldots a_k)$. Man nennt eine Menge $M\subseteq X_2$ eine Überdeckung, falls für alle Ecken $V\in X_0$ vom Grad 3 ein $F\in M$ mit $F\in X_2(V)$ existiert. Man nennt die Überdeckung $M$ minimal, falls $\vert M\vert=a_k$ ist.
+Für $0\leq l\leq \vert X_2\vert -a_k$ definiert man die Mengen der $a_k+l$-elementigen Überdeckungen als
+ $U_X^l.$ 
+\end{definition}
+\begin{lemma}
+Sei $X$ ein Multi-Tetraeder und $\phi \in Aut(X).$ Für eine Überdeckung $M\in U_X^l$ mit  $0\leq k\leq \vert X_2\vert -a_k$ ist $\{\phi(x)\mid x\in M\}$ wieder eine Überdeckung. \end{lemma}
+\begin{proof}
+Klarerweise ist $\vert M\vert =\vert\{\phi(x)\mid x\in M\}\vert,$ da $\phi$ ein Automorphismus bildet.
+ Da $F\in M$ zu einer Ecke vom Grad 3 inzident ist, muss dies auch für $\phi(F)$ gelten. $F_1$ und $ F_2$ sind genau dann adjazent, wenn $\phi(F_1)$ und $\phi(F_2)$ adjazent sind. Somit werden also mindestens $a_k$ Ecken vom Grad 3 überdeckt. 
+\end{proof}
+\begin{bemerkung}
+Sei $X$ ein Multi-Tetraeder vom Typ $(a_0,\ldots ,a_k)$ und $G$ seine Automorphismengruppe.
+Durch die obige Erkenntnis kann man nun die in $\Cref{bemgruppe}$ eingeführte Gruppenoperation leicht Abändern, um so die Anzahl der Blätter eines Multi-Tetraeders bestimmen zu können. Durch obiges Lemma ist für $0\leq l\leq \vert X_2 \vert -a_k$ die Abbildung
+\[
+\theta_l: G\times U_X^l \to U_X^l, (\phi, M)\mapsto \phi(M):=\{\phi(F)\mid F\in M\}
+\] 
+wohldefiniert und es lässt sich leicht nachprüfen, dass diese eine Gruppenoperation bildet.
+\end{bemerkung}
+\begin{satz}
+Sei $X$ ein Multi-Tetraeder vom Typ $(a_0,\ldots,a_k)$ und $\theta_l$ für $0\leq l\leq \vert X_2\vert -a_k$ die Gruppenoperation auf $U_X^l.$ Sei $u_l$ die Anzahl der Bahnen der Gruppenoperation. Dann gibt es $u_l$ Enkel vom Typ $(a_k+l,a_k,\ldots,a_1).$
+\end{satz}
+\begin{proof}
+Um aus $X$ einen Multi-Tetraeder vom $(r,a_k,\ldots,a_1)$ zu konstruieren, müssen an allen Ecken vom Grad 3 an einer inzidenten Fläche eine Tetraeder Erweiterung durchgeführt werden. Damit bildet für $M\in U_X^l$ das Erweitern durch Tetraeder an den Flächen $F\in M$ ein Blatt von $X$. Seien $M_1,M_2$ zwei Überdeckung, die in derselben Bahn unter $\theta_l$ liegen. Somit existiert ein $\phi \in G$ mit $\phi(M_1)=M_2.$ Sei $Y_1$ bzw. $Y_2$ der Multi-Tetraeder, der durch das Erweitern durch Tetraeder an den Flächen $F\in M_1$ bzw. $F \in M_2$ entstanden ist. Man kann den Automorphismus $\phi$ nun zu einem Isomorphismus zwischen $Y_1$ und $Y_2$, indem die fehlenden Bilder der Tetraeder so ergänzt, dass Inzidenzen berücksichtigt werden. Falls $F_1,F_2$ in zwei verschiedenen verschiedenen Bahnen liegen, aber dennoch ein Isomorphismus $\phi'$ zwischen $Y_1$ und $Y_2$ kann man diesen zu einem Automorphismus $\phi'$ auf $X$ mit $\phi'(M_1)=M_2$ abändern, was ein Widerspruch ist.
+\end{proof}
+\begin{folgerung}
+Sei $X$ eine Sphäre vom Typ $(a_k,\ldots, a_1)$ und $0\leq l\leq \vert X_2\vert -a_k.$ Sei zudem $u_l$ die Anzahl der Bahnen der Gruppenoperation $\theta_l$ auf $U_X^l$. Dann ist 
+\[
+\sum_{i=l}^{\vert X_2\vert -a_k} u_l
+\] die Anzahl der Blätter von $X.$
+\end{folgerung}
+
+Mithilfe von GAP können wir bestimmen, wie viele Multi-Tetraeder es mit einer bestimmten Flächenanzahl gibt.
+Die untenstehende Tabelle beinhaltet die Anzahlen der Multi-Tetraeder mit bis zu 22 Flächen.
+\begin{center}
+\begin{tabular}[h]{|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+n& 4 &  6& 8 & 10 & 12 & 14&16&18&20&22\\
+\hline
+ $k_n$ &1 & 1& 1 & 3 & 7 & 24 & 93 & 434 & 2110 & 11003   \\
+ \hline
+\end{tabular}
+\end{center}
+\[
+\textcolor{red}{An-diese-Stelle-kommt-die-Einfuehrung-des- Kaktussymbols}
+\]
+Für Multi-Tetraeder mit geringerer Flächenanzahl gibt man nun auch elementare Eigenschaften an.
+
+\begin{center}
+\begin{tabular}[h]{|c|c|c|c|c|}
+\hline
+n & Symbol & Vertex& Facecounter & Aut. \\
+ &&counter&& gruppe\\
+\hline
+4 & $()$ &$v_3^4$ & $f_{3^3}^4$ &$S_4$\\
+\hline
+6 & $1_1$ & $v_3^2v_4^3$&$f^6_{3,4^2}$ &$C_2\times D_6$\\
+\hline
+8 & $1_11_2$&$ v_3^2v_4^3$& $f^4_{3,4,5}f^2_{3,5^2}f^2_{4^2,5}$ & $D_4$\\
+\hline  
+  & $1_11_21_3$ & $v_3^3v_5^3v_6^1$& $f^3_{3,5^2}f^6_{3,5,6}f^1_{5^3}$ &$D_6$\\
+10& $1_11_32_1$ &$v_3^2v_4^2v_5^2v_6^1$ & $f^2_{3,4,5}f^2_{3,4,6}f^2_{3,5,6}f^2_{4,5^2}f^2_{4,5,6}$ & $C_2$\\
+  & $1_11_22_2$ &$v_3^2v_4^3v_6^2$& $f^4_{3,4,6}f^2_{3,6^2}f^4_{4^2,6}$ &$D_4$\\
+\hline
+  & $1_11_32_32_2$&$v_3^3v_4^1v_5^2v_6^1v_7^1$& $f^1_{3,4,6}f^1_{3,4,7}f^1_{3,5^2}f^1_{3,5,6}f^3_{3,5,7}f^2_{3,6,7}f^1_{4,5,6}f^1_{4,5,7}f^1_{5^2,6}$ &$\{id\}$\\
+  & $1_11_21_31_4$& $v_3^4v_4^6$& $f^{12}_{3,6^2}$ &$S_4$\\
+  & $1_12_41_32_2$&$v_3^3v_4^1v_5^1v_6^3$& $f^2_{3,4,6}f^4_{3,5,6}f^3_{3,6^2}f^2_{4,6^2}f^1_{5,6^2}$ & $C_2$\\
+12& $1_21_12_43_2$&$v_3^2v_4^3v_5^1v_6^1v_7^1$& $f^1_{3,4,5}f^1_{3,4,6}f^2_{3,4,7}f^1_{3,5,7}f^1_{3,6,7}f^1_{4^2,6}f^1_{4^2,7}f^2_{4,5,6}f^1_{4,5,7}f^1_{4,6,7}$ &$\{id\}$\\
+  & $1_21_12_43_3$& $v_3^2v_4^2v_5^2v_6^2$& $f^2_{3,4,5}f^2_{3,4,6}f^2_{3,5,6}f^2_{4,5,6}f^2_{4,6^2}f^2_{5^2,6}$&$C_2$\\
+  & $1_31_22_43_4$& $v_3^2v_4^2v_5^3v_7^1$& $f^2_{3,4,5}f^2_{4,5,7}f^1_{5^3}f^1_{5^2,7}$&$C_2$\\
+  & $1_31_22_23_3$& $v_3^2v_4^4v_7^2$&$f^4_{3,4,7}f^2_{3,7^2}f^6_{4^2,7}$ &$D_4$\\
+ \hline
+\end{tabular}
+\end{center}
+
+$\textcolor{red}{Liste-aller-Multitetraeder-deren Einbettung-sich-nicht-selbst-durchbohrt}$
+\subsection{Kaktus-Distanz}
+\textbf{Hauptresultate}\\
+$\fbox{
+\parbox{14cm}{Liste aller Multi-Tetraeder mit bis zu 28 Flaechen}}$
+\begin{definition}
+Sei $X$ eine vertex-treue Sphäre. Die minimale Anzahl an Kantendrehungen, die man braucht, um aus $X$ einen Multi-Tetraeder zu  konstruieren, nennt man den \emph{Kaktus-Abstand} $\xi(X)$ von $X$.
+\end{definition}
+\begin{lemma}
+\begin{enumerate}
+\item
+Für jedes gerade $n \in \mathbb{N}$ mit $n \neq 2$ existiert ein Multi-Tetraeder $X$ mit $\vert X_2\vert=n$.
+\item
+Für alle Sphären ist die Kaktus-Distanz endlich.
+\end{enumerate} 
+\end{lemma}
+\begin{proof}
+\begin{enumerate}
+\item Da der Tetraeder vertex-treu ist, kann man ihn durch den Flächenträger $\xi =Pot_3(\{1,2,3,4\})$ beschreiben. Durch $Pot_3(\{1,2,3,5\})\Delta \xi$ erhält man den Doppel-Tetraeder mit 6 Flächen. Iterativ kann man also für ein $F\in X_2$ und ein $P\notin X_0$ durch $Pot_3(X_0(F)\cup \{P\})\Delta \xi$ einen Multi-Tetraeder mit 2 Flächen mehr konstruieren.
+\begin{comment}
+\item Man führt den Beweis per vollständiger Induktion.
+Für $n=4$ hat man den Tetraeder als Multi-Tetraeder. Man nimmt nun an, es gibt Multi-Tetraeder $X$ mit $\vert X_2\vert=n$ und will nun die Existenz eines Multi-Tetraeders $Y$ mit $\vert Y_2\vert =n+2$ nachweisen.Da Multi-Tetraeder vertex-treu sind existiert ein Flächenträger $\zeta \subseteq \{1,\ldots,\vert X_0\vert\}$. Man definiert nun den Flächenträger eines Tetraeders $\xi:=Pot_3(\{\vert X_0\vert +1\}\cup A)$ für ein $A\in \zeta.$ Dann ist $\zeta \Delta \xi$ der Flächenträgers des Multi Tetraeders $\mathcal{S}(\zeta \Delta \xi)$ vom Typ $(a_0+1,\ldots,a_k)$ oder $(1,a_0,\ldots,a_k)$, wobei $(a_0+1,\ldots,a_k)$ der Typ von $X$ ist. Die Flächenanzahl von $Y$ ist
+\[
+\vert Y_2 \vert=\vert X_2 \vert+4-2=n+2.
+\]
+\end{comment}
+\item
+Sei $X$ eine Sphäre. Wegen 1) existiert ein Multi-Tetraeder $Y$ mit $\vert Y_2\vert =\vert X_2\vert $ und wegen \Cref{kantendrehung} existiert eine Kantensequenz $E=(e_1,\ldots,e_n)$ mit $X^E\cong Y$. Daraus folgt $\chi(X)\leq n<\infty.$ 
+
+
+\end{enumerate}
+\end{proof}
+Es ist klar, dass die simplizialen Flächen mit Kaktus-Distanz $0$ genau die Multi-Tetraeder sind. 
+
+\begin{lemma}
+Sei $X$ eine vertex-treue Sphäre ohne 3-Waist, die  sich durch eine Kantendrehung in einen Multi-Tetraeder umformen lässt. Dann ist $X$  zum Double n-Gon isomorph.
+\end{lemma} 
+\begin{proof}
+Der Beweis ist dem Skript  Simplicial Surfaces of Congruent Surfaces zu entnehmen".
+\end{proof}
+\begin{bemerkung}
+Wenn die Voraussetzung fallen gelassen wird, dass $X$ eine Fläche ohne 3-Waist ist, so ist die Aussage falsch. 
+\begin{itemize}
+\item Der simpliziale Parallelepiped aus \Cref{bspCactus} ist eine vertex-treue Sphäre mit Kaktusdistanz 1, denn das Drehen der Kante $e\in P_0$ mit 
+\[
+X_0(e)\in\{\{1,4\},\{1,5\}\{2,5\},\{2,6\},\{3,4\},\{3,6\},\}
+\] liefert einen Multi-Tetraeder vom Typ $(2,2,1).$
+\item Nutzen wir GAP zum Erzeugen einer Sphäre mit Kaktus-Distanz 1, die nicht isomorph zum Double n-gon isomorph ist. \\\\
+$\fbox{
+\parbox{13.4cm}{
+\textcolor{red}{gap$>$} \textcolor{blue}{$L:=[[ 2, 3, 5 ], [ 2, 4, 5 ], [ 3, 4, 5 ], [ 1, 3, 6 ], [ 1, 4, 6 ], 
+  [ 3, 4, 6 ], [ 1, 7, 8 ], [ 1, 4, 7 ],\newline [ 2, 4, 7 ], [ 2, 7, 8 ], [ 1, 3, 8 ], [ 2, 3, 8 ] ];;$}
+  }}$\\\\
+  Durch den Flächenträger $L$ definieren wir die simpliziale Fläche $S$.\\\\
+  $\fbox{
+\parbox{13.4cm}{
+\textcolor{red}{gap$>$} \textcolor{blue}{SimplicialSurfaceByVerticesInFaces(L);}\newline
+simplicial surface (8 vertices, 18 edges, and 12 faces)\newline
+\textcolor{red}{gap$>$} \textcolor{blue}{S:=last;}\newline
+simplicial surface (8 vertices, 18 edges, and 12 faces)\newline
+\textcolor{red}{gap$>$}\textcolor{blue}{ FaceDegreesOfVertices(S);}\newline
+[ 5, 5, 6, 6, 3, 3, 4, 4 ]\newline
+\textcolor{red}{gap$>$} \textcolor{blue}{IsCactus(S);}\newline
+$false$
+}}$\\\\
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=0cm 22.cm 10cm 26cm]{TetExtOct}
+\end{center}
+\caption{Parallelepiped}
+\end{figure}
+Durch das Drehen der Kante, die zu den beiden Ecken vom Grad 4 inzident ist, erhalten wir einen Multi-Tetraeder.\\\\
+$\fbox{
+\parbox{13.4cm}{
+\textcolor{red}{gap$>$}\textcolor{blue}{ VerticesOfEdges(S);}\newline
+$[ [ 1, 3 ], [ 1, 4 ], [ 1, 6 ], [ 1, 7 ], [ 1, 8 ], [ 2, 3 ], [ 2, 4 ], [ 2, 5 ], [ 2, 7 ], [ 2, 8 ], [ 3, 4 ], [ 3, 5 ], [ 3, 6 ], \newline
+ [ 3, 8 ],
+  [ 4, 5 ], [ 4, 6 ], [ 4, 7 ], [ 7, 8 ] ]$\newline
+\textcolor{red}{gap$>$} \textcolor{blue}{EdgeTurn(S,18);}\newline
+simplicial surface (8 vertices, 18 edges, and 12 faces)\newline
+\textcolor{red}{gap$>$} \textcolor{blue}{IsCactus(last);}\newline
+$true$
+}}$
+\end{itemize}
+Die obigen Sphären sind nicht isomorph und gehen aus dem Oktaeder durch das Durchführen von genau zwei Tetraedererweiterungen an verschiedenen Flächen hervor.  
+\end{bemerkung}
+
+
+\begin{satz}\label{ngon}
+Sei $(X,<)$ eine vertex-treue Sphäre und $V_1,V_2$ zwei nicht benachbarte Ecken, die  $X_0(X_1(V_1))\cap X_0(X_1(V_2))\neq \emptyset$ und $\deg(V_1)=\deg(V_2)= n$ erfüllen. Dann ist $X$ isomorph zum Double n-gon.
+\end{satz}
+\begin{proof}
+Man führt den Beweis per vollständiger Induktion. Für n=3 findet man den Double-3-gon als einzige Sphäre, die die Behauptung erfüllt. Man nimmt nun an, dass es eine vertex-treue Sphäre $X$ und Ecken $V_1,V_2\in X_0$ gibt, die die Voraussetzung erfüllen. Somit gibt es eine Ecke $V$ und Kanten $e_1\in X_1(V_1)$ und $e_2 \in X_1(V_2)$ in $X$, die $X_0(X_1(V_1))\cap X_0(X_1(V_2))=\{V\}=X_0(e_1)\cap X_0(e_2)$ erfüllen.
+ Ziel ist es, $X\cong (n+1)^2$ zu zeigen. Hierfür nutzt man die zuvor eingeführte Butterfly-Deletion. Wegen der fehlenden Adjazenz von $V_1$ und $V_2$ und $deg(V_1)=deg(V_2)= n,$ ist jede Fläche $F\in X_2$ entweder zu $V_1$ oder zu $V_2$ inzident. Somit existiert also eine Kante $e\in X_1$, sodass $\vert X_0(e)\cap X_0(e_1)\cap X_0(e_2)\vert  =\{V\}$
+ ist und $V_1,V_2$ in $X_0(X_2(e))$ enthalten sind, woraus die Wohldefiniertheit der Sphäre ${{}^e\beta(X)}$ folgt. Diese  Sphäre hat zwei nicht benachbarte Ecken $V_1',V_2'$, die durch die Butterfly Deletion aus $V_1$ und $V_2$ hervorgehen und deshalb die Knotengrade $deg(V_1')=deg(V_2')=n+1-1=n$ besitzen. Damit gilt ${{}^e\beta(X)}\cong (n)^2$ und dies schließlich dazu, dass man
+ \[
+X\cong (n+1)^2 
+ \]
+ schließen kann.
+\end{proof}
+
+Diese Beobachtung wird nützlich sein, um erste Beobachtungen über die Kaktus-Distanz einer vertex-treuen Sphäre anzustellen. Hierfür definieren wir anlehnend an den obigen Satz die Menge $D$ als die Menge aller Tupel $(V_1,V_2)\in X_0 \times X_0$, die nicht benachbart sind und $ X_0(X_1(V_1))\cap X_0(X_1(V_2))\neq \emptyset$ erfüllen.
+\begin{satz}
+Sei $(X,<)$ eine vertex-treue Sphäre, die kein Multi-Tetraeder ist. Dann ist 
+\[
+\zeta(X)\leq m+1,
+\] wobei $m:=min_{(V,V')\in D}\{\vert\frac{\vert X_2 \vert}{2}-deg_X(V)\vert +\vert \frac{\vert X_2 \vert}{2}-deg_X(V')\vert\}$
+ ist.
+\end{satz}
+\begin{proof}
+Sei $(V_1,V_2)\in D$ ein Ecken-Paar, das 
+$\vert\frac{\vert X_2 \vert}{2}-deg_X(V_1)\vert +\vert \frac{\vert X_2 \vert}{2}-deg(V_2)_X\vert=m$ erfüllt.
+Man führt nun für $V \in \{V_1,V_2\}$ und $l:=\frac{X_2 \vert}{2}-deg_X(V)$ folgende Fallunterscheidung durch:
+\begin{itemize}
+\item Falls $l=0$ ist, ist nichts zu tun.
+\item Sei $l>0$, dann existieren Flächen $F_1,F_2 \in X_2(V)$ und eine Kante $e\in X_1(V)$, die zu den Flächen $F_1$ und $F_2$ inzident ist. Damit ist $V$ ein Knoten, der in der Sphäre $X^e$ die Gleichung $deg_{X^e}(V)=l-1$ erfüllt. Das $l-1$-fache Anwenden der obigen Prozedur liefert uns eine durch eine Kantensequenz entstandene Sphäre $Y$, in der  $deg_Y(V)=0$ erfüllt ist 
+ \item Für den Fall, dass $l<0$ ist, findet man eine Kante $e\in X_1$ und Flächen $F_1,F_2$, sodass $F_1\in X_2(V),V_1,V_2 \notin X_0(F_2)$ und $X_2(e)=\{F_1,F_2\}$ ist. Somit liefert die Kantendrehung an der Kante $e$ eine Sphäre $X^e,$ in der $deg_{X^e}(V)=l+1$ gilt. Hier liefert uns erneut das $l-1$-fache Anwenden der obigen Prozedur eine durch eine Kantensequenz entstandene Sphäre $Y$ in der  $deg_Y(V)=0$ erfüllt ist.
+\end{itemize}  
+ Anwenden der in der Fallunterscheidung vorgestellten Prozeduren auf $V_1$ und $V_2$ bringt eine durch eine Kantensequenz entstandene simpliziale Fläche $Z$, in der $\vert\frac{\vert X_2 \vert}{2}-deg_Z(V)\vert +\vert \frac{\vert X_2 \vert}{2}-deg_Z(V')\vert=0$ ist und mit obigen Satz kann man $\zeta(Z)=1$ und damit $\zeta(X)\leq m+1$ folgern. 
+\end{proof}
+
+Für kleine natürliche Zahlen $n$ liefert der oben skizzierte Algorithmus die exakte Kaktusdistanz, wie folgende Folgerung zusammenfasst. 
+\begin{folgerung}
+Seien $X$ eine Sphäre, die kein Multi-Tetraeder ist und $m$ definiert wie im obigem Satz. Dann gilt 
+\[
+\zeta(X)= m+1
+\]
+ für $\vert X_2 \vert \in \{4,6,8\}$ 
+\end{folgerung}
+\begin{proof}
+Für $\vert X_2 \vert \in \{4,6,8\}$ gibt es bis auf Isomorphie nur einen Multi-Tetraeder $Y$ mit $\vert Y_2\vert=\vert X_2\vert.$
+\end{proof}
+\begin{bemerkung}
+Betrachtet man den Term $m$, dann ergibt sich
+\begin{align*}
+m=&min_{(V,V')\in D}\{\vert\frac{\vert X_2 \vert}{2}-deg_X(V)\vert +\vert \frac{\vert X_2 \vert}{2}-deg_X(V')\vert\}\\
+\leq& \vert\frac{\vert X_2 \vert}{2}-\vert X_2\vert\vert +\vert \frac{\vert X_2 \vert}{2}-\vert X_2\vert\vert \\
+=&\frac{\vert X_2 \vert}{2}+\frac{\vert X_2 \vert}{2}\\
+=&\vert X_2 \vert.
+\end{align*}
+Bei genauerem Hinschauen erkennt man,das für diese Abschätzung die Gleichheit $\deg_X(V)=\deg_X(V')=\vert X_2 \vert$ verwendet wurde. Dies ist aber genau dann der Fall, wenn $X\cong OB^{n}$, wobei $OB^{n}$ der im folgenden definierte $n-$fache Open-Bag ist. 
+Damit ist $\zeta (X)\leq \vert X_2 \vert$ für alle Sphären $X$. 
+\end{bemerkung}
+\begin{definition}
+Sei $n\geq 1$. Wir definieren die simpliziale Fläche n-Bag durch folgende Konstruktion:
+\begin{itemize}
+\item Für $n=1$ ist der $OB^1=OB$, wobei OB der Open-Bag ist.
+\item Für $n=2$ ist $OB^2$, die durch die Kantendrehung $e\in T_1$ entstandene Sphäre $T^e$.
+\item Für $n\geq 3$ nutzt man den Double $n$-gon, um die gewünschte Sphäre zu konstruieren. Seien $V_1,V_2$ die nicht adoleszenten Ecken vom Grad $n$ und $e_1,\ldots, e_n$ die Kanten, die weder zu $V_1$ oder $V_2$ inzident sind. Dann definiert man den n-Bag $OB^n$ durch
+\[
+{(n)^2}^{(e_1,\ldots,e_n)}
+\]
+\end{itemize}
+\begin{comment}
+Sei $(OB^i,$ nun für $i\in \{2,\ldots,n-1\}$ konstruiert. Dann definiert man $OB^{i+1}$ wie folgt:
+Man schaut sich zunächst die simpliziale Fläche $(X,<)$ mit
+\begin{align*}
+X_0:=OB^i_0 \cup Y_0\\
+X_1:=OB^i_1\cup Y_1\\
+X_2:=OB^i_2 \cup Y_2,
+\end{align*}
+wobei $Y$ eine simpliziale Fläche ist, die isomorph zum Open-Bag ist und $Y \cap OB^i=\emptyset $ erfüllt. Sei $(e_1,e_2)$ der 2-Waist in $Y\subset X$ 
+mit zugehörigen Knoten $V_1,V_2 \in Y_0\subset X_0$ und $e=\{ e',e''\}\in OB^i_1\subset X_1$ eine Kante mit $X_1(e)=\{V,V'\}$ und $3 \notin \{deg_X(V),deg_X(V')\}$.
+Man führt nun folgende Mender und Mutteroperationen durch:
+\begin{enumerate}
+\item Man wendet den Krater Cut $W:=C^C_{\{e',e''\}}(X)$ an und erhält die Kanten $e',e''\in W_1$ mit 
+\begin{align*}
+W_0(e') = W_0(e'')=\{V_1,V_2\}
+\end{align*}
+\item Durch den Split Mender entstehen die simpliziale Fläche  $Z:=S^m_{(V_1,e_1),(V,e')}(W)$, in der die Knoten $\{V_1,V\},\{V_2,V'\}$ und Kante $\{e_1,e'\}$ folgende Inzidenzen erfüllen:
+\begin{align*}
+Z_0(\{e_1,e'\}) = Z_0(e_2) = Z_0(e'')=\{\{V_1,V\},\{V_2,V'\}\}
+\end{align*}
+\item Schlussendlich gilt in $OB^{i+1}:=C^m_{e_2,e''}(Z)$, dass
+\[
+OB^{i+1}_0(\{e_1,e'\})=OB^{i+1}_0(\{e_2,e''\})=\{\{V_1,V\},\{V_2,V'\}\}
+\]
+ist.
+\end{enumerate}
+\end{comment}
+\end{definition}
+
+
+\begin{lemma}
+Sei $X$ eine Sphäre, die für ein $n>1$ zu $OB^n$ isomorph ist, dann ist $\chi(X)=n.$
+\end{lemma}
+\begin{proof}
+Um die Aussage zu zeigen, nutzt man die Distanz von $OB^n$ zum Double-$n$-gon. Seien $V_1,V_2\in X_0$ mit $deg(V_1)=deg(V_2)=2n$. Hierzu existieren $n$ Kanten $e_1,\ldots,e_n$, sodass $X_0(e_1)=X_0(e_2)=\ldots=X_0(e_n)=\{V_1,V_2\}$ ist.
+Betrachtet man nun die Sphäre $X^{e_1}$, so gilt $deg(V_1)=deg(V_2)=2n-1$. Also erhält man iterativ die durch Kantensequenz $E=(e_1,\ldots,e_n)$ entstandene Sphäre $X^E$, die $deg(V_1)=deg(V_2)=n$ erfüllt, also kriegt man $X^E \cong (n)^2$. Da nach \Cref{Egon} $X^E\cong (n)^2$ ist, folgt, dass $\chi(X^{(e_1,\ldots,e_n-1)})\leq n$. \\
+Da eine Sphäre mit einem Knoten von Grad 2 kein Multi-Tetraeder sein kann, muss der Grad von den $n+2$ Knoten vom Grad 2 durch die oben beschriebenen Kantendrehungen angehoben werden. Man braucht mindestens $n-1$ Kantendrehungen, um eine Sphäre zu erhalten, die keine Knoten vom Grad 2 besitzt. Somit folgt $\zeta(X)=n$
+\end{proof}
+\begin{folgerung}
+Für jedes $n \in \mathbb{N}$ gibt es eine Sphäre mit $X$ mit $\zeta(X)=n.$
+\end{folgerung}
+\begin{proof}
+Der $n$-fache Open-Bag liefert die Behauptung, da $\zeta(OB^{n})=n$ ist.
+\end{proof}
+\[
+\textcolor{red}{ein-Algorithmus-zum bestimmen-der-Kaktusdistanz}
+\]
+\begin{lemma}
+Sei $X$ ein Multi-Tetraeder und $Aut(X)$ die Automorphismengruppe von $X$. Dann ist $Aut(X)$ auflösbar.
+Weiterhin seien $l,l'$ minimal mit der Eigenschaft, dass
+\[
+\vert Aut(X)^l\vert=\vert Aut(X^{(1)})^{l'}\vert =1
+\] ist. Dann $l\leq l'$.
+\end{lemma}
+\begin{proof}
+Man führt den Beweis induktiv. Zunächst weisen wir die Aussage für die kleinsten Multi-Tetraeder, nämlich den Tetraeder und den Doppel-Tetraeder, nach. Die Automorphismengruppe des Tetraeders ist die Tetraeder  der Ordnung 24 und die des Double-Tetraeders ist das direkte Produkt einer $C_2$ und der Säugetiergruppe der Ordnung 6, also insgesamt Ordnung 12. Bei beiden Gruppen lässt sich leicht nachrechnen, dass sie auflösbar sind.
+
+Sei $X$ nun ein Multi-Tetraeder mit mehr als  6 Flächen und $G=Aut(X)$ seine Automorphismengruppe. Für die Ecken $V_1,\ldots,V_k$ vom Grad $3$ definiert man zudem 
+\[
+M_t:=\{V_t\} \cup X_1(V_t) \cup X_2(V_t).  
+\] 
+Da der Grad sich beim Anwenden eines Automorphismus $\phi$ nicht ändern darf, werden die Knoten vom Grad 3 untereinander permutiert. Vielmehr gilt 
+\[
+\phi(M_i)=M_j 
+\]
+für alle $\phi \in G$ und $i,j\in \{1,\ldots,k\}.$ Sei weiterhin $Y$, die Sphäre, die durch Entfernen aller Tetraeder von $X$ entsteht. und $F_1,\ldots,F_k$ die Flächen, die die Tetraeder an den Stellen $V_1,\ldots,V_k$ ersetzen. Man betrachte nun den Homomorphismus $\psi:G\mapsto Aut(X^{(1)}),$ der durch  
+\[
+\psi(\phi)(x)=\Biggl\{
+\begin{tabular}[l]{lcr}
+$FDJ$,&\textcolor{black}{ falls $ x\in Major$} \\
+x,& sonst\\
+\end{tabular}
+\]
+definiert wird. Es ist leicht nachzurechnen, dass $\psi(G)$ eine Untergruppe von $Aut(X^{(1)})$ bildet. Da nach Induktionsvoraussetzung $Aut(X^{(1)})$ auflösbar ist, ist $\psi(G)$ als Untergruppe einer auflösbaren Gruppe ebenfalls auflösbar. 
+Sei also nun $l$ minimal mit der Eigenschaft, dass $(Aut(\psi(G))^l=\{id\}$ ist. Dann gilt $\phi(x)=\psi(\phi)(x)=x$ für $\phi \in G^l$ und $x\notin \bigcup M_t$. Da $\phi$ die Inzidenzen in der simplizialen Fläche $X$ respektiert gilt $\phi(M_i)=M_i$ und genauer sogar $\phi=id.$ Damit ist $G^l =\{id\}$ und G ist auflösbar.
+  
+\end{proof}
+
+\begin{definition}
+Sei $X$ eine vertex-treue Sphäre und $D\subseteq Pot_4(X_0)$. Man nennt eine Primfaktorzerlegung von $X$, falls $D$ folgende Eigenschaften erfüllt.
+\begin{itemize}
+\item Für jedes $F\in X_2$ gibt es genau ein $d\in D$, sodass $X_0(F) \subseteq D$ gilt.
+\item Für jedes $N\in Pot_3-\{X_0(F)\mid F\in X_2\}$ gibt es entweder kein oder genau zwei $d\in D$ mit $N\subseteq d$
+\end{itemize}
+Man nennt $D$ eine minimale Tetraederzerlegung, falls $\vert D \vert\leq \vert D' \vert$ für jede weitere Tetraederzerlegung $D'$ ist.
+\end{definition}
+
+
+Nutzen wir GAP um Beispiele für Tetraederzerlegungen zu konstruieren. Betrachten wir als vertex-treue Sphäre den Oktaeder.\newline\\
+$\fbox{
+\parbox{15cm}{
+\textcolor{red}{gap$>$} \textcolor{blue}{O;}\newline 
+simplicial surface (6 vertices, 12 edges, and 8 faces) \newline
+\textcolor{red}{gap$>$} \textcolor{blue}{VerticesOfFaces(O);}\newline
+[ [ 1, 2, 3 ], [ 2, 5, 6 ], [ 1, 2, 5 ], [ 2, 3, 6 ], [ 1, 4, 5 ],  [ 3, 4, 6 ], [ 1, 3, 4 ], [ 4, 5, 6 ] ]
+}}$\\\\
+Man kann nun auf folgende Weise Tetraederzerlegungen erzeugen.
+Seien $V_1,V_2$ zwei nicht benachbarte Ecken des Oktaeders.
+Die 4-elementigen Teilmengen der Tetraederzerlegung sind genau die Butterflies, die $V_1$ und $V_2$ enthalten.\\\\
+$\fbox{
+\parbox{15cm}{
+\textcolor{red}{gap$>$}  \textcolor{blue}{D1:=[[1,2,3,6],[1,2,5,6],[1,4,5,6],[1,3,4,6]];}\newline
+[ [ 1, 2, 3, 6 ], [ 1, 2, 5, 6 ], [ 1, 4, 5, 6 ], [ 1, 3, 4, 6 ] ]\newline
+\textcolor{red}{gap$>$}  \textcolor{blue}{D2:=[[2,3,1,4],[2,4,5,6],[2,1,5,4],[2,3,4,6]];}\newline
+[ [ 2, 3, 1, 4 ], [ 2, 4, 5, 6 ], [ 2, 1, 5, 4 ], [ 2, 3, 4, 6 ] ]
+}}$\\\\
+Mit GAP lässt sich leicht verifizieren, dass $D_1$ und $D_2$  Tetraederzerlegungen sind.\\\\
+$\fbox{
+\parbox{15cm}{
+\textcolor{red}{gap$>$}  \textcolor{blue}{IsTetrahedrialDecomposition(O,D1);}\newline
+ true \newline
+\textcolor{red}{gap$>$}  \textcolor{blue}{IsTetrahedrialDecomposition(O,D2);}\newline
+ true
+
+ }}$ \\\\
+Vielmehr sind beide minimal. Angenommen es gibt eine Tetraederzerlegung $D'$ des Oktaeders mit $\vert D' \vert\leq 3$. Dann muss es ein $d\in D'$ geben, welches die Eckenmenge von drei paarweise verschiedenen Flächen als Teilmengen enthält. Dies bedeutet aber, dass es im Oktaeder eine Ecke vom Grad 3 gibt, was ein Widerspruch ist. 
+\begin{comment}
+\begin{bsp}
+$\fbox{
+\parbox{15cm}{
+\textcolor{blue}{gap$>$} \textcolor{red}{D5g:=Doublengon(5);}\\
+simplicial surface (7 vertices, 15 edges, and 10 faces)\\
+\textcolor{blue}{gap$>$} \textcolor{red}{VerticesOfFaces(D5g);}\\
+$[ [ 1, 2, 6 ], [ 2, 6, 7 ], [ 1, 2, 3 ], [ 2, 3, 7 ], [ 1, 3, 4 ], [ 3, 4, 7 ], [ 1, 4, 5 ], [ 4, 5, 7 ], [ 1, 5, 6 ], [ 5, 6, 7 ] ]$\\
+}}$
+\[
+bild
+\]
+Um nachzuprüfen, ob wir wirklich Tetraederzerlegungen konstruiert haben, benötigen wir die 3-elementigen Teilmengen der Ecken, die keine Eckenmenge von einer beliebigen Fläche bilden.  \\
+$\fbox{
+\parbox{15cm}{
+\textcolor{blue}{gap$>$} \textcolor{red}{Combinations([1..7],3);}\\
+$[ [ 1, 2, 3 ], [ 1, 2, 4 ], [ 1, 2, 5 ], [ 1, 2, 6 ], [ 1, 2, 7 ], [ 1, 3, 4 ], [ 1, 3, 5 ], [ 1, 3, 6 ], [ 1, 3, 7 ], [ 1, 4, 5 ]$,
+  $[ 1, 4, 6 ], [ 1, 4, 7 ], [ 1, 5, 6 ], [ 1, 5, 7 ], [ 1, 6, 7 ], [ 2, 3, 4 ], [ 2, 3, 5 ], [ 2, 3, 6 ], [ 2, 3, 7 ], [ 2, 4, 5 ]$, 
+  $[ 2, 4, 6 ], [ 2, 4, 7 ], [ 2, 5, 6 ], [ 2, 5, 7 ], [ 2, 6, 7 ], [ 3, 4, 5 ], [ 3, 4, 6 ], [ 3, 4, 7 ], [ 3, 5, 6 ], [ 3, 5, 7 ]$, 
+  $[ 3, 6, 7 ], [ 4, 5, 6 ], [ 4, 5, 7 ], [ 4, 6, 7 ], [ 5, 6, 7 ] ]$\\
+\textcolor{blue}{gap$>$}\textcolor{red}{ C:=last;;}\\
+\textcolor{blue}{gap$>$} \textcolor{red}{Diff:=Difference(C,VerticesOfFaces(D5g));}\\
+$[ [ 1, 2, 4 ], [ 1, 2, 5 ], [ 1, 2, 7 ], [ 1, 3, 5 ], [ 1, 3, 6 ], [ 1, 3, 7 ], [ 1, 4, 6 ], [ 1, 4, 7 ], [ 1, 5, 7 ], [ 1, 6, 7 ]$, 
+$  [ 2, 3, 4 ], [ 2, 3, 5 ], [ 2, 3, 6 ], [ 2, 4, 5 ], [ 2, 4, 6 ],  [ 2, 4, 7 ], [ 2, 5, 6 ], [ 2, 5, 7 ], [ 3, 4, 5 ], [ 3, 4, 6 ]$, 
+ $ [ 3, 5, 6 ], [ 3, 5, 7 ], [ 3, 6, 7 ], [ 4, 5, 6 ], [ 4, 6, 7 ] ]$\\
+}}$ 
+Man kann nun auf zweierlei Weisen Tetraederzerlegungen erzeugen.
+\begin{itemize}
+\item Die 4-elementigen Teilmengen der Tetraederzerlegung sind die Ecken jener Butterflies, die genau zwei Ecken vom Grad 4 und genau zwei Ecken vom Grad 5 haben.\\
+$\fbox{
+\parbox{15cm}{
+\textcolor{blue}{gap$>$} \textcolor{red}{D2:=$[[2,6,1,7],[2,3,1,7],[3,4,1,7],[4,5,1,7],[1,5,6,7]]$;}\\
+$[ [ 2, 6, 1, 7 ], [ 2, 3, 1, 7 ], [ 3, 4, 1, 7 ], [ 4, 5, 1, 7 ], [ 1, 5, 6, 7 ] ]$\\
+\textcolor{blue}{gap$>$} \textcolor{red}{List(D2,r-$>$Filtered(Diff,g-$>$IsSubset(r,g)));}\\
+$[ [ [ 1, 2, 7 ], [ 1, 6, 7 ] ], [ [ 1, 2, 7 ], [ 1, 3, 7 ] ], 
+  [ [ 1, 3, 7 ], [ 1, 4, 7 ] ], [ [ 1, 4, 7 ], [ 1, 5, 7 ] ], 
+  [ [ 1, 5, 7 ], [ 1, 6, 7 ] ] ]$\\
+  \textcolor{blue}{gap$>$} \textcolor{red}{List(D2,r-$>$Length(Filtered(Diff,g-$>$IsSubset(r,g))));}\\
+$[ 2, 2, 2, 2, 2 ]$
+}}$
+\item Man kann die Butterflies des Double-5-gon so einteilen, dass vier Butterflies inzident zu einer Ecke vom Grad 5 sind und der letzte Butterfly wieder zu beiden Ecken vom Grad 5 inzident sind. 
+\end{itemize}
+$\fbox{
+\parbox{15cm}{
+\textcolor{blue}{gap$>$} \textcolor{red}{D1:=$[[1,2,3,6],[1,3,4,5],[1,5,6,7],[2,7,6,3],[3,4,5,7]]$;}\\
+$[ [ 1, 2, 3, 6 ], [ 1, 3, 4, 5 ], [ 1, 5, 6, 7 ], [ 2, 7, 6, 3 ], [ 3, 4, 5, 7 ] ]$\\
+\textcolor{blue}{gap$>$} \textcolor{red}{List(D1,r-$>$Filtered(Diff,g-$>$IsSubset(r,g)));}\\
+$[ [ [ 1, 3, 6 ], [ 2, 3, 6 ] ], [ [ 1, 3, 5 ], [ 3, 4, 5 ] ], 
+  [ [ 1, 5, 7 ], [ 1, 6, 7 ] ], [ [ 2, 3, 6 ], [ 3, 6, 7 ] ], 
+  [ [ 3, 4, 5 ], [ 3, 5, 7 ] ] ]$\\
+\textcolor{blue}{gap$>$} \textcolor{red}{List(D1,r-$>$Length(Filtered(Diff,g-$>$IsSubset(r,g))));}\\
+$[ 2, 2, 2, 2, 2 ]$\\
+ }}$ 
+ Insbesondere hat man mit den obigen zwei Tetraederzerlegungen Beispiele für Tetraederzerlegungen gesehen, die minimal sind. Denn angenommen es existiert eine Tetraederzerlegung $D'$ mit $\vert D' \vert =4.$ Da es für jede Fläche des $(5)^2$ genau ein $d\in D'$ geben muss, das die Eckenmenge der Fläche enthält, muss es ein $d' \in D$ mit 
+ \[
+\vert \{F\in (5)^2_2\mid X_0(F)\in d'\}\vert \geq 3 
+ \]
+ geben. Da der Double 5 gon aber Vertex-treu ist, bedeutet, das es eine Ecke vom Grad 3 geben muss, was ein Widerspruch ist.
+ \end{bsp}
+ \end{comment}
+\begin{lemma}\label{zerlegung}
+Sei $X$ ein Multi-Tetraeder. Dann besitzt $X$ eine Tetraederzerlegung. 
+\begin{proof}
+Man beweist die Aussage induktiv. Falls $X$ ein Tetraeder mit $X_2=\{1,2,3,4\}$ ist, dann bildet die Menge $\{\{1,2,3,4\}\}$ eine Tetraederzerlegung, die insbesondere minimal ist.
+Sei $X$ ein Multi-Tetraeder mit $\vert X_2\vert =n > 4.$ Sei zudem $V\in X_0$ eine Ecke vom Grad 3 und $F_1,F_2,F_3$ die drei Flächen, die $X_2(V)=\{F_1,F_2,F_3\}$ erfüllen.  Dann bildet $Y=T_V(X)$ einen Multi-Tetraeder mit $\vert Y_2 \vert =n-2.$ Deshalb existiert eine Tetraederzerlegung $D$ von $Y.$ Man weist nun nach, dass $D'=D\cup \{X_0(X_2(V))\}$ eine Tetraederzerlegung von $X$ ist.
+\begin{itemize}
+\item Für alle $F\in X_2\subset Y_2\cup \{F_1,F_2,F_3\}$ gibt es genau ein $d\in D'$ mit 
+\[
+X_0(F)\subseteq d.
+\] 
+\item Sei nun $n\in Pot_3(X_0)-\{X_0(F)\mid F\in X_2\}.$ Falls $V$ in $n$ enthalten ist, 
+dann gibt es immer noch kein oder genau zwei $d\in D'=D\cup \{X_0(X_2(V))\},$ die $n$ als Teilmenge enthalten. Falls aber $V\in n$ ist, so gibt es kein $d\in D'$ mit $n\subseteq d.$
+\end{itemize}
+\end{proof}
+\end{lemma}
+  \begin{lemma}\label{tzer}
+ Sei $X$ ein Multi-Tetraeder und $e$ eine drehbare Kante in $X$. Dann besitzt $X^e$ eine Tetraederzerlegung. 
+ \end{lemma}
+ \begin{proof}
+ Wegen \Cref{zerlegung} besitzt $X$ eine Tetraederzerlegung $D.$ Seien $F_1,F_2$ Flächen mit $X_2(e)=\{F_1,F_2\}.$ Seien zudem $V_1,\ldots,V_4$ paarweise verschiedene Ecken in $X$, die $X_0(F_1)=\{V_1,V_3,V_4\}$ und $X_0(F_2)=\{V_2,V_3,V_4\}$ erfüllen.
+ \begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=30cm 15cm 0cm 21cm]{Image_ET}
+\end{center}
+\caption{Ausschnitt einer simplizialen Fläche}
+\end{figure}
+ 
+ Dann gelten in $X^e$ die Relationen ${X^e}_0(F_1)=\{V_1,V_2,V_3\}$ und ${X^e}_0(F_2)=\{V_1,V_3,V_4\}.$
+ \begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=30cm 15cm 0cm 21cm]{Image_ET1}
+\end{center}
+\caption{Ausschnitt einer simplizialen Fläche}
+\end{figure}
+Für die Mengen ${X}_0(F_1)$ und ${X}_0(F_1)$ können nun genau zwei Fälle auftreten.
+\begin{enumerate}
+\item Entweder es existiert genau ein $d\in D,$ das die beiden obigen Mengen enthält
+\item oder es existieren genau zwei $d_1,d_2,$ sodass $X_0(F_1)$ in $d_1$ enthalten und $X_0(F_2)$ in $d_2$ enthalten ist.
+\end{enumerate}
+\begin{enumerate}
+\item Falls dieser Fall eintritt, dann bildet $D^e:=D-\{d\}$ eine Tetraederzerlegung von $X^e.$ Zunächst ist nachzuprüfen, das für jedes $F\in {X^e}_2=X_2$ genau ein $d'\in D^e$ mit ${X^e}_0(F)$ existiert. Da diese Aussage für alle $F\neq F_1,F_2$ bereits erfüllt ist, reicht es $F_1,F_2$ zu betrachten. Da ${X^e}_0(F_1)=\{V_1,V_3,V_4\}$ in $d$ enthalten ist, aber auch in der Menge $Pot_3(X_0)-\{X_0(F)\mid F\in X_2\}$ liegt, gibt es genau ein weiteres $d'\in D,$ das ${X^e}_0(F_1)$ enthält. Daraus folgt direkt, dass es genau ein $d'\in D^e,$ das $\{V_1,V_3,V_4\}$ enthält. Analog geht man auch für ${X^e}_0(F_2)=\{V_1,V_2,V_4\}$ vor.
+Nun muss man ebenfalls nachweisen, das es für jedes $n\in Pot_3({X^e}_0)-\{{X^e}_0(F)\mid F\in {X^e}_2\}=(Pot_3({X}_0)-\{{X}_0(F)\mid F\in {X}_2\})\cup \{X_0(F_1),X_0(F_2)\}-\{{X^e}_0(F_1),{X^e}_0(F_2)\}$ entweder kein oder genau zwei $d'\in D'$ mit $n\subset d'$ gibt. Es reicht $X_0(F_1)$ zu diskutieren. Da $X_0(F_1)$ in $d\in D$ enthalten ist, ist $d$ das einzige Element in $D,$ das $X_0(F_1)$ enthält. Daraus folgert man, dass es kein $d'\in D^e$ mit dieser Eigenschaft gibt. Analog geht man für $X_0(F_2) $ vor.
+\item In diesem Fall bildet $D^e=D\cup\{X_0(X_2(e))\}$ eine Tetraederzerlegung von $X^e.$ Klarerweise gibt es für alle $F\in {X^e}_0$ genau ein $d'\in D^e$ mit ${X^e}_0(F)\subseteq d'.$ Nun muss wieder nachgewiesen werden, dass es für jedes $n\in Pot_3({X^e}_0)-\{{X^e}_0(F)\mid F\in {X^e}_2\}=(Pot_3({X}_0)-\{{X}_0(F)\mid F\in {X}_2\})\cup \{X_0(F_1),X_0(F_2)\}-\{{X^e}_0(F_1),{X^e}_0(F_2)\}$ entweder kein oder genau zwei $d'\in D^e$ gibt, die $n$ enthalten. Es reicht $X_0(F_1)$ zu betrachten. Da $X_0(F_1)$ in genau einem $d\in D$ enthalten ist, gibt es genau zwei $d'\in D^e,$ sodass $X_0(F_1)$ eine Teilmenge von den $d'$ ist. Analog geht man für $X_0(F_2) $ vor.
+\end{enumerate}
+\end{proof}
+\begin{folgerung}
+Sei $X$ eine vertex-treue Sphäre. Dann besitzt $X$ eine Tetraederzerlegung.
+\end{folgerung}
+\begin{proof}
+Es existiert ein Multi-Tetraeder $Y$ mit $\vert X_2\vert =\vert Y_2 \vert .$ Nach obigem Lemma hat $Y$ eine Tetraederzerlegung $D$. Da die Kantendrehung transitiv ist, existiert eine Kantensequenz $E,$ sodass $Y^E$ isomorph zu $X$ ist. Durch iteratives Anwenden von \Cref{tzer}, erhält meine eine Tetraederzerlegung $D'$ von $X$. 
+\end{proof}
+\begin{lemma}
+Seien $X$ und $Y$ Sphären und $\phi:X\to Y$ ein Isomorphismus von $X$ nach $Y$. Für eine Tetraederzerlegung $D$ von $X$ ist \[
+\{\phi(d)\mid d\in D\}
+\] eine Tetraeder Zerlegung von $Y$.
+\end{lemma}
+\begin{proof}
+$\textcolor{red}{noch-uberlegen}$
+\end{proof}
+\begin{lemma}
+Sei $X$ eine vertex-treue Sphäre und $D$ und $D'$ zwei minimale Tetraederzerlegungen. Dann existiert ein Isomorphismus $\phi:X\to X,$ sodass
+\[
+D'=\{\phi(d)\mid d\in D\}
+\]
+ist.
+\end{lemma}
+\begin{proof}
+$\textcolor{red}{noch-uberlegen}$
+\end{proof}
+$
+\textcolor{red}{vielleicht-ist-es-interessant-zu-sehen-wie sich-Tetraederzerlegungen}$
+$\textcolor{red}{-unter-Anwenden-von-Butterfly-insersertion,Deletion-und-}$ 
+$\textcolor{red}{Kantendrehung-verandern}
+$
+$\textcolor{red}{vielleicht gibt es einen Zusammenhang zwischen Kaktusdistanz und minimaler Tetraederzerlegung}$
+ \section{Sphären ohne 2-Waist}
+\subsection{vertex-treue Sphären mit genau einem 3-Waists}
+\[
+\textcolor{red}{small-introduction}
+\]
+\begin{definition}
+Seien $X$ und $Y$ vertex-treue Sphären, die durch die Flächenträger $\xi_X$ bzw. $\xi_Y$ dargestellt werden. Um $X$ und $Y$ durch einen 3-Waist an Flächen $F\in X_2$ und $F'\in Y_2$ zu verbinden, muss man die Annahme treffen, dass
+$X_0(F)=Y_0(F')$ und $X_0\setminus X_0(F)\cap Y_0\setminus Y_0(F')=\emptyset.$ Dann bildet die Sphäre $X\#Y$ repräsentiert durch $\xi_W=\xi_X \Delta \xi_Y$ eine wohldefinierte simpliziale Fläche.
+\end{definition}
+\begin{bemerkung}
+Obige Definition lässt sich leicht verallgemeinern. Falls $X_0$ und $Y_0$ disjunkt sind, kann man das Zusammensetzen der Sphären mithilfe einer Permutation $\phi=(v_1v_1')(v_2v_2')(v_3v_3')$ für $X_0(F)=\{v_1,v_2,v_3\}$ und $Y_0(F')=\{v_1',v_2',v_3'\}$ durchführen. Man identifiziert $\xi_Y$ mit der Menge  
+\[
+\{\phi (y)\mid y\in \xi_Y \}.
+\]
+und bezeichnet die Sphäre, die durch das Zusammensetzen  entsteht mit $X\#_{\phi}Y$
+\end{bemerkung}
+Mithilfe des SimplicialSurfaces Paket kann man die Sphären mit genau einem 3-Waist berechnen. Die folgende Tabelle zeigt die Anzahl $k_n$ der Sphären mit genau einem 3 Waist und $n$ Flächen. \\
+\begin{tabular}[h]{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+n&2& 4 &  6& 8 & 10 & 12 & 14&16&18&20&22&24&26&28\\
+\hline
+ $k_n$ &0 & 0 & 1 & 0 & 1 & 1 & 3 & 5 & 13 & 31 & 104 & 356 & 1499 & 6734  \\
+ \hline
+\end{tabular}
+
+Zudem listen wir den Vertex Counter, Face-counter und die Automorphismengruppen für die Sphären mit bis zu 16 Flächen auf.
+
+\begin{tabular}[h]{|c|c|c|c|c|}
+\hline
+n &Zshngs.-& Vertex & Facecounter & Aut.\\
+&komp.&counter&& gruppe\\
+ \hline
+ 6& $T,T$ & $v_3^2v_4^3$&$f^6_{3,4^2}$& $C_2\times D_6$\\
+ \hline
+10& $T,O$ & $v_3^1v_4^4v_5^3$& $f^3_{3,5^2}f^1_{4^3}f^3_{4^2,5}f^3_{4,5^2}$ &$S_3$\\
+ \hline
+12& $(5)^2,T$ &$v_3^1v_4^3v_5^3v_6^1$& $f^1_{3,5^2}f^2_{3,5,6}f^2_{4^2,5}f^2_{4^6}f^2_{4,5^2}f^2_{4,5,6}f^1_{5^3}$&$C_2$\\
+ \hline
+  & $(6)^2,T $& $ v_3^1v_4^4v_5^2v_6^1v_7^1$& $f^1_{3,5^2}f^2_{3,5,7}f^3_{4^2,6}f^3_{4^2,7}f^2_{4,5,6}f^2_{4,5,7}f^1_{5^2,6}$ &$C_2$\\
+14& $S,T$& $ v_3^1v_4^3v_5^3v_6^2$& $f^2_{3,5,6}f^1_{3,6^2}f^1_{4^2,5}f^1_{4^2,6}f^3_{4,5^2}f^4_{4,5,6}f^1_{4,6^2}f^1_{5^2,6}$ &$\{id\}$\\
+  & $O,O$ & $v_4^6v_6^3$& $f^2_{4^3}f^6_{4^2,6}f^6_{4,6^2} $ & $D_{12}$\\
+ \hline
+  &$(7)^2,T$ &$v_3^1v_4^4v_5^2v_6^2v_7^1$&$f^1_{3,5,6}f^1_{3,5,7}f^1_{3,6,7}f^2_{4^2,6}f^2_{4^2,7}f^1_{4,5^2}f^3_{4,5,6}$ &$\{id\}$ \\
+  &&&$f^1_{4,5,7}f^2_{4,6^2}f^1_{4,6,7}f^1_{5^2,7}$&\\
+  & $(5)^2,O$& $v_3^1v_4^5v_5^2v_7^1v_8^1$&$f^1_{3,5^2}f^2_{3,5,8}f^4_{4^2,7}f^4_{4^2,8}f^2_{4,5,7}f^2_{4,5,8}f^1_{5^2,7}$ &$C_2$\\
+16& $(5)^2,O$&$ v_3^1v_4^3v_5^4v_6^1v_7^1$&$f^1_{3,5,6}f^1_{3,5,7}f^1_{3,6,7}f^1_{4^2,5}f^1_{4^2,7}f^3_{4,5^2}f^1_{4,5,6}$ &$\{id\}$\\
+&&&$f^3_{4,5,7}f^1_{4,6,7}f^1_{5^3}f^2_{5^2,6}$&\\
+  &          & $v_3^1v_4^2v_5^5v_6^2$& $f^2_{3,5,6}f^1_{3,6^2}f^4_{4,5^2}f^4_{4,5,6}f^2_{5^3}f^2_{5^2,6}f^1_{5,6^2}$ &$C_2$\\
+  &          &$v_4^6v_5^1v_6^2v_7^1$ &$f^1_{4^3}f^2_{4^2,5}f^2_{4^2,6}f^3_{4^7}f^2_{4,5,6}f^1_{4,6^2}f^4_{4,6,7}f^1_{5,6^2}$ &$C_2$\\
+ \hline
+\end{tabular}
+
+
+$\textcolor{red}{liste-aller-spharen-ohne-2-Waist}$
+
+
+$\textcolor{red}{liste-aller-spharen-mit-3-Waist}$
+\begin{bemerkung}
+Sei $X$ eine Sphäre ohne Ecken vom Grad 3 und $F$ eine Fläche in $X$. Dann ist $Aut(T^F(X))$ eine Untergruppe von $S_3.$ 
+\end{bemerkung}
+\begin{proof}
+Sei $V$ die Ecke vom Grad 3 in $T^F(X).$
+Da $X$ keine Ecken vom Grad 3 besitzt, gilt
+\begin{itemize}
+\item $\phi(V)=V$
+\item $\phi (X_1(V))=X_1(V)$
+\item $\phi (X_2(V))=X_2(V)$
+\end{itemize}
+für jeden Isomorphismus $\phi:Aut({T}^F(X))\mapsto Aut({T}^F(X)).$ Für solch einen Isomorphismus kommen nur die Elemente der Gruppe $S_3$ in Frage. 
+\end{proof}
+Diese Beobachtung kann man verallgemeinern. Denn beim Genauerem Hinschauen erkennt man, dass 
+\[
+S_3\cong\{\phi\in Aut(T)\mid \phi(F)=F\}
+\] für eine Fläche $F\in T_2$ ist.
+\begin{bemerkung}
+Sobald die Voraussetzung fallen gelassen wird, dass $X$ eine Sphäre ohne Ecke vom Grad 3 ist, ist die Aussage falsch, denn die Automorphismengruppe des Double-Tetraeders ist isomorph zu der Gruppe $C_2\times S_3$ und wie bereits bekannt erhält man den Double-Tetraeder durch eine Tetraedererweiterung an einem Tetraeder.
+\end{bemerkung}
+\begin{lemma}
+Seien $X$ und $Y$ zwei nicht isomorphe vertex-treue Sphären ohne 3-Waist mit Flächen $F$ in $X$ bzw. $F'$ in $Y$. Sei zudem $\phi$ eine bijektive Abbildung von $X_0(F)$ nach $Y_0(F').$ Dann ist $Aut(X\#_\phi Y)$ isomorph zu einer echten Untergruppe von $Stab_X(F)$ und zu einer echten Untergruppe von $Stab_Y(F').$
+\end{lemma}
+\begin{proof}
+Sei $W=(e_1,e_2,e_3)$ der durch das Zusammensetzen entstandene 3-Waist und $M_1,M_2$ zugehörigen 3 Waist Komponenten. Es gilt $M_1=X_2-\{F\}$ und $M_2=Y_2-\{F'\}.$ Da $W$ der einzige 3-Waist ist, bildet ein Isomorphismus $\Phi:X\#_{\phi}Y \mapsto X\#_{\phi}Y$  eine Kante des 3-Waists wieder auf eine Kante des 3-Waists ab. Daraus folgt also entweder $\Phi(M_i)=M_i$ oder $\Phi(M_i)=M_{3-i}.$ Da $X$ und $Y$ nicht isomorph sind, muss also der erste Fall eintreten. Somit lässt sich \textsc{$\Phi_{\mid M_1}$} zu einem Isomorphismus $\Phi_X$ auf $X$ erweitern, der $F$ fixiert. Analog erweitert man $\Phi_{\mid M_2}$ zu einem Isomorphismus $\Phi_Y,$ der $F'$ auf sich selber abbildet.
+\end{proof}
+\subsection{Erzeugen durch Kantendrehung}
+\subsection{Erzeugen durch Butterfly-Insertion}
+\section{Erkenntnisse}
+\begin{comment}
+\begin{satz}
+Sei $(X,<)$ eine vertex-treue  Sphäre und $e\in X_1$ eine Kante, die folgendes erfüllt 
+\[
+deg(V)=4 \forall V\in X_0(X_2(e)).
+\]
+ Dann ist $X \cong O$, wobei $(O,<_O)$ der bereits bekannte Oktaeder ist. 
+\end{satz}
+\begin{proof}
+Für den Beweis nutzen wir die zuvor definierte Butterfly Deletion. Sei $X$ eine vertex-treue Sphäre mit obiger Eigenschaft. Dann bildet $Y=\textcolor{red}{e\beta(X)}$ eine simpliziale Fläche mit den Knoten $V,V',V''$ und Kanten $e',e''$, wobei
+\begin{align*}
+&deg(V)=4\\
+&deg(V')=deg(V'')=3\\
+&X_0(e')=\{V,V'\}\\
+&X_0(e')=\{V,V''\}
+\end{align*}
+gilt.  Ein erneutes Anwenden der Butterfly Deletion liefert und die Sphäre $Z=\textcolor{red}{e\beta(Y)}$ mit $\bar{V}\in Z_0$ und $\bar{e}\in Z_1$, die $X_0(\bar{e})=\{\bar{V},V''\}$ erfüllen. Damit ist $Z\cong T$, da $\bar{V}$ und $V''$ benachbarte Knoten vom Grad $3$ sind.
+Damit ist $Y$ isomorph zum Double-Tetraeder $DT$ und schlussendlich erhält man die obige Behauptung.
+\end{proof}
+\begin{bemerkung}
+Falls bei der obigen Formulierung des Satzes auf die Voraussetzung der Vertex-Treue verzichtet wird, so ist die Aussage falsch. Denn die simpliziale Fläche, die dadurch entsteht, dass man sich eine beliebige Kante des Oktaeders nimmt, einen Cratercut an dieser durchführt und an den neu entstandenen Randkanten einen Open-Bag anheftet, erfüllt dann die Voraussetzung der schwächeren Umformulierung. Diese ist jedoch nicht zum Oktaeder isomorph.
+\end{bemerkung}
+\end{comment}
+\begin{satz}
+Sei $X$ ein Multi-Tetraeder, der nicht zum Tetraeder isomorph ist und $F_X$ der Facegraph von $X$. Dann ist $F_X$ 3-färbbar.
+\end{satz}
+
+\begin{satz}
+\end{satz}
+\begin{folgerung}
+Für alle simplizialen Flächen $X$ mit einem 3- oder 2-Waist gilt 
+\[
+\det(F_X)=0
+\]
+\end{folgerung}
+\begin{folgerung}
+Sei $X$ ein Multi-Tetraeder und $F_T$ die zugehörige Flächen Matrix. Dann ist 
+\[
+\det(F_T)=0
+\]
+\end{folgerung}
+\begin{proof}
+noch überlegen
+\end{proof}
+
+\section*{Appendix}
+\textbf{benötigte Vorkenntnisse} \\
+$\fbox{
+\parbox{14cm}{\begin{itemize}
+\item Grundlagen
+\item vertex-treue Sphaeren
+\end{itemize}
+}}$\\
+Liste der verwendeten Sphären.
+
+
+\pagestyle{empty}
+\end{document}
+

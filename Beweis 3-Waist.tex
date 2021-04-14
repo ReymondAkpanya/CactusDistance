@@ -1,0 +1,384 @@
+\documentclass[12pt,titlepage,twoside,cleardoublepage]{article}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,lmargin={4cm},rmargin={2cm},
+tmargin={2.5cm},bmargin = {2.5cm}]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pdfpages} 
+%\usepackage[pdftex,article]{geometry}
+\usepackage{amsthm}
+%\usepackage{ngerman,amsthm}
+\usepackage{lineno} 
+\usepackage{lineno, blindtext} 
+\usepackage{cleveref}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{thmtools}
+\usepackage{tabularx}
+\linespread{1.25}
+\usepackage{color}
+\usepackage{verbatim}
+\newcommand{\gelb}{0.550000011920929}
+\usepackage{pgf,tikz,pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+%\numberwithin{equation}{chapter}
+%\usepackage{scrheadings}
+\pagestyle{headings}
+\usepackage{titlesec}     
+\usepackage{tikz}           % für Kontrolle der Abschnittüberschriften
+\begin{comment}
+\makeatother
+\theoremstyle{nummermitklammern}
+\theorembodyfont{\rmfamily}
+\theoremsymbol{\ensuremath{\diamond}}
+\newtheorem{temp}{}[section]
+\newtheorem{vor}[temp]{Vorüberlegung}
+\newtheorem{lemma}[temp]{Lemma}
+\newtheorem{folgerung}[temp]{Folgerung}
+\newtheorem{korollar}[temp]{Korollar}
+\newtheorem{bsp}[temp]{Beispiel}
+\newtheorem{herleitung}[temp]{Herleitung}
+\newtheorem{definition}[temp]{Definition}
+\newtheorem{bemerkung}[temp]{Bemerkung}
+\newtheorem{satz}[temp]{Satz}
+\newtheorem{beweisidee}[temp]{Beweisidee}
+\theoremsymbol{\ensuremath{\square}}
+\end{comment}
+%\begin{comment}
+\newtheorem{zahl}{}[section]
+%\setcounter{zahl}{1}
+%\newtheorem{section}{section}[section]
+\newtheorem{definition}[zahl]{Definition}
+\newtheorem{vor}[zahl]{Vorüberlegung}
+\newtheorem{lemma}[zahl]{Lemma}
+\newtheorem{folgerung}[zahl]{Folgerung}
+\newtheorem{bsp}[zahl]{Beispiel}
+\newtheorem{herleitung}[zahl]{Herleitung}
+\newtheorem{bemerkung}[zahl]{Bemerkung}
+\newtheorem{satz}[zahl]{Satz}
+\newtheorem{beweisidee}[zahl]{Beweisidee}
+\numberwithin{equation}{section}
+\newtheorem{korollar}[zahl]{Korollar}
+\newtheorem{proposition}[zahl]{Proposition}
+
+
+%-----------------------------------------------
+
+%\end{comment}
+ %Nummerierung mit Kapitelnummern
+%-------------------------
+%\newcommand{\secnumbering}[1]{% 
+ % \setcounter{chapter}{0}% 
+  %\setcounter{section}{0}% 
+  %\renewcommand{\thechapter}{\csname #1\endcsname{chapter}.}% nach Duden gehört 
+                                  % der Punkt hier hin bei gemischten Zählungen 
+%  \renewcommand{\thesection}{\thechapter\csname #1\endcsname{section}}% 
+%}
+%------------------------------
+\begin{document}
+Zur Erinnerung:
+\begin{definition}
+Sei $X$ eine vertex-treue Sphäre. Man nennt eine Kante $e\in X_1$ \emph{drehbar}, falls es keine Kante $e'\in X_1\setminus\{e\}$ mit $X_0(e')=X_0(X_2(e))-X_0(e)$ gibt.
+\end{definition}
+In Gap:
+\begin{center}
+$\fbox{
+\parbox{26cm}{
+\begin{tabbing}
+\textcolor{blue}{gap$>$}IsTu\=rnableEdge:=function(S,e)\\
+\textcolor{red}{$>$}\>    local g,voe;\\
+\textcolor{red}{$>$}\>    voe:=VerticesOfEdge(S,e);\\
+\textcolor{red}{$>$}\>    for \=g in Edges(S) do\\
+\textcolor{red}{$>$}        \>\>if g\=$<>$ e and Set(VerticesOfEdge(S,g))=Set(voe)  then\\
+\textcolor{red}{$>$}            \>\>\>return false;\\
+\textcolor{red}{$>$}        \>\>fi;\\
+\textcolor{red}{$>$}    \>od;\\
+\textcolor{red}{$>$}\>    return true;\\
+\textcolor{red}{$>$}end;
+\end{tabbing}
+}}$
+\end{center}
+
+Im Folgenden wird eine vertex-treue Sphäre $X$ betrachtet.
+\begin{bemerkung}
+Diese Bemerkung beschreibt, wie sich die Orientierungen von Flächen in dem Schirm einer Ecke in $X$ verhalten.
+ Seien deshalb $V\in X_0$ und $U(V)=((F_1,\ldots,F_n))$ der für Flächen $F_1,\ldots,F_n$ zu $V$ zugehörige Schirm. Im Folgenden nennen wir ein Tupel $(F_1,\ldots,F_n)\in U(V)$ ein \emph{Schirm-Tupel} von $V$. Weiterhin gibt es $V_1,\ldots,V_n\in X_0,$ die 
+\[
+X_0(F_i)=\{V,V_i,V_{i+1}\}
+\] 
+für $i=0,\ldots,n-1$ und 
+\[
+X_0(F_n)=\{V,V_{1},V_{n}\}
+\] erfüllen.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=5cm 23cm 5cm 27cm]{bem}
+\end{center}
+%\caption{Kantendrehung}
+\end{figure}
+Dann gibt es Kanten $e_1,\ldots,e_n$ in $X,$ sodass wir 
+\[
+(V_1,e_1,V_2,e_2,\ldots,V_n,e_n)
+\] 
+als Ecken-Kanten-Pfad in $X$ erhalten. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=5cm 23cm 5cm 27cm]{bem1}
+\end{center}
+%\caption{Kantendrehung}
+\end{figure}
+Wir bezeichnen die Orientierung einer Fläche $F\in X_2$ im Folgenden mit $o(F).$ Wir wollen nun Orientierungen der $F_i$ so angeben, dass die Orientierungen von je zwei benachbarten Flächen kohärent sind. 
+Geben wir nun die Orientierung $o(F_1)=(V,V_1,V_2)$ vor, dann lässt sich, die Orientierung einer beliebigen Fläche in dem Schirm bestimmen. Diese ergibt sich nämlich durch $o(F_i)=(V,V_i,V_{i+1})$ bzw. $o(F_n)=(V,V_n,V_1).$ Man liest also die zwei von $V$ verschiedenen Ecken in der Reihenfolge, wie sie auch im Ecken-Kanten Pfad vorkommen. Beispielsweise ist die Orientierung von $F_4$ durch $(V,V_4,V_5)$ gegeben, da im Pfad $V_4$ vor $V_5 $ besucht wird. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=5cm 23cm 5cm 27cm]{bem2}
+\end{center}
+%\caption{Kantendrehung}
+\end{figure}
+Analoges Vorgehen liefert uns ebenfalls im Fall $o(F_1)=(V,V_2,V_1)$ die Orientierung der restlichen Flächen des Schirmes. Diese ergibt sich nämlich durch $o(F_i)=(V,V_{i+1},V_{i})$ bzw. $o(F_n)=(V,V_1,V_n).$ Denn in diesem Fall liest man die beiden von $V$ verschiedenen Ecken in umgekehrter Reihenfolge. Beispielsweise ist die Orientierung von $F_3$ durch $(V,V_4,V_3)$ gegeben, da $V_4$ nach $V_3$ besucht wird.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=5cm 23cm 5cm 27cm]{bem3}
+\end{center}
+%\caption{Kantendrehung}
+\end{figure}
+Wir nennen den oben konstruierten Ecken-Kanten-Pfad einen \emph{Schirm-Pfad} von $V.$
+Weiterhin nennen wir $\mathcal{O}_X=\{o(F)\mid F\in X_2\}$ eine Orientierung der Sphäre $X,$ falls die Orientierungen $o(F),o(F')\in \mathcal{O}$ von zwei benachbarten Flächen $F$ und $F'$ in $X$ kohärent sind. Falls $X$ aus dem Kontext klar ist, schreiben wir auch $\mathcal{O}$ für die Orientierung $\mathcal{O}_X.$ Da Sphären zusammenhängend sind, ist die  Orientierung einer Sphäre durch Angabe der Orientierung einer beliebigen Fläche der Sphäre eindeutig festgelegt. Durch eine Orientierung der Sphäre  entstehen zwei Arten von Schirm-Tupeln der Ecke $V\in X_0.$ Hierzu sei $U\in U(V)$ ein Schirm-Tupel von $V.$ Mit $i_1$ bezeichnen wir die Position von $F_1$ und mit $i_n$ die Position von $F_n$ in $U.$
+\begin{itemize}
+\item Sei
+$(V,V_1,V_2)\in \mathcal{O}.$ Falls entweder $\{i_1,i_n\}\neq\{1,n\}$ und $i_1\geq i_n$ oder $(i_1,i_n)=(1,n)$ ist, dann nennen wir $U$ $\mathcal{O}$-positiv orientiert. Andernfalls nennen wir $\mathcal{O}$-negativ orientiert.
+\item Sei $(V,V_2,V_1)\in \mathcal{O}.$ Falls entweder $\{i_1,i_n\}\neq \{1,n\}$ und $i_1\leq i_n$ oder $(i_1,i_n)=(n,1)$ ist, dann nennen wir $U$ $\mathcal{O}$-positiv orientiert. Andernfalls nennen wir  $\mathcal{O}$-negativ orientiert.
+ \end{itemize}
+Falls die Orientierung $\mathcal{O}$ im Kontext klar ist, nennt man $U$ einfach nur positiv bzw. negativ orientiert.
+Für $n=6$ zeigt die untenstehende Tabelle alle positiv und negativ orientierten Schirm-Tupel der Ecke $V$ im Fall $(V,V_1,V_2) \in \mathcal{O}$.\\
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+$\mathcal{O}-$positiv orientiert & $\mathcal{O}-$negativ orientiert\\
+\hline
+$(F_1,\ldots,F_6)$&$(F_6,\ldots ,F_1)$\\
+$(F_6,F_1,\ldots,F_5)$&$(F_1,F_6,\ldots ,F_2)$\\
+$(F_5,F_6,F_1,\ldots,F_4)$&$(F_2,F_1,F_6,\ldots,F_3)$\\
+$(F_4,F_5,F_6,F_1,F_2,F_3)$&$(F_3,F_2,F_1,F_6,F_5,F_4)$\\
+$(F_3,F_4,F_5,F_6,F_1,F_2)$&$(F_4,F_3,F_2,F_1,F_6,F_5)$\\
+$(F_2,F_3,F_4,F_5,F_6,F_1)$&$(F_5,F_4,F_3,F_2,F_1,F_6)$\\
+\hline
+\end{tabular}
+\end{center}
+\end{bemerkung}
+  
+\begin{bemerkung}
+Seien $X$ eine vertex-treue Sphäre und $\mathcal{O}$ eine Orientierung von $X.$ Weiterhin seien $V_1,V_2$ zwei benachbarte Ecken in $X$ zusammen mit positiv orientierten Schirm-Tupeln $U_1\in U(V_1)$ und $U_2\in U(V_2).$ Für zwei benachbarte Flächen $F_1,F_2\in X_2$ mit 
+\[
+X_2(V_1)\cap X_2(V_2)=\{F_1,F_2\},
+\]
+erhalten wir den Zusammenhang, dass die beiden Flächen in $U_1$ und  $U_2$ in jeweils umgekehrter Reihenfolge auftauchen.\\
+Genauer wird in diesem Zusammenhang Folgendes unter dem Auftauchen in umgekehrter Reihenfolge verstanden:\\ 
+Bezeichnen wir die Position von $F_j$ in $U_l$ mit $i_j^l$ für $j,l=1,2,$ dann gilt:
+\begin{align*}
+i^1_1\leq i_2^1 \, oder \, (i_1^1,i^1_2)=(n_1,1)\Leftrightarrow i^2_1\geq i_2^2 \, oder \, (i_1^2,i^2_2)=(1,n_2),
+\end{align*}
+wobei $\deg(V_1)=n_1$ und $\deg(V_2)=n_2$ ist.
+Zur Veranschaulichung betrachten wir für geeignete Flächen und Ecken folgenden Ausschnitt einer Sphäre. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=5cm 21.5cm 5cm 27cm]{bem4}
+\end{center}
+%\caption{Kantendrehung}
+\end{figure}
+Sei nun $\mathcal{O}$ eine Orientierung von $X$ mit $(V_1,V_2,V_3)\in \mathcal{O}$, wobei $X_0(F_2)=\{V_1,V_2,V_3\}$ ist.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=5cm 21.5cm 5cm 27cm]{bem5}
+\end{center}
+%\caption{Kantendrehung}
+\end{figure}
+
+Dann erhalten wir durch 
+\[
+U_1=(F_1,F_2,F_3,F_4,F_5,F_6)
+\]
+bzw.
+\[
+U_2=(F_2,F_1,F_7,F_8,F_9,F_{10})
+\]
+zwei positiv orientierte Schirm-Tupel von $V_1$ bzw. $V_2.$ In diesen tauchen die Flächen $F_1,F_2$ in jeweils umgekehrter Reihenfolge auf. 
+\end{bemerkung}
+Zum tieferen Verständnis der oben eingeführten Definitionen betrachten wir als Beispiel einen Tetraeder, wobei an dieser Stelle auf die formale Definition verzichtet wird und uns die Definition durch die folgende Skizze genügt.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=4cm 23cm 5cm 27cm]{tetbem1}
+\end{center}
+%\caption{Kantendrehung}
+\end{figure} 
+Durch Angabe der Orientierung $o(F_1)=(V_2,V_4,V_3)$ erhalten wir
+\[
+\mathcal{O}=\{(V_2,V_4,V_3),(V_1,V_4,V_2),(V_1,V_2,V_3),(V_1,V_3,V_4)\}
+\] 
+als Orientierung des obigen Tetraeders.
+ 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=4cm 23cm 5cm 27cm]{tetbem}
+\end{center}
+%\caption{Kantendrehung}
+\end{figure} 
+Für zwei benachbarte Ecken, beispielsweise $V_1$ und $V_2,$ bilden $U_1=(F_3,F_4,F_2)$ und $U_2=(F_1,F_4,F_3)$ zwei positiv orientierte Schirm-Tupel in denen die zu beiden Ecken inzidenten Flächen $F_3$ und $F_4$ in jeweils umgekehrter Reihenfolge vorkommen.
+\begin{lemma}
+Sei $X$ eine vertex-treue Sphäre und $V$ eine beliebige Ecke in $X,$ die $deg(X)\geq 4$ erfüllt. Dann gibt es eine drehbare Kante in $X_1(V).$ 
+\end{lemma}
+\begin{proof}
+Man beweist diese Aussage per Widerspruch und folgert dann, dass $X$ nicht orientierbar ist, also keine Sphäre sein kann.
+Angenommen es existiert eine Ecke $V$ in $X$, sodass keine Kante in $X_1(V)$ drehbar ist. Dann gibt es für alle $e\in X_1(V)$ eine Kante $e'\in X_1\setminus{e},$ sodass 
+\[
+(X_0(X_2(e))-X_0(e))=X_0(e')
+\]
+ist.
+Für $n\geq 4$ sei nun $U(V)=((F_1,\ldots,F_n))$ der Schirm von $V$ und $V_1,\ldots,V_5$ Ecken in $X,$ sodass  
+\[
+X_0(F_i)=\{V,V_i,V_{i+1}\}
+\] 
+für $i\in\{1,2,3,4\}$ ist.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=4cm 23cm 5cm 27cm]{beweis}
+\end{center}
+%\caption{Kantendrehung}
+\end{figure} 
+ Da $X$ vertex-treu ist, können wir die Kanten mit den inzidenten Ecken identifizieren. Da also $\{V,V_2\}$ und $\{V,V_4\}$ nicht drehbar sind, gibt es bereits die Kanten $\{V_1,V_3\}$ und $\{V_3,V_5\}$ in $X$. Für diese gibt es  Flächen $F^{1,3}_1,F^{1,3}_2,F^{3,5}_1,F^{3,5}_2\in X_2$ mit $X_2(\{V_1,V_3\})$ $=\{F^{1,3}_1,F^{1,3}_2\}$ und $X_2(\{V_3,V_5\})=\{F^{3,5}_1,F^{3,5}_2\}$. Wir wollen nun einen Flächen-Pfad ohne Wiederholung und eine Orientierung entlang dieses Pfades angeben, um dann den gewünschten Widerspruch zu erzeugen. Hierzu brauchen wir geeignete Schirm-Tupel der Ecken $V_1,V_3$ und $V_5.$ 
+Da $X$ orientierbar ist, existiert eine Orientierung $\mathcal{O}_X$ mit $(V,V_1,V_2)\in \mathcal{O}_X.$
+Den gewünschten Schirm-Tupel von $V_1$ erhalten wir durch folgende Überlegung: 
+Aus obiger Voraussetzung wissen wir, dass $\{F_n,F_1,F_1^{1,3},F_2^{1,3}\}\subset X_2(V_1)$ ist und die Flächen $F_1$ und $F_2$ bzw. $F^{1,3}_1$ und $F^{1,3}_2$
+benachbarte Flächen in $X$ sind. Da jedoch die $F_i$ und die $F_j^{1,3}$ im Allgemeinen nicht benachbart sind, gibt es also geeignete Flächen, sodass  
+\[
+U(V_1)=((F_n,F_1,F_a,\ldots,F_b,F^{1,3}_1,F^{1,3}_2,\ldots))
+\]
+den Schirm von $V_1$ bildet, woraus wir das negativ orientiere Schirm-Tupel
+\[
+U_1=(F_n,F_1,F_a,\ldots,F_b,F^{1,3}_1,F^{1,3}_2,\ldots)
+\]  
+konstruieren können.
+Analog erhalten wir ebenfalls 
+\[
+U_5=(F_5,F_4,F_e\ldots,F_f,F^{3,5}_1,F^{3,5}_2,\ldots)
+\] als positiv orientiertes Schirm-Tupel von $V_5$ in $X$. Da $\{F_2,F_3,F_1^{3,5},F_2^{3,5},F^{1,3}_1,F^{1,3}_2\}\subseteq X_2(V)$ ist,  erhalten wir wegen Bemerkung 0.2 ohne Einschränkung der Allgemeinheit für geeignete Flächen ein negativ-orientiertes Schirm-Tupel von $V_3$ durch
+\[
+U_3=(F_2,F_3,F_d,\ldots,F_c,F^{1,3}_2,F^{1,3}_1,\ldots,F_1^{3,5},F_2^{3,5},F_g,\ldots,F_h).
+\]
+%\begin{figure}[H]
+%\begin{center}
+%\includegraphics[viewport=4cm 20cm 5cm 27cm]{surf}
+%\end{center}
+%\caption{Kantendrehung}
+%\end{figure}
+Außerdem seien $V_i^{k,l}$ Ecken in $X,$ sodass für die obigen Flächen der Form $F_i^{k,l}$ die Gleichheit
+\[
+X_0(F^{k,l}_i)=\{V_k,V_l,V_i^{k,l}\}
+\] für geeignete $i,j,k$ gilt. Also ist beispielsweise $X_0(F_1^{1,3})=\{V_1,V_3,V_1^{1,3}\}.$
+
+
+%\begin{figure}[H]
+%\begin{center}
+%\includegraphics[viewport=5cm 18cm 5cm 27cm]{ma}
+%\end{center}
+%\caption{Kantendrehung}
+%\end{figure}
+Um nun den Pfad zu konstruieren, bewegen wir uns mithilfe der angegebenen Schirm-Tupel entlang der Schirme der jeweiligen Ecken. Zunächst bewegen wir uns auf dem Schirm von $V_1$ ausgehend von $F_1$ über die Flächen $F_a,\ldots,F_b$ zu den Flächen $F_1^{1,3},F_2^{1,3}$, wo wir dann auf den Schirm von $V_3$ wechseln können. Daraufhin gelangen wir über die Flächen $F_c,\ldots,F_d$ zu $F_3$ und dann zu $F_4,$ wodurch wir uns nun auf dem Schirm von $V_5$ befinden. Über die Flächen $F_e,\ldots,F_f$ gelingt uns nun wieder der Tausch zum Schirm von $V_3,$ weshalb die Flächen $F_g,\ldots,F_h$ uns schließlich das Erreichen der Fläche $F_2$ ermöglichen.  
+Dadurch erhalten wir 
+\[
+(F_1,F_a,\ldots,F_b,F^{1,3}_1,F^{1,3}_2,F_c,\ldots,F_d,F_3,F_4,F_e,\ldots,F_f,F_1^{3,5},F_2^{3,5},F_g,\ldots,F_h,F_2)
+\]
+als geschlossenen Pfad.
+Wegen der Orientierung $o(F_1)=(V,V_1,V_2)$ erhalten wir aufgrund der obigen Bemerkung 0.1
+\[
+o(F_1^{1,3})=(V_1,V_1^{1,3},V_3),
+\] 
+denn der Pfad 
+\[
+(V,\{V,V_2\},V_2,\ldots, V_1^{1,3},\{V_1^{1,3},V_3\},V_3,\{V_3,V_2^{1,3}\},\ldots)
+\] bildet einen Schirm-Pfad von $V_1.$
+Analoges Vorgehen liefert die Orientierungen:
+\begin{align*}
+&o(F_2^{1,3})=(V_1,V_3,V_2^{1,3})\\
+\Rightarrow&o(F_3)=(V,V_3,V_4)\\
+\Rightarrow&o(F_4)=(V,F_4,V_5)\\
+\Rightarrow&o(F_1^{3,5})=(V_5,V_3,V_1^{3,5})\\
+\Rightarrow&o(F_2^{3,5})=(V_3,V_5,V_2^{3,5})\\
+\Rightarrow&o(F_2)=(V,V_3,V_2)
+\end{align*}
+Durch Betrachtung von $o(F_1)$ und $o(F_2)$ erhalten wir den gewünschten Widerspruch, denn diese sind nicht kohärent.
+\end{proof}
+\newpage
+$\textcolor{red}{untenstehende\, sachen\, muessen\, noch\, ausformuliert\, werden}$
+\begin{lemma}
+Sei $X$ eine vertex-treue Sphäre mit einer Ecke vom Grad 3,  $Y$ die Sphäre die durch das Entfernen der Tetraeder entsteht und $\zeta:=\zeta(Y)$ die Kaktus-Distanz von $Y$. Weiterhin seien $e_1,\ldots,e_{\zeta}$ drehbare Kanten in $Y,$ sodass $Y^{(e_1,\ldots,e_{\zeta})}$ ein Multi-Tetraeder ist. Dann gilt
+\[
+\zeta(X)\leq \vert\{e_i\mid \, e_i \notin M_X\}\vert+2*\vert \{e_j\mid \, e_i \in M_X\}\vert,
+\]
+wobei $M_X=\{e\in X_2\mid \,\exists\,V\in X_0\, :\, \deg_X(V)=3 \, \wedge \, e \in X_1(X_2(V))-X_1(V) \}$
+\end{lemma}
+\begin{proof}
+Beweis folgt noch.
+\end{proof}
+\newpage
+Dieses Lemma bildet die Grundidee für den folgenden Algorithmus, der die Kaktus-Distanz einer Sphäre annähert.
+
+\begin{center}
+$\fbox{
+\parbox{15cm}{
+\begin{tabbing}
+\textcolor{blue}{gap$>$}Al\=gorithmCactus:=function(S)\\
+\textcolor{red}{$>$}\> local V, tempS, cacdis, g, mindeg, edges, tempmindeg, tempV, \\
+\textcolor{red}{$>$}\>vertices, tempfacdeg, edg, tempedg, visited;\\
+\textcolor{red}{$>$} \>   cacdis:=0;\\
+\textcolor{red}{$>$}\>   visited:=[\,];\\
+\textcolor{red}{$>$} \>   tempS:=S;\\
+\textcolor{red}{$>$}\>    while\=\, not IsIsomorphic(tempS,T) and not IsIsomorphic(tempS,DT) do\\
+\textcolor{red}{$>$}\> \> mindeg:=Minimum(FaceDegreesOfVertices(tempS));\\
+\textcolor{red}{$>$}\> \>       V:=Position(FaceDegreesOfVertices(tempS),mindeg);\\
+\textcolor{red}{$>$}\>\>        edges:=Filtered(EdgesOfVertex(tempS,V),g$->$ IsTurnableEdge(tempS,g));\\
+\textcolor{red}{$>$}\>\>    vertices:=List(edges,g$->$VerticesOfEdge(tempS,g));\\
+\textcolor{red}{$>$}\>\>        vertices:=Union(vertices);\\
+\textcolor{red}{$>$}\>\>        vertices:=Difference(vertices,[V]);\\
+\textcolor{red}{$>$}\> \>       while\=\, FaceDegreeOfVertex(tempS,V)$<>$3 do\\
+\textcolor{red}{$>$}\>\>\>            tempfacdeg:=List(vertices,g->FaceDegreeOfVertex(tempS,g));\\
+\textcolor{red}{$>$}\>\>\> tempmindeg:=Minimum(tempfacdeg);\\            
+\textcolor{red}{$>$}\>\>\>            tempV:=Filtered(vertices,g$->$FaceDegreeOfVertex(tempS,g)=tempmindeg)[1];\\
+\textcolor{red}{$>$}\>\>\>edg:=Filtered(edges,g$->$Set(VerticesOfEdge(tempS,g))=Set([tempV,V]))[1];\\
+\textcolor{red}{$>$}\>\>\>            if ed\=g in visited then\\
+\textcolor{red}{$>$}\>\>\>\>     cacdis:=cacdis+2;\\
+\textcolor{red}{$>$}\>\> \>          else            \\
+\textcolor{red}{$>$}\>\> \>\>               cacdis:=cacdis+1;\\    
+\textcolor{red}{$>$}\>\>\>            fi;    \\        
+\textcolor{red}{$>$}\>\>\>            tempS:=EdgeTurn(tempS,edg);\\
+\textcolor{red}{$>$}\>\>\>            edges:=Difference(edges,[edg]);\\
+\textcolor{red}{$>$}\>\>\>            
+vertices:=Difference(vertices,[tempV]);\\
+\textcolor{red}{$>$}\>\>        od;\\
+\textcolor{red}{$>$}\>\>        tempedg:=Union(List(FacesOfVertex(tempS,V),g$->$EdgesOfFace(tempS,g) ) );\\
+\textcolor{red}{$>$}\>\>        tempedg:=Difference(tempedg,EdgesOfVertex(tempS,V));\\
+\textcolor{red}{$>$}\>\>        Append(visited,tempedg);\\
+\textcolor{red}{$>$}\>\>        tempS:=RemoveTetra(tempS,V);\\
+\textcolor{red}{$>$}\>    od;  \\
+\textcolor{red}{$>$}\>    return cacdis;\\
+\textcolor{red}{$>$}end;\\
+\end{tabbing}
+}}$
+\end{center}
+%IsTurnableEdge:=function(S,e)
+%    local g,voe;
+%    voe:=VerticesOfEdge(S,e);
+%    for g in Edges(S) do
+%        if g<> e and Set(VerticesOfEdge(S,g))=Set(voe)  then
+%            return false;
+%        fi;
+%    od;
+%    return true;
+%end;
+
+
+\end{document}

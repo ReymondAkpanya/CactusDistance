@@ -1,0 +1,50 @@
+\documentclass[10pt]{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+\begin{document}
+\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+\definecolor{zzttqq}{rgb}{1,1,0.4}
+\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.75cm,y=0.75cm]
+\fill[line width=2pt,color=zzttqq,fill=zzttqq,fill opacity=0.910000000149011612] (4,4.2) -- (-4,4.2) -- (-4,-4.2) -- (4,-4.2) -- cycle;
+\clip(-13.18,-7.6) rectangle (13.18,7.6);
+\fill[line width=2pt,color=zzttqq,fill=zzttqq,fill opacity=0.10000000149011612] (-2,0) -- (2,0) -- (0,3.4641016151377553) -- cycle;
+\fill[line width=2pt,color=zzttqq,fill=zzttqq,fill opacity=0.10000000149011612] (2,0) -- (-2,0) -- (0,-3.4641016151377553) -- cycle;
+
+\draw [line width=2pt] (0,3.4641016151377553)-- (0,-3.4641016151377553);
+%\draw [line width=2pt,color=zzttqq] (-2,0)-- (2,0);
+\draw [line width=2pt] (2,0)-- (0,3.4641016151377553);
+\draw [line width=2pt] (0,3.4641016151377553)-- (-2,0);
+%\draw [line width=2pt] (2,0)-- (-2,0);
+\draw [line width=2pt] (-2,0)-- (0,-3.4641016151377553);
+\draw [line width=2pt] (0,-3.4641016151377553)-- (2,0);
+
+\begin{scriptsize}
+\draw [fill=ududff] (-2,0) circle (2.5pt);
+\draw[color=ududff] (-2.4684,0.) node {$V_3$};
+\draw [fill=ududff] (2,0) circle (2.5pt);
+\draw[color=ududff] (2.46,0.) node {$V_4$};
+%\draw[color=zzttqq] (0.04,1.25) node {$Vieleck2$};
+\draw [fill=ududff] (0,3.4641016151377553) circle (2.5pt);
+\draw[color=ududff] (0.16,3.89) node {$V_1$};
+\draw[color=ududff] (-1.021,0) node {$F_1$};
+\draw[color=ududff] (1.01,0) node {$F_2$};
+\draw [fill=ududff] (0,-3.4641016151377553) circle (2.5pt);
+\draw[color=ududff] (0.,-3.93) node {$V_2$};
+%\draw [fill=ududff] (4,4) circle (2.5pt);
+%\draw[color=ududff] (4.16,4.43) node {$F$};
+%\draw [fill=ududff] (-4,4) circle (2.5pt);
+%\draw[color=ududff] (-3.84,4.43) node {$G$};
+%\draw[color=zzttqq] (0.64,0.23) node {$Vieleck4$};
+%\draw [fill=uuuuuu] (-4,-4) circle (2.5pt);
+%\draw[color=uuuuuu] (-3.84,-3.57) node {$H$};
+%\draw [fill=uuuuuu] (4,-4) circle (2.5pt);
+%\draw[color=uuuuuu] (4.16,-3.57) node {$I$};
+\end{scriptsize}
+
+\end{tikzpicture}
+\end{document}

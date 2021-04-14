@@ -1,0 +1,47 @@
+\documentclass[10pt]{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+\begin{document}
+\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1}
+\definecolor{cqcqcq}{rgb}{0.7529411764705882,0.7529411764705882,0.7529411764705882}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+
+\clip(-3.129464101470624,-3.983675319542595) rectangle (3.62649832680896,3.597911513152675);
+\draw [line width=2pt] (-2,0)-- (2,0);
+\draw [line width=2pt] (-0.003338956632066895,2.2511692353966772)-- (2,0);
+\draw [line width=2pt] (-0.003338956632066895,2.2511692353966772)-- (-2,0);
+\draw [line width=2pt] (0,1.47)-- (-0.9,0.51);
+\draw [line width=2pt] (0.8862980244000803,0.5081746405396563)-- (0,1.47);
+\draw [line width=2pt] (-0.9,0.51)-- (0.8862980244000803,0.5081746405396563);
+\draw [line width=2pt] (-0.9,0.51)-- (-2,0);
+\draw [line width=2pt] (0.8862980244000803,0.5081746405396563)-- (2,0);
+\draw [line width=2pt] (0,1.47)-- (-0.003338956632066895,2.2511692353966772);
+\begin{scriptsize}
+\draw [fill=ududff] (-2,0) circle (2.5pt);
+\draw[color=ududff] (-2.0278873141977021,0.47437453831714105) node {$F_1$};
+\draw [fill=ududff] (2,0) circle (2.5pt);
+\draw[color=ududff] (2.064784252096049,0.47437453831714105) node {$F_2$};
+\draw[color=black] (0.0702680205976877,-0.09289027438032871) node {$ $};
+\draw [fill=ududff] (-0.003338956632066895,2.2511692353966772) circle (2.5pt);
+\draw[color=ududff] (0.0179357407654894,2.721615911695579) node {$F_4$};
+\draw[color=black] (0.8120758525866906,1.1507287380718165) node {$ $};
+\draw[color=black] (-1.1951688692659055,1.6089041637120804) node {$ $};
+\draw [fill=ududff] (0,1.47) circle (2.5pt);
+\draw[color=ududff] (0.0179357407654894,1.1361723248836977) node {$F_6$};
+\draw [fill=ududff] (-0.9,0.51) circle (2.5pt);
+\draw[color=ududff] (-0.9151755662141978,0.19961857187802874) node {$F_3$};
+\draw[color=black] (-0.6279040565684327,1.4998147766548748) node {$ $};
+\draw [fill=ududff] (0.8862980244000803,0.5081746405396563) circle (2.5pt);
+\draw[color=ududff] (0.9520725041125445,0.200761857187802874) node {$ F_5$};
+\draw[color=black] (0.7684400977638081,1.4779968992434336) node {$ $};
+\draw[color=black] (0.0702680205976877,0.43073878349425876) node {$ $};
+\draw[color=black] (-1.5224370304375245,0.8234605769001995) node {$ $};
+\draw[color=black] (1.3793406652841633,0.19074213196840617) node {$ $};
+\draw[color=black] (0.41935405918074786,2.132533221586668) node {$ $};
+\end{scriptsize}
+\end{tikzpicture}
+\end{document}

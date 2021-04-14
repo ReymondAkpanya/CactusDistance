@@ -1,0 +1,241 @@
+\documentclass[12pt,titlepage,twoside,cleardoublepage]{article}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,lmargin={4cm},rmargin={2cm},tmargin={2.5cm},bmargin = {2.5cm}]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pdfpages} 
+%\usepackage[pdftex,article]{geometry}
+\usepackage{amsthm}
+%\usepackage{ngerman,amsthm}
+\usepackage{lineno} 
+\usepackage{lineno, blindtext} 
+\usepackage{cleveref}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{thmtools}
+\usepackage{tabularx}
+\linespread{1.25}
+\usepackage{color}
+\usepackage{verbatim}
+\newcommand{\gelb}{0.550000011920929}
+\usepackage{pgf,tikz,pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+%\numberwithin{equation}{chapter}
+%\usepackage{scrheadings}
+\pagestyle{headings}
+\usepackage{titlesec}     
+\usepackage{tikz}           % für Kontrolle der Abschnittüberschriften
+\begin{comment}
+\makeatother
+\theoremstyle{nummermitklammern}
+\theorembodyfont{\rmfamily}
+\theoremsymbol{\ensuremath{\diamond}}
+\newtheorem{temp}{}[section]
+\newtheorem{vor}[temp]{Vorüberlegung}
+\newtheorem{lemma}[temp]{Lemma}
+\newtheorem{folgerung}[temp]{Folgerung}
+\newtheorem{korollar}[temp]{Korollar}
+\newtheorem{bsp}[temp]{Beispiel}
+\newtheorem{herleitung}[temp]{Herleitung}
+\newtheorem{definition}[temp]{Definition}
+\newtheorem{bemerkung}[temp]{Bemerkung}
+\newtheorem{satz}[temp]{Satz}
+\newtheorem{beweisidee}[temp]{Beweisidee}
+\theoremsymbol{\ensuremath{\square}}
+\end{comment}
+%\begin{comment}
+\newtheorem{zahl}{}[section]
+%\setcounter{zahl}{1}
+%\newtheorem{section}{section}[section]
+\newtheorem{definition}[zahl]{Definition}
+\newtheorem{vor}[zahl]{Vorüberlegung}
+\newtheorem{lemma}[zahl]{Lemma}
+\newtheorem{folgerung}[zahl]{Folgerung}
+\newtheorem{bsp}[zahl]{Beispiel}
+\newtheorem{herleitung}[zahl]{Herleitung}
+\newtheorem{bemerkung}[zahl]{Bemerkung}
+\newtheorem{satz}[zahl]{Satz}
+\newtheorem{beweisidee}[zahl]{Beweisidee}
+\numberwithin{equation}{section}
+\newtheorem{korollar}[zahl]{Korollar}
+\newtheorem{proposition}[zahl]{Proposition}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\Ke}{Ke}
+%-----------------------------------------------
+
+%\end{comment}
+ %Nummerierung mit Kapitelnummern
+%-------------------------
+%\newcommand{\secnumbering}[1]{% 
+ % \setcounter{chapter}{0}% 
+  %\setcounter{section}{0}% 
+  %\renewcommand{\thechapter}{\csname #1\endcsname{chapter}.}% nach Duden gehört 
+                                  % der Punkt hier hin bei gemischten Zählungen 
+%  \renewcommand{\thesection}{\thechapter\csname #1\endcsname{section}}% 
+%}
+%------------------------------
+\begin{document}
+\setcounter{section}{4}
+\section{Algebraische Operationen auf reproduzierenden Kernen - Handout}
+\begin{satz}[Aronszajns Inklusionstheorem]\label{51}
+Seien $K_i:X\times X\to \mathbb{C}$ für $i=1,2$ Kernfunktionen. Dann ist $\mathcal{H}(K_1)$ genau dann eine Teilmenge von $\mathcal{H}(K_2)$, wenn  es eine Konstante $c>0 $ gibt, sodass $K_1 \leq c^2 K_2$ gilt. 
+Außerdem ist dann $\|f \|_2 \leq c\|f\|_1$ für alle $f\in \mathcal{H}(K_1).$ 
+\end{satz}
+
+\begin{definition}
+Seien $\mathcal{H}_1$ zusammen mit $\|\cdot\|_1$ und $\mathcal{H}_2$ zusammen mit $\| \cdot\|_2$ zwei Hilberträume. Man nennt $\mathcal{H}_1$ \emph{kontraktiv} in $\mathcal{H}_2$  enthalten, falls $\mathcal{H}_1$ ein nicht notwendigerweise abgeschlossener Unterraum von $\mathcal{H}_2$ ist und $\|h\|_2 \leq \|h\|_1$ für alle $h \in \mathcal{H}_1$ gilt.
+\end{definition}
+
+\begin{korollar}[Aronszajns Satz über Differenzen von Kernen] 
+Seien $\mathcal{H}_1$ und $\mathcal{H}_2$ zwei RKHS auf der Menge $X$ mit zugehörigen reproduzierenden Kernen $K_i$ für $i=1,2$. Dann ist $\mathcal{H}_1$ genau dann kontraktiv in $\mathcal{H}_2$ enthalten, wenn $K_2-K_1$ eine Kernfunktion ist.
+\end{korollar}
+
+\begin{satz}[Aronszajns Satz über Summen von Kernen]
+Sei $\mathcal{H}_1$ bzw. $\mathcal{H}_2$ ein RKHS auf der Menge $X$ mit reproduzierendem Kern $K_1$ bzw. $K_2.$ Weiterhin sei $\|\cdot\|_1$ die zugehörige Norm auf $\mathcal{H}_1$ und $\|\cdot\|_2$ die zugehörige Norm auf $\mathcal{H}_2.$ Falls $K=K_1+K_2$ ist, dann bildet 
+ \[
+\mathcal{H}(K)=\{f_1+f_2\mid f_i\in \mathcal{H}_i,i=1,2\} 
+ \] 
+ den zu $K$ zugehörigen RKHS. Zudem ist die Norm auf $\mathcal{H}(K)$ durch 
+ \[
+\|f\|^2=\min\{\|f_1\|_1^2+\|f\|_2^2\mid f=f_1+f_2,f_i\in \mathcal{H}_i,i=1,2\} 
+ \]
+ gegeben.
+\end{satz}
+\begin{korollar}
+Sei $H_1$ bzw. $H_2$ ein RKHS auf der Menge $X$ mit reproduzierendem Kern $K_1$ bzw. $K_2$. Falls $\mathcal{H}_1 \cap \mathcal{H}_2=\{0\}$ ist, dann ist 
+\[
+\mathcal{H}(K_1+K_2)=\{f_1+f_2\mid f_i\in \mathcal{H}_i,i=1,2\}
+\] 
+mit der Norm $\|f_1+f_2\|^2=\|f_1\|_1+\|f_2\|_2$
+ein Hilbertraum mit dem reproduzierendem Kern
+\[
+K(x,y)=K_1(x,y)+K_2(x,y).
+\]
+Insbesondere sind $\mathcal{H}_1$ und $\mathcal{H}_2$ orthogonal zueinander.
+\end{korollar}
+
+\begin{proposition}
+Sei $\phi:S \to X $ eine Abbildung und $K$ eine Kernfunktion auf der Menge $X.$ Dann ist $K \circ \phi$ ein Kern von $S.$
+\end{proposition}
+
+\begin{satz}[Pull-Back Theorem]
+Sei $\phi:S \to X$ eine Abbildung und K eine Kernfunktion auf $X.$ Dann ist 
+\[
+\mathcal{H}(K \circ \phi)=\{f\circ \phi \mid f \in \mathcal{H}(K)\}
+\] der zu $K\circ \phi$ zugehörige RKHS und für alle $u \in \mathcal{H}(K\circ \phi)$ gilt
+\[
+\|u\|_{\mathcal{H}(K\circ \phi)}=\min\{\|f\|_{\mathcal{H}(K)}\mid u=f\circ \phi\}.
+\]
+\end{satz}
+
+\begin{korollar}[Restriktionssatz]
+Sei $K$ eine Kernfunktion auf der Menge $X$ und $S$ eine nichtleere Teilmenge von $X.$ Mit $K_S:S\times S\to \mathbb{C}$ bezeichnet man die Einschränkung von $K$ auf $S\times S.$ Dann bildet $K_S$ einen Kern auf $S$ und es gilt $u\in \mathcal{H}(K_S)$ genau dann, wenn es ein $f\in\mathcal{H}(K)$ mit $f\mid_{S}=u$ gibt.  Es gilt $\|u\|_{\mathcal{H}(K_S)}=\min\{\|f\|_{\mathcal{H}(K)}\mid u=f\mid_{S}\}.$
+\end{korollar}
+
+\begin{definition}
+Seien $X$ und $S$ beliebige Mengen, $\phi:S\to X$ eine Abbildung und $K$ ein Kern auf $X.$ Man nennt den RKHS $\mathcal{H}(K\circ \phi)$ den \emph{Pull-Back} von $\mathcal{H}(K)$ entlang von $\phi$ und die lineare Abbildung $C_{\phi}:\mathcal{H}(K)\to \mathcal{H}(K\circ \phi),f\mapsto f\circ \phi$ die \emph{Pull-Back Abbildung}.   
+\end{definition}
+
+
+\begin{satz}
+Seien $X_1$ und $X_2$ zwei Mengen und $\phi:X_1\to X_2$ eine Abbildung. Weiterhin sei $K_1$ ein Kern auf $X_1$ bzw. $K_2$ ein Kern auf $X_2.$ Dann sind folgende Aussagen äquivalent:
+\begin{enumerate}
+\item $\{f\circ \phi \mid f\in \mathcal{H}(K_2)\}\subseteq \mathcal{H}(K_1)$
+\item $C_{\phi}:\mathcal{H}(K_2)\to \mathcal{H}(K_1) $ ist ein beschränkter linearer Operator.
+\item Es existiert eine Konstante $c>0,$ sodass die Ungleichung $K_2 \circ \phi \leq c^2K_1.$ 
+\end{enumerate}
+Außerdem ist $\|C_{\phi}\|$ die kleinste Konstante für die diese Aussage gilt.
+\end{satz}
+
+\begin{satz}
+Sei $\mathcal{H}_1$ ein RKHS mit reproduzierendem Kern $K_1$ auf der Menge $X$ und $\mathcal{H}_2$ ein RKHS mit reproduzierendem Kern $K_2$ auf der Menge $S$. Dann ist 
+\[
+K:(X\times S)\times (X \times S)\to \mathbb{C},((x,s),(y,t))\mapsto K_1(x,y)K_2(s,t) 
+\] 
+ein Kern auf der Menge $X\times S.$ Die Abbildung $\mathcal{H}_1 \otimes \mathcal{H}_2 \to  \mathcal{H}(K), u\mapsto \hat{u}$ ist eine wohldefinierte lineare Isometrie.
+\end{satz}
+
+\begin{definition}
+Sei $\mathcal{H}_1$ ein RKHS mit reproduzierendem Kern $K_1$ auf der Menge $X$ und $\mathcal{H}_2$ ein RKHS mit reproduzierendem Kern $K_2$ auf der Menge $S$.
+Man nennt den Kern $K((x,s)(y,t))=K_1(x,y)K_2(s,t)$ das \emph{Tensorprodukt} der Kerne $K_1$ und $K_2.$ Man schreibt hierfür  $K_1 \otimes K_2.$
+\end{definition}
+
+\begin{proposition}
+Bezeichnet man mit $H^2(\mathbb{D}^2)$ den Hardy-Raum in zwei Variablen, dann ist $\widehat{H^2(\mathbb{D}^2) \otimes H^2(\mathbb{D}^2)}=H^2(\mathbb{D}^2)$ 
+\end{proposition}
+
+\begin{proposition}
+Seien $G_1 \subseteq \mathbb{C}^n$ und $G_2 \subseteq \mathbb{C}^m$ beschränkte offene Mengen so, dass $G_1\times G_2\subseteq \mathbb{C}^{n+m}$ eine beschränkte offene Menge ist. Seien $B^2(G_1),B^2(G_2)$ und $B^2(G_1\times G_2)$ die jeweiligen Bergman Räume, sodass $\|1\|=1$ ist. Dann ist $\widehat{B^2(G_1)\otimes B^2(G_2)}=B^2(G_1\times G_2).$ 
+\end{proposition}
+
+\begin{definition}
+Seien $K_1$ und $K_2$ zwei Kerne auf $X.$ Man nennt $K(x,y)=$ $K_1(x,y)K_2(x,y)$ das \emph{Produkt der Kerne} $K_1$ und $K_2$ und schreibt $K=K_1 \odot K_2$ 
+\end{definition}
+
+\begin{satz}[Satz über Produkte von Kernen]
+Seien $K_i:X\times X\to \mathbb{C}$ für $i=1,2$ zwei Kerne auf $X$ und $K_1\odot K_2$ das Produkt der Kerne $K_1$ und $K_2.$ Dann gilt $f\in \mathcal{H}(K_1 \odot K_2)$ genau dann, wenn $f(x)=\hat{u}(x,x)$ für ein $\mathcal{H}(K_1)\otimes \mathcal{H}(K_2)$ ist. Vielmehr gilt 
+\[
+\|f\|_{\mathcal{H}(K_1\odot K_2)}=\min\{\|u\|_{\mathcal{H}(K_1)\otimes \mathcal{H}(K_2)}\mid f(x)=\hat{u}(x,x)\}.
+\]   
+\end{satz}
+
+\begin{korollar}
+Es ist $B^2(\mathbb{D})=\{f(z,z):f\in H^2(\mathbb{D}^2)\}$ und für ein $g \in B^2(\mathbb{D})$ gilt 
+\[
+\|g\|_{B^2(\mathbb{D})}= \min\{\|f\|_{H^2(\mathbb{D}^2)}\mid g(z)=f(z,z)\}
+\]
+\end{korollar}
+
+\begin{definition}
+Man nennt den RKHS $\mathcal{H}(K_{\Psi})$ den \emph{Push-Out} von $\mathcal{H}(K)$ entlang $\Psi.$ 
+\end{definition}
+
+\begin{definition}
+Sei $\mathcal{H}_1$ bzw. $\mathcal{H}_2$ ein RKHS  auf einer Menge $X$ mit Kern $K_1$ bzw. $K_2.$ Man nennt eine Abbildung $f:X\to \mathbb{C}$ einen \emph{Multiplikator} von $\mathcal{H}_1$ nach $\mathcal{H}_2,$ falls $f\mathcal{H}_1:=\{fh\mid h\in \mathcal{H}_1\}\subseteq \mathcal{H}_2$ ist. Mit $\mathcal{M}(\mathcal{H}_1,\mathcal{H}_2)$ bezeichnet man die Menge aller Multiplikatoren von $\mathcal{H}_1$ nach $\mathcal{H}_2.$
+ \end{definition}
+
+\begin{proposition}
+Seien $\mathcal{H}$ ein RKHS auf $X$ mit Kern $K$ und $f:X\to \mathbb{C}$ eine Abbildung.
+ Weiterhin sei $\mathcal{H}_0=\{h\in \mathcal{H}\mid fh=0\}$ und $\mathcal{H}_1=\mathcal{H}_0^{\bot}.$ Durch die Definition $\mathcal{H}_f=f\mathcal{H}=f\mathcal{H}_1$ mit dem Skalarprodukt $\langle fh_1,fh_2\rangle_f=\langle h_1,h_2 \rangle_{\mathcal{H}}$ für $h_1,h_2\in \mathcal{H}$ wird $\mathcal{H}_f$ zu einem RKHS auf $X$ mit dem Kern $K_f(x,y)=f(x)K(x,y)\overline{ f(y) }.$
+
+\end{proposition}
+
+\begin{satz}
+Seien $\mathcal{H}_1$ und $\mathcal{H}_2$ zwei RKHS auf $X$ mit den Kernen $K_1$ und $K_2.$ Sei weiterhin $f:X\to  \mathbb{C}$ eine Abbildung. Dann sind folgende Aussagen äquivalent:
+\begin{enumerate}
+\item $f\in \mathcal{M}(\mathcal{H}_1,\mathcal{H}_2)$
+\item  $f\in \mathcal{M}(\mathcal{H}_1,\mathcal{H}_2)$ und $M_f$ ist ein beschränkter Operator.
+\item Es gibt eine Konstante $c\geq 0 $ so, dass $f(x)K_1(x,y)\overline{f(y)} \leq c^2 K_2(x,y)$ ist.
+\end{enumerate}
+In diesem Fall ist $\|M_f\|$ die kleinste Konstante, die die Ungleichung erfüllt.
+\end{satz}
+
+\begin{korollar}
+Sei $\mathcal{H}_1$ bzw. $\mathcal{H}_2$ ein RKHS auf der Menge $X$ mit Kern $K_1(x,y)=k^1_y(x)$ bzw. $K_2(x,y)=k^2_y(x).$ Falls $f\in \mathcal{M}(\mathcal{H}_1,\mathcal{H}_2)$ ist, dann gilt $M^*_f(k^2_y)=\overline{f(y)}k_y^1$ für alle $ y\in X.$ \\
+Falls zudem $K_1=K_2$ gilt, dann ist jede Kernfunktion ein Eigenvektor von $M_f$ und im Fall, dass $k_y\neq 0$ für alle $y\in X$ ist, gilt
+\[
+\|f\|_{\infty}\leq \|M_f\|,
+\]
+also ist jeder Multiplikator eine beschränkte Funktion auf $X$.
+\end{korollar}
+
+\begin{definition} 
+Sei $\mathcal{H}$ ein RKHS auf $X$ mit Kern $K(x,y)$ und $T\in B(\mathcal{H}).$ Dann nennt man die Funktion, die für jeden Punkt $y$ mit $K(y,y)\neq 0$ durch
+\[
+B_T(y)=\frac{\langle T(k_y),k_y \rangle}{K(y,y)}
+\]
+ definiert wird, die \emph{Berezin Transformation} von $T.$
+ \end{definition}
+ 
+ \begin{korollar}
+ Sei $\mathcal{H}$ ein RKHS auf $X.$ Dann ist 
+ \[
+\{M_f\mid f\in \mathcal{M}(\mathcal{H})\} 
+ \]
+ eine unitäre Subalgebra von $B(\mathcal{H}),$ die abgeschlossen unter der schwachen Operator-Topologie ist.
+ \end{korollar}
+\end{document}

@@ -1,0 +1,428 @@
+\documentclass{beamer} 
+\usetheme{Warsaw}             % Falls Ihnen das Layout nicht gefÃ¤llt, kÃ¶nnen Sie hier
+                              % auch andere Themes wÃ¤hlen. Ein Verzeichnis der mÃ¶glichen 
+                              % Themes finden Sie im Kapitel 15 des beameruserguide.
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\newcommand{\gelb}{0.550000011920929}
+\usepackage{pgf,tikz,pgfplots}
+\pgfplotsset{compat=1.15}
+\usetikzlibrary{arrows}
+\AtBeginSection[]{\frame<beamer>{\frametitle{Übersicht} \tableofcontents[current]}}
+
+\newcommand{\defin}[1]{\textit{\color{blue}#1}}
+
+% ========== AbkÃ¼rzungen ==========
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+\author{Reymond Akpanya}
+\title{Algebraische Operationen auf reproduzierenden Kernen}
+\date{25.02.2021 \\[.5\baselineskip] Seminar zur Funktionalanalysis }
+
+\begin{document}
+\frame{\maketitle}
+%\frame{\tableofcontents[currentsection]}
+\begin{frame}{Gliederung}
+\tableofcontents
+\end{frame}
+%\maketitle
+\begin{frame}
+\underline{Bemerkungen}\\
+\begin{itemize}
+\item RKHS $\rightarrow$ Hilbertraum mit reproduzierendem Kern \pause 
+\item In den Beweisskizzen werden Begründungen abgekürzt, beispielsweise wird hier (3.11) statt Proposition 3.11 geschrieben.\pause
+\item Falls nicht anderweitig definiert, so sind $X$ und $S$ zwei beliebige  nicht-leere Mengen.
+\end{itemize}
+\end{frame}
+\begin{frame}
+\begin{itemize}
+\item Sei $\mathcal{H}$ ein Hilbertraum. Weiterhin sei $X$ eine nicht-leere Menge, sodass $K_1$ und $K_2$ Funktionen sind, die von $X\times X$ nach $\mathbb{C}$ abbilden. 
+Es wird die Notation $K_1\geq 0 $ verwendet, falls $K_1$ eine Kernfunktion ist. Genauso wird hier die Notation $K_2\geq K_1$ verwendet, falls $K_2-K_1$ eine Kernfunktion ist. 
+\end{itemize}
+
+\end{frame}
+
+\section{Komplexifizierung}
+\begin{frame}
+Sei $\mathcal{H}$ ein RKHS reellwertiger Funktionen auf der Menge $X$ mit reproduzierendem Kern $K$ und Skalarprodukt $\langle \cdot,\cdot \rangle_{\mathcal{H}}.$\pause  \\ Dann ist die Menge
+\[
+  \mathcal{W}=\{f_1+if_2\mid f_1,f_2\in \mathcal{H}\}
+\]  
+ ein Vektorraum von Funktionen von $X$ nach $\mathbb{C}.$ 
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+Ausgestattet mit dem Skalarprodukt
+ \[
+\langle f_1+if_2,g_1+ig_2\rangle_{\mathcal{W}}=\langle f_1 ,g_1\rangle_{\mathcal{H}}+i\langle f_2,g_1\rangle_{\mathcal{H}}-i\langle f_1,g_2\rangle_{\mathcal{H}}+\langle f_2,g_2 \rangle_{\mathcal{H}}
+ \]\pause
+und der Norm 
+\begin{align*}
+\|f_1+if_2\|^2_{\mathcal{W}}&=\langle f_1+if_2,f_1+if_2 \rangle_{\mathcal{W}} \\
+&=\langle f_1 ,f_1\rangle_{\mathcal{H}}+i\langle f_2,f_1\rangle_{\mathcal{H}}-i\langle f_1,f_2\rangle_{\mathcal{H}}+\langle f_2,g_2
+ \rangle_{\mathcal{H}}\\
+ &=\langle f_1 ,f_1\rangle_{\mathcal{H}}+i\langle f_1,f_2\rangle_{\mathcal{H}}-i\langle f_1,f_2\rangle_{\mathcal{H}}+\langle f_2,g_2\rangle_{\mathcal{H}}\\
+ &=\|f_1\|_{\mathcal{H}}^2+\|f_2\|^2_\mathcal{H}
+  \end{align*}
+  wird $\mathcal{W}$ zu einem Hilbertraum. 
+\end{frame}
+\begin{frame}
+Setzt man $k_y(x)=K(x,y)$ für $y\in X, $ dann gilt:\pause 
+\begin{align*}
+(f_1+if_2)(y)=&f_1(y)+if_2(y)=\langle f_1,k_y\rangle_{\mathcal{H}} +i\langle f_2,k_y\rangle_{\mathcal{H}}\\ =& \langle f_1+if_2,k_y\rangle_{\mathcal{W}}
+\end{align*}\pause
+Also ist $\mathcal{W}$ ein RKHS mit reproduzierendem Kern $K.$\pause \, Man nennt $\mathcal{W}$ die \emph{Komplexifizierung} von $\mathcal{H}.$
+\end{frame}
+\section{Summen und Differenzen}
+\begin{frame}
+\begin{block}{Satz 5.1 (Aronszajns Inklusionstheorem)}
+Seien $K_i:X\times X\to \mathbb{C}$ für $i=1,2$ Kernfunktionen. Dann ist $\mathcal{H}(K_1)$ genau dann eine Teilmenge von $\mathcal{H}(K_2)$, wenn  es eine Konstante $c>0 $ gibt, sodass $K_1 \leq c^2 K_2$ gilt. 
+Außerdem ist dann $\|f \|_2 \leq c\|f\|_1.$ 
+\end{block}
+\end{frame}
+\begin{frame}
+\underline{Beweisskizze}\pause 
+\begin{enumerate}
+\item $T:\mathcal{H}(K_1)\to \mathcal{H}(K_2),f\mapsto f$ ist linear und beschränkt.\pause 
+\item $c:=\|T\|$ erfüllt die obige Ungleichung.
+\end{enumerate}
+\end{frame}
+\begin{frame}
+\begin{block}{Definition 5.2}
+Seien $\mathcal{H}_1$ zusammen mit $\|\cdot\|_1$ und $\mathcal{H}_2$ zusammen mit $\| \cdot\|_2$ zwei Hilberträume. Man nennt $\mathcal{H}_1$ \emph{kontraktiv} in $\mathcal{H}_2$  enthalten, falls $\mathcal{H}_1$ ein nicht notwendigerweise abgeschlossener Unterraum von $\mathcal{H}_2$ ist und $\|h\|_2 \leq \|h\|_1$ für alle $h \in \mathcal{H}_1$ gilt.
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\begin{block}{Korollar 5.3 (Aronszajns Satz über Differenzen von Kernen)} 
+Seien $\mathcal{H}_1$ und $\mathcal{H}_2$ zwei RKHS auf der Menge $X$ mit zugehörigen reproduzierenden Kernen $K_i$ für $i=1,2$. Dann ist $\mathcal{H}_1$ genau dann kontraktiv in $\mathcal{H}_2$ enthalten, wenn $K_2-K_1$ eine Kernfunktion ist.
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Satz 5.4 (Aronszajns Satz über Summen von Kernen)}
+Sei $\mathcal{H}_1$ bzw. $\mathcal{H}_2$ ein RKHS auf der Menge $X$ mit reproduzierendem Kern $K_1$ bzw. $K_2.$ Weiterhin sei $\|\cdot\|_1$ die zugehörige Norm auf $\mathcal{H}_1$ und $\|\cdot\|_2$ die zugehörige Norm auf $\mathcal{H}_2.$ Falls $K=K_1+K_2$ ist, dann bildet 
+ \[
+\mathcal{H}(K)=\{f_1+f_2\mid f_i\in \mathcal{H}_i,i=1,2\} 
+ \] 
+ den zu $K$ zugehörigen RKHS. Zudem ist die Norm auf $\mathcal{H}(K)$ durch 
+ \[
+\|f\|^2=\min\{\|f_1\|_1^2+\|f_2\|_2^2\mid f=f_1+f_2,f_i\in \mathcal{H}_i,i=1,2\} 
+ \]
+ gegeben.
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Korollar 5.5}
+Sei $\mathcal{H}_1$ bzw. $\mathcal{H}_2$ ein RKHS auf der Menge $X$ mit reproduzierendem Kern $K_1$ bzw. $K_2$. Falls $\mathcal{H}_1 \cap \mathcal{H}_2=\{0\}$ ist, dann ist 
+\[
+\mathcal{H}(K_1+K_2)=\{f_1+f_2\mid f_i\in \mathcal{H}_i,i=1,2\}
+\] 
+mit der Norm $\|f_1+f_2\|^2=\|f_1\|^2_1+\|f_2\|^2_2$
+ein Hilbertraum mit reproduzierendem Kern
+\[
+K(x,y)=K_1(x,y)+K_2(x,y).
+\]
+Insbesondere sind $\mathcal{H}_1$ und $\mathcal{H}_2$ orthogonal zueinander.
+\end{block}
+\end{frame}
+
+\begin{frame}
+Man betrachte den Unterraum
+\[
+H^2_0(\mathbb{D})=\{f\in H^2(\mathbb{D})\mid f(0)=0\}
+\] von $H^2(\mathbb{D}).$
+\begin{itemize}
+\item $g=\sum_i b_iz^i\in H^2_0(\mathbb{D})\Rightarrow g(0)=b_0=0$\pause
+\item $H^2_0(\mathbb{D})^{\bot}=\{f\in H^2(\mathbb{D})\mid f\,\, konstant\}$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item Sei $f=\sum_ia_iz^i\in {H_0^2(\mathbb{D})}^{\bot}$ 
+\pause
+\item Wegen $0^n=0$ für $n>0,$ ist $z^n\in H^2_0(\mathbb{D})$ 
+\pause
+\item  $0=\langle f,z^n\rangle_{H^2(\mathbb{D})}=a_n$\\ 
+\end{itemize}
+\end{frame}
+\begin{frame}
+\begin{itemize}
+\item $K_1(z,w)$ der Kern von ${H_0^2(\mathbb{D})}^{\bot}$\pause
+ \item $K_2(z,w)$  der Kern von ${H_0^2(\mathbb{D})}.$
+\pause
+\item $K_1(z,w)=1$,\pause denn für $K_1(z,w)=k^1_w(z)=c_w\in {H_0^2(\mathbb{D})}^{\bot}$ und $f(z)=c$ gilt \pause
+\begin{align*}
+c=f(w)=\langle f,k^1_w\rangle_{H^2(\mathbb{D})}=c\overline{c_w}\\
+\Rightarrow c_w=1
+\end{align*}
+\end{itemize}
+\end{frame}
+\begin{frame}
+Wegen (5.5) ist der reproduzierende Kern von $H^2_0(\mathbb{D})$ gegeben durch\pause
+\begin{align*}
+&\frac{1}{1-\bar{w}z}=K_1(z,w)+K_2(z,w)\\ 
+\Leftrightarrow&\frac{1}{1-\bar{w}z}-1=K_2(z,w)\\
+\Leftrightarrow&\frac{\bar{w}z}{1-\bar{w}z}=K_2(z,w),\\
+\end{align*}
+\end{frame}
+\section{Pull-Backs und der Kompositionsoperator}
+\begin{frame}
+\underline{Notation}\\ \pause
+Seien $S,X$ Mengen und $K:X\times X \to \mathbb{C}$ eine Kernfunktion.\,\pause Weiterhin sei $\phi:S\to X$ eine Funktion.\pause \, Mit $K\circ \phi$ bezeichnet man dann die Funktion, die auf $S\times S $ durch $K\circ \phi(s,t)=K(\phi(s),\phi(t))$ gegeben ist. Normalerweise wird diese Verkettung durch $K\circ (\phi \times \phi )$ beschrieben. \pause Auf diese Genauigkeit soll an dieser Stelle verzichtet werden.
+
+\end{frame}
+\begin{frame}
+\begin{block}{Proposition 5.6}
+Sei $\phi:S \to X $ eine Abbildung und $K$ eine Kernfunktion auf $X.$ Dann ist $K \circ \phi$ ein Kern auf $S.$
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Satz 5.7 (Pull-Back Theorem)}
+Sei $\phi:S \to X$ eine Abbildung und K eine Kernfunktion auf $X.$ Dann ist 
+\[
+\mathcal{H}(K \circ \phi)=\{f\circ \phi \mid f \in \mathcal{H}(K)\}
+\] der zu $K\circ \phi$ zugehörige RKHS und für alle $u \in \mathcal{H}(K\circ \phi)$ gilt
+\[
+\|u\|_{\mathcal{H}(K\circ \phi)}=\min\{\|f\|_{\mathcal{H}(K)}\mid u=f\circ \phi\}.
+\]
+\end{block}
+\end{frame}
+\begin{frame}
+\underline{Beispiel}
+\begin{itemize}
+ \item $H^2_0(\mathbb{D})=\{f\in H^2(\mathbb{D})\mid f(0)=0\}$\pause  
+ \item mit zugehörigem Kern
+\[
+K(z,w)=\frac{z\bar{w}}{1-z\bar{w}}.
+\]\pause
+\item sei $\phi_{\alpha}(z)=\frac{z-\alpha}{1-\bar{\alpha}z}$ für $\alpha\in \mathbb{D}$ die elementare Möbius Transformation
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item dann wird der Pull-Back durch 
+\begin{align*}
+&\mathcal{H}(K\circ \phi_{\alpha})=\{f \circ \phi_{\alpha} \mid f \in H_0^2(\mathbb{D}) \}\\
+=&\{f\circ \phi_{\alpha} \mid f\in H^2(\mathbb{D}),f(0)=0\}
+=\{u\in H^2(\mathbb{D})\mid u(\alpha)=0\} 
+\end{align*}
+beschrieben \pause
+\item der Kern von $\mathcal{H}(K\circ \phi)$ bildet die Funktion $(K\circ\phi_{\alpha})(z,w) =K(\phi_\alpha(z),\phi_\alpha(w))=\frac{\phi_{\alpha}(z)\overline{\phi_{\alpha}(w)}}{1-\overline{\phi_\alpha(w)}\phi_\alpha(z)}.$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Korollar 5.8 (Restriktionssatz)}
+Sei $K$ eine Kernfunktion auf der Menge $X$ und $S$ eine nichtleere Teilmenge von $X.$ Mit $K_S:S\times S\to \mathbb{C}$ bezeichnet man die Einschränkung von $K$ auf $S\times S.$ Dann bildet $K_S$ einen Kern auf $S$ und es gilt $u\in \mathcal{H}(K_S)$ genau dann, wenn es ein $f\in\mathcal{H}(K)$ mit $f\mid_{S}=u$ gibt.  Es gilt $\|u\|_{\mathcal{H}(K_S)}=\min\{\|f\|_{\mathcal{H}(K)}\mid u=f\mid_{S}\}.$
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Definition 5.9}
+Seien $X$ und $S$ beliebige Mengen, $\phi:S\to X$ eine Abbildung und $K$ ein Kern auf $X.$ Man nennt den RKHS $\mathcal{H}(K\circ \phi)$ den \emph{Pull-Back} von $\mathcal{H}(K)$ entlang von $\phi$ und die lineare Abbildung $C_{\phi}:\mathcal{H}(K)\to \mathcal{H}(K\circ \phi),f\mapsto f\circ \phi$ die \emph{Pull-Back Abbildung}.   
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Satz 5.10}
+Seien $X_1$ und $X_2$ zwei Mengen und $\phi:X_1\to X_2$ eine Abbildung. Weiterhin sei $K_1$ ein Kern auf $X_1$ bzw. $K_2$ ein Kern auf $X_2.$ Dann sind folgende Aussagen äquivalent:
+\begin{enumerate}
+\item $\{f\circ \phi \mid f\in \mathcal{H}(K_2)\}\subseteq \mathcal{H}(K_1)$
+\item $C_{\phi}:\mathcal{H}(K_2)\to \mathcal{H}(K_1) $ ist ein beschränkter linearer Operator.
+\item Es existiert eine Konstante $c>0,$ sodass die Ungleichung $K_2 \circ \phi \leq c^2K_1.$ 
+\end{enumerate}
+Außerdem ist $\|C_{\phi}\|$ die kleinste Konstante für die diese Aussage gilt.
+\end{block}
+\end{frame}
+
+\begin{frame}
+\underline{Beweis}\\
+\begin{itemize}
+\item $(2)\Rightarrow (1)$ Da $C_{\phi}$ ein wohldefinierter Operator ist, ist $C_{\phi}(\mathcal{H}(K_2))\subseteq \mathcal{H}(K_1).$ \pause
+\item $(3) \Rightarrow (2)$ Sei $f\in \mathcal{H}(K_2)$ mit $\|f\|_2=M.$ Dann liefert (3.11) die Ungleichung $f(x)\overline{f(y)}\leq M^2K_2(x,y),$ wodurch man dann 
+\[
+f(\phi(x))\overline{f(\phi(y))}\leq M^2K_2(\phi(x),\phi(y))\leq M^2c^2K_1(x,y)
+\] für alle $x,y\in X_1$ folgert. Somit ist $C_{\phi}(f)=f\circ \phi\in \mathcal{H}(K_1)$ und $C_{\phi}$ beschränkt mit $\|C_{\phi}\|\leq c.$ 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item $(1) \Rightarrow (3)$ Aufgrund des Pull-Back Theorems gilt
+ \[
+\mathcal{H}(K_2\circ \phi)=\{f\circ \phi\mid f\in \mathcal{H}(K_2)\}\subseteq \mathcal{H}(K_1), 
+\] wodurch direkt mit (5.1) die Aussage $K_2\circ \phi \leq c^2K_1$ für eine Konstante $c\geq 0$ gefolgert wird. 
+\end{itemize}
+\end{frame}
+\section{Tensorprodukt}
+\begin{frame}
+\begin{itemize}
+\item $\mathcal{H}_1$ mit $\langle\cdot,\cdot \rangle_1$ und $\mathcal{H}_2$ mit $\langle\cdot,\cdot\rangle_2$ Hilberträume \pause
+\item das Tensorprodukt $\mathcal{H}_1\otimes \mathcal{H}_2$ bildet dann einen Hilbertraum, falls es mit dem Skalarprodukt 
+\[
+\langle f\otimes g,h\otimes k\rangle=\langle f,h\rangle_1\langle g,k\rangle_2
+\]
+ausgestattet und der Abschluss des resultierenden Vektorraumes in der Norm gebildet wird
+\end{itemize}
+\end{frame}
+\begin{frame}
+\begin{itemize}
+\item Falls $\mathcal{H}_1$ ein RKHS auf der Menge $X$ und $\mathcal{H}_2$ ein RKHS auf der Menge $S$ ist, identifiziert man eine Funktion $u=\sum_{i=0}^nh_i\otimes f_i$ aus dem algebraischen Tensorprodukt mit
+\[
+\hat{u}(x,s)=\sum_{i=0}^nh_i(x)f_i(s).
+\] 
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\begin{block}{Satz 5.11}
+Sei $\mathcal{H}_1$ ein RKHS mit reproduzierendem Kern $K_1$ auf der Menge $X$ und $\mathcal{H}_2$ ein RKHS mit reproduzierendem Kern $K_2$ auf der Menge $S$. Dann ist 
+\[
+K:(X\times S)\times (X \times S)\to \mathbb{C},((x,s),(y,t))\mapsto K_1(x,y)K_2(s,t) 
+\] 
+ein Kern auf der Menge $X\times S.$ Die Abbildung $\Psi:\mathcal{H}_1 \otimes \mathcal{H}_2 \to  \mathcal{H}(K), u\mapsto \hat{u}$ ist eine wohldefinierte lineare Isometrie.
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Definition 5.12}
+Sei $\mathcal{H}_1$ ein RKHS mit reproduzierendem Kern $K_1$ auf der Menge $X$ und $\mathcal{H}_2$ ein RKHS mit reproduzierendem Kern $K_2$ auf der Menge $S$.
+Man nennt den Kern $K((x,s)(y,t))=K_1(x,y)K_2(s,t)$ das \emph{Tensorprodukt} der Kerne $K_1$ und $K_2.$ Man schreibt hierfür  $K_1 \otimes K_2.$
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Satz 5.16 (Satz über Produkte von Kernen)}
+Seien $K_i:X\times X\to \mathbb{C}$ für $i=1,2$ zwei Kerne auf $X$ und $K_1\odot K_2$ das Produkt der Kerne $K_1$ und $K_2.$ Dann gilt $f\in \mathcal{H}(K_1 \odot K_2)$ genau dann, wenn $f(x)=\hat{u}(x,x)$ für ein $u\in \mathcal{H}(K_1)\otimes \mathcal{H}(K_2)$ ist. Vielmehr gilt 
+\[
+\|f\|_{\mathcal{H}(K_1\odot K_2)}=\min\{\|u\|_{\mathcal{H}(K_1)\otimes \mathcal{H}(K_2)}\mid f(x)=\hat{u}(x,x)\}.
+\]   
+\end{block}
+\end{frame}
+%\begin{comment}
+%\section{Push-Out} 
+
+%\begin{frame}
+%\underline{Konstruktion:}
+%\begin{itemize}
+%\item sei $K$ eine Kernfunktion auf $X$ \pause
+%\item $\mathcal{H}(K)$ der zugehörige RKHS \pause
+%\item $\Psi:X\to S$ eine surjektive Abbildung \pause
+%\item man definiert $M_\Psi=\{(z_1,z_2)\in X\times X\mid %\Psi(z_1)=\Psi(z_2)\}$\pause
+%\end{itemize}
+%\end{frame}
+%\begin{frame}
+%\begin{itemize}
+%\item für die Konstruktion betrachtet man den Unterraum 
+%\[
+%\tilde{\mathcal{H}}=\{f\in \mathcal{H}(K)\mid  f(z_1)=f(z_2)\,\,\forall (z_1,z_2)\in M_\Psi\}
+%\] von $\mathcal{H}(K)$
+%\item dieser bildet zusammen mit der Norm auf $\mathcal{H}(K)$ einen Hilbertraum
+%\item man definiert den Kern von $\tilde{\mathcal{H}}$ als $\tilde{K}(x,y)=\tilde{k}_{y}(x)$
+%\item dann gilt für alle $x_i,y_i\in X$ mit $\Psi(x_1)=\Psi(x_2)$ und $\Psi(y_1)=\Psi(y_2)$ die Gleichung
+%\end{itemize}
+%\end{frame}
+%\begin{frame}
+%\begin{align*}
+% \tilde{k}_{y_1}(x_1)&=\tilde{k}_{y_1}(x_2)=\langle\tilde{k}_{y_1},\tilde{k}_{x_2}\rangle=\overline{\langle\tilde{k}_{x_2},\tilde{k}_{y_1}\rangle}\\
+% &=\overline{\tilde{k}_{x_2}(y_1)}=\overline{\tilde{k}_{x_2}(y_2)}=\overline{\langle\tilde{k}_{x_2},\tilde{k}_{y_2}\rangle}\\
+%&=\langle \tilde{k}_{y_2},\tilde{k}_{x_2}\rangle=\tilde{k}_{y_2}(x_2),
+%\end{align*} 
+%\pause
+%\begin{itemize}
+%\item also gilt für ein solches Paar $\tilde{K}(x_1,y_1)=\tilde{K}(x_2,y_2)$ und der Kern auf der Menge $\{(x,y)\in \Psi^{-1}(s)\times \Psi^{-1}(t),\,s,t \in S\}$ konstant
+% \end{itemize}
+%\end{frame}
+
+%\begin{frame}
+%\begin{itemize}
+%\item dadurch ist die Funktion $K_{\Psi}$ definiert durch $K_{\Psi}(s,t)=\tilde{K}(\Psi^{-1}(s),\Psi^{-1}(t))$ eine wohldefinierte Kernfunktion 
+%\item mit $\mathcal{H}(K_{\Psi})$ als zugehörigem RKHS.
+%\begin{block}{Definition 5.18}
+%Man nennt den RKHS $\mathcal{H}(K_{\Psi})$ den \emph{Push-Out} von $\mathcal{H}(K)$ entlang $\Psi.$ 
+%\end{block}
+
+%Man schreibt in diesem Fall $\Psi_*(\mathcal{H}(K))$ für den Push-Out $\mathcal{H}(K_{\Psi}).$ 
+%\end{itemize}
+%\end{frame}
+%\begin{frame}
+%\underline{Beispiel}\\
+%Als Beispiel wird der Bergman Raum $B^2(\mathbb{D})$ betrachtet. Bereits bekannt ist, dass der reproduzierende Kern durch 
+%\[
+%K(z,w)=\frac{1}{(1-\bar{w}z)^2}=\sum_{n=0}^{\infty}(n+1)(\bar{w}z)^n
+%\] gegeben ist. Sei $\Psi:\mathbb{D}\to \mathbb{D}$ definiert durch $\Psi(z)=z^2$ eine Funktion.
+%\end{frame}
+%\begin{frame}
+%\begin{itemize}
+%\item dann ist
+%\begin{align*}
+%\tilde{\mathcal{H}}=&\{f\in B^2(\mathbb{D})\mid  f(z_1)=f(z_2),\, (z_1,z_2)\in M_{\Psi}\}\\
+%=&\{f\in B^2(\mathbb{D})\mid \, f(z)=f(-z)\}
+% \end{align*} \pause
+%\item also ist $\tilde{\mathcal{H}} $ der Unterraum der Funktionen, die sich als eine Linearkombination der Monome mit gerader Potenz schreiben lassen\pause
+%\item der Kern dieses RKHS hat die Gestalt 
+%\[
+%\tilde{K}(z,w)=\sum_{n=0}^{\infty}(2n+1)(\overline{w}z)^{2n}.
+%\]
+%\end{itemize}
+%\end{frame}
+%\begin{frame}
+%\begin{itemize}
+ %\item wegen $\Psi^{-1}(z)=\pm\sqrt{z}$, erhält man als reproduzierenden Kern von $\Psi_*(\mathcal{H}(K))$ die Funktion
+%\[
+%K_{\Psi}(z,w)=\tilde{K}(\pm\sqrt{z},\pm \sqrt{w})=\sum_{n=1}^{\infty}(2n+1)(\overline{w}z)^{n}.
+%\]
+%\end{itemize}
+%\end{frame}
+%\section{Multiplikatoren}
+%\begin{frame}
+%\begin{block}{Definition 5.19}
+%Sei $\mathcal{H}_1$ bzw. $\mathcal{H}_2$ ein RKHS  auf einer Menge $X$ mit Kern $K_1$ bzw. $K_2.$ Man nennt eine Abbildung $f:X\to \mathbb{C}$ einen \emph{Multiplikator} von $\mathcal{H}_1$ nach $\mathcal{H}_2,$ falls $f\mathcal{H}_1:=\{fh\mid h\in \mathcal{H}_1\}\subseteq \mathcal{H}_2$ ist. Mit $\mathcal{M}(\mathcal{H}_1,\mathcal{H}_2)$ bezeichnet man die Menge aller Multiplikatoren von $\mathcal{H}_1$ nach $\mathcal{H}_2.$
+%\end{block}
+%\end{frame}
+
+%\begin{frame}
+%\begin{block}{Proposition 5.20}
+%Seien $\mathcal{H}$ ein RKHS auf $X$ mit Kern $K$ und $f:X\to \mathbb{C}$ eine Abbildung.
+% Weiterhin sei $\mathcal{H}_0=\{h\in \mathcal{H}\mid fh=0\}$ und $\mathcal{H}_1=\mathcal{H}_0^{\bot}.$ Durch die Definition $\mathcal{H}_f=f\mathcal{H}=f\mathcal{H}_1$ mit dem Skalarprodukt $\langle fh_1,fh_2\rangle_f=\langle h_1,h_2 \rangle_{\mathcal{H}}$ für $h_1,h_2\in \mathcal{H}$ wird $\mathcal{H}_f$ zu einem RKHS auf $X$ mit dem Kern $K_f(x,y)=f(x)K(x,y)\overline{ f(y) }.$
+
+%\end{block}
+%\end{frame}
+
+%\begin{frame}
+%\begin{block}{Satz 5.21}
+%Seien $\mathcal{H}_1$ und $\mathcal{H}_2$ zwei RKHS auf $X$ mit den Kernen $K_1$ und $K_2.$ Sei weiterhin $f:X\to  \mathbb{C}$ eine Abbildung. Dann sind folgende Aussagen äquivalent:
+%\begin{enumerate}
+%\item $f\in \mathcal{M}(\mathcal{H}_1,\mathcal{H}_2)$
+%\item  $f\in \mathcal{M}(\mathcal{H}_1,\mathcal{H}_2)$ und $M_f$ ist ein beschränkter Operator.
+%\item Es gibt eine Konstante $c\geq 0 $ so, dass %$f(x)K_1(x,y)\overline{f(y)} \leq c^2 K_2(x,y)$ ist.
+%\end{enumerate}
+%In diesem Fall ist $\|M_f\|$ die kleinste Konstante, die die %Ungleichung erfüllt.
+%\end{block}
+%\end{frame}
+
+%\end{comment}
+%\section{Fazit}
+
+%----------------------------------------------
+
+
+\end{document}

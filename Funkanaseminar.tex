@@ -1,0 +1,798 @@
+\documentclass[12pt,titlepage,twoside,cleardoublepage]{article}
+%\usepackage{backend=biber}{biblatex}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,lmargin={4cm},rmargin={2cm},tmargin={2.5cm},bmargin = {2.5cm}]{geometry}
+\usepackage{amsmath}
+\usepackage{apacite}
+\usepackage{amssymb}
+\usepackage{pdfpages} 
+%\usepackage[pdftex,article]{geometry}
+\usepackage{amsthm}
+%\usepackage{ngerman,amsthm}
+\usepackage{lineno} 
+\usepackage{lineno, blindtext} 
+\usepackage{cleveref}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{thmtools}
+\usepackage{tabularx}
+\linespread{1.25}
+\usepackage{color}
+\usepackage{verbatim}
+\newcommand{\gelb}{0.550000011920929}
+\usepackage{pgf,tikz,pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+%\numberwithin{equation}{chapter}
+%\usepackage{scrheadings}
+\pagestyle{headings}
+\usepackage{titlesec}     
+\usepackage{tikz}           % für Kontrolle der Abschnittüberschriften
+\begin{comment}
+\makeatother
+\theoremstyle{nummermitklammern}
+\theorembodyfont{\rmfamily}
+\theoremsymbol{\ensuremath{\diamond}}
+\newtheorem{temp}{}[section]
+\newtheorem{vor}[temp]{Vorüberlegung}
+\newtheorem{lemma}[temp]{Lemma}
+\newtheorem{folgerung}[temp]{Folgerung}
+\newtheorem{korollar}[temp]{Korollar}
+\newtheorem{bsp}[temp]{Beispiel}
+\newtheorem{herleitung}[temp]{Herleitung}
+\newtheorem{definition}[temp]{Definition}
+\newtheorem{bemerkung}[temp]{Bemerkung}
+\newtheorem{satz}[temp]{Satz}
+\newtheorem{beweisidee}[temp]{Beweisidee}
+\theoremsymbol{\ensuremath{\square}}
+\end{comment}
+%\begin{comment}
+\newtheorem{zahl}{}[section]
+%\setcounter{zahl}{1}
+%\newtheorem{section}{section}[section]
+\newtheorem{definition}[zahl]{Definition}
+\newtheorem{vor}[zahl]{Vorüberlegung}
+\newtheorem{lemma}[zahl]{Lemma}
+\newtheorem{folgerung}[zahl]{Folgerung}
+\newtheorem{bsp}[zahl]{Beispiel}
+\newtheorem{herleitung}[zahl]{Herleitung}
+\newtheorem{bemerkung}[zahl]{Bemerkung}
+\newtheorem{satz}[zahl]{Satz}
+\newtheorem{beweisidee}[zahl]{Beweisidee}
+\numberwithin{equation}{section}
+\newtheorem{korollar}[zahl]{Korollar}
+\newtheorem{proposition}[zahl]{Proposition}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\Ke}{Ke}
+%-----------------------------------------------
+
+%\end{comment}
+ %Nummerierung mit Kapitelnummern
+%-------------------------
+%\newcommand{\secnumbering}[1]{% 
+ % \setcounter{chapter}{0}% 
+  %\setcounter{section}{0}% 
+  %\renewcommand{\thechapter}{\csname #1\endcsname{chapter}.}% nach Duden gehört 
+                                  % der Punkt hier hin bei gemischten Zählungen 
+%  \renewcommand{\thesection}{\thechapter\csname #1\endcsname{section}}% 
+%}
+%------------------------------
+\begin{document}
+\begin{titlepage}
+    \begin{center}
+      \large
+      \textsc{Rheinisch-Westf\"alische Technische Hochschule Aachen}\\
+
+      \vspace{5 cm}
+      \huge  Algebraische Operationen auf reproduzierenden Kernen \\
+      \vspace{1 cm}
+      \large Seminar zur Funktionalanalysis\\
+      %\large Bachelor's Thesis\\
+      \vspace{2 cm}
+       \vspace{3 cm}
+      \Large Reymond Oluwaseun Akpanya\\
+      \large Matrikelnummer: 357115\\
+      %\vspace{2 cm}
+      %\large Vorgelegt am: 28.09.2018
+      \vspace{3.5 cm}
+%      last build:
+ %    \today \\[4em]
+\begin{flalign*}
+&\text{Vorgelegt am:}&\text{09.02.2021}&\\
+&\text{Betreuer}&\text{Markus Neuhauser}&\\[1em]
+\end{flalign*}
+    \end{center}
+% \begin{flalign*}
+ %&\text{ } &\text{ 25.09.2018 }
+ %\end{flalign*}
+\end{titlepage}
+%---------------------------
+%\farb
+%\section*{Inhaltsverzeichnis}
+\newpage 
+\thispagestyle{empty}
+\quad 
+\newpage
+\thispagestyle{empty}
+
+\tableofcontents
+%\addcontentsline{toc}{section}{Einleitung}
+\newpage
+\setcounter{page}{1}
+\setcounter{section}{4}
+\section*{Einleitung}
+In dieser Arbeit werden Hilberträume von Funktionen einer beliebigen Menge in die reellen oder komplexen Zahlen thematisiert. Genauer sind hier Hilberträume mit reproduzierendem Kern von besonderem Interesse. Denn in diesen lässt sich die Funktionsauswertung einer beliebigen Funktion des Hilbertraumes als ein Skalarprodukt mit einer Kernfunktion darstellen, dies als eine von vielen grundlegenden  Eigenschaften dieser Räume. An dieser Stelle wird vorausgesetzt, dass der Leser vertraut mit dem Konzept von Hilberträumen mit reproduzierendem Kern ist. Denn in dieser Ausarbeitung wird skizziert, wie sich diese Hilberträume unter der Anwendung von algebraischen Operationen verhalten. \\
+Die Motivation, die Relationen zwischen Hilberträumen, die aus gewissen algebraischen Operationen auseinander hervorgehen, zu untersuchen, kann auf Aronszajn zurückgeführt werden. 
+
+Diese Ausarbeitung basiert auf dem fünften Kapitel des Buches \emph{An Introduction to the Theory of Reproducing Kernel Hilbert Spaces} von  V.I. Paulsen und M. Raghupathi und deshalb werden die vorhergegangen Kapitel 1-4 des Buches als bekannt vorausgesetzt. Im Anhang befinden sich jedoch die Resultate aus den vorherigen Kapiteln, die hier zum Nachweis der vorgestellten Resultate verwendet werden. 
+\subsection*{Anmerkungen}
+Um im Verlauf dieser Ausarbeitung die Begründungen greifbarer zu gestalten, werden an dieser Stelle folgende Notationen  und Konventionen eingeführt.
+\begin{itemize}
+\item RKHS $\rightarrow$ Hilbertraum mit reproduzierendem Kern
+\item In den Beweisskizzen werden Begründungen abgekürzt, beispielsweise wird hier (3.11) statt Proposition 3.11 geschrieben.
+\end{itemize} 
+\begin{itemize}
+\item Sei $\mathcal{H}$ ein Hilbertraum. Weiterhin sei $X$ eine nicht-leere Menge, sodass $K_1$ und $K_2$ Funktionen sind, die von $X\times X$ nach $\mathbb{C}$ abbilden. 
+Es wird die Notation $K_1\geq 0 $ verwendet, falls $K_1$ eine Kernfunktion ist. Genauso wird hier die Notation $K_2\geq K_1$ verwendet, falls $K_2-K_1$ eine Kernfunktion ist. 
+\item Falls nicht anderweitig definiert, so sind $X$ und $S$ zwei beliebige, nicht-leere Mengen.
+\end{itemize}
+Außerdem ist die hier verwendete Nummerierung der Kapitel, Sätze, usw. an die Nummerierung im oben genannten Buch angelehnt. 
+\section{Algebraische Operationen auf Kernen}
+\subsection{Komplexifizierung}
+Bei der Betrachtung der Theorie der RKHS fokussiert man sich auf Hilberträume reell- oder komplexwertiger Funktionen. 
+In den vorherigen Kapiteln wurde zwischen reellen und komplexen RKHS unterschieden. Die \emph{Komplexifizierung}  beschreibt, wie man einen RKHS mit komplexwertigen Funktion aus einem RKHS reellwertiger Funktionen konstruieren kann.\\\\
+ Sei $\mathcal{H}$ ein RKHS reellwertiger Funktionen auf der Menge $X$ mit reproduzierendem Kern $K.$ Dann wird durch $\mathcal{H}$ die Menge
+\[
+  \mathcal{W}=\{f_1+if_2\mid f_1,f_2\in \mathcal{H}\}
+\]  
+ erzeugt, welche klarerweise einen Vektorraum von Funktionen von $X$ nach $\mathbb{C}$ bildet. Mithilfe des Skalarproduktes $\langle \cdot ,\cdot\rangle_{\mathcal{H}}$ auf $\mathcal{H}$ definiert man nun durch
+ \[
+\langle f_1+if_2,g_1+ig_2\rangle_{\mathcal{W}}=\langle f_1 ,g_1\rangle_{\mathcal{H}}+i\langle f_2,g_1\rangle_{\mathcal{H}}-i\langle f_1,g_2\rangle_{\mathcal{H}}+\langle f_2,g_2 \rangle_{\mathcal{H}}
+ \] 
+ ein Skalarprodukt auf $\mathcal{W},$ weshalb $\mathcal{W}$ ausgestattet mit der Norm 
+ \begin{align*}
+\|f_1+if_2\|^2_{\mathcal{W}}&=\langle f_1+if_2,f_1+if_2 \rangle_{\mathcal{W}} \\
+&=\langle f_1 ,f_1\rangle_{\mathcal{H}}+i\langle f_2,f_1\rangle_{\mathcal{H}}-i\langle f_1,f_2\rangle_{\mathcal{H}}+\langle f_2,g_2
+ \rangle_{\mathcal{H}}\\
+ &=\langle f_1 ,f_1\rangle_{\mathcal{H}}+i\langle f_1,f_2\rangle_{\mathcal{H}}-i\langle f_1,f_2\rangle_{\mathcal{H}}+\langle f_2,g_2\rangle_{\mathcal{H}}\\
+ &=\|f_1\|_{\mathcal{H}}^2+\|f_2\|^2_\mathcal{H}
+  \end{align*}
+  zu einem Hilbertraum wird. Da $\mathcal{H}$ ein RKHS mit reproduzierendem Kern $K$ ist, gilt für jedes $y\in X$ mit zugehöriger Kernfunktion $k_y$ die Gleichheit 
+   \[
+   (f_1+if_2)(y)=f_1(y)+if_2(y)=\langle f_1,k_y\rangle_{\mathcal{H}} +i\langle f_2,k_y\rangle_{\mathcal{H}} = \langle f_1+if_2,k_y\rangle_{\mathcal{W}}.
+   \]
+    Dadurch wird $(\mathcal{W},\|\cdot\|_{\mathcal{W}})$ ein RKHS mit demselben reproduzierenden Kern $K(x,y)$.
+     Man nennt $\mathcal{W}$ die \emph{Komplexifizierung} von $\mathcal{H}.$ An dieser Stelle sei jedoch angemerkt, dass obiger Zusammenhang nicht im Widerspruch zum Satz von Moore steht. Die eindeutige Zuordnung von dem RKHS $\mathcal{H}(K)$ zu der Kernfunktion $K$ auf $X$ wurde in diesem Fall für die komplexen Zahlen gezeigt. Beschränkt man sich auf den reellen Fall, dann hat der Satz von Moore und auch der angeführte Beweis dennoch seine Richtigkeit und liefert einen eindeutigen reellen RKHS. Der Zusammenhang dieser beiden RKHS ist, dass der komplexe zu $K$ zugehörige RKHS die Komplexifizierung des reellen zu $K$ zugehörigen RKHS ist.  Da klarerweise jeder reellwertige RKHS auf oben skizzierte Art und Weise komplexifiziert werden kann, werden im weiteren Verlauf dieser Ausarbeitung die betrachteten RKHS als Hilberträume komplexwertiger Funktionen angenommen.
+\subsection{Summen und Differenzen}
+Dieses Kapitel beschreibt den Zusammenhang zwischen Summen und Differenzen von Kernfunktionen und den dazugehörigen Hilberträumen. Als erstes Resultat wird  Aronszajns Inklusionstheorem eingeführt, welches eine Charakterisierung für eine Teilmengenbeziehung zwischen mehreren RKHS formuliert. Auf diesem Satz aufbauend kann als Hauptresultat dieses Kapitels die Struktur eines RKHS, dessen reproduzierender Kern eine Summe von Kernfunktionen ist, genauer festgelegt werden.
+\begin{satz}[Aronszajns Inklusionstheorem]\label{51}
+Seien $K_i:X\times X\to \mathbb{C}$ für $i=1,2$ Kernfunktionen. Dann ist $\mathcal{H}(K_1)$ genau dann eine Teilmenge von $\mathcal{H}(K_2)$, wenn  es eine Konstante $c>0 $ gibt, sodass $K_1 \leq c^2 K_2$ gilt. 
+Außerdem ist dann $\|f \|_2 \leq c\|f\|_1$ für alle $f \in \mathcal{H}(K_1).$ 
+\end{satz}
+\begin{proof}
+Sei $c>0$ eine Konstante mit der Eigenschaft
+\[
+K_1\leq c^2K_2
+\]  und $0 \neq h\in \mathcal{H}(K_1).$ Definiert man hierdurch $f=\frac{h}{\|h\|_1},$ dann ist $\|f\|_1=1.$
+ Mit (3.11) folgert man, dass $K_1(x,y)-f(x)\overline{ f(y)}$ eine Kernfunktion ist, also ergibt sich $K_1(x,y)-f(x)\overline{ f(y)}\geq 0.$ 
+Durch Anwenden der obigen Annahme kann man 
+\[
+0\leq f(x)\overline{ f(y)}\leq K_1(x,y)\leq c^2K_2(x,y)
+\]
+ schließen, was bedeutet, dass  $c^2K_2(x,y)-f(x)\overline{f(y)}$ ebenfalls eine Kernfunktion ist. Erneutes Anwenden von (3.11) liefert $f\in \mathcal{H}(K_2)$ und $\|f\|_2\leq c.$
+Also gilt insgesamt $\mathcal{H}(K_1)\subseteq \mathcal{H}(K_2)$ und $\|h\|_2\leq c\|h\|_1$ für alle $h\in \mathcal{H}(K_1).$\\
+Für den Nachweis der Rückrichtung sei nun $\mathcal{H}(K_1)\subseteq \mathcal{H}(K_2)$ und die Inklusion von $\mathcal{H}(K_1)$ in $\mathcal{H}(K_2)$ als
+\[
+T:\mathcal{H}(K_1) \to \mathcal{H}(K_2),f\mapsto f
+\] definiert. Dieser lineare Operator ist beschränkt. Zum Nachweis dieser Behauptung wird der Satz vom abgeschlossenen Graphen verwendet.
+Hierzu sei $(f_n)_n$ eine Folge in $\mathcal{H}(K_1),$ die $\|f_n-f\|_1\to 0$ für $n\to \infty$ erfüllt. Außerdem nimmt man zusätzlich $\|T(f_n)-g\|_2\to 0 $ für $n\to \infty$ und $g\in \mathcal{H}(K_2)$ an. Dann folgt für alle $x\in X,$ dass die Gleichung
+\[
+f(x)\overset{(2.2)}{=}\lim_{n\rightarrow \infty} f_n(x)=\lim_{n\rightarrow \infty} T(f_n)(x)\overset{(2.2)}{=}g(x)
+\] gilt.
+Also ist $g=T(f)$ und der Satz vom abgeschlossenen Graphen liefert die Beschränktheit des Operators $T$. Es gilt also
+$\|f\|_2=\|T(f)\|_2\leq \|T\|\|f\|_1$ für alle $f\in \mathcal{H}(K_1).$ Es bleibt zu zeigen, dass für $c:=\|T\|$ die Ungleichung
+\[
+K_1\leq c^2K_2 
+\] erfüllt ist. Seien hierfür $x_1,\ldots, x_n\in X$ paarweise verschieden und $\alpha_1,\ldots ,\alpha_n$ beliebige Elemente in $ \mathbb{C}.$ Zur Vereinfachung der nun folgenden Umformungen setzt man $k^1_y(x)=K_1(x,y)$ und $k^2_y(x)=K_2(x,y).$ Dann gilt:
+\begin{align*}
+&\sum_{i,j=1}^n\bar{\alpha_i}\alpha_jK_1(x_i,x_j)
+=\sum_{i,j=1}^n \bar{\alpha_i}\alpha_j k^1_{x_j}(x_i)\\
+=&\sum_{i,j=1}^n \bar{\alpha_i}\alpha_j \langle k^1_{x_j},k^2_{x_i}\rangle_2
+=\sum_{i,j=1}^n \langle \alpha_j k^1_{x_j},\alpha_ik^2_{x_i}\rangle_2\\
+=&\sum_{j=1}^n \langle \alpha_j k^1_{x_j},\sum_{i=1}^n\alpha_ik^2_{x_i}\rangle_2
+= \langle\sum_{j=1}^n \alpha_j k^1_{x_j},\sum_{i=1}^n\alpha_ik^2_{x_i}\rangle_2\\
+\leq&\|\sum_{j=1}^n \alpha_j k^1_{x_j}\|_2\|\sum_{i=1}^n\alpha_ik^2_{x_i}\|_2
+=\|T\biggl({\sum_{j=1}^n \alpha_j k^1_{x_j}}\biggr)\|_2\|\sum_{i=1}^n\alpha_ik^2_{x_i}\|_2\\
+\leq& c\|\sum_{j=1}^n \alpha_j k^1_{x_j}\|_1\|\sum_{i=1}^n\alpha_ik^2_{x_i}\|_2.
+\end{align*}
+Setzt man nun $B:=\sum^n_{i,j=1}\bar{\alpha_i}\alpha_jK_1(x_i,x_j)=\sum^n_{i,j=1}\bar{\alpha_i}\alpha_j\langle k^1_{x_j},k^1_{x_i}\rangle_1=\|\sum^n_{j=1}\alpha_jk^1_{x_j}\|^2_1,$ so liefert die obige Ungleichung
+\begin{align*}
+&B\leq c \sqrt{B}\|\sum_{i=1}^n\alpha_ik^2_{x_i}\|_2\\
+\iff &B^2\leq c^2B\|\sum_{i=1}^n\alpha_ik^2_{x_i}\|_2^2\\
+\iff &B\leq c^2 \|\sum_{i=1}^n\alpha_ik^2_{x_i}\|_2^2\\
+\iff &\sum^n_{i,j=1}\bar{\alpha_i}\alpha_jK_1(x_i,x_j) \leq c^2 \sum^n_{i,j=1}\bar{\alpha_i}\alpha_jK_2(x_i,x_j)
+\end{align*} 
+und dies ist äquivalent zu der Aussage, dass $K_1\leq c^2K_2$ ist.
+\end{proof}
+Um nun auch die Differenz von Kernfunktionen zu untersuchen, wird folgende Definition eingeführt.
+\begin{definition}
+Seien $\mathcal{H}_1$ zusammen mit $\|\cdot\|_1$ und $\mathcal{H}_2$ zusammen mit $\| \cdot\|_2$ zwei Hilberträume. Man nennt $\mathcal{H}_1$ \emph{kontraktiv} in $\mathcal{H}_2$  enthalten, falls $\mathcal{H}_1$ ein nicht notwendigerweise abgeschlossener Unterraum von $\mathcal{H}_2$ ist und $\|h\|_2 \leq \|h\|_1$ für alle $h \in \mathcal{H}_1$ gilt.
+\end{definition}
+Mit dieser Definition kann man obiges Resultat in einem Spezialfall umformulieren. 
+\begin{korollar}[Aronszajns Satz über Differenzen von Kernen] 
+Sei $\mathcal{H}_1$ bzw. $\mathcal{H}_2$ ein RKHS auf der Menge $X$ mit reproduzierendem Kern $K_1$ bzw. $K_2$. Dann ist $\mathcal{H}_1$ genau dann kontraktiv in $\mathcal{H}_2$ enthalten, wenn $K_2-K_1$ eine Kernfunktion ist.
+\end{korollar}
+Dies folgt direkt aus (5.1). Denn das $K_2-K_1$ eine Kernfunktion ist,  bedeutet, dass  $\mathcal{H}(K_1)$ eine Teilmenge von $\mathcal{H}(K_2)$ ist und in der Formulierung des obigen Satzes $c=1$ gewählt werden kann.
+%\begin{bsp*}
+
+%\end{bsp*}
+Bereits bekannt ist, dass die Summe $K=K_1+K_2$ zweier Kernfunktionen $K_1$ und $K_2$ auf der Menge $X$ wieder eine Kernfunktion ist. Das nächste Resultat fasst den Zusammenhang zwischen den dazugehörigen RKHS zusammen. 
+\begin{satz}[Aronszajns Satz über Summen von Kernen]
+Sei $\mathcal{H}_1$ bzw. $\mathcal{H}_2$ ein RKHS auf der Menge $X$ mit reproduzierendem Kern $K_1$ bzw. $K_2.$ Weiterhin sei $\|\cdot\|_1$ die zugehörige Norm auf $\mathcal{H}_1$ und $\|\cdot\|_2$ die zugehörige Norm auf $\mathcal{H}_2.$ Falls $K=K_1+K_2$ ist, dann bildet 
+ \[
+\mathcal{H}(K)=\{f_1+f_2\mid f_i\in \mathcal{H}_i,i=1,2\} 
+ \] 
+ den zu $K$ zugehörigen RKHS. Zudem ist die Norm auf $\mathcal{H}(K)$ durch 
+ \[
+\|f\|^2=\min\{\|f_1\|_1^2+\|f_2\|_2^2\mid f=f_1+f_2,f_i\in \mathcal{H}_i,i=1,2\} 
+ \]
+ gegeben.
+\end{satz}
+\begin{proof}
+Sei $\mathcal{H}_1\oplus \mathcal{H}_2=\{(f_1,f_2)\mid f_i\in \mathcal{H}_i,i=1,2\}$ die direkte Summe der beiden Hilberträume zusammen mit dem Skalarprodukt 
+\[
+\langle (f_1,f_2),(g_1,g_2) \rangle_{\mathcal{H}_1\oplus \mathcal{H}_2}=\langle f_1,g_1 \rangle_1+ \langle f_2,g_2\rangle_2,
+\] 
+wobei $\langle \cdot, \cdot \rangle_1$ das Skalarprodukt auf $\mathcal{H}_1$ und $\langle \cdot, \cdot \rangle_2$ das Skalarprodukt auf $\mathcal{H}_2$ bezeichnet. Mit dem Skalarprodukt auf $\mathcal{H}_1\oplus \mathcal{H}_2$ gelangt man zu der Gleichung 
+\[
+\|(f_1,f_2)\|_{\mathcal{H}_1\oplus \mathcal{H}_2}^2 =\langle (f_1,f_2),(f_1,f_2) \rangle_{\mathcal{H}_1\oplus \mathcal{H}_2}=\langle f_1,f_1 \rangle_1+ \langle f_2,f_2\rangle_2=\|f_1\|_1^2+\|f_2\|_2^2.
+\] 
+Da $\mathcal{H}_1$ und $\mathcal{H}_2$ beide Teilräume des Vektorraumes aller komplexwertiger Funktionen auf $X$ sind, ist der Schnitt $F_{0}=\mathcal{H}_1\cap \mathcal{H}_2$ ein wohldefinierter Vektorraum komplexwertiger Funktionen auf $X$.
+Damit lässt sich $\mathcal{N}=\{(f,-f) \mid f\in F_{0}\}\subseteq \mathcal{H}_1\oplus \mathcal{H}_2$ als Unterraum von $\mathcal{H}_1\oplus \mathcal{H}_2$ zusammensetzen, welcher ebenfalls abgeschlossen ist. Denn sei $(f_n)_n\subseteq F_0$ eine Folge und $(f,g)\in \mathcal{H}_1\oplus \mathcal{H}_2$, sodass $((f_n,-f_n))_n\subseteq \mathcal{H}_1\oplus \mathcal{H}_2$ eine Folge mit 
+\[
+\underset{n\to \infty}{\lim}\|(f_n,-f_n)-(f,g)\|_{\mathcal{H}_1\oplus \mathcal{H}_2}=\underset{n\to \infty}{\lim}(\|f_n-f\|_1+\|-f_n-g\|_2)= 0
+\]
+ bildet, dann gilt schon $\|f_n-f\|_1{\to} 0$ und $\|-f_n-g\|_2{\to} 0$ für $n\rightarrow\infty.$ Hieraus kann mit (2.2) die Gleichheit $f(x)=-g(x)$ für alle $x\in X$ gefolgert werden. Somit lässt sich $\mathcal{H}_1\oplus \mathcal{H}_2$ orthogonal in $\mathcal{N} + \mathcal{N}^{\bot}$ zerlegen.
+ % und jedes $(f_1,f_2)\in\mathcal{H}_1\oplus \mathcal{H}_2$ unterliegt der Zerlegung $(f_1,f_2)=(f,-f)+(h_1,h_2)$, wobei $f\in F_{0}$ und $(h_1,h_2)\bot \mathcal{N}$ ist.\\
+Sei nun $\mathcal{H}=\{f_1+f_2\mid f_i\in \mathcal{H}_i,i=1,2\}$ der Vektorraum, der  sich aus $\mathcal{H}_1$ und $\mathcal{H}_2$ zusammensetzt. Betrachtet man zusätzlich den Epimorphismus 
+\[
+\Gamma:\mathcal{H}_1 \oplus \mathcal{H}_2\to \mathcal{H},(f_1,f_2) \mapsto f_1+f_2,
+\]
+ dann ergibt sich somit schließlich $
+ \Ke(\Gamma)=\{(f_1,f_2)\in \mathcal{H}_1\oplus \mathcal{H}_2\mid f_1+f_2=0\}=\{(f_1,f_2)\in \mathcal{H}_1\oplus \mathcal{H}_2\mid f_1=-f_2\}=\mathcal{N}$.
+  Also ist die Abbildung $\Gamma$ auf $\mathcal{N}^{\bot}$ eingeschränkt ein Isomorphismus.
+ Durch die Isomorphie von $\mathcal{H}$ zu $\mathcal{N}^{\bot}$ erhält $\mathcal{H}$ ein Skalarprodukt wie folgt beschrieben: Wählt man $P$ als die orthogonale Projektion von $\mathcal{H}_1\oplus \mathcal{H}_2$ auf den Unterraum $\mathcal{N}^{\bot}$ und betrachtet weiterhin die Elemente $h=h_1+h_2,l=l_1+l_2\in \mathcal{H}$ für beliebige $l_i,h_i\in \mathcal{H}_i,$ dann ist $\Gamma(P((h_1,h_2)))=h.$ Denn $(h_1,h_2)$ kann eindeutig in $(h_1,h_2)=(k_1,k_2)+(k,-k)$, wobei $(k_1,k_2)\in \mathcal{N}^{\bot}$ und $(k,-k)\in \mathcal{N}$ ist, zerlegt werden. Deshalb gilt dann $\Gamma((h_1,h_2))=\Gamma((k_1+k,k_2-k))=k_1+k_2=\Gamma((k_1,k_2))=\Gamma(P(h_1,h_2)).$ Dieser Zusammenhang liefert
+\[
+\langle h,l\rangle_{\mathcal{H}}=\langle P((h_1,h_2)),P((l_1,l_2))\rangle_{\mathcal{H}_1\oplus \mathcal{H}_2} 
+\] als Skalarprodukt auf $\mathcal{H}.$ 
+ Bezeichnet man also die Norm auf $\mathcal{H}$ mit $\|\cdot\|,$ dann erhält man damit für alle $f=g_1+g_2\in \mathcal{H}$ mit $g_i\in \mathcal{H}_i$ die Gleichung
+ \begin{align*}
+ \|f\|^2=&\|P((g_1,g_2))\|^2_{\mathcal{H}_1 \oplus \mathcal{H}_2}\\
+=&\min\{\|(g_1+g,g_2-g)\|^2_{\mathcal{H}_1 \oplus \mathcal{H}_2}\mid g \in F_{0}\}\\
+=&\min\{\|(f_1,f_2)\|^2_{\mathcal{H}_1 \oplus \mathcal{H}_2}\mid f=f_1+f_2,f_i\in \mathcal{H}_i,i=1,2\}\\
+=&\min\{\|f_1\|_1^2+\|f_2\|_2^2\mid f=f_1+f_2,f_i\in \mathcal{H}_i,i=1,2\}.\\ 
+\end{align*} 
+ Also ist $\mathcal{H}$ ein Hilbertraum mit oben beschriebener Norm.\\
+Es bleibt also zu zeigen, dass $\mathcal{H}$ ein RKHS auf der Menge $X$ mit reproduzierendem Kern $K$ ist. Sei dazu $k^i_y(x)=K_i(x,y), $ also $k^i_y\in \mathcal{H}_i$ für $i=1,2.$ Falls $(f,-f)\in \mathcal{N}$ ist, dann kann man $\langle (f,-f),(k^1_y,k^2_y) \rangle_{\mathcal{H}_1\oplus\mathcal{H}_2}=\langle f,k^1_y \rangle_1+\langle -f,k^2_y \rangle_2=f(y)-f(y)=0$ folgern. Also ist $(k_y^1,k_y^2)\in \mathcal{N}^{\bot}$ für alle $y\in X.$ Für $f=f_1+f_2\in \mathcal{H} $ folgt nun   
+\begin{align*}
+&\langle f,k^1_y +k^2_y \rangle_{\mathcal{H}}=\langle P((f_1,f_2)),P((k^1_y,k^2_y)) \rangle_{\mathcal{H}_1\oplus \mathcal{H}_2}=\langle P((f_1,f_2)),(k^1_y,k^2_y) \rangle_{\mathcal{H}_1\oplus \mathcal{H}_2}\\
+=&\langle (f_1,f_2),(k^1_y,k^2_y) \rangle_{\mathcal{H}_1\oplus \mathcal{H}_2}=\langle f_1,k^1_y\rangle_1+\langle f_2,k_y^2\rangle_2=f_1(y)+f_2(y)=f(y).
+\end{align*}
+Somit folgt die Behauptung, denn dadurch ist $\mathcal{H}$ ein RKHS mit reproduzierendem Kern $K(x,y)=K_1(x,y)+K_2(x,y).$
+\end{proof}
+Im Allgemeinen müssen RKHS nicht disjunkt sein. Falls dies jedoch der Fall ist, liefert uns obiger Satz die Orthogonalität der beiden RKHS als Unterräume in einem  bezüglich Inklusion größerem Hilbertraum. Dieser Sachverhalt wird im nachfolgenden Korollar als Folgerung des obigen Satzes festgehalten.
+\begin{korollar}
+Sei $\mathcal{H}_1$ bzw. $\mathcal{H}_2$ ein RKHS auf der Menge $X$ mit reproduzierendem Kern $K_1$ bzw. $K_2$. Falls $\mathcal{H}_1 \cap \mathcal{H}_2=\{0\}$ ist, dann ist 
+\[
+\mathcal{H}(K_1+K_2)=\{f_1+f_2\mid f_i\in \mathcal{H}_i,i=1,2\}
+\] 
+mit der Norm $\|f_1+f_2\|^2=\|f_1\|^2_1+\|f_2\|^2_2$
+ein Hilbertraum mit dem reproduzierendem Kern
+\[
+K(x,y)=K_1(x,y)+K_2(x,y).
+\]
+Insbesondere sind $\mathcal{H}_1$ und $\mathcal{H}_2$ orthogonal zueinander.
+\end{korollar}
+
+Als Beispiel betrachtet man den Hardy-Raum $H^2(\mathbb{D})$ zusammen mit dem Unterraum 
+\[
+H_0^2(\mathbb{D})=\{f\in H^2(\mathbb{D})\mid f(0)=0\}.
+\]
+Aus $g(z)=\sum_i b_iz^i\in H^2_0(\mathbb{D})$ folgert man direkt $0=g(0)=b_0.$ Sei nun zunächst $f=\sum_ia_iz^i\in {H_0^2(\mathbb{D})}^{\bot}.$ Dann muss $f$ schon konstant sein, denn wegen $0^n=0$ für $n>0,$ ist $z^n\in H^2_0(\mathbb{D})$ und man erhält die Gleichung 
+$0=\langle g,z^n\rangle_{H^2(\mathbb{D})}=a_n.$ Also ist
+  \[
+H_0^2(\mathbb{D})^{\bot}=\{f\in H^2(\mathbb{D})\mid f \, konstant\}.  
+  \]
+Es wird nun der Kern $K_1(z,w)$ von ${H_0^2(\mathbb{D})}^{\bot}$ und der Kern $K_2(z,w)$ von ${H_0^2(\mathbb{D})}$ bestimmt.
+Dazu sei $K_1(z,w)=k^1_w(z)=c_w\in {H_0^2(\mathbb{D})}^{\bot}$ und $f(z)=c$ für $c,c_w\in \mathbb{C},$ dann gilt 
+\begin{align*}
+&c=f(w)=\langle f,k^1_w\rangle_{H^2(\mathbb{D})}=c
+\overline{c_w}\\
+\Leftrightarrow \,& c_w=1.
+\end{align*}
+ Deshalb muss $K_1(z,w)=1$ der reproduzierende Kern von ${H_0^2(\mathbb{D})}^{\bot}$ sein. Dadurch erhält man wegen (5.5) die Kernfunktion von $H^2_0(\mathbb{D})$ durch
+\begin{align*}
+&\frac{1}{1-\bar{w}z}=K_1(z,w)+K_2(z,w)\\
+\Leftrightarrow&\frac{1}{1-\bar{w}z}-1=K_2(z,w)\\
+\Leftrightarrow&\frac{\bar{w}z}{1-\bar{w}z}=K_2(z,w),\\
+\end{align*}
+wobei $\frac{1}{1-\bar{w}z}$ der reproduzierende Kern von $H^2(\mathbb{D})$ ist.
+\subsection{RKHS endlicher Dimension}
+Im endlich dimensionalen Fall liefert der Satz von Aronszajn greifbare Anwendungen bei der Betrachtung von RKHS. Dieses Kapitel skizziert zwei dieser Anwendungsmöglichkeiten und soll dem Leser die Ideen hinter diesen Anwendungen nahebringen.
+\begin{itemize}
+\item
+Sei $\mathcal{H}$ ein endlich dimensionaler RKHS mit reproduzierendem Kern $K$. Falls $f_1,\ldots ,f_n $ eine Orthonormalbasis ist, liefert (2.4) die Funktion
+\[
+K(x,y)=\sum^n_{i=1} f_i(x)\overline{f_i(y)}
+\] als den reproduzierenden Kern von $\mathcal{H}.$
+Diese Funktionen sind notwendigerweise linear unabhängig. \\
+ Seien nun umgekehrt $f_1,\ldots,f_n$ linear unabhängige Funktionen, die von $X$ in die komplexen Zahlen abbilden und $K(x,y)=\sum_{i=1}^nf_i(x)\overline{f_i(y)}.$ Mit dem Satz von Aronszajn können nun genauere Aussagen über den Raum $\mathcal{H}(K)$ getroffen werden. Definiert man $K_i(x,y)=f_i(x)\overline{f_i(y)}$ und $L_i(x,y)=\sum_{j\neq i} f_j(x)\overline{f_j(x)}$ für $1\leq i\leq n,$
+   so erhält man mithilfe von (2.19) die RKHS $\mathcal{H}(K_i)=\Span\{f_i\}$ mit zugehörigen Normen $\|\cdot\|_i,$ wobei $\|f_i\|_i=1$ ist. Da $f_1,\ldots,f_n$  linear unabhängig sind, gilt dies auch für $K_i$ und $L_i.$ Somit ist der Schnitt von $\mathcal{H}(K_i)$ und $\mathcal{H}(L_i)$ trivial, also $\mathcal{H}(K_i)\cap \mathcal{H}(L_i)=\{0\}.$ Da $K(x,y)=L_i(x,y)+K_i(x,y)$ ist, kann man mit (5.5) folgern, dass $\mathcal{H}(K)=\mathcal{H}(K_i)+\mathcal{H}(L_i)$ für $1\leq i\leq n$ ist, wobei $\mathcal{H}(K_i)$ und $\mathcal{H}(L_i)$ orthogonale Unterräume in $\mathcal{H}(K)$ sind. Da $f_1,\ldots,f_n$ in $\mathcal{H}(K_i)$ normiert sind, sind sie aufgrund der Definition der Norm auch in $\mathcal{H}(K)$ normiert. Also bilden die $f_1,\ldots,f_n$ eine Orthonormalbasis von $\mathcal{H}(K).$ 
+\item Nun seien $f_1$ und $f_2$ linear unabhängige Funktionen. Wird nun die Funktion 
+$K(x,y)=f_1(x)\overline{f_1(y)}+f_2(x)\overline{f_2(y)}+(f_1(x)+f_2(x))\overline{(f_1(y)+f_2(y))}$ betrachtet,
+so bildet diese eine Kernfunktion. Denn aufgrund der linearen Unabhängigkeit von $f_1$ und $f_2$ sind die Funktionen $f_1,f_2,f_1+f_2\neq 0.$ Mit (2.19) sind 
+\begin{align*}
+&K_1(x,y)=f_1(x)\overline{f_1(y)},\\
+&K_2(x,y)=f_2(x)\overline{f_2(y)},\\
+&K_3(x,y)=(f_1(x)+f_2(x))\overline{(f_1(y)+f_2(y))},\\
+\end{align*}
+ Kernfunktionen und dann schließlich $K$ als Summe von Kernfunktionen ebenfalls eine Kernfunktion.
+ Außerdem bilden $f_1$ und $f_2$ wegen des Satzes von Papadaki (2.10) einen Parseval Frame von $\mathcal{H}(K),$ also muss sich jedes Element als eine Linearkombination von $f_1$ und $f_2$ darstellen lassen. Somit ist $\mathcal{H}(K)$ als $\mathbb{C}$-Vektorraum zwei-dimensional und deshalb bilden die $K(x,y)$ keine Orthonormalbasis von $\mathcal{H}(K),$ da drei Elemente in $\mathcal{H}(K)$ bereits linear abhängig sind. Dennoch kann hier mithilfe des Satzes über Summen von Kernen der RKHS $\mathcal{H}$ auf weitere Eigenschaften untersucht werden.
+   Für die Funktion $L_1(x,y):=f_1(x)\overline{f_1(y)}+f_2(x)\overline{f_2(y)}$ bildet aufgrund von $\mathcal{H}(K_1)\cap \mathcal{H}(K_2)\overset{{(2.19)}}{=}\Span\{f_1\}\cap \Span\{f_2\}=\emptyset$ und (5.5) die Menge $\{f_1,f_2\}$ eine Orthonormalbasis von $\mathcal{H}(L_1).$ Und für $L_2(x,y)=(f_1(x)+f_1(x))\overline{(f_1(y)+f_1(y))}$ liefert (2.19) erneut $\mathcal{H}(L_2)=\Span\{f_1+f_2\}.$ Da nun wieder $K(x,y)=L_1(x,y)+L_2(x,y)$ ist, gilt
+   \begin{align*}
+   &\|f_1\|^2_{\mathcal{H}(K)}\\
+   \overset{(5.5)}{=}&\min\{\|f\|^2_{\mathcal{H}(L_1)}+\|f'\|^2_{\mathcal{H}(L_2)}\mid f_1=f+f',f\in \mathcal{H}(L_1),f' \in  \mathcal{H}(L_2)\}\\
+   =&\min\{\|rf_1+sf_2\|^2_{\mathcal{H}(L_1)}\|+\|t(f_1+f_2)\|^2_{\mathcal{H}(L_2)}\mid r,s,t \in \mathbb{C}\}   \\
+ =&\min\{\langle rf_1+sf_2,rf_1+sf_2\rangle_{\mathcal{H}(L_1)}+\vert t\vert^2\|(f_1+f_2)\|^2_{\mathcal{H}(L_2)}\mid\\ &f_1=rf_1+sf_2+t(f_1+f_2)\}\\
+ \overset{(2.19)}{=}&\min\{\langle rf_1+sf_2,rf_1+sf_2\rangle_{\mathcal{H}(L_1)}+\vert t \vert^2\mid 0=(1-r-t)f_1-(s+t)f_2
+ \}\\   
+=&\min\{\vert r\vert^2 \| f_1\|^2_{\mathcal{H}(L_1)}+\vert s\vert^2 \| f_2\|^2_{\mathcal{H}(L_1)}+\vert t \vert^2\mid 0=(1-r-t)f_1-(s+t)f_2
+ \}\\ 
+\overset{(2.19)}{=}&\min\{\vert r\vert^2 +\vert s\vert^2 +\vert t \vert^2\mid 1=(r+t),0=s+t\}.
+   \end{align*}
+   Durch einfache Rechnung erhält man dann schließlich $\|f_1\|^2_{\mathcal{H}(K)}=\frac{2}{3}.$ Analog erhält man auch $\|f_1\|^2_{\mathcal{H}(K)}=\frac{2}{3}=\|f_1+f_2\|^2_{\mathcal{H}(K)}=\frac{2}{3}.$
+   \end{itemize}
+ 
+\subsection{Pull-Backs und der Kompositionsoperator}
+Einschränkungen von Kernfunktionen auf einen kleineren Definitionsbereich bilden wieder Kernfunktionen. Die Einschränkung einer Kernfunktion ist jedoch lediglich die Komposition einer Kernfunktion und einer Inklusionsabbildung. Davon abgeleitet beschäftigt sich dieses Kapitel mit der wohldefinierten Verkettung einer Kernfunktion und einer beliebigen Abbildung. \\
+In dem Pull-Back-Theorem werden in diesem Fall Aussagen über den RKHS der Verkettung zusammengefasst, um darauffolgend  weitere Erkenntnisse zu formulieren.\\ \\
+Um die Schreibweise dieser Verkettung zu vereinfachen, wird folgende Notation eingeführt:\\
+Sei $K:X\times X \to \mathbb{C}$ eine Kernfunktion und $\phi:S\to X$ eine Funktion. Mit $K\circ \phi$ bezeichnet man dann die Funktion, die auf $S\times S $ durch $K\circ \phi(s,t)=K(\phi(s),\phi(t))$ gegeben ist. Normalerweise wird diese Verkettung durch $K\circ (\phi \times \phi )$ beschrieben. Auf diese Genauigkeit soll an dieser Stelle verzichtet werden.\\
+ Zunächst müssen nun einmal die Verkettung von Kernfunktionen und beliebigen Abbildungen genauer betrachtet werden.\\
+ 
+
+\begin{proposition}
+Sei $\phi:S \to X $ eine Abbildung und $K$ eine Kernfunktion auf der Menge $X.$ Dann ist $K \circ \phi$ ein Kern auf der Menge $S.$
+\end{proposition}
+\begin{proof}
+Seien $s_1,\ldots,s_n\in S$ paarweise verschiedene Elemente und $\alpha_1,\ldots,\alpha_n$ beliebige Elemente in $\mathbb{C}.$ Durch Anwenden der Abbildung $\phi$ auf die $s_i$ erhält man die Menge $\{\phi(s_1),\ldots,\phi(s_n)\}= \{x_1,\ldots x_p \}.$ Da $\phi$ nicht injektiv sein muss, gilt $p\leq n.$ Setzt man nun $A_k:=\{i \mid \phi(s_i)=x_k\}$ und $\beta_k:= \sum_{i\in A_k}\alpha_i,$ dann liefert dies paarweise disjunkte Mengen $A_k,$ die $\bigcup^k_{i=1} A_k=\{1,\ldots,n\}$ erfüllen. Dadurch gilt dann
+\begin{align*}
+&\sum_{i,j=1}^n\bar{\alpha_i}\alpha_jK(\phi(s_i),\phi(s_j))
+=\sum_{k,l=1}^p\sum_{i\in A_k}\sum_{j\in A_l}\bar{\alpha_i}\alpha_jK(x_k,x_l)\\
+=&\sum_{k,l=1}^p\big(\sum_{i\in A_k}\bar{\alpha_i}\big)
+\big(\sum_{j\in A_l}\alpha_j \big)K(x_k,x_l)=\sum_{k,l=1}^p\big(\overline{\sum_{i\in A_k}\alpha_i}\big)
+\big(\sum_{j\in A_l}\alpha_j \big)K(x_k,x_l)\\
+=&\sum_{k,l=1}^p\bar{\beta_k}\beta_lK(x_k,x_l)\geq 0,\\ 
+\end{align*}
+da $K$ ein Kern auf $X$ ist. Also ist $K\circ \phi$ eine Kernfunktion auf $S$.
+\end{proof}
+Da nun nachgewiesen wurde, dass die Verkettung einer Kernfunktion und einer Abbildung wieder eine Kernfunktion ist, falls die Komposition wohldefiniert ist, kann im Pull-Back Theorem der zugehörige RKHS untersucht werden.  
+\begin{satz}[Pull-Back Theorem]
+Sei $\phi:S \to X$ eine Abbildung und K eine Kernfunktion auf $X.$ Dann ist 
+\[
+\mathcal{H}(K \circ \phi)=\{f\circ \phi \mid f \in \mathcal{H}(K)\}
+\] der zu $K\circ \phi$ zugehörige RKHS und für alle $u \in \mathcal{H}(K\circ \phi)$ gilt
+\[
+\|u\|_{\mathcal{H}(K\circ \phi)}=\min\{\|f\|_{\mathcal{H}(K)}\mid u=f\circ \phi\}.
+\]
+\end{satz}
+\begin{proof}
+Sei $\|f\|_{\mathcal{H}(K)}=c$ für ein $f \in \mathcal{H}(K).$ Somit liefert (3.11) die Ungleichung $f(x)\overline{f(y)}\leq c^2K(x,y),$ also ist $c^2K(x,y)-f(x)\overline{f(y)}$ eine Kernfunktion und wegen (5.6) gilt dies auch für $c^2K(\phi(s),\phi(t))-f(\phi(s))\overline{f(\phi(t)))}.$ Mit (3.11) folgert man $f\circ \phi \in \mathcal{H}(K\circ \phi).$ Also ist $\{f\circ \phi\mid f\in \mathcal{H}(K)\}\subseteq \mathcal{H}(K\circ \phi).$\\
+Darüber hinaus gilt die Ungleichung $\|f\circ \phi\|_{\mathcal{H}(K\circ \phi)}\leq c=\|f\|_{\mathcal{H}(K)}$, wodurch  die Abbildung 
+\[
+C_{\phi}:\mathcal{H}(K)\to \mathcal{H}(K\circ \phi),f\mapsto f\circ \phi
+\] beschränkt und linear ist.
+ Sei $h_t(\cdot)=K(\phi(\cdot),\phi(t))$ die Kernfunktion des Hilbertraumes $\mathcal{H}(K\circ \phi).$ Für alle $u\in \mathcal{H}(K\circ \phi),$ die sich als eine endliche Linearkombination der Kernfunktionen schreiben lassen, also $u=\sum_i \alpha_i h_{t_i},$ gilt 
+\begin{align*}
+\|u\|^2_{\mathcal{H}(K\circ \phi)}=&
+\langle \sum_i\alpha_ih_{t_i},\sum_j\alpha_jh_{t_j} \rangle_{\mathcal{H}(K\circ \phi )}=
+ \sum_i\sum_j\alpha_i\overline{\alpha_j}\langle h_{t_i},h_{t_j} \rangle_{\mathcal{H}(K\circ \phi )}\\
+ =& \sum_i\sum_j\alpha_i\overline{\alpha_j} h_{t_i}(t_j)
+ = \sum_i\sum_j\alpha_i\overline{\alpha_j} K(\phi(t_i),\phi(t_j))\\
+=&\sum_i\sum_j\alpha_i\overline{\alpha_j}\langle k_{\phi(t_j)},{k_{\phi(t_i)}} \rangle_{\mathcal{H}(K )}\\
+=&\|\sum_i\alpha_ik_{\phi(t_i)}\|^2_{\mathcal{H}(K)}.
+\end{align*}
+Wegen obiger Umformung und der Dichtheit der Kernfunktionen in den jeweiligen RKHS, ist $\Gamma:\mathcal{H}(K\circ \phi )\to \mathcal{H}(K)$ mit der Eigenschaft $\Gamma(h_t)=k_{\phi(t)}$ eine wohldefinierte Isometrie.
+ Die Dichtheit von $\Span\{h_t\mid t\in S\}$ in $\mathcal{H}(K \circ \phi)$ liefert uns ebenfalls 
+  $C_{\phi}\circ \Gamma =id_{\mathcal{H}(K \circ \phi)}.$ Somit gilt für alle $u\in \mathcal{H}(K\circ \phi),$ dass die Funktion $f=\Gamma (u)$ die Gleichheiten $u=f\circ \phi $ und $\|u\|_{\mathcal{H}(K\circ \phi)}=\|f\|_{\mathcal{H}(K)}=\min\{\|f\|_{\mathcal{H}(K)}\mid u=f\circ \phi\}$ erfüllt.
+\end{proof}
+Sei beispielsweise $H^2_0(\mathbb{D})=\{f\in H^2(\mathbb{D})\mid f(0)=0\}$ der oben betrachtete Unterraum von $H^2(\mathbb{D})$ mit zugehörigem Kern
+\[
+K(z,w)=\frac{z\bar{w}}{1-z\bar{w}}.
+\]
+Weiterhin sei $\phi_{\alpha}(z)=\frac{z-\alpha}{1-\bar{\alpha}z}$ für $\alpha\in \mathbb{D}$ die elementare Möbius Transformation. Dann wird der Pull-Back durch 
+\begin{align*}
+&\mathcal{H}(K\circ \phi_{\alpha})=\{f \circ \phi_{\alpha} \mid f \in H_0^2(\mathbb{D}) \}\\
+=&\{f\circ \phi_{\alpha} \mid f\in H^2(\mathbb{D}),f(0)=0\}
+=\{u\in H^2(\mathbb{D})\mid u(\alpha)=0\} 
+\end{align*}
+beschrieben. Den Kern bildet die Funktion $(K\circ\phi_{\alpha})(z,w) =\frac{\phi_{\alpha}(z)\overline{\phi_{\alpha}(w)}}{1-\overline{\phi_\alpha(w)}\phi_\alpha(w)}.$\\
+Im folgenden Korollar wird das Pull-Back Theorem für den Fall einer Verkettung mit einer Inklusionsabbildung formuliert.
+\begin{korollar}[Restriktionssatz]
+Sei $K$ eine Kernfunktion auf der Menge $X$ und $S$ eine nichtleere Teilmenge von $X.$ Mit $K_S:S\times S\to \mathbb{C}$ bezeichnet man die Einschränkung von $K$ auf $S\times S.$ Dann bildet $K_S$ einen Kern auf $S$ und es gilt genau dann $u\in \mathcal{H}(K_S)$, wenn ein $f\in\mathcal{H}(K)$ mit $f\mid_{S}=u$ existiert.  Es gilt $\|u\|_{\mathcal{H}(K_S)}=\min\{\|f\|_{\mathcal{H}(K)}\mid u=f\mid_{S}\}.$
+\end{korollar}
+\begin{proof}
+Sei $\phi:S\to X,s\mapsto s$ die Inklusionsabbildung von $S$ in $X$. Dann ist $K_S=K\circ \phi$ und nach dem Pull-Back Theorem ist $\mathcal{H}(K\circ \phi)=\{f\circ \phi \mid f\in \mathcal{H}(K)\}=\{f\vert_S \mid f\in \mathcal{H}(K)\}$ und $\|f\|_{\mathcal{H}(K_S)}=\min\{\|f\|_{\mathcal{H}(K)}\mid u=f\circ \phi=f\vert_S\}.$
+\end{proof}
+
+\begin{definition}
+Sei $\phi:S\to X$ eine Abbildung und $K$ ein Kern auf $X.$ Man nennt den RKHS $\mathcal{H}(K\circ \phi)$ den \emph{Pull-Back} von $\mathcal{H}(K)$ entlang von $\phi$ und die lineare Abbildung $C_{\phi}:\mathcal{H}(K)\to \mathcal{H}(K\circ \phi)$ die \emph{Pull-Back Abbildung}.   
+\end{definition}
+Den Pull-Back von $\mathcal{H}(K)$ entlang von $\phi$ bezeichnet man auch mit $\phi^*(\mathcal{H}(K)).$
+Mit den Bezeichnungen aus dem Beweis des Pull-Back Theorems hat folgende Gleichheit ihre Richtigkeit:
+\begin{align*}
+\langle \Gamma(h_t),k_y\rangle_{\mathcal{H}(K)}=k_{\phi(t)}(y)=K(y,\phi(t))=\overline{K(\phi(t),y)}\\
+=\overline{k_y(\phi(t))}=\overline{C_{\phi}(k_y)(t)}=\langle h_t,C_{\phi}(k_y)\rangle_{\mathcal{H}(K\circ \phi)}.
+\end{align*}
+Da das Erzeugnis der Kernfunktionen dicht in den jeweiligen Hilberträumen liegt, folgt $C_{\phi}=\Gamma^*.$ Das Bild von $\Gamma$ ist ein abgeschlossener Unterraum, da $\Gamma$ eine Isometrie ist. Deshalb ist auch $\Gamma^*$ eine Isometrie auf dem Bild von $\Gamma.$ Man nennt $\Gamma^*$ eine \emph{Co-Isometrie}.\\
+Im Folgenden wird die Aussagekraft des \emph{Pull-Back Theorems} bei Abänderung der Voraussetzungen untersucht. Genauer wird betrachtet, unter welchen Bedingungen eine Funktion $\phi:X_1\to X_2$ für Kernfunktionen $K_i:X_i\times X_i\to \mathbb{C}$ eine beschränkte lineare Abbildung 
+\[
+C_{\phi}:\mathcal{H}(K_2)\to \mathcal{H}(K_1),f\mapsto f\circ \phi
+\] induziert. Eine solche Funktion $C_{\phi} $ nennt man \emph{Kompositionsoperator}. Eine Formulierung dieses Resultates findet man im nächsten Satz wieder.
+
+\begin{satz}
+Seien $X_1$ und $X_2$ zwei Mengen und $\phi:X_1\to X_2$ eine Abbildung. Weiterhin seien $K_1$ ein Kern auf $X_1$ und $K_2$ ein Kern auf $X_2.$ Dann sind folgende Aussagen äquivalent:
+\begin{enumerate}
+\item $\{f\circ \phi \mid f\in \mathcal{H}(K_2)\}\subseteq \mathcal{H}(K_1)$
+\item $C_{\phi}:\mathcal{H}(K_2)\to \mathcal{H}(K_1) $ ist ein beschränkter linearer Operator.
+\item Es existiert eine Konstante $c>0,$ sodass die Ungleichung $K_2 \circ \phi \leq c^2K_1.$ 
+\end{enumerate}
+In diesem Fall ist $\|C_{\phi}\|$ die kleinste Konstante für die diese Aussage gilt.
+\end{satz}
+\begin{proof}
+\begin{itemize}
+\item $(2)\Rightarrow (1)$ Da $C_{\phi}$ ein wohldefinierter Operator ist, gilt die Teilmengenbeziehung $C_{\phi}(\mathcal{H}(K_2))\subseteq \mathcal{H}(K_1).$ 
+\item $(3) \Rightarrow (2)$ Sei $f\in \mathcal{H}(K_2)$ mit $\|f\|_2=M.$ Dann liefert (3.11) die Ungleichung $f(x)f(y)\leq M^2K_2(x,y),$ wodurch man dann 
+\[
+f(\phi(x))f(\phi(y))\leq M^2K_2(\phi(x),\phi(y))\leq M^2c^2K_1(x,y)
+\] für alle $x,y\in X_1$ folgert. Somit ist $C_{\phi}(f)=f\circ \phi\in \mathcal{H}(K_1)$ und $C_{\phi}$ beschränkt mit $\|C_{\phi}\|\leq c.$ 
+\item $(1) \Rightarrow (3)$ Aufgrund des Pull-Back Theorems gilt
+ \[
+\mathcal{H}(K_2\circ \phi)=\{f\circ \phi\mid f\in \mathcal{H}(K_2)\}\subseteq \mathcal{H}(K_1), 
+\] wodurch direkt mit (5.1) die Aussage $K_2\circ \phi \leq c^2K_1$ für eine Konstante $c> 0$ gefolgert wird. 
+\end{itemize}
+\end{proof}
+
+\subsection{Tensorprodukt}
+Das Produkt von zwei Kernfunktionen ist wieder eine Kernfunktion. Dieser Sachverhalt wurde bereits in Kapitel 4 des Buches präsentiert. Dort wurde jedoch keine Aussage über die dazugehörigen RKHS getroffen. Dies wird an dieser Stelle nachgeholt. Es wird eine Identität für den RKHS der Kernfunktion, die sich aus einer Multiplikation von Kernfunktionen zusammensetzt, hergeleitet. Im Anschluss dazu betrachtet man den Bergman Raum und den Hardy-Raum, um Beispiele für den RKHS einer solchen Kernfunktion zu sehen. Vorerst muss jedoch das \emph{abgeschlossene Tensorprodukt} eingeführt werden.
+
+Seien $\mathcal{H}_1$ mit $\langle\cdot,\cdot \rangle_1$ und $\mathcal{H}_2$ mit $\langle\cdot,\cdot\rangle_2$ Hilberträume. Dann bildet das Tensorprodukt $\mathcal{H}_1\otimes \mathcal{H}_2$ ebenfalls einen Hilbertraum, falls
+\begin{itemize}
+\item 
+ es mit dem Skalarprodukt $
+\langle f\otimes g,h\otimes k\rangle=\langle f,h\rangle_1\langle g,k\rangle_2$
+ausgestattet wird,
+\item das Erzeugnis aller Tensoren betrachtet wird
+\item und der Abschluss des resultierenden Vektorraumes in der Norm gebildet wird.
+\end{itemize} 
+Diese Erweiterung des algebraischen Tensorproduktes nennt man das \emph{abgeschlossene Tensorprodukt} und verwendet hierfür von nun an die Bezeichnung $\mathcal{H}_1\otimes \mathcal{H}_2.$ Bei der obigen Sesquilinearform handelt es sich um ein Skalarprodukt, da alle Eigenschaften wie in Kapitel 4 skizziert von den Skalarprodukten auf $\mathcal{H}_1$ und $\mathcal{H}_2$ geerbt werden. Hier soll nun die Nulltreue für elementare Tensoren nachgerechnet werden. Sei $0=\langle f\otimes g,f\otimes g\rangle =\langle f,f\rangle_1\langle g,g\rangle_2 =\|f\|_1^2\|g\|_2^2,$ dann folgt direkt $f=0$ oder $g=0$ und somit $f\otimes g=0.$\\
+Falls $\mathcal{H}_1$ ein RKHS auf der Menge $X$ und $\mathcal{H}_2$ ein RKHS auf der Menge $S$ ist, identifiziert man eine Funktion $u=\sum_{i=0}^nh_i\otimes f_i$ aus dem algebraischen Tensorprodukt mit
+\[
+\hat{u}(x,s)=\sum_{i=0}^nh_i(x)f_i(s).
+\] 
+Der untenstehende Satz zeigt, dass diese Identifikation auf dem abgeschlossenen Tensorprodukt fortgeführt werden kann.
+\begin{satz}
+Sei $\mathcal{H}_1$ ein RKHS mit reproduzierendem Kern $K_1$ auf der Menge $X$ und $\mathcal{H}_2$ ein RKHS mit reproduzierendem Kern $K_2$ auf der Menge $S$. Dann ist 
+\[
+K:(X\times S)\times (X \times S)\to \mathbb{C},((x,s),(y,t))\mapsto K_1(x,y)K_2(s,t) 
+\] 
+ein Kern auf der Menge $X\times S.$ Zudem ist die Abbildung $\mathcal{H}_1 \otimes \mathcal{H}_2 \to  \mathcal{H}(K), u\mapsto \hat{u}$ eine wohldefinierte lineare Isometrie.
+\end{satz}
+\begin{proof}
+Seien $k_y^1(x)=K_1(x,y)$ und $k^2_t(s)=K_2(s,t)$ die Kernfunktionen von $\mathcal{H}_1$ bzw. $\mathcal{H}_2$. Für $u=\sum_{i=1}^n h_i\otimes f_i$ gilt dann 
+\begin{align*}
+&\langle u,k^1_y\otimes k_t^2 \rangle_{\mathcal{H}_1\otimes \mathcal{H}_2}=\langle \sum_{i=1}^n h_i\otimes f_i,k^1_y\otimes k_t^2 \rangle_{\mathcal{H}_1\otimes \mathcal{H}_2}\\
+=&\sum_{i=1}^n\langle h_i\otimes f_i,k^1_y\otimes k_t^2 \rangle_{\mathcal{H}_1\otimes \mathcal{H}_2} 
+=\sum_{i=1}^n\langle h_i,k^1_y \rangle_{\mathcal{H}_1}\langle f_i,k_t^2 \rangle_{ \mathcal{H}_2}\\
+=&\sum_{i=1}^nf_i(y)h_i(t)
+=\hat{u}(y,t).
+\end{align*}
+Deshalb ist das Abbilden eines Elementes $u$ aus dem algebraischen Tensorprodukt auf die Funktion $\hat{u}$ eine wohldefinierte, lineare Abbildung, die mithilfe obiger Gleichheit auch auf dem abgeschlossenen Tensorprodukt fortgesetzt werden kann.
+ Für ein $u \in \mathcal{H}_1\otimes \mathcal{H}_2$ definiert man die Funktion $\hat{u}$ auf $X\times S$ durch $\hat{u}(y,t)=\langle u,k^1_y \otimes k^2_t \rangle_{\mathcal{H}_1\otimes \mathcal{H}_2}.$ Die Menge $\mathcal{L}=\{\hat{u}\mid u\in \mathcal{H}_1\otimes \mathcal{H}_2\}$ bildet dann als Bild eines Vektorraumes selber einen Vektorraum. Die Abbildung
+ \[
+\Psi:\mathcal{H}_1\otimes \mathcal{H}_2 \to \mathcal{L},u\to \hat{u}
+ \] ist dann genau dann bijektiv, wenn es kein $u \in\mathcal{H}_1\otimes \mathcal{H}_2$ mit $\Psi(u)=0$ gibt, also $\hat{u}(s,t)=\langle u,k^1_y \otimes k^2_t \rangle_{\mathcal{H}_1\otimes \mathcal{H}_2}=0$ für alle $(y,t)\in X\times S.$
+  Aus Letzterem kann man aber schließen, dass $u$ orthogonal zum $\Span\{k_y^1\otimes k_t^2\mid (y,t)\in X\times S\}$ ist. 
+  Da aber $\Span\{k_y^1\mid y\in X\}$ dicht in $\mathcal{H}_1$ und 
+$\Span\{k_t^2\mid t\in S\}$ dicht in $\mathcal{H}_2$ ist, folgt dass $\Span\{k_y^1\otimes k_t^2\mid (y,t)\in X\times S\}$ eine dichte Menge in $\mathcal{H}_1\otimes \mathcal{H}_2$ bildet. Also muss schon $\hat{u}=0$ gelten und dann folgt direkt $u=0$. Somit ist $\Psi$ ein Isomorphismus und $\mathcal{L}$ wird durch die Identifikation mit $\mathcal{H}_1\otimes \mathcal{H}_2$ zu einem Hilbertraum mit Skalarprodukt 
+\[
+\langle \hat{u},\hat{v}\rangle_{\mathcal{L}}=\langle u,v\rangle_{\mathcal{H}_1\otimes \mathcal{H}_2}
+\] für alle $u,v\in \mathcal{H}_1\otimes \mathcal{H}_2.$ Wegen $\hat{u}(y,t)
+=\langle u,k_y^1\otimes k_t^2\rangle_{\mathcal{H}_1\otimes \mathcal{H}_2}=\langle \hat{u},\widehat{k_y^1\otimes k_t^2}\rangle_{\mathcal{L}}$
+wird $\mathcal{L}$ zu einem RKHS mit reproduzierendem Kern 
+\begin{align*}
+K((x,s),(y,t))
+=\langle \widehat{k^1_y \otimes k^2_t},\widehat{k^1_x \otimes k^2_s} \rangle_{\mathcal{L}}
+=\langle k^1_y \otimes k_t^2,k^1_x \otimes k^2_s \rangle_{\mathcal{H}_1 \otimes \mathcal{H}_2
+}\\
+=\langle k_y^1,k^1_x\rangle_{\mathcal{H}_1}
+\langle k_t^2,k^2_s\rangle_{\mathcal{H}_2}
+=K_1(x,y)K_2(s,t).
+\end{align*}
+Da die Kerne identisch sind, muss schon $\mathcal{L}=\mathcal{H}(K)$ in ihrer Struktur als Mengen und als Hilberträume gelten und die obige Abbildung $\Psi$ bildet dann wegen $\langle \Psi(u),\Psi(v)\rangle_{\mathcal{L}}=\langle u,v\rangle_{\mathcal{H}_1\otimes \mathcal{H}_2}$ eine lineare Isometrie von $\mathcal{H}_1\otimes \mathcal{H}_2$ nach $\mathcal{H}(K)$.
+\end{proof}
+\begin{definition}
+Sei $\mathcal{H}_1$ ein RKHS mit reproduzierendem Kern $K_1$ auf der Menge $X$ und $\mathcal{H}_2$ ein RKHS mit reproduzierendem Kern $K_2$ auf der Menge $S$.
+Man nennt den Kern $K((x,s)(y,t))=K_1(x,y)K_2(s,t)$ das \emph{Tensorprodukt} der Kerne $K_1$ und $K_2.$ Man schreibt hierfür  $K_1 \otimes K_2.$
+\end{definition}
+Durch den obigen Satz erhält man die Gleichung 
+\[
+\mathcal{H}(K_1\otimes K_2)=\widehat{\mathcal{H}(K_1)\otimes\mathcal{H}(K_2)}.
+\] 
+Es werden nun Beispiele resultierend aus obigen Satz präsentiert.
+\begin{proposition}
+Bezeichnet man mit $H^2(\mathbb{D}^2)$ den Hardy-Raum in zwei Variablen, dann ist $\widehat{H^2(\mathbb{D}) \otimes H^2(\mathbb{D})}=H^2(\mathbb{D}^2).$ 
+\end{proposition}
+\begin{proof}
+Bezeichnet man die Variablen auf der $i$-ten Einheitsscheibe mit $z_i$ und $w_i$ für $i=1,2,$ dann ist der reproduzierende Kern des Tensorproduktes $H^2(\mathbb{D})\otimes H^2(\mathbb{D})$ gegeben durch $\frac{1}{(1-\overline{w_1}z_1)(1-\overline{w_2}z_2)}.$ Dieser wurde in Kapitel 2 ebenfalls als Kern des Raumes $H^2(\mathbb{D}^2)$ vorgestellt. Da die Kerne identisch sind, muss dies auch schon für die Hilberträume $\widehat{H^2(\mathbb{D})\otimes H^2(\mathbb{D})}$ und $H^2(\mathbb{D}^2)$ gelten.
+\end{proof}
+
+\begin{proposition}
+Seien $G_1 \subseteq \mathbb{C}^n$ und $G_2 \subseteq \mathbb{C}^m$ beschränkte offene Mengen so, dass $G_1 \times G_2 \subseteq \mathbb{C}^{n+m}$ eine beschränkte offene Menge ist. Zudem seien $B^2(G_1),B^2(G_2)$ und $B^2(G_1\times G_2)$ die jeweiligen Bergman Räume, sodass $\|1\|=1$ ist. Dann ist $\widehat{B^2(G_1)\otimes B^2(G_2)}=B^2(G_1\times G_2).$ 
+\end{proposition}
+\begin{proof}
+Seien $A_1$ bzw. $A_2$ das Lebesque-Maß auf $G_1$ bzw. $G_2$ und $A_3$ das Lebesque-Maß auf der Menge $G_1\times G_2.$ Dann ist $A_3$ das Produkt der Maße $A_1$ und $A_2.$
+ Man bezeichnet mit $k^i_{w_i}(z_i)=K_i(z_i,w_i)$ für $i=1,2$ den reproduzierenden Kern vom Raum $B^2(G_i)$ und zeigt nun, dass $K_1(z_1,w_1)K_2(z_2,w_2)$ der reproduzierende Kern von $B^2(G_1\times G_2)$ ist. Mit Tonelli kann man folgern, dass das Produkt der Kerne $K_1(z_1,w_1)K_2(z_2,w_2)\in B^2(G_1\times G_2)$ ist. Das Produkt von im Quadrat-integrierbaren Funktionen ist wieder integrierbar, also ist das Produkt $f(z_1,z_2)K_1(z_1,w_1)K_2(z_2,w_2)$ für ein $f\in B^2(G_1\times G_2)$ integrierbar. 
+Setzt man nun $k_{(w_1,w_2)}(z_1,z_2)=k^1_{w_1}(z_1)k^2_{w_2}(z_2),$ so erlangt man mithilfe von Fubinis Transformationssatz: 
+\begin{align*}
+&\langle f, k_{(w_1,w_2)}\rangle_{B^2(G_1\times G_2)}=\langle f,k^1_{w_1}k^2_{w_2}\rangle_{B^2(G_1\times G_2)}\\
+=&\int_{G_1\times G_2}f(z_1,z_2)\overline{K_1(z_1,w_1)K_2(z_2,w_2)}dA_3(z_1,z_2)\\
+=&\int_{G_1} \int_{G_2}f(z_1,z_2)\overline{K_1(z_1,w_1)K_2(z_2,w_2)}dA_2(z_2)dA_1(z_1)\\
+=&\int_{G_1} \overline{K_1(z_1,w_1)}\int_{G_2}f(z_1,z_2)\overline{K_2(z_2,w_2)}dA_2(z_2)dA_1(z_1)\\
+=&\int_{G_2}f(z_1,w_2)\overline{K_1(z_1,w_1)}dA_2(z_2)=f(w_1,w_2).
+\end{align*}
+Da das Tensorprodukt der Kerne $K_1\otimes K_2((z_1,z_2),(w_1,w_2))=K_1(z_1,w_1)K_2(z_2w_2)$ ist, müssen die beiden Räume schon gleich sein.
+\end{proof}
+\begin{definition}
+Seien $K_1$ und $K_2$ zwei Kerne auf der Menge $X.$ Man nennt den Kern $K(x,y)=$ $K_1(x,y)K_2(x,y)$ das \emph{Produkt der Kerne} $K_1$ und $K_2$ und schreibt $K=K_1 \odot K_2.$ 
+\end{definition}
+Mithilfe von (4.8) wurde gezeigt, dass 
+\[
+K_1\odot K_2=K_1(x,y)K_2(x,y)
+\] eine Kernfunktion ist. 
+ An dieser Stelle soll ebenfalls $\mathcal{H}(K_1\odot K_2)$ genauer untersucht werden.\\
+Sei $\Delta:X\to X\times X$ die \emph{Diagonalabbildung} gegeben durch $\Delta(x)=(x,x).$ So ergibt sich 
+\[
+K_1\odot K_2(x,x)=K_1\odot K_2(\Delta(x),\Delta (y)).
+\] Also ist $K_1\odot K_2 =(K_1 \otimes K_2)\circ \Delta$ und somit liefert das Pull-Back Theorem die gewünschte Charakterisierung.
+\begin{satz}[Satz über Produkte von Kernen]
+Seien $K_i:X\times X\to \mathbb{C}$ für $i=1,2$ zwei Kerne auf $X$ und $K_1\odot K_2$ das Produkt der Kerne $K_1$ und $K_2.$ Dann gilt genau dann $f\in \mathcal{H}(K_1 \odot K_2)$, wenn $f(x)=\hat{u}(x,x)$ für ein $u\in\mathcal{H}(K_1)\otimes \mathcal{H}(K_2)$ ist. Vielmehr gilt 
+\[
+\|f\|_{\mathcal{H}(K_1\odot K_2)}=\min\{\|u\|_{\mathcal{H}(K_1)\otimes \mathcal{H}(K_2)}\mid f(x)=\hat{u}(x,x)\}.
+\]   
+\end{satz}
+ Anwenden des Satzes auf den Bergman Raum über dem Einheitskreis liefert folgendes Korollar
+\begin{korollar}
+Es ist $B^2(\mathbb{D})=\{f(z,z):f\in H^2(\mathbb{D}^2)\}$ und für ein $g \in B^2(\mathbb{D})$ gilt 
+\[
+\|g\|_{B^2(\mathbb{D})}= \min\{\|f\|_{H^2(\mathbb{D}^2)}\mid g(z)=f(z,z)\}.
+\]
+\end{korollar}
+\begin{proof}
+In Kapitel 2 wurde gezeigt, dass der reproduzierende Kern des Bergman Raum $B^2(\mathbb{D})$ die Funktion  
+\[
+K(z,w)=\frac{1}{(1-z\bar{w})}
+\]
+ist. Mit (5.16) kann man folgern, dass 
+\begin{align*}
+\mathcal{H}(K_1 \odot K_2)=&\{f\mid f(z)=\hat{u}(z,z)\, ,\hat{u}\in H^2(\mathbb{D})\otimes H^2(\mathbb{D}) \}\\
+\overset{(5.16)}{=}&\{f\mid f(z)=\hat{u}(z,z)\, ,\hat{u}\in H^2(\mathbb{D}^2) \}
+\end{align*}
+mit zugehörigem Kern $(K_1\odot K_2)(z,w)=K_1(z,w)K_2(z,w)=\frac{1}{(1-z\bar{w})^2}$ ist. Aus Gleichheit der reproduzierenden Kerne folgt die Gleichheit der RKHS.
+\end{proof}
+
+\subsection{Push-Out}    
+Der Push-Out eines Hilbertraumes mit reproduzierendem Kern ist ein durch eine Konstruktion  entstandener RKHS. Diese Konstruktion soll an dieser Stelle vorgestellt werden. Anhand von nachfolgenden Beispielen soll die Idee hinter dieser Konstruktion gefestigt werden.\\\\  
+Sei dazu $\mathcal{H}(K)$ der zu der Kernfunktion $K$ auf $X$ zugehörige RKHS und $\Psi:X\to S$ eine surjektive Abbildung. Weiterhin definiert man $M_\Psi=\{(z_1,z_2)\mid \Psi(z_1)=\Psi(z_2)\}.$ Für die Konstruktion betrachte man den Unterraum 
+\[
+\tilde{\mathcal{H}}=\{f\in \mathcal{H}(K)\mid  f(z_1)=f(z_2)\,\forall (z_1,z_2)\in M_\Psi\}
+\] von $\mathcal{H}(K).$ Dieser bildet zusammen mit der Norm auf $\mathcal{H}$ einen Hilbertraum. Definiert man den Kern von $\tilde{\mathcal{H}}$ als $\tilde{K}(x,y)=\tilde{k}_{y}(x),$ dann gilt für alle $x_i,y_i$ mit $\Psi(x_1)=\Psi(x_2)$ und $\Psi(y_1)=\Psi(y_2)$ die Gleichung
+\begin{align*}
+\tilde{k}_{y_1}(x_1)&=\tilde{k}_{y_1}(x_2)=\langle\tilde{k}_{y_1},\tilde{k}_{x_2}\rangle=\overline{\langle\tilde{k}_{x_2},\tilde{k}_{y_1}\rangle}=\overline{\tilde{k}_{x_2}(y_1)}=\overline{\tilde{k}_{x_2}(y_2)}=\overline{\langle\tilde{k}_{x_2},\tilde{k}_{y_2}\rangle}\\
+&=\langle \tilde{k}_{y_2},\tilde{k}_{x_2}\rangle=\tilde{k}_{y_2}(x_2),
+\end{align*} 
+ also gilt schon  $\tilde{K}(x_1,y_1)=\tilde{K}(x_2,y_2)$ für ein solches Paar.
+Insbesondere ist der Kern auf der Menge $\{(x,y)\in \Psi^{-1}(s)\times \Psi^{-1}(t),\,s,t \in S\}$ konstant.
+
+Dadurch ist die Funktion $K_{\Psi}$ definiert durch $K_{\Psi}(s,t)=\tilde{K}(\Psi^{-1}(s),\Psi^{-1}(t))$ eine wohldefinierte Kernfunktion und $\mathcal{H}(K_{\Psi})$ ein durch $K_{\psi}$ entstandener RKHS.
+\begin{definition}
+Man nennt den RKHS $\mathcal{H}(K_{\Psi})$ auf der Menge $S$ den \emph{Push-Out} von $\mathcal{H}(K)$ entlang von $\Psi.$ 
+\end{definition}
+
+Man schreibt in diesem Fall $\Psi_*(\mathcal{H}(K))$ für den Push-Out $\mathcal{H}(K_{\Psi}).$ Als Beispiel wird der Bergman Raum $B^2(\mathbb{D})$ betrachtet. Bereits bekannt ist, dass der reproduzierende Kern durch 
+\[
+K(z,w)=\frac{1}{(1-\bar{w}z)^2}=\sum_{n=0}^{\infty}(n+1)(\bar{w}z)^n
+\] gegeben ist. Sei $\Psi:\mathbb{D}\to \mathbb{D}$ definiert durch $\Psi(z)=z^2$ eine Funktion. Dann kann man den Pull-Back und den Push-Out des RKHS $B^2(\mathbb{D})$ bzw. die dazugehörigen Kerne angeben. Der Pull-Back $\Psi^*(\mathcal{H}(K))$ lässt sich durch den Kern 
+\[
+K\circ \Psi(z,w)=K(z^2,w^2)=\frac{1}{(1-\bar{w}^2z^2)^2}=\sum_{n=0}^{\infty}(n+1)(\bar{w}z)^{2n}
+\] beschreiben.
+Für den Push-Out betrachtet man den Unterraum
+\begin{align*}
+\tilde{\mathcal{H}}=&\{f\in B^2(\mathbb{D})\mid  f(z_1)=f(z_2),\, (z_1,z_2)\in M_{\Psi}\}\\
+=&\{f\in B^2(\mathbb{D})\mid \, f(z)=f(-z)\}
+,
+ \end{align*} 
+nämlich den Unterraum der Funktionen, die sich als eine Linearkombination der Monome mit gerader Potenz schreiben lassen. Der Kern dieses RKHS hat die Gestalt 
+\[
+\tilde{K}(z,w)=\sum_{n=0}^{\infty}(2n+1)(\overline{w}z)^{2n}.
+\]
+ Da $\Psi^{-1}(z)=\pm\sqrt{z}$ ist, erhält man als reproduzierenden Kern von $\Psi_*(\mathcal{H}(K))$ die Funktion
+\[
+K_{\Psi}(z,w)=\tilde{K}(\pm\sqrt{z},\pm \sqrt{w})=\sum_{n=1}^{\infty}(2n+1)(\overline{w}z)^{n}.
+\]
+
+\subsection{Multiplikatoren}
+Die Theorie der sogenannten \emph{Multiplikatoren}, also Funktionen, die bei Multiplikation mit einem Hilbertraum eine Teilmenge eines weiteren Hilbertraumes bilden, wird in diesem Abschnitt thematisiert. Es werden in einem ersten Schritt äquivalente Charakterisierungen für Multiplikatoren formuliert, um dann Aussagen über die schwache Operator-Topologie treffen zu können. 
+
+Hierfür benötigt man zunächst die Definition eines Multiplikators.
+\begin{definition}
+Sei $\mathcal{H}_1$ bzw. $\mathcal{H}_2$ ein RKHS  auf einer Menge $X$ mit reproduzierendem Kern $K_1$ bzw. $K_2.$ Man nennt eine Abbildung $f:X\to \mathbb{C}$ einen \emph{Multiplikator} von $\mathcal{H}_1$ nach $\mathcal{H}_2,$ falls $f\mathcal{H}_1:=\{fh\mid h\in \mathcal{H}_1\}\subseteq \mathcal{H}_2$ ist. Mit $\mathcal{M}(\mathcal{H}_1,\mathcal{H}_2)$ bezeichnet man die Menge aller Multiplikatoren von $\mathcal{H}_1$ nach $\mathcal{H}_2.$
+ \end{definition}
+ Falls $\mathcal{H}=\mathcal{H}_1=\mathcal{H}_2$ ist, dann nennt man einen Multiplikator von $\mathcal{H}$ nach $\mathcal{H}$ einfach nur einen Multiplikator von $\mathcal{H}$ und schreibt $\mathcal{M}(\mathcal{H})$ statt $\mathcal{M}(\mathcal{H},\mathcal{H}).$ \\
+ Sei $f\in\mathcal{M}( \mathcal{H}_1,\mathcal{H}_2),$ dann bezeichnet man mit $M_f$ die Abbildung
+ \[
+ M_f:\mathcal{H}_1\to\mathcal{H}_2,h\mapsto hf.
+\]
+Die Mengen $\mathcal{M}_f(\mathcal{H}_1,\mathcal{H}_2)$ und $\mathcal{M}(\mathcal{H})$ bilden insbesondere eine Algebra, da das Produkt und die Summe von Multiplikatoren wieder ein Multiplikator ist. \\
+
+\begin{proposition}
+Seien $\mathcal{H}$ ein RKHS auf $X$ mit Kern $K$ und $f:X\to \mathbb{C}$ eine Abbildung.
+ Weiterhin seien $\mathcal{H}_0=\{h\in \mathcal{H}\mid fh=0\}$ und $\mathcal{H}_1=\mathcal{H}_0^{\bot}.$ Dann ist $\mathcal{H}_f=f\mathcal{H}=f\mathcal{H}_1$ mit dem Skalarprodukt $\langle fh_1,fh_2\rangle_f=\langle h_1,h_2 \rangle_{\mathcal{H}}$ für $h_1,h_2\in \mathcal{H}$ ein RKHS auf $X$ mit dem reproduzierendem Kern $K_f(x,y)=f(x)K(x,y)\overline{ f(y) }.$
+
+\end{proposition}
+
+\begin{proof}
+Per Definition ist $H_f$ ein Vektorraum dessen Elemente Funktionen von $X$ nach $\mathbb{C}$ sind und somit ist 
+\[
+\phi:\mathcal{H}_1 \to \mathcal{H}_f,h\mapsto fh
+\]  
+eine lineare surjektive Abbildung und wegen $\langle fh_1,fh_2\rangle_f=\langle h_1,h_2 \rangle_{\mathcal{H}}$ sogar eine Isometrie. Also wird $\mathcal{H}_1$ zusammen mit $\|\cdot\|_f=\sqrt{\langle \cdot,\cdot \rangle_f}$ zu einem Hilbertraum.
+Weiterhin sei $(h_n)_n$ eine Folge in $\mathcal{H}_0,$ die gegen ein $h\in \mathcal{H}$ konvergiert. Dann ist
+\[
+hf=\lim_n h_nf=0.
+\] Also ist $h\in \mathcal{H}_0$ und $\mathcal{H}_0$ somit abgeschlossen.
+ Da $\mathcal{H}_0\cap \mathcal{H}_1=\emptyset$ ist, kann man die Kernfunktionen in $k_y=k_y^0+k_y^1$ zerlegen, wobei $K_i(x,y)=k^i_y(x)\in \mathcal{H}_i$ die jeweiligen Kernfunktionen für $i=0,1$ sind.
+Um nachzuweisen, dass $\mathcal{H}_f$ ein RKHS ist, betrachtet man für festes $y\in X$ und $h\in \mathcal{H}_1$ die Gleichung 
+\[
+f(y)h(y)=f(y)\langle h,k_y\rangle_{\mathcal{H}}=f(y)\langle fh,fk_y\rangle_f=\langle fh,\overline{f(y)}fk_y^1\rangle_f.
+\] 
+Dadurch erhält man $K_f(x,y)=\overline{f(y)}f(x)k_y^1(x)$ als den Kern von $\mathcal{H}_f.$ Da bereits für $k^0_y\in \mathcal{H}_0$ die Gleichung $k^0_yf=0$ gilt, ist somit insgesamt $K_f(x,y)=$ $\overline{f(y)}f(x)K_1(x,y)$ $=\overline{f(y)}f(x)K_1(x,y)+\overline{f(y)}f(x)K_0(x,y)=\overline{f(y)}f(x)K(x,y).$
+\end{proof}
+Unter Zuhilfenahme dieser Proposition kann man Multiplikatoren nun genauer charakterisieren. Dies wird im folgenden Satz zusammengefasst. 
+\begin{satz}
+Seien $\mathcal{H}_1$ und $\mathcal{H}_2$ zwei RKHS auf $X$ mit den reproduzierenden Kernen $K_1$ und $K_2.$ Weiterhin sei $f:X\to  \mathbb{C}$ eine Abbildung. Dann sind folgende Aussagen äquivalent:
+\begin{enumerate}
+\item $f\in \mathcal{M}(\mathcal{H}_1,\mathcal{H}_2)$
+\item  $f\in \mathcal{M}(\mathcal{H}_1,\mathcal{H}_2)$ und $M_f$ ist ein beschränkter Operator.
+\item Es gibt eine Konstante $c\geq 0 $ so, dass $f(x)K_1(x,y)\overline{f(y)} \leq c^2 K_2(x,y)$ ist.
+\end{enumerate}
+In diesem Fall ist $\|M_f\|$ die kleinste Konstante, die die Ungleichung erfüllt.
+\end{satz}
+\begin{proof}
+\begin{itemize}
+\item $(2)\Rightarrow (1)$ Klar.
+\item $(1)\Rightarrow (3)$ Wegen (5.20) ist $\mathcal{H}_f=f\mathcal{H}_1$ ein RKHS mit reproduzierendem Kern
+\[
+K_f(x,y)=f(x)K_1(x,y)\overline{f(y)}.
+\]
+ Da $\mathcal{H}_f=f\mathcal{H}_1\subseteq \mathcal{H}_2$ ist, gibt es wegen (5.1) eine Konstante $c>0,$ sodass $f(x)K_1(x,y)\overline{f(y)}=K_f(x,y)\leq c^2K_2(x,y)$ ist.
+\item $(3)\Rightarrow (2)$ Da bereits $K_f(x,y)=f(x)K_1(x,y)\overline{f(y)}\leq c^2K_2(x,y)$ gilt und $K_f$ der Kern von $\mathcal{H}_f=f\mathcal{H}_1$ ist, liefert erneutes Anwenden von (5.1) die Teilmengenbeziehung $f\mathcal{H}_1\subseteq\mathcal{H}_2$, also $f\in \mathcal{M}_f(\mathcal{H}_1,\mathcal{H}_2) .$\\
+ Nun wird die Beschränktheit des Operators  $\mathcal{M}_f$ nachgewiesen. Hierfür betrachtet man die nach (5.20) gegebene Zerlegung $\mathcal{H}_1=\mathcal{H}_{1,0} + \mathcal{H}_{1,1}, $ wobei $f\mathcal{H}_{1,0}=\{0\}$ und $\mathcal{H}_{1,1}=\mathcal{H}_{1,0}^{\bot}$ ist. Somit existieren für alle $h\in \mathcal{H}_1$ Elemente $h_0\in \mathcal{H}_{1,0}$ und $h_1\in \mathcal{H}_{1,1},$ sodass $h=h_0+h_1$ ist. Also ist 
+\[
+\|fh\|_{\mathcal{H}_2}=\|f(h_0+h_1)\|_{\mathcal{H}_2}=\|fh_1\|_{\mathcal{H}_2}\overset{(5.1)}{\leq} c \|fh_1\|_{\mathcal{H}_f}=c\|h_1\|_{\mathcal{H}_{1,1}}\leq c\|h\|_{\mathcal{H}_1},
+\] wodurch die Beschränktheit von $M_f$ bewiesen wurde. \\
+Es bleibt also zu untersuchen, ob die Operatornorm von $M_f$ die kleinste Schranke mit dieser Eigenschaft ist.
+Falls man $\|M_f\|=c'$ wählt, dann gilt für jedes $h_1\in \mathcal{H}_{1,1}$ die Ungleichung $\|fh_1\|_{\mathcal{H}_2}\leq c'\|h_1\|_{\mathcal{H}_1}=c'\|fh_1\|_{\mathcal{H}_f}.$ Erneutes Anwenden von (5.1) liefert $f(x)K_1(x,y)\overline{f(y)}=K_f(x,y)\leq c'^2K_2(x,y)$ mit $\|M_f\|$ als kleinste Konstante für die die Behauptung richtig ist.
+
+\end{itemize}
+\end{proof}
+
+\begin{korollar}
+Sei $\mathcal{H}_1$ bzw. $\mathcal{H}_2$ ein RKHS auf der Menge $X$ mit reproduzierendem Kern $K_1(x,y)=k^1_y(x)$ bzw. $K_2(x,y)=k^2_y(x).$ Falls $f\in \mathcal{M}(\mathcal{H}_1,\mathcal{H}_2)$ ist, dann gilt $M^*_f(k^2_y)=\overline{f(y)}k_y^1$ für alle $ y\in X.$ \\
+Falls zudem $K_1=K_2$ gilt, dann ist jede Kernfunktion ein Eigenvektor von $M_f$ und im Fall, dass $k_y\neq 0$ für alle $y\in X$ ist, gilt
+\[
+\|f\|_{\infty}\leq \|M_f\|,
+\]
+also ist jeder Multiplikator eine beschränkte Funktion auf $X$.
+\end{korollar}
+\begin{proof}
+Für alle $h \in \mathcal{H}_1$ gilt
+\[
+\langle h,\overline{f(y)}k^1_y \rangle_1=f(y)\langle h,k^1_y \rangle_1=f(y)h(y)=\langle fh,k_y^2 \rangle_2=\langle M_f(h),k^2_y \rangle_2=\langle h,M^*_f(k^2_y)\rangle_1.
+\]
+Da diese Gleichheit für beliebige $h\in \mathcal{H}_1$ erfüllt ist, muss schon $\overline{f(y)}k^1_y=M^*_f(k^2_y)$  gelten.
+Sei nun $K=K_1=K_2,$ dann ist wegen obiger Gleichung $M^*_f(k_y)=\overline{f(y)}k_y,$ also ist $k_y$ ein Eigenvektor von $M^*_f$ mit zugehörigem Eigenwert $\overline{f(y)}$. Betrachtet man die Eigenvektorgleichung in der Norm, so schließt man
+\[
+\vert f(y)\vert\|k_y\|=\|f(y)k_y\|=\|M^{*}(k_y)\|\leq \|M^*_f\|\|k_y\|=\|M_f\|\|k_y\| 
+\] für alle $y\in X.$
+Äquivalentes Umformen der letzten Ungleichung liefert die Behauptung.
+
+\end{proof}
+\begin{definition} 
+Sei $\mathcal{H}$ ein RKHS auf $X$ mit reproduzierendem Kern $K(x,y)$ und $T\in B(\mathcal{H}).$ Dann nennt man die Funktion, die für jeden Punkt $y$ mit $K(y,y)\neq 0$ durch
+\[
+B_T(y)=\frac{\langle T(k_y),k_y \rangle}{K(y,y)}
+\]
+ definiert wird, die \emph{Berezin Transformation} von $T.$
+ \end{definition}
+ Eine Anwendung der Berezin Transformation ist folgende:\\
+ Für jeden Hilbertraum $\mathcal{H}$ kann man auf  $B(\mathcal{H})$ die \emph{schwache Operator-Topologie} betrachten. 
+ Sei $\{T_{\lambda}\}_{\lambda}$ ein Netz in $B(\mathcal{H}).$ Diese konvergiert genau dann gegen einen Operator $T$ bezüglich der schwachen Operator-Topologie, falls für alle $h,k\in \mathcal{H}$ die Gleichheit 
+ \[
+\lim_{\lambda}\langle T_\lambda(h),k \rangle=\langle T(h),k\rangle  
+ \] gilt. Falls $\{T_{\lambda}\}_{\lambda}$ bezüglich der schwachen Operator-Topologie gegen $T$ konvergiert, so konvergiert auch $\{T_{\lambda}^*\}_{\lambda}$ bezüglich der schwachen Operator-Topologie gegen $T^*.$ Mithilfe der Berezin Transformation kann man die Abgeschlossenheit des Raumes der Multiplikatoren unter schwacher Konvergenz nachweisen.
+ \begin{korollar}
+ Sei $\mathcal{H}$ ein RKHS auf $X.$ Dann ist 
+ \[
+\{M_f\mid f\in \mathcal{M}(\mathcal{H})\} 
+ \]
+ eine unitäre Subalgebra von $B(\mathcal{H}),$ die abgeschlossen bezüglich der schwachen Operator-Topologie ist.
+ \end{korollar}
+ \begin{proof}
+ Der Operator $M_{1_X}=id_{\mathcal{H}},$ wobei $1_X$ die konstante 1-Funktion ist, bildet das neutrale Element bezüglich der Komposition von Abbildungen und für Multiplikatoren $f_1,f_2\in \mathcal{M}(H)$ gilt
+\[
+(M_{f_1}\circ M_{f_2})(h)=M_{f_1}(M_{f_2}(h))=\underset{\in \mathcal{H}}{\underbrace{f_1f_2h}}=M_{f_1f_2}(h)
+\]
+für alle $h \in \mathcal{H}.$
+Also bildet dieser Raum eine unitäre Algebra.\\
+Um zu zeigen, dass die Menge abgeschlossen bezüglich der  schwachen Operator-Topologie ist, muss nachgewiesen werden, dass der Grenzwert eines Netzes von Multiplikatoren wieder ein Multiplikator ist. 
+Deshalb sei $\{M_{f_\lambda}\}$ konvergent mit Grenzwert $T$ bezüglich der schwache Operator-Topologie. Dann erhält man für jedes $y \in X$ mit $K(y,y)\neq 0$ die Gleichheit 
+\[
+\lim_{\lambda}f_\lambda(y)=\lim_{\lambda}\frac{\langle M_{f_{\lambda}}(k_y),k_y\rangle}{K(y,y)}=\frac{\langle T(k_y),k_y\rangle}{K(y,y)}=B_T(y).
+\]
+Setzt man nun $f(y)=B_T(y)$ für $K(y,y)\neq 0$ und  $f(y)=0$ 
+sonst,
+dann lautet die Behauptung $T=M_f.$ Für beliebige $x,y\in X$ gilt
+\begin{align*}
+(Tk_x)(y)=\langle Tk_x,k_y \rangle =\langle k_x,T^*k_y \rangle=\lim_{\lambda}\langle k_x,M^*_{f_\lambda}\rangle\\
+\overset{(5.22)}{=}\lim_{\lambda}\langle k_x,\overline{f_\lambda(y)}k_y\rangle=f(y)k_x(y).
+\end{align*}
+Somit ist das Anwenden von $T$ auf eine Kernfunktion die Multiplikation von $f$ mit derselben Kernfunktion. Da dies für Kernfunktionen gilt, gilt dies auch für endliche Linearkombinationen von Kernfunktionen. Sei also nun $\{h_n\}$ eine Folge von Linearkombinationen von Kernfunktionen, die in der Norm gegen ein $h\in \mathcal{H}$ konvergiert. Da $T=M_f$ ein beschränkter Operator ist, erhält man schließlich 
+\[
+(Th)(y)=\lim_n(Th_n)(y)=\lim_n f(y)h_n(y)=f(y)h(y).
+\] Also ist $T=M_f.$
+ \end{proof}
+ \newpage
+ \section*{Anhang}
+ \textbf{(2.2)} Sei $\mathcal{H}$ ein RKHS auf $X$ und $(f_n)_n$ eine Folge in $\mathcal{H}$. Falls $\lim \|f_n-f\|=0$ ist, dann ist $f(x)=\lim_n f_n(x).$\\\\
+ \textbf{(2.19)} Sei $X$ eine Menge und $f\neq 0$ eine Funktion, die komplexe Werte annimmt. Setzt man $K(x,y)=f(x)\overline{f(y)} ,$ dann ist $K$ eine Kernfunktion und $\mathcal{H}(K)=\Span\{f\}.$ Außerdem ist f in der Norm auf $\mathcal{H}(K)$ normiert. \\\\
+ \textbf{(3.11)} Sei $\mathcal{H}$ ein RKHS auf der Menge $X$ und $f:X\to \mathcal{C}$ eine Funktion. Dann sind folgende Aussagen äquivalent 
+ \begin{enumerate}
+ \item $f\in \mathcal{H}$;
+ \item Es existiert ein $c\geq 0$ so, dass für alle endlichen Mengen $\{x_1,\ldots,x_n\}\subseteq X$ eine Funktion $h\in \mathcal{H}$ mit   $\|h\|\leq c$ existiert, die $f(x_i)=h(x_i)$ für $i=1,\ldots,n$ erfüllt.
+ \item Es existiert ein $c\geq 0,$ sodass $c^2K(x,y)-f(x)\overline{f(y)}$ eine Kernfunktion ist.
+ \end{enumerate}
+\textbf{(2.4)} Sei $\mathcal{H}$ ein RKHS auf $X$ mit Kern $K.$ Falls $\{e_s\mid s\in S\}$ eine Orthonormalbasis von $\mathcal{H}$ ist, dann ist 
+\[
+K(x,y)=\sum_{s\in S}\overline{e_s(y)}e_s(x),
+\]
+wobei die Reihe punktweise konvergiert.\\\\
+\textbf{(2.10)} Sei $\mathcal{H}$ ein RKHS auf $X$ mit reproduzierendem Kern $K$ und $\{f_s\mid s\in S\}\subseteq \mathcal{H}.$ Dann ist $\{f_s\mid s\in S\}$  genau dann ein Parseval Frame von $\mathcal{H},$ wenn $K(x,y)=\sum_{s\in S}f_s(x)\overline{f_s(y)}$ ist, wobei die Potenzreihe punktweise konvergiert.\\\\
+\textbf{(4.8)} Seien $P$ und $Q$ $n\times n$ Matrizen. Falls $P$ und $Q$ positiv semidefinit bzw. definit sind, so ist auch das Produkt positiv semidefinit bzw. definit.\\\\
+\textbf{(Satz vom abgeschlossenen Graphen)}
+Es seien X und Y Banachräume, die Abbildung $T: X \to Y$ sei linear und abgeschlossen. Dann ist T stetig.
+%\pagebreak
+%\thispagestyle{empty}
+%\section*{Literatur-/Quellenverzeichnis}
+\newpage
+\bibliographystyle{apacite}
+\bibliography{Lit}
+
+
+%\printbibliography
+ 
+
+\end{document}

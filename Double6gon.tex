@@ -1,0 +1,38 @@
+\documentclass[10pt]{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+\begin{document}
+\definecolor{cqcqcq}{rgb}{0.7529411764705882,0.7529411764705882,0.7529411764705882}
+\definecolor{ffffff}{rgb}{1,1,1}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+\clip(-10.142620760713445,-6.980173176089631) rectangle (20.344170546453206,10.03682511643265);
+\draw [line width=2pt,dash pattern=on 3pt off 3pt,color=cqcqcq] (2,2)-- (4,1);
+\draw [line width=2pt,dash pattern=on 3pt off 3pt,color=cqcqcq] (0.06,-2.82)-- (2,2);
+\draw [line width=2pt,dash pattern=on 3pt off 3pt,color=cqcqcq] (2,2)-- (-2,2);
+\draw [line width=2pt,dash pattern=on 3pt off 3pt,color=cqcqcq] (-2,2)-- (0.06,-2.82);
+\draw [line width=2pt,dash pattern=on 3pt off 3pt,color=cqcqcq] (-2,2)-- (0.04,4.46);
+\draw [line width=2pt,dash pattern=on 3pt off 3pt,color=cqcqcq] (-4,1)-- (-2,2);
+\draw [line width=2pt,dash pattern=on 3pt off 3pt,color=cqcqcq] (0.04,4.46)-- (2,2);
+\draw [line width=2pt] (0.04,4.46)-- (4,1);
+\draw [line width=2pt,color=ffffff] (0.04,4.46)-- (2.14,0.04);
+\draw [line width=2pt,color=ffffff] (0.04,4.46)-- (-2,0);
+\draw [line width=2pt] (0.04,4.46)-- (-4,1);
+\draw [line width=2pt] (-4,1)-- (0.06,-2.82);
+\draw [line width=2pt] (-2,0)-- (-4,1);
+\draw [line width=2pt] (0.06,-2.82)-- (-2,0);
+\draw [line width=2pt,color=ffffff] (-2,0)-- (2.14,0.04);
+\draw [line width=2pt] (2.14,0.04)-- (4,1);
+\draw [line width=2pt] (0.06,-2.82)-- (2.14,0.04);
+\draw [line width=2pt] (4,1)-- (0.06,-2.82);
+
+\draw [line width=2pt] (0.04,4.46)-- (2.14,0.04);
+\draw [line width=2pt] (-2,0)-- (2.14,0.04);
+\draw [line width=2pt] (-2,0)-- (0.04,4.46);
+\begin{scriptsize}
+\draw[color=ffffff] (-1.250639962789838,2.6667871235444793) node {$f$};
+\end{scriptsize}
+\end{tikzpicture}
+\end{document}

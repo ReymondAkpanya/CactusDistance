@@ -1,0 +1,43 @@
+\documentclass[10pt]{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+\begin{document}
+\definecolor{qqqqff}{rgb}{0,0,1}
+\definecolor{ffffww}{rgb}{1,1,0.4}
+\begin{tikzpicture}
+\clip(-5.282738823276832,-3.600871948337299) rectangle (4.992126219563521,4.832062644058667);
+\fill[line width=2pt,color=ffffww,fill=ffffww,fill opacity=0.91] (-2.5370726537576624,1.8721655877415662) -- (2.4629273462423376,1.8721655877415662) -- (2.4629273462423376,-1.1278344122584338) -- (-2.5370726537576624,-1.1278344122584338) -- cycle;
+%\fill[line width=2pt] (0,1.2320508075688776) -- (1,-0.5) -- (2,1.232050807568877) -- cycle;
+%\fill[line width=2pt] (-1,-0.5) -- (0,1.2320508075688776) -- (-2,1.2320508075688785) -- cycle;
+\draw [line width=2pt] (-1,-0.5)-- (1,-0.5);
+\draw [line width=2pt] (0,1.2320508075688776)-- (1,-0.5);
+\draw [line width=2pt] (1,-0.5)-- (2,1.232050807568877);
+\draw [line width=2pt] (2,1.232050807568877)-- (0,1.2320508075688776);
+\draw [line width=2pt] (-1,-0.5)-- (0,1.2320508075688776);
+\draw [line width=2pt] (0,1.2320508075688776)-- (-2,1.2320508075688785);
+\draw [line width=2pt] (-2,1.2320508075688785)-- (-1,-0.5);
+\draw [line width=2pt] (0,1.2320508075688776)-- (-2,1.2320508075688785);
+\draw [line width=2pt] (-2,1.2320508075688785)-- (-1,-0.5);
+\draw [line width=2pt] (1,-0.5)-- (2,1.232050807568877);
+\draw [line width=2pt] (0,1.2320508075688776)-- (2,1.232050807568877);
+\begin{scriptsize}
+\draw [fill=qqqqff] (-1,-0.5) circle (2.5pt);
+\draw[color=qqqqff] (-1.0329836273720203,-0.6548928242831817) node {$V_1$};
+\draw [fill=qqqqff] (1,-0.5) circle (2.5pt);
+\draw[color=qqqqff] (1.0197701878822618,-0.6216049245763555) node {$V_2$};
+\draw[color=black] (-0.0010587364604083271,-0.011326763284542296) node {F};
+\draw [fill=qqqqff] (0,1.2320508075688776) circle (2.5pt);
+\draw[color=qqqqff] (-0.04544260273617659,1.5310125897984042) node {V};
+\draw[color=black] (1.0308661544512039,0.7210070302656337) node {$F_2$};
+\draw[color=black] (0.32072429403891156,0.3548401334905457) node {$e_2$};
+\draw [fill=qqqqff] (2,1.232050807568877) circle (2.5pt);
+\draw[color=black] (-1.0551755605099045,0.7875828296792862) node {$F_1$};
+\draw[color=black] (-0.27845790068396,0.3548401334905457) node {$e_1$};
+\draw [fill=qqqqff] (-2,1.2320508075688785) circle (2.5pt);
+\end{scriptsize}
+
+\end{tikzpicture}
+\end{document}

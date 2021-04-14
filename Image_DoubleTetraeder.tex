@@ -1,0 +1,22 @@
+\documentclass[10pt]{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+\begin{document}
+\definecolor{cqcqcq}{rgb}{0.7529411764705882,0.7529411764705882,0.7529411764705882}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+\clip(-9.18,-7.6) rectangle (9.18,7.6);
+\draw [line width=2pt] (0.64,-2.14)-- (1.14,-0.8);
+\draw [line width=2pt,dash pattern=on 3pt off 3pt,color=cqcqcq] (1.14,-0.8)-- (-1.5,-2.24);
+\draw [line width=2pt] (-1.5,-2.24)-- (0.64,-2.14);
+\draw [line width=2pt] (-0.6,0.44)-- (1.14,-0.8);
+\draw [line width=2pt] (-0.6,0.44)-- (0.64,-2.14);
+\draw [line width=2pt] (-0.6,0.44)-- (-1.5,-2.24);
+\draw [line width=2pt] (-1.5,-2.24)-- (0.9,-3.52);
+\draw [line width=2pt] (0.9,-3.52)-- (0.64,-2.14);
+\draw [line width=2pt] (0.9,-3.52)-- (1.14,-0.8);
+\end{tikzpicture}
+
+\end{document}

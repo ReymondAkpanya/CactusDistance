@@ -1,0 +1,2034 @@
+\documentclass[12pt,titlepage]{article}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,lmargin={4cm},rmargin={2cm},
+tmargin={2.5cm},bmargin = {2.5cm}]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{cleveref}
+\usepackage{enumerate}
+\usepackage{thmtools}
+\linespread{1.25}
+\usepackage{color}
+\usepackage{verbatim}
+\newcommand{\gelb}{0.550000011920929}
+\usepackage{pgf,tikz,pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+%\usepackage{scrheadings}
+\pagestyle{headings}
+\usepackage{titlesec}                % für Kontrolle der Abschnittüberschriften
+\declaretheorem[name=Lemma]{lemma}
+\declaretheorem[name=Folgerung]{folgerung}
+\declaretheorem[name=Beispiel]{bsp}
+\declaretheorem[name=Herleitung]{herleitung}
+\declaretheorem[name=Definition]{definition}
+\declaretheorem[name=Bemerkung]{bemerkung}
+
+\begin{document}
+\thispagestyle{empty}
+\pagenumbering{arabic}
+%\begin{titlepage}
+\noindent\rule{\textwidth}{0.5pt}
+\centerline{\textbf{\large{Name des Dokuments}}}
+\centerline{Reymond Akpanya}
+\noindent\rule{\textwidth}{0.5pt}
+\newline
+%\farb
+\section*{Einführung}
+\begin{definition}  \label{defss} Sei $X=X_{0} \biguplus X_{1} \biguplus X_{2}$ eine abzählbare Menge mit $X_{i} \ne \emptyset$ für $i=0,1,2$ und $<$ eine transitive Relation auf  ($X_{0}\times X_{1}) \cup (X_{1}\times X_{2})\cup (X_{0}\times X_{2}$). Man nennt $X_{0}$ \emph{Knoten}, $X_{1}$ \emph{Kanten}, $X_{2}$ \emph{Flächen} und $<$ \emph{Inzidenz} einer \emph{simplizialen Fläche} $(X,<)$, falls folgende Eigenschaften erfüllt sind:
+ \begin{enumerate}
+\item Für jede Kante $e \in X_{1}$ existieren genau 2 Knoten $V_1,V_2 \in X_{0}$ mit $V_1,V_2 < e$. 
+\item Für jede Fläche $F\in X_2$ gibt es genau drei Kanten $e_1,e_2,e_3 \in X_{1}$ mit $e_1,e_2,e_3 < F$. 
+\item Für jede Kante $e \in X_{1}$ gibt es entweder genau 2 Flächen $F_{1},F_{2} \in X_{2}$ mit $e <F_{1},F_2$ oder
+genau eine Fläche $F \in X_{2}$ mit $e < F$. Im ersten Fall sind $F_{1}$ und $F_{2}$ \emph{$(e)$-Nachbarn} und $e$ ist eine \emph{innere Kante}, andernfalls ist $e$ eine \emph{Randkante}. 
+\item Für jeden Knoten $V \in X_{0}$ existieren endlich viele $F_{i}\in X_{2}$ mit $V < F_{i}$. Diese $F_{i}$ können in einem Tupel $(F_{1},\ldots,F_{n})$ geordnet werden so, dass $F_{i}$ und $F_{i+1}$ adjazent sind durch eine Kante $e_{i}$ mit $V <e_{i}$ für $i=1, \ldots, n-1$. Gilt dies auch für $F_{n}$ und $F_{1}$, so ist $V$ ein innerer Knoten. Ist $V$ kein innerer Knoten, so ist er 
+ ein Eckknoten. 
+ \item Sei für $V \in X_0$ $(F_1,\ldots,F_n)$ ein Tupel so wie zuvor beschrieben, wobei $F_i \in X_2$ für $i=0,\ldots,n$. Dann ist n der \emph{Grad des Knotens} $V$.
+ \item Die Menge aller inneren Knoten einer Kante $e \in X_1$ bezeichnet man mit $X_0^0(e).$
+\end{enumerate}
+\end{definition}
+Es sei angemerkt, dass es für einen gegebenen Knoten eine endliche Anzahl von Tupeln, wie oben beschrieben, gibt, wobei diese alle äquivalent sind, da diese durch zyklische Permutation umgeordnet werden können.\\ Es ist außerdem möglich die simpliziale Fläche $(X,<)$ mit $X$ zu identifizieren.
+
+\begin{bemerkung}  Eine \emph{geschlossene} simpliziale Fläche ist eine simpliziale Fläche, deren Kanten innere Kanten sind. Die Anzahl der Dreiecke einer geschlossenen simplizialen Fläche ist durch $2$ teilbar, da
+\[
+\vert X_{2} \vert = \frac{2\vert X_{1}\vert}{3}.
+\]
+Die Anzahl der Kanten ist insbesondere durch 3 teilbar.\\
+\end{bemerkung}
+Im Folgendem werden nur endliche simpliziale Flächen betrachtet, das heißt simpliziale Flächen mit $\vert X \vert < \infty$.\\
+
+ \subsection*{Beispiele}
+ \begin{enumerate}
+\item 
+ Es gibt bis auf Isomorphie nur eine simpliziale Fläche bestehend aus einem Fläche, welche durch 
+\begin{align*}
+X_{0}=\{\,V_{1}&,V_{2},V_{3}\,\}, X_{1}=\{\,e_{1},e_{2},e_{3}\,\}, X_{2}=\{\,F_{1}\,\} \text{ und } x<y \Leftrightarrow \\
+ (x,y)\in \{\,&(V_{1},e_{2}),(V_{3},e_{2}),(V_{2},e_{1}),(V_{3},e_{1}),(V_{1},e_{3}),(V_{2},e_{3}),(e_{2},F_{1}), (e_{1},F_{1}),\\ &(e_{3},F_{1}),
+ (V_{1},F_{1}),(V_{2},F_{1}),(V_{3},F_{1})\,\} 
+\end{align*} 
+beschrieben wird.\\
+%--------------------------Bild-------------------------
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-2.690233964457656,
+xmax=14.560601622891102,
+ymin=1,
+ymax=4.805217252710678,
+xtick={-2.0,-1.0,...,14.0},
+ytick={-1.0,-0.0,...,4.0},]
+\clip(-5.690233964457656,-0.725205627147564) rectangle (8.560601622891102,4.305217252710678);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.5] (-2.,0.) -- (2.,0.) -- (0.,3.4641016151377553) -- cycle;
+\draw [line width=2.pt] (-2.,0.)-- (2.,0.);
+\draw [line width=2.pt] (2.,0.)-- (0.,3.4641016151377553);
+\draw [line width=2.pt] (0.,3.4641016151377553)-- (-2.,0.);
+\begin{scriptsize}
+\draw [fill=qqqqff] (-2.,0.) circle (2.5pt);
+\draw[color=qqqqff] (-2.082704537251026,0.48500799257463995) node {$V_1$};
+\draw [fill=qqqqff] (2.,0.) circle (2.5pt);
+\draw[color=qqqqff] (2.147500363298844,0.32) node {$V_2$};
+\draw[color=black] (0.03989827632275619,1.2875468655512998) node {$F$};
+\draw[color=black] (0.07740009281699262,-0.30001889154005933) node {$e_3$};
+\draw[color=black] (1.2774582206325584,2.030082832137181) node {$e_1$};
+\draw[color=black] (-1.1376587615962677,2.030082832137181) node {$e_2$};
+\draw [fill=qqqqff] (0.,3.4641016151377553) circle (2.5pt);
+\draw[color=qqqqff] (0.1374029992077709,3.7851678440674466) node {$V_3$};
+\end{scriptsize}
+\end{tikzpicture}
+
+%-------------------------------------------------------
+ \item
+ Für $n \in \mathbb{N}$ definieren wir das \emph{n-fache Dreieck} $n \Delta$ durch $X=\{X_{0},X_{1},X_{2}\}$, wobei
+ \begin{align*}
+  X_{0}=\{& \,V_{j}^{k}\,\vert\, j=1,2,3 ;k=1,\ldots,n\,\}, X_{1}=\{\,e_{j}^{k}\,\vert\, j=1,2,3 ;k=1,\ldots,n\,\},\\
+   X_{2}=\{&F_{1},\ldots,F_{n}\} \text{ und } x<y \Leftrightarrow \\
+ (x,y)\in &\{\,(V_{1}^{k},e_{2}^{k}),(V_{3}^{k},e_{2}^{k}),(V_{2}^{k},e_{1}^{k}),(V_{3}^{k},e_{1}^{k}),(V_{1}^{k},e_{3}^{k}),(V_{2}^{k},e_{3}^{k}),(e_{2}^{k},F_{k}), (e_{1}^{k},F_{k}),\\
+ &(e_{3}^{k},F_{k}),(V_{1}^{k},F_{k}),(V_{2}^{k},F_{k}),(V_{3}^{k},F_{k})\,\vert \, k=1,\ldots,n \,\}.
+ \end{align*}
+ 
+ \newpage
+ \item 
+ Der \emph{Janus-Head} ist eine geschlossene simpliziale Fläche, die aus zwei Flächen besteht.	Sie besitzt 3 innere Knoten und  3 innere Kanten und wird definiert durch
+ \begin{align*}
+ X_{0}=\{\,&V_{1},V_{2},V_{3}\,\} ,X_{1}=\{\,e_{1},e_{2},e_{3}\,\},X_{3}=\{\, F_{1},F_{2}\,\}  \text{ und } x<y \Leftrightarrow \\
+ (x,y)\in\{&\,(V_{1},e_{2}),(V_{3},e_{2}),(V_{2},e_{1}),(V_{3},e_{1}),(V_{1},e_{3}),(V_{2},e_{3}),(e_{2},F_{1}), (e_{1},F_{1}),\\
+ & (e_{3},F_{1}),(V_{1},F_{1}),(V_{2},F_{1}),(V_{3},F_{1})
+ (e_{2},F_{2}), (e_{1},F_{2}), (e_{3},F_{2}),(V_{1},F_{2}),\\&(V_{2},F_{2}),(V_{3},F_{2})\,\}.
+ \end{align*}
+ %----bild----------------------------
+\definecolor{sqsqsq}{rgb}{0.12549019607843137,0.12549019607843137,0.12549019607843137}
+\definecolor{ttqqqq}{rgb}{0.2,0.,0.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-5.056290110700678,
+xmax=5.380866801866215,
+ymin=-0.9227448489396118,
+ymax=4.359364127681193,
+xtick={-5.0,-4.5,...,5.0},
+ytick={-0.5,0.0,...,4.0},]
+\clip(-5.056290110700678,-0.9227448489396118) rectangle (5.380866801866215,4.359364127681193);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.5] (-2.,0.) -- (2.,0.) -- (0.,3.4641016151377553) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.5] (0.,3.4641016151377553) -- (2.,0.) -- (4.,3.464101615137754) -- cycle;
+\draw [line width=2.pt] (-2.,0.)-- (2.,0.);
+\draw [line width=2.pt] (2.,0.)-- (0.,3.4641016151377553);
+\draw [line width=2.pt] (0.,3.4641016151377553)-- (-2.,0.);
+\draw [line width=2.pt,color=ttqqqq] (0.,3.4641016151377553)-- (2.,0.);
+\draw [line width=2.pt] (2.,0.)-- (4.,3.464101615137754);
+\draw [line width=2.pt,color=sqsqsq] (4.,3.464101615137754)-- (0.,3.4641016151377553);
+\begin{scriptsize}
+\draw [fill=qqqqff] (-2.,0.) circle (2.5pt);
+\draw[color=qqqqff] (-2.347666183295526,0.0934108260899206) node {$V_1$};
+\draw [fill=qqqqff] (2.,0.) circle (2.5pt);
+\draw[color=qqqqff] (2.390727102068595,0.0934108260899206) node {$V_2$};
+\draw[color=sqsqsq] (0.04884098783747624,1.2554444197699985) node {$F_1$};
+\draw[color=black] (0.057916776457099625,-0.22407545041275472) node {$e_3$};
+\draw[color=black] (1.174238776670776,1.9089012003828816) node {$e_1$};
+\draw[color=black] (-1.1673146871920574,1.9089012003828816) node {$e_2$};
+\draw [fill=qqqqff] (0.,3.4641016151377553) circle (2.5pt);
+\draw[color=qqqqff] (0.08514414231596978,3.75145261535057) node {$V_3$};
+\draw[color=sqsqsq] (2.0455144841546207,2.417145363081791) node {$F_2$};
+\draw[color=black] (3.4162912160860375,1.9089012003828816) node {$e_3$};
+\draw[color=sqsqsq] (2.054590272774244,3.6603620787860503) node {$e_2$};
+\draw [fill=qqqqff] (4.,3.464101615137754) circle (2.5pt);
+\draw[color=qqqqff] (4.087566923569883,3.75145261535057) node {$V_1$};
+\end{scriptsize}
+\end{tikzpicture} %------------------------------------
+ \item 
+ Die simpliziale Fläche \emph{Open-Bag} ist eine simpliziale Fläche, die aus dem \emph{Janus-Head} hervorgeht, wenn man die Kante $e_{2}$ verdoppelt, das heißt
+ \begin{align*}
+  X_{0}=\{\,V_{1},&V_{2},V_{3}\,\},X_{1}=\{\,e_{1},e_{2},e_{3},e_{4} \,\}, X_{2}=\{\,F_{1},F_{2}\,\} \text{ und } x<y \Leftrightarrow\\
+ (x,y)\in \{&\,(V_3,e_2),(V_3,e_1),(V_3,e_4),(V_2,e_1),(V_2,e_3),(V_1,e_2),(V_1,e3),(V_1,e_4),\\
+ &(V_{1},F_{1}), (V_{2},F_{1}),(V_{3},F_{1}),(V_{1},F_{2}),(V_{2},F_{2}),(V_{3},F_{2}),(e_{1},F_{1}),(e_{2},F_{1}),\\ &(e_{3},F_{1}),(e_{1},F_{2}),(e_{3},F_{2}),(e_{4},F_{2})\,\}.
+ \end{align*}
+ \end{enumerate}
+%--------------------------------------------
+\definecolor{sqsqsq}{rgb}{0.12549019607843137,0.12549019607843137,0.12549019607843137}
+\definecolor{ttqqqq}{rgb}{0.2,0.,0.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-5.056290110700678,
+xmax=5.380866801866215,
+ymin=-0.9227448489396118,
+ymax=4.359364127681193,
+xtick={-5.0,-4.5,...,5.0},
+ytick={-0.5,0.0,...,4.0},]
+\clip(-6.056290110700678,-0.9227448489396118) rectangle (5.380866801866215,4.359364127681193);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.5] (-2.,0.) -- (2.,0.) -- (0.,3.4641016151377553) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.5] (0.,3.4641016151377553) -- (2.,0.) -- (4.,3.464101615137754) -- cycle;
+\draw [line width=2.pt] (-2.,0.)-- (2.,0.);
+\draw [line width=2.pt] (2.,0.)-- (0.,3.4641016151377553);
+\draw [line width=2.pt] (0.,3.4641016151377553)-- (-2.,0.);
+\draw [line width=2.pt,color=ttqqqq] (0.,3.4641016151377553)-- (2.,0.);
+\draw [line width=2.pt] (2.,0.)-- (4.,3.464101615137754);
+\draw [line width=2.pt,color=sqsqsq] (4.,3.464101615137754)-- (0.,3.4641016151377553);
+\begin{scriptsize}
+\draw [fill=qqqqff] (-2.,0.) circle (2.5pt);
+\draw[color=qqqqff] (-2.347666183295526,0.0934108260899206) node {$V_1$};
+\draw [fill=qqqqff] (2.,0.) circle (2.5pt);
+\draw[color=qqqqff] (2.390727102068595,0.0934108260899206) node {$V_2$};
+\draw[color=sqsqsq] (0.04884098783747624,1.2554444197699985) node {$F_1$};
+\draw[color=black] (0.057916776457099625,-0.22407545041275472) node {$e_3$};
+\draw[color=black] (1.174238776670776,1.9089012003828816) node {$e_1$};
+\draw[color=black] (-1.1673146871920574,1.9089012003828816) node {$e_2$};
+\draw [fill=qqqqff] (0.,3.4641016151377553) circle (2.5pt);
+\draw[color=qqqqff] (0.08514414231596978,3.75145261535057) node {$V_3$};
+\draw[color=sqsqsq] (2.0455144841546207,2.417145363081791) node {$F_2$};
+\draw[color=black] (3.4162912160860375,1.9089012003828816) node {$e_3$};
+\draw[color=sqsqsq] (2.054590272774244,3.6603620787860503) node {$e_4$};
+\draw [fill=qqqqff] (4.,3.464101615137754) circle (2.5pt);
+\draw[color=qqqqff] (4.087566923569883,3.75145261535057) node {$V_1$};
+\end{scriptsize}
+\end{tikzpicture}
+ %------------------------------------
+\newpage
+\begin{definition} 
+Sei $(X,<)$ eine simpliziale Fläche. Für $i,j \in \{\,0,1,2\,\}$ mit $i \neq j$ und $x \in X_{i}$ definiert man die Menge $X_{j}(x)$ als
+\[
+X_{j}(x):=\{\,y \in X_{j}\,|\,x < y\,\} \text{, falls $i < j$  }
+\]
+bzw. 
+\[
+X_{j}(x):=\{\,y \in X_{i}\,|\,y < x\}, \text{ falls $j<i$}.
+\]
+Für $S \subset X_{i}$ ist 
+\[
+X_j(S):= \bigcup_{x\in S}X_{j}(x).
+\]
+\end{definition}
+
+\begin{bemerkung}
+Für eine simpliziale Fläche $(X,<)$ können die Bedingungen in \Cref{defss} wie folgt umformuliert werden:
+\begin{itemize}
+\item $\vert X_{0}(e)\vert=2$ für alle $e \in X_{1}$,
+\item $\vert X_{0}(F)\vert=3$ für alle $F \in X_{2}$,
+\item $\vert X_{1}(F)\vert=3$ für alle $F \in X_{2}$,
+\item $1\leq  \vert X_{2}(e)\vert \leq 2$ für alle $e \in X_{1}$.
+
+\end{itemize}
+\end{bemerkung}
+
+\begin{definition} Seien $(X,<)$ und $(Y,\prec)$ simpliziale Flächen.
+\begin{enumerate}
+ \item Man nennt eine bijektive Abbildung $\alpha: X \to Y$ einen Isomorphismus, falls $A<B$ in $(X,<)$ genau dann gilt, wenn $\alpha(A) \prec \alpha(B)$ in $(Y,\prec)$ gilt. In diesem Fall schreibt man $X \cong Y$.
+\item Eine surjektive Abbildung $\alpha: X \to Y$ heißt Überdeckung, falls aus $A<B$ in $(X,<)$  $\alpha(A) \prec \alpha(B)$ in $(Y,\prec)$ folgt. 
+\end{enumerate}
+\end{definition}
+Es sei angemerkt, dass eine Überdeckung $\alpha:X\to Y$ surjektive Abbildungen $X_{i} \to Y_{i}$ und ein Isomorphismus $\beta:X \to Y$ bijektive Abbildungen $X_{i} \to Y_{i}$ für $i=0,1,2$ induziert.
+
+Um simpliziale Flächen vollständig beschreiben zu können, führen wir eine Notation ein. Man beachte, dass die hier eingeführte Notation stark von der Nummerierung der Knoten, Kanten und Flächen abhängt, abgesehen davon ist sie eindeutig.
+\begin{definition}
+ Sei $(X,<)$ eine simpliziale Fläche, dessen Knoten $V_{1},\ldots,V_{n}$, Kanten $e_{1},\ldots,e_{k}$ und Flächen $F_{1},\ldots,F_{m}$ ausgehed von ihrer Nummerierung linear geordnet sind. Das \emph{Symbol} von $(X,<)$ ist definiert durch 
+\[
+\mu((X,<)):=(n,k,m;(X_{0}(e_{1}),\ldots,X_{0}(e_{k})),(X_{1}(F_{1}),\ldots,X_{1}(F_{m}))).
+\]
+Man kann im Symbol die $V_{i}$ durch $i$, die $e_{j}$ durch $j$ und die $F_{l}$ durch $l$ ersetzen und nennt dann das resultierende Symbol das \emph{ordinale Symbol} $\omega((X,<))$ von $(X,<)$.
+\end{definition}
+\begin{definition} 
+\begin{enumerate}
+\item Sei $(X,<)$ eine simpliziale Fläche. Ein \emph{Flächenpfad} von $F\in X_{2}$ nach $T \in X_{2}$ ist eine Sequenz $(F_{1}:=F,F_{2},\ldots,F_{k}:=T)$ in $X_{2}$ für ein $k \in \mathbb{N}$ so, dass $F_{i} $ und $F_{i+1}$ für $i=1,\ldots,k-1$ benachbarte Flächen sind.
+\item Man nennt eine simpliziale Fläche $(X,<)$ \emph{zusammenhängend}, falls für beliebige $F,T \in X_{2}$ ein Flächenpfad von $F$ nach $T$ existiert.
+\end {enumerate}
+\end{definition}
+
+Im nächsten Abschnitt werden zur Vereinfachung der Konstruktion von simplizialen Bilder eingeführt, die nur Ausschnitte einer simplizialen Fläche zeigen sollen. Durch das unten eingeführte Bild soll beispielsweise angedeutet werden, dass eine simpliziale Fläche $(X,<)$ betrachtet wird, wobei hier nur $F\in X_2,e_1,e_2,e_3\in X_1$ und $V_1,V_2,V_3 \in X_0$ mit 
+\begin{itemize}
+ %\item $\vert X_{2}\vert \geq 3$,
+ \item $e_{i} < F$ für alle $i \in \{1,2,3\}$,
+ \item $V_{i}<e_{j}$ für alle $i \in \{1,2,3\}$ und $j \in \{1,2,3\} \setminus\{i\}$ und
+ \item $V_{i} < F$ für alle $i \in \{1,2,3\}$
+\end{itemize}  
+von Bedeutung ist.\\
+
+%------------bild2--------------------
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.4cm,y=1.4cm]
+%\begin{axis}[
+x=1.4cm,y=1.4cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-5.3,
+xmax=4.0600000000000005,
+ymin=-0.46,
+ymax=4.3,
+xtick={-4.0,-3.0,...,7.0},
+ytick={-2.0,-1.0,...,6.0},]
+\clip(-5.0,-0.46) rectangle (4.06,4.3);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.550000011920929] (-2.,0.) -- (2.,0.) -- (2.,4.) -- (-2.,4.) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.15000000596046448] (-1.,1.) -- (1.,1.) -- (0.,2.7320508075688776) -- cycle;
+\draw [line width=2.pt,color=uuuuuu] (-1.,1.)-- (1.,1.);
+\draw [line width=2.pt,color=uuuuuu] (1.,1.)-- (0.,2.7320508075688776);
+\draw [line width=2.pt,color=uuuuuu] (0.,2.7320508075688776)-- (-1.,1.);
+\begin{scriptsize}
+\draw [fill=ududff] (-1.,1.) circle (2.5pt);
+\draw[color=black] (-0.97,0.8) node {$V_1$};
+\draw [fill=ududff] (1.,1.) circle (2.5pt);
+\draw[color=black] (1.17,0.8) node {$V_2$};
+\draw[color=black] (0.06,1.75) node {$F$};
+\draw[color=uuuuuu] (0.11,0.8) node {$e_3$};
+\draw[color=uuuuuu] (0.81,2.06) node {$e_1$};
+\draw[color=uuuuuu] (-0.81,2.06) node {$e_2$};
+\draw [fill=qqqqff] (0.,2.7320508075688776) circle (2.5pt);
+\draw[color=black] (0.19,3.00) node {$V_3$};
+\end{scriptsize}
+%\end{axis}
+\end{tikzpicture}
+%--------------------------------------------------------
+\newpage
+ \subsection*{Konstruktion von Simplizialen Flächen}
+ Zunächst werden Definitionen eingeführt, die den Zugang zu den unten definierten Operatoren erleichtern sollen.\\
+ 
+ \begin{definition}
+ Sei $(X,<)$ eine simpliziale Fläche.
+ \begin{enumerate}
+ \item Sei $e \in X_{1}$ eine innere Kante von $(X,<)$. Diese ist vom Typ $i$ mit $i \in \{0,1,2\}$, falls $\vert X_{0}^{0}(e) \vert =i$.
+ \item Man nennt $\{e,f\}$ ein Randkantenpaar, falls $e,f \in X_{1}$ Randkanten sind und $e$ und $f$ zu verschiedenen Flächen gehören, das heißt 
+ \[
+ \nexists F \in X_2 : e<F \land f<F.
+ \]
+ \item \begin{enumerate}
+  \item[a)] Man nennt $\{e,f\}$ ein \emph{Randkantenpaar vom Typ 2}, falls $\{e,f\}$ ein Randkantenpaar ist und $X_{0}(e)=X_{0}(f)$ gilt.\\
+  %-----------------------------------------------------bild2
+  \definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.5cm,y=1.5cm]
+%\begin{axis}[
+x=1.4cm,y=1.4cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-4.5,
+xmax=7.0600000000000005,
+ymin=-1.46,
+ymax=3.3,
+xtick={-4.0,-3.0,...,7.0},
+ytick={-2.0,-1.0,...,6.0},]
+\clip(-4.2,-1.46) rectangle (7.06,3.3);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=\gelb] (-2.,-1.) -- (2.,-1.) -- (2.,3.) -- (-2.,3.) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.] (0.,2.) -- (0.,0.) -- (1.7320508075688776,1.) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.] (0.,2.) -- (-1.74,0.98) -- (0.013345911860126902,-0.016884202584923735) -- cycle;
+\draw [rotate around={90.:(0.,1.)},line width=2.pt,color=black,fill=white,fill opacity=0.90000001192092896] (0.,1.) ellipse (1.50cm and 0.34937972405024542cm);
+%\draw [line width=2.pt,color=ffffqq] (-2.,-1.)-- (2.,-1.);
+%\draw [line width=2.pt,color=ffffqq] (2.,-1.)-- (2.,3.);
+%\draw [line width=2.pt,color=ffffqq] (2.,3.)-- (-2.,3.);
+%\draw [line width=2.pt,color=ffffqq] (-2.,3.)-- (-2.,-1.);
+%\draw [line width=2.pt,color=ffffqq] (0.,2.)-- (0.,0.);
+%\draw [line width=2.pt] (0.,0.)-- (1.7320508075688776,1.);
+%\draw [line width=2.pt] (1.7320508075688776,1.)-- (0.,2.);
+%\draw [line width=2.pt] (0.,2.)-- (-1.74,0.98);
+%\draw [line width=2.pt] (-1.74,0.98)-- (0.013345911860126902,-0.016884202584923735);
+\begin{scriptsize}
+\draw [fill=xdxdff] (0.,2.) circle (2.5pt);
+\draw [fill=qqqqff] (0.,0.) circle (2.0pt);
+%\draw [fill=ududff] (2.,-1.) circle (2.5pt);
+\draw[color=black] (0.4,1) node {$f$};
+\draw[color=black] (-0.4,1) node {$e$};
+%\draw [fill=ududff] (1.7320508075688776,1.) circle (2.5pt);
+%\draw [fill=ududff] (-1.74,0.98) circle (2.5pt);
+\draw [fill=ududff] (0.013345911860126902,-0.016884202584923735) circle (2.5pt);
+\end{scriptsize}
+%\end{axis}
+\end{tikzpicture}
+
+  %-------------------------------------------------------------
+ \item[b)] Man nennt $\{e,f\}$  ein \emph{Randkantenpaar vom Typ 1}, falls $\{e,f\}$ ein Randkantenpaar ist und beide Kanten durch genau einen Knoten 
+ $\sideset{^X}{}{\mathop{V}}_{e,f}\in X_0$ verbunden werden, das heißt es gilt $\sideset{^X}{}{\mathop{V}}_{e,f}<e$ und $\sideset{^X}{}{\mathop{V}}_{e,f}<f$. Die übrigen beiden Knoten werden mit $\sideset{^X}{}{\mathop{V}}_{f}$,$\sideset{^X}{}{\mathop{V}}_{e}\in X_0$ bezeichnet, wobei $\sideset{^X}{}{\mathop{V}}_{e}<e$ und $\sideset{^X}{}{\mathop{V}}_f<f$. Falls keine Kante $g\in X_1$ mit $\sideset{^X}{}{\mathop{V}}_e,\sideset{^X}{}{\mathop{V}}_f<g$ existiert, dann ist das Randkantenpaar $\{e,f\}$ vom Typ 1 \emph{mendable}.\\
+ %-------
+ \definecolor{ffffff}{rgb}{1.,1.,1.}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.5cm,y=1.5cm]
+x=1.5cm,y=1.5cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-3.3,
+xmax=3.0600000000000005,
+ymin=-2.46,
+ymax=2.3,
+xtick={-4.0,-3.0,...,7.0},
+ytick={-2.0,-1.0,...,6.0},]
+\clip(-4.3,-2.46) rectangle (3.06,2.3);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.550000011920929] (-2.,2.) -- (-2.,-2.) -- (2.,-2.) -- (2.,2.) -- cycle;
+\fill[line width=2.pt,color=ffffff,fill=ffffff,fill opacity=1.0] (-1.,1.) -- (0.,-0.8) -- (1.05884572681199,0.9660254037844385) -- cycle;
+\draw [line width=2.pt] (-1.,1.)-- (0.,-0.8);
+\draw [line width=2.pt] (0.,-0.8)-- (1.05884572681199,0.9660254037844385);
+\begin{scriptsize}
+\draw [fill=ududff] (-1.,1.) circle (2.5pt);
+\draw[color=black] (-1.34,1.35) node {$\sideset{^X}{}{\mathop{V}}_{e}$};
+\draw [fill=ududff] (0.,-0.8) circle (2.5pt);
+\draw[color=black] (0.08,-1.11) node {$\sideset{^X}{}{\mathop{V}}_{e,f}$};
+%\draw[color=ffffff] (0.48,0.57) node {$Vieleck2$};
+\draw[color=black] (-0.72,0.13) node {e};
+\draw[color=black] (0.86,0.09) node {f};
+\draw [fill=ududff] (1.05884572681199,0.9660254037844385) circle (2.5pt);
+\draw[color=black] (1.2,1.33) node {$\sideset{^X}{}{\mathop{V}}_{f}$};
+\end{scriptsize}
+
+\end{tikzpicture}
+
+ %-----------------------------------------------
+ \item[c)] Man nennt $\{e,f\}$  ein \emph{Randkantenpaar vom Typ 0}, falls $\{e,f\}$ ein Randkantenpaar ist und $X_{0}(e) \cap X_{0}(f)= \emptyset$, wobei $X_{0}(e)=\{V_{e},W_{e}\}$ und $X_{0}(f)=\{V_{f},W_{f}\}$. Das Randkantenpaar ist \emph{mendable} bezüglich $V_e$ und $V_f$, falls keine Kante $g \in X_1$ existiert, sodass weder $W_e,W_f<g$ noch $V_e,V_f<g$ gilt.\\
+ Das Randkantenpaar $\{e,f\}$ heißt mendable, falls es Knoten $V \in \{V_e,W_e\}$ und $W \in \{V_f,W_f\}$ gibt, sodass $\{e,f\}$ mendable bezüglich $V$ und $W$ ist.\\
+ %---------------bidl----------------------
+
+%--------------------------------------------------
+%----------------------bild ----------------------------
+\definecolor{ffffff}{rgb}{1.,1.,1.}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.5cm,y=1.5cm]
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-2.3,
+xmax=2.7,
+ymin=-2.34,
+ymax=2.3,
+xtick={-4.0,-3.0,...,18.0},
+ytick={-5.0,-4.0,...,6.0},]
+\clip(-4.3,-2.34) rectangle (2.7,2.3);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.6000000238418579] (-2.,2.) -- (-2.,-2.) -- (2.,-2.) -- (2.,2.) -- cycle;
+\fill[line width=2.pt,color=ffffff,fill=ffffff,fill opacity=1.0] (-1.,1.) -- (-1.,-1.) -- (1.,-1.) -- (1.,1.) -- cycle;
+\draw [line width=2.pt] (-1.,1.)-- (-1.,-1.);
+\draw [line width=2.pt] (1.,1.)-- (-1.,-1.);
+\draw [line width=2.pt,color=ffffff] (-1.,-1.)-- (1.,-1.);
+\draw [line width=2.pt] (1.,-1.)-- (1.,1.);
+\draw [line width=2.pt,color=ffffff] (1.,1.)-- (-1.,1.);
+\begin{scriptsize}
+%\draw[color=ffffqq] (0.48,0.17) node {$Vieleck1$};
+\draw[color=black] (-1,1.23) node {$V_{e}$};
+\draw[color=black] (1,1.23) node {$V_{f}$};
+\draw[color=black] (-1,-1.23) node {$W_{e}$};
+\draw[color=black] (1,-1.23) node {$W_{f}$};
+\draw [fill=ududff] (-1.,1.) circle (2.5pt);
+\draw [fill=ududff] (-1.,-1.) circle (2.5pt);
+%\draw[color=ffffff] (0.48,0.17) node {$Vieleck2$};
+\draw[color=black] (-1.26,0.17) node {e};
+\draw[color=black] (1.18,0.17) node {f};
+\draw [fill=ududff] (1.,-1.) circle (2.5pt);
+\draw [fill=ududff] (1.,1.) circle (2.5pt);
+\end{scriptsize}
+\end{tikzpicture}
+
+ %-------------------------------------------------
+ \end{enumerate}
+ \end{enumerate}
+ \end{definition}
+ 
+ \begin{bemerkung}
+ Es ist leicht einzusehen, dass die Kanten $e,f \in X_1$ eines Randkantenpaares vom Typ $i$, $i$ Knoten gemeinsam haben, wobei $i=0,1,2$. Das heißt es existieren $V_1,\ldots,V_i \in X_0$ mit 
+\[
+V_j <e \text{ und } V_j <f \text{ für j=1,\ldots,i}.
+\]
+
+ \end{bemerkung}
+ 
+\begin{bemerkung}
+Seien $A,B$ Mengen und $f:A \to B$ eine Funktion. Für $M \subset B$ definiert man das \emph{Urbild von M in A} durch 
+\[
+f^{-1}(M):=\{y\in A \mid f(y)\in M\}.
+\]
+Für $\{y\} \subset B$ schreibt man auch
+\[
+f^{-1}(y):=f^{-1}(\{y\})
+\]
+\end{bemerkung}
+  \begin{definition}
+  Seien $(X,<)$ und $(Y,\prec)$ simpliziale Flächen.
+  \begin{enumerate}
+  \item Man nennt eine Überdeckung $\alpha:X \to Y$ eine \emph{Mending Map}, falls sie eine Bijektion $\beta : X_{2}\to Y_{2}$ induziert. Dadurch entsteht die simpliziale Fläche $(X(\alpha),<_{\alpha})$ mit den Knoten
+  \[
+X(\alpha)_0:=\{\alpha^{-1}(V)\mid V \in X_0 \},
+  \] 
+  den Kanten 
+  \[
+X(\alpha)_1:=\{\alpha^{-1}(e)\mid e \in X_1 \} 
+  \]
+ und den Flächen 
+  \[
+X(\alpha)_2:=X_2  .
+  \]
+  Für $A,B \in Y$ ist $\alpha^{-1}(A)<_{\alpha}\alpha^{-1}(A)$ in $X(\alpha)$ genau dann, wenn $A \prec B  $ in $Y$ gilt. Außerdem $(X(\alpha),<_{\alpha})$ isomorph zu $(Y,\prec)$.
+
+  \item Die Menge aller Mendings von $(X,<)$ wird definiert durch 
+\[
+\mathcal{M}(X):=\{X(\alpha )\mid
+ \text{$(Y,\prec )$ Simpliziale Fläche so, dass  $\alpha : X \to Y$ Mending Map}
+ \}  .
+\]
+
+  \end{enumerate}
+  \end{definition}
+  
+  \begin{bsp}
+  Sei $J$ der oben definierte Janus Head und $X:= 2\Delta$. Dann ist die Abbildung 
+  \[
+  \alpha: X \to J, x \mapsto 
+  \begin{cases}
+e_i & \text{für } x =e_i^j ,i=1,2,3,\,j=1,2\\
+V_i &\text{für } x =V_i^j,i=1,2,3,\,j=1,2\\
+F_i &\text{für } x=F_i , i=1,2 
+\end{cases}
+  \]
+  nach Konstruktion eine Mending Map. Und man erhält dadurch die simpliziale Fläche $(X(\alpha),<_\alpha)$ definiert durch die Knoten
+  \[
+  X(\alpha)_0=\{\{V_1^1,V_1^2\},\{V_2^1,V_2^2\},\{V_3^1,V_3^2\}\},
+  \]
+  die Kanten
+  \[
+  X(\alpha)_1=\{\{e_1^1,e_1^2\},\{e_2^1,e_2^2\},\{e_3^1,e_3^2\}\}
+  \]
+  und die Flächen 
+  \[
+X(\alpha)_2=X_2=\{F_1,F_2\} .
+  \]
+  Es gilt $x<_{\alpha}y$ in $X(\alpha)$ genau dann, wenn
+  \begin{align*}
+ (x,y) \in \{&(\{V_i^1,V_i^2\}, \{e_j^1,e_j^2\})\mid i=1,2,3 \, j\in\{1,2,3\} \setminus \{i\}\}\, \cup\\
+  \{&(\{V_i^1,V_i^2\}, F_j)\mid i=1,2,3 \, j=1,2 \} \,\cup\\
+  \{&(\{e_i^1,e_i^2\}, F_j)\mid i=1,2,3 \, j=1,2 \} 
+\end{align*}
+ \end{bsp}
+   %----bild----------------------------
+\definecolor{sqsqsq}{rgb}{0.12549019607843137,0.12549019607843137,0.12549019607843137}
+\definecolor{ttqqqq}{rgb}{0.2,0.,0.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-5.056290110700678,
+xmax=5.380866801866215,
+ymin=-0.9227448489396118,
+ymax=4.359364127681193,
+xtick={-5.0,-4.5,...,5.0},
+ytick={-0.5,0.0,...,4.0},]
+\clip(-5.056290110700678,-0.9227448489396118) rectangle (5.380866801866215,4.359364127681193);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.5] (-2.,0.) -- (2.,0.) -- (0.,3.4641016151377553) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.5] (0.,3.4641016151377553) -- (2.,0.) -- (4.,3.464101615137754) -- cycle;
+\draw [line width=2.pt] (-2.,0.)-- (2.,0.);
+\draw [line width=2.pt] (2.,0.)-- (0.,3.4641016151377553);
+\draw [line width=2.pt] (0.,3.4641016151377553)-- (-2.,0.);
+\draw [line width=2.pt,color=ttqqqq] (0.,3.4641016151377553)-- (2.,0.);
+\draw [line width=2.pt] (2.,0.)-- (4.,3.464101615137754);
+\draw [line width=2.pt,color=sqsqsq] (4.,3.464101615137754)-- (0.,3.4641016151377553);
+\begin{scriptsize}
+\draw [fill=qqqqff] (-2.,0.) circle (2.5pt);
+\draw[color=black] (-2.347666183295526,-0.3234108260899206) node {$\{V_1^1,V_1^2\}$};
+\draw [fill=qqqqff] (2.,0.) circle (2.5pt);
+\draw[color=black] (2.390727102068595,-0.3234108260899206) node {$\{V_2^1,V_2^2\}$};
+\draw[color=sqsqsq] (0.04884098783747624,1.2554444197699985) node {$F_1$};
+\draw[color=black] (0.057916776457099625,-0.25407545041275472) node {$\{e_3^1,e_3^2\}$};
+\draw[color=black] (1.474238776670776,1.9089012003828816) node {$\{e_1^1,e_1^2\}$};
+\draw[color=black] (-1.4673146871920574,1.9089012003828816) node {$\{e_2^1,e_2^2\}$};
+\draw [fill=qqqqff] (0.,3.4641016151377553) circle (2.5pt);
+\draw[color=black] (0.08514414231596978,3.75145261535057) node {$\{V_3^1,V_3^1\}$};
+\draw[color=sqsqsq] (2.0455144841546207,2.417145363081791) node {$F_2$};
+\draw[color=black] (3.6162912160860375,1.9089012003828816) node {$\{e_3^1,e_3^2\}$};
+\draw[color=sqsqsq] (2.154590272774244,3.6903620787860503) node {$\{e_2^1,e_2^2\}$};
+\draw [fill=qqqqff] (4.,3.464101615137754) circle (2.5pt);
+\draw[color=black] (4.087566923569883,3.75145261535057) node {$\{V_1^1,V_1^2\}$};
+\end{scriptsize}
+\end{tikzpicture} %------------------------------------
+
+  \begin{bemerkung}
+  Sei $(X,<)$ eine simpliziale Fläche.
+  \begin{enumerate}
+  \item Für ein $Y \in \mathcal{M}(X)$ gilt $Y_2=X_2$.
+  \item $X$ bildet ein Mending von sich selbst mit der Identität als Mending Map.
+  \item Sei $Y\in \mathcal{M}(X)$, das heißt $Y=X(\alpha)$ für eine MendingMap $\alpha:X \mapsto Z$, wobei $(Z,\prec)$ eine weitere simpliziale Fläche ist. Dann bildet die Relation 
+  \[
+A\sim_\alpha B \Leftrightarrow \alpha(A)=\alpha(B),\text{ für }A,B \in X
+  \]
+  eine Äquivalenzrelation auf X.
+  \item Falls $Y\in \mathcal{M}(X)$ und $Z \in \mathcal{M}(Y)$ gilt, so ist $Z$ auch ein Mending von $X$
+  \end{enumerate}
+  \end{bemerkung}
+  
+  \begin{definition}
+  Für eine simpliziale Fläche $(X,<)$ definieren wir die Mengen $I_{i}(X),B_{i}(X)$ und $B_{i}(X)^m$ für $i=0,1,2$ als
+  \begin{align*}
+  &I^i(X):=\{e \in X_1 \mid \vert X_{0}^{0}(e)\vert=i\}\\
+  &BM^{i}(X):=\{\{e,f\} \mid e,f \in X_1 \text{ und }\{e,f\}\text{ ist ein mendable Randkantenpaar vom Typ i}\}\\
+  \end{align*}
+  \end{definition}
+  
+  
+  \newpage
+  \subsection*{Mender- und Cutter-Operatoren}
+  Im Folgendem wird thematisiert, wie aus einer simplizialen Fläche eine weitere konstruiert werden kann. Zu diesem Zweck werden die \emph{Mender}-Operationen, die aus zwei Randkanten eine innere Kante konstruieren  und \emph{Cutter}-Operationen, die aus einer inneren Kante zwei Randkanten hervorbringen, eingeführt.\\
+  Sei dazu $(X,<)$ eine simpliziale Fläche.
+\begin{enumerate}
+\item Der Operator \emph{Cratermender} ist definiert durch
+\[
+ C_{e,f}^{m}:\{Y \in \mathcal{M}(X)|\{e,f\} \in BM^{2}(Y) \}  \to 
+  \{Z \in \mathcal{M}(X)|\{e,f\} \in I^{2}(Z)\}, 
+  Y \mapsto Z,
+  \]
+  wobei $Z_{2}:=X_{2},Z_{1}:=(Y_{1}-\{e,f\}) \cup \{\{e,f\}\},Z_0:=Y_{0}.$\\
+  Er setzt die beiden Randkanten $e$ und $f$ zu einer inneren Kante $\{e,f\}$ vom Typ 2 zusammen, um somit die simpliziale Fläche $Z=C^{m}_{e,f}(Y)$ zu erhalten. Den inversen Operator $C^{c}_{\{e,f\}}$ nennt man \emph{Cratercutter}. \\
+  %---------------------------bild------------------
+  \definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.3cm,y=1.3cm]
+%\begin{axis}[
+x=1.5cm,y=1.5cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-5.54,
+xmax=5.82,
+ymin=-0.6600000000000006,
+ymax=4.100000000000001,
+xtick={-5.0,-4.0,...,5.0},
+ytick={-2.0,-1.0,...,6.0},]
+\clip(-5.14,-0.66) rectangle (5.82,4.1);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=\gelb] (-5.,0.) -- (-1.,0.) -- (-1.,4.) -- (-5.,4.) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=\gelb] (1.,0.) -- (5.,0.) -- (5.,4.) -- (1.,4.) -- cycle;
+\draw [rotate around={90.:(-3.,2.)},line width=2.pt,color=black,fill=white,fill opacity=0.90000001192092896] (-3.,2.) ellipse (1.2586450581159654cm and 0.29400452165887971cm);
+\draw [line width=2.pt] (3.,3.)-- (3.,1.);
+\begin{scriptsize}
+\draw [fill=ududff] (-3.,3.) circle (2.5pt);
+%\draw[color=ududff] (-2.86,3.37) node {$I$};
+\draw [fill=ududff] (-3.,1.) circle (2.5pt);
+%\draw[color=ududff] (-2.86,1.37) node {$J$};
+\draw[color=black] (-2.52,1.97) node {$f$};
+\draw[color=black] (-3.52,1.97) node {$e$};
+\draw [fill=ududff] (3.,3.) circle (2.5pt);
+%\draw[color=ududff] (3.14,3.37) node {$L$};
+\draw [fill=ududff] (3.,1.) circle (2.5pt);
+%\draw[color=ududff] (3.14,1.37) node {$M$};
+\draw[color=black] (3.44,2.17) node {$\{e,f\}$};
+\end{scriptsize}
+%\end{axis}
+\end{tikzpicture}
+
+  %---------------------------------------------------
+  \item Den Operator \emph{Ripmender}, welcher ein mendable Randkantenpaar $\{e,f\}$ vom Typ 1 zu einer inneren Kante $\{e,f\}$ zusammensetzt definiert man durch
+  \[
+R^m_{e,f} :\{Y \in \mathcal{M}(X)|\{e,f\} \in BM^{1}(Y) \}  \to 
+  \{Z \in \mathcal{M}(X)|\{e,f\} \in I^{1}(Z)\}, 
+  Y \mapsto Z,
+  \]
+  wobei $Z_{1}:=(Y_1-\{e,f\}) \cup\{\{e,f\}\},Z_0 :=(Y_0 - \{\sideset{^Y}{}{\mathop{V}}_{e},\sideset{^Y}{}{\mathop{V}}_{f}\}) \cup \{\{\sideset{^Y}{}{\mathop{V}}_{e}, \sideset{^Y}{}{\mathop{V}}_{f}\}\},$\\
+  $Z_{2}:=X_{2}$ und $\sideset{^Y}{}{\mathop{V}}_{e}, \sideset{^Y}{}{\mathop{V}}_{f}\in Y_0$ definiert sind wie in Definition 6.
+  Die zum Ripmender inverse Operation $R^c_{\{e,f\}}$ nennt man \emph{Ripcutter}. \\
+  %-----------------------------bild----------------------
+  \definecolor{sqsqsq}{rgb}{0.12549019607843137,0.12549019607843137,0.12549019607843137}
+\definecolor{ffffff}{rgb}{1.,1.,1.}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.3cm,y=1.3cm]
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-5.36,
+xmax=5.24,
+ymin=-2.38,
+ymax=2.26,
+xtick={-5.0,-4.0,...,6.0},
+ytick={-5.0,-4.0,...,6.0},]
+\clip(-5.36,-2.38) rectangle (5.24,2.26);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.6000000238418579] (-5.,2.) -- (-5.,-2.) -- (-1.,-2.) -- (-1.,2.) -- cycle;
+\fill[line width=2.pt,color=ffffff,fill=ffffff,fill opacity=1.0] (-3.,-1.) -- (-1.84,1.) -- (-4.152050807568877,1.0045894683899497) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.6000000238418579] (1.,2.) -- (1.,-2.) -- (5.,-2.) -- (5.,2.) -- cycle;
+\draw [line width=2.pt] (-3.,-1.)-- (-1.84,1.);
+\draw [line width=2.pt,color=ffffff] (-1.84,1.)-- (-4.152050807568877,1.0045894683899497);
+\draw [line width=2.pt,color=sqsqsq] (-4.152050807568877,1.0045894683899497)-- (-3.,-1.);
+\draw [line width=2.pt] (3.,1.)-- (3.,-1.);
+\begin{scriptsize}
+\draw [fill=ududff] (-3.,-1.) circle (2.5pt);
+\draw [fill=ududff] (-1.84,1.) circle (2.5pt);
+\draw[color=ffffff] (-2.52,0.51) node {$Vieleck2$};
+\draw[color=black] (-2.1,0.01) node {$f$};
+\draw[color=sqsqsq] (-3.8,0.03) node {e};
+\draw [fill=ududff] (-4.152050807568877,1.0045894683899497) circle (2.5pt);
+\draw [fill=ududff] (3.,1.) circle (2.5pt);
+%\draw[color=ududff] (3.14,1.37) node {$L$};
+\draw [fill=ududff] (3.,-1.) circle (2.5pt);
+%\draw[color=ududff] (3.14,-0.63) node {$M$};
+\draw[color=black] (2.6,0.17) node {$\{e,f\}$};
+\end{scriptsize}
+
+\end{tikzpicture}
+
+  %--------------------------------------------------------
+  \item Seien nun $V,V'$ bzw. $W,W'$ Knoten, die inzident zu $e$ bzw. $f$ sind. Dann ist 
+  \begin{align*}
+  S^m_{(V,e),(W,f)}:&\{Y \in \mathcal{M}(X)|\{e,f\} \in BM^{0}(Y) \text{ mendable bzgl. V und W} \}  
+  \to\\ & \{Z \in \mathcal{M}(X)|\{e,f\} \in I^{0}(Z)\}, 
+  Y \mapsto Z, 
+   \end{align*}
+  der Operator \emph{Splitmender}, wobei $Z_2 := X_2,Z_1 := (Y_1 - \{e,f\}) \cup \{\{e,f\}\},Z_0:=(Y_0 -(Y_0 (e) \cup Y_0(f))) \cup \{\{V,W\},\{V',W'\}\}$. Dieser setzt zwei disjunkte Kanten, also Kanten die keinen Knoten gemeinsam haben, zu einer inneren Kante zusammenzusetzen, um somit die simpliziale Fläche $Z=S^m_{(V,e),(W,f)}(X)=S^m_{(V',e),(W',f)}(X)$ zu erhalten. Dieser Operator hat ein eindeutiges Linksinverses, nämlich den Operator \emph{Splitcutter} $S^c_{\{e,f\}}$, wobei dieser ebenfalls ein Linksinverses des Operators  $S^C_{(V',e),(W,f)}=S^C_{(V,e),(W',f)}$ ist.\\
+  %-------------------bild------------------------------
+\begin{comment}  
+\definecolor{ffffff}{rgb}{1.,1.,1.}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.3cm,y=1.3cm]
+
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-5.694797977306429,
+xmax=5.862933812537042,
+ymin=-2.902772491173462,
+ymax=2.50122742333861,
+xtick={-8.0,-7.0,...,11.0},
+ytick={-3.0,-2.0,...,6.0},]
+\clip(-5.694797977306429,-2.902772491173462) rectangle (5.862933812537042,2.50122742333861);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.5] (-5.,2.) -- (-5.,-2.) -- (-1.,-2.) -- (-1.,2.) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.5] (1.,2.) -- (1.,-2.) -- (5.,-2.) -- (5.,2.) -- cycle;
+\fill[line width=2.pt,color=ffffff,fill=ffffff,fill opacity=1.0] (-4.,1.) -- (-4.,-1.) -- (-2.,-1.) -- (-2.,1.) -- cycle;
+\draw [line width=2.pt] (3.,1.)-- (3.,-1.);
+\draw [line width=2.pt] (-4.,1.)-- (-4.,-1.);
+\draw [line width=2.pt] (-2.,-1.)-- (-2.,1.);
+\begin{scriptsize}
+\draw [fill=ududff] (3.,1.) circle (2.5pt);
+\draw[color=black] (3.2197483165463314,1.2707326201342032) node {$\{V,V'\}$};
+\draw [fill=ududff] (3.,-1.) circle (2.5pt);
+\draw[color=black] (3.2108101722898774,-1.2587622044421855) node {$\{W,W'\}$};
+\draw[color=black] (2.6711606905446376,0.06408314551295772) node {$\{e,f\}$};
+\draw [fill=ududff] (-4.,1.) circle (2.5pt);
+\draw[color=black] (-3.823509357539171,1.3707326201342032) node {$V$};
+\draw [fill=ududff] (-4.,-1.) circle (2.5pt);
+\draw[color=black] (-3.912890800103708,-1.167700348698639) node {$W$};
+%\draw[color=ffffff] (-2.5811073058921092,0.16408314551295772) node {$Vieleck3$};
+\draw[color=black] (-4.243602137592494,0.16408314551295772) node {$e$};
+\draw[color=black] (-1.6694165917338337,0.16408314551295772) node {$f$};
+\draw [fill=ududff] (-2.,-1.) circle (2.5pt);
+\draw[color=black] (-1.9107464866580832,-1.2213292142373608) node {$W'$};
+\draw [fill=ududff] (-2.,1.) circle (2.5pt);
+\draw[color=black] (-1.8213650440935463,1.3707326201342032) node {$V'$};
+\end{scriptsize}
+\end{tikzpicture}
+\end{comment}
+  %------------------------------------------------------
+  
+\end{enumerate}
+\begin{bemerkung}
+Sei $(X,<)$ eine simpliziale Fläche, $(Y,<_{\alpha})\in \mathcal{M}(X)$ und $e,f \in Y_1$ so, dass $\{e,f\}$ ein Randkantenpaar ist.
+ Falls $\{e,f\}$ ein Randkantenpaar vom Typ 1 ist, ist klar, wie die simpliziale Fläche $R^m_{e,f}(Y)$ aus $(Y,<_{\alpha})$ hervorgeht. Gleiches gilt auch für $C^m_{e,f}(Y)$ falls $\{e,f\}$ ein Randkantenpaar vom Typ 2 ist.\\
+Der Fall, dass $\{e,f\}$ ein Randkantenpaar vom Typ 0 ist, wird nun näher erläutert.\\
+Seien $V_e,W_e \in Y_0$ die zu $e$ und $V_f,W_f \in Y_0$ die zu $f$ zugehörigen Knoten, das heißt
+\[
+V_e,W_e <_{\alpha} e \text{ und } V_f,W_f<_{\alpha} f.
+\]  
+Dann werden zwei Fälle unterschieden:
+\begin{enumerate}
+\item Angenommen für $V_1\in \{V_e,W_e\}$ und $V_2 \in \{V_f,W_f\}$ existiert keine Kante $g \in Y_1$ mit $V_1,V_2 <g$. Dann existieren zwei Möglichkeiten, um mit dem Splitmender eine simpliziale Fläche zu konstruieren, nämlich $Z=S^m_{(V_e,e),(V_f,f)}(Y)$ und $W=S^m_{(V_e,e),(W_f,f)}(Y)$, 
+wobei für $\{V_e,V_f\},\{W_e,W_f\} \in Z_0$ und $\{e,f\} \in Z_1$
+\[
+\{V_e,V_f\},\{W_e,W_f\}\prec_1 \{e,f\}
+\] gilt mit $\prec_1$ als Inzidenz auf $Z$ und für $\{V_e, W_f\},\{V_f,W_e\}\in W_0$ und $\{e,f\}\in W_1$
+\[
+\{V_e,W_f\},\{V_f,W_e\}\prec_2 \{e,f\} 
+\] gilt mit $\prec_2$ als Inzidenz auf $W$.
+ \\
+%-----------------bild-----------------
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\definecolor{ffffff}{rgb}{1.,1.,1.}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.5cm,y=1.5cm]
+%\begin{axis}[
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-5.598043973330023,
+xmax=8.94915637797606,
+ymin=-0.5015304882422273,
+ymax=4.354530906940496,
+xtick={-4.0,-3.0,...,8.0},
+ytick={-2.0,-1.0,...,4.0},]
+\clip(-4.598043973330023,-0.5015304882422273) rectangle (8.94915637797606,4.354530906940496);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.550000011920929] (-2.,0.) -- (2.,0.) -- (2.,4.) -- (-2.,4.) -- cycle;
+\fill[line width=2.pt,color=ffffff,fill=ffffff,fill opacity=1.0] (-1.,3.) -- (-1.,1.) -- (1.,1.) -- (1.,3.) -- cycle;
+\draw [line width=2.pt] (-1.,3.)-- (-1.,1.);
+\draw [line width=2.pt] (1.,1.)-- (1.,3.);
+\begin{scriptsize}
+%\draw[color=ffffqq] (0.2789481531401666,2.1104077183111) node {$Vieleck1$};
+\draw [fill=ududff] (-1.,3.) circle (2.5pt);
+\draw[color=black] (-0.8931791816032729,3.3471945303989567) node {$V_e$};
+\draw [fill=ududff] (-1.,1.) circle (2.5pt);
+\draw[color=black] (-0.928519704258854,0.6911596866935535) node {$W_e$};
+%\draw[color=ffffff] (0.2789481531401666,2.1104077183111) node {$Vieleck2$};
+\draw[color=black] (-1.2582331015201308,2.1104077183111) node {e};
+\draw[color=black] (1.321362090622329,2.1104077183111) node {f};
+\draw [fill=qqqqff] (1.,1.) circle (2.5pt);
+\draw[color=black] (1.085890087109268,0.6440389898194454) node {$W_f$};
+\draw [fill=qqqqff] (1.,3.) circle (2.5pt);
+\draw[color=black] (1.109450435546322,3.3471945303989567) node {$V_f$};
+\end{scriptsize}
+%\end{axis}
+\end{tikzpicture}
+
+%-------------------------------------
+\begin{comment}
+\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.5cm,y=1.5cm]
+%\begin{axis}[
+x=1.5cm,y=1.5cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-4.3,
+xmax=7.0600000000000005,
+ymin=-2.46,
+ymax=6.3,
+xtick={-4.0,-3.0,...,7.0},
+ytick={-2.0,-1.0,...,6.0},]
+\clip(-2.3,-0.46) rectangle (3.06,4.3);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.550000011920929] (-2.,0.) -- (2.,0.) -- (2.,4.) -- (-2.,4.) -- cycle;
+\draw [line width=2.pt] (0.,1.)-- (0.,3.);
+\begin{scriptsize}
+\draw [fill=xdxdff] (0.,1.) circle (2.5pt);
+\draw[color=black] (0.,0.77) node {$\{W_e,W_f\}$};
+\draw [fill=xdxdff] (0.,3.) circle (2.5pt);
+\draw[color=black] (0.,3.27) node {$\{V_e,V_f\}$};
+\draw[color=black] (0.38,2.17) node {$\{e,f\}$};
+\end{scriptsize}
+%\end{axis}
+\end{tikzpicture}
+
+%------------------------------------------
+\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.5cm,y=1.5cm]
+%\begin{axis}[
+x=1.5cm,y=1.5cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-4.3,
+xmax=7.0600000000000005,
+ymin=-2.46,
+ymax=6.3,
+xtick={-4.0,-3.0,...,7.0},
+ytick={-2.0,-1.0,...,6.0},]
+\clip(-2.3,-0.46) rectangle (3.06,4.3);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.550000011920929] (-2.,0.) -- (2.,0.) -- (2.,4.) -- (-2.,4.) -- cycle;
+\draw [line width=2.pt] (0.,1.)-- (0.,3.);
+\begin{scriptsize}
+\draw [fill=xdxdff] (0.,1.) circle (2.5pt);
+\draw[color=black] (0.,0.77) node {$\{V_f,W_e\}$};
+\draw [fill=xdxdff] (0.,3.) circle (2.5pt);
+\draw[color=black] (0.,3.27) node {$\{V_e,W_f\}$};
+\draw[color=black] (0.38,2.17) node {$\{e,f\}$};
+\end{scriptsize}
+%\end{axis}
+\end{tikzpicture}
+\end{comment}
+%-----------------------------------------
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
+\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.4cm,y=1.4cm]
+%\begin{axis}[
+x=1.4cm,y=1.4cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-2.9600000000000013,
+xmax=7.400000000000004,
+ymin=-0.5400000000000005,
+ymax=4.2200000000000015,
+xtick={-2.0,-1.0,...,8.0},
+ytick={-2.0,-1.0,...,6.0},]
+\clip(-2.96,-0.54) rectangle (7.4,4.22);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.550000011920929] (-2.,0.) -- (2.,0.) -- (2.,4.) -- (-2.,4.) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.550000011920929] (3.,0.) -- (7.,0.) -- (7.,4.) -- (3.,4.) -- cycle;
+\draw [line width=2.pt] (0.,1.)-- (0.,3.);
+%\draw [line width=2.pt,color=ffffqq] (3.,0.)-- (7.,0.);
+%\draw [line width=2.pt,color=ffffqq] (7.,0.)-- (7.,4.);
+%\draw [line width=2.pt,color=ffffqq] (7.,4.)-- (3.,4.);
+%\draw [line width=2.pt,color=ffffqq] (3.,4.)-- (3.,0.);
+\draw [line width=2.pt] (5.,3.)-- (5.,1.);
+\begin{scriptsize}
+\draw [fill=xdxdff] (0.,1.) circle (2.5pt);
+\draw[color=black] (0.,0.77) node {$\{W_e,W_f\}$};
+\draw [fill=xdxdff] (0.,3.) circle (2.5pt);
+\draw[color=black] (0.14,3.37) node {$\{V_e,V_f\}$};
+\draw[color=black] (0.38,2.17) node {$\{e,f\}$};
+\draw [fill=ududff] (5.,3.) circle (2.5pt);
+\draw[color=black] (5.14,3.37) node {$\{V_e,W_f\}$};
+\draw [fill=ududff] (5.,1.) circle (2.5pt);
+\draw[color=black] (5.,0.77) node {$\{V_f,W_e\}$};
+\draw[color=black] (5.38,2.17) node {$\{e,f\}$};
+\end{scriptsize}
+%\end{axis}
+\end{tikzpicture}
+
+%-----------------------------------------
+\item Angenommen es existiert eine Kante $g\in Y_1$ mit $V_e,W_f <_{\alpha}g$, aber für $V_f$ und $W_e$ existiert keine Kante $h\in Y_1$ mit $V_f,W_e <_{\alpha} h$. \\
+%------------------------------------------
+\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+\definecolor{ffffff}{rgb}{1.,1.,1.}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.35cm,y=1.35cm]
+%\begin{axis}[
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-4.3,
+xmax=7.0600000000000005,
+ymin=-2.46,
+ymax=6.3,
+xtick={-4.0,-3.0,...,7.0},
+ytick={-2.0,-1.0,...,6.0},]
+\clip(-5.0,-0.46) rectangle (7.06,4.1);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=\gelb] (-2.,0.) -- (2.,0.) -- (2.,4.) -- (-2.,4.) -- cycle;
+\fill[line width=2.pt,color=ffffff,fill=ffffff,fill opacity=1.0] (-1.,1.) -- (1.,1.) -- (1.,3.) -- (-1.,3.) -- cycle;
+\draw [line width=2.pt] (1.,1.)-- (1.,3.);
+\draw [line width=2.pt] (-1.,3.)-- (-1.,1.);
+\draw [line width=2.pt] (-1.,3.)-- (1.,1.);
+\begin{scriptsize}
+%\draw[color=ffffqq] (0.48,2.17) node {$Vieleck1$};
+\draw [fill=ududff] (-1.,1.) circle (2.5pt);
+\draw[color=black] (-0.86,0.77) node {$W_e$};
+\draw [fill=ududff] (1.,1.) circle (2.5pt);
+\draw[color=black] (1.14,0.77) node {$W_f$};
+%\draw[color=ffffff] (0.48,2.17) node {$Vieleck2$};
+\draw [fill=ududff] (1.,3.) circle (2.5pt);
+\draw[color=black] (1.14,3.27) node {$V_f$};
+\draw [fill=ududff] (-1.,3.) circle (2.5pt);
+\draw[color=black] (-0.86,3.27) node {$V_e$};
+\draw[color=black] (-0.18,1.95) node {$g$};
+\draw[color=black] (-1.22,1.95) node {$e$};
+\draw[color=black] (1.18,1.95) node {$f$};
+\end{scriptsize}
+%\end{axis}
+\end{tikzpicture}
+
+%-----------------------------------------------
+Dann gibt es nur eine Möglichkeit mit dem Splitmender eine simpliziale Fläche zu konstruieren, nämlich $V=S^m_{(V_e,e),(V_f,f)}(Y)$, wobei für $\{V_e,V_f\},\{W_e,W_f\}\in W_0$ und $\{e,f\} \in V_1$
+\[
+\{V_e,V_f\},\{W_e,W_f\}\prec \{e,f\}
+\]und 
+\[
+\{V_e,V_f\},\{W_e,W_f\}\prec g
+\] gilt. Dabei ist $\prec$ die Inzidenz auf V.\\
+%-------------------bild---------------------------
+\begin{comment}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
+\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\begin{axis}[
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-4.3,
+xmax=7.0600000000000005,
+ymin=-2.46,
+ymax=6.3,
+xtick={-4.0,-3.0,...,7.0},
+ytick={-2.0,-1.0,...,6.0},]
+\clip(-4.3,-2.46) rectangle (7.06,6.3);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.5] (-2.,0.) -- (2.,0.) -- (2.,4.) -- (-2.,4.) -- cycle;
+\draw [shift={(-0.9,2.06)},line width=2.pt,fill=black,fill opacity=0.8999999761581421]  plot[domain=-0.9505468408120752:0.9302106616363873,variable=\t]({1.*1.3763720427268205*cos(\t r)+0.*1.3763720427268205*sin(\t r)},{0.*1.3763720427268205*cos(\t r)+1.*1.3763720427268205*sin(\t r)});
+\draw [line width=2.pt] (0.02,3.16)-- (0.,0.94);
+\begin{scriptsize}
+\draw[color=ffffqq] (0.48,2.17) node {$Vieleck1$};
+\draw [fill=xdxdff] (0.,0.94) circle (2.5pt);
+\draw[color=xdxdff] (0.14,1.31) node {$F$};
+\draw [fill=ududff] (0.02,3.16) circle (2.5pt);
+\draw[color=ududff] (0.16,3.53) node {$G$};
+\draw[color=black] (0.74,2.35) node {$c$};
+\draw[color=black] (-0.26,2.23) node {$j$};
+\end{scriptsize}
+\end{axis}
+\end{tikzpicture}
+\end{comment}
+%--------------------------------------------------
+%------------bild----------------------------------
+\definecolor{ffffff}{rgb}{1.,1.,1.}
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.5cm,y=1.5cm]
+%\begin{axis}[
+x=1.5cm,y=1.5cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-4.3,
+xmax=7.0600000000000005,
+ymin=-2.46,
+ymax=6.3,
+xtick={-4.0,-3.0,...,7.0},
+ytick={-2.0,-1.0,...,6.0},]
+\clip(-4.8,-.46) rectangle (7.06,4.3);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=\gelb] (-2.,0.) -- (2.,0.) -- (2.,4.) -- (-2.,4.) -- cycle;
+%\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.5] (2.25,2.45) -- (6.25,2.45) -- (6.25,6.45) -- (2.25,6.45) -- cycle;
+\draw [line width=2.pt] (0.,1.)-- (0.,3.);
+%\draw [line width=2.pt] (4.29,3.45)-- (4.29,5.45);
+
+\draw [shift={(-1.46,2.02)},line width=2.pt,color=ffffff,fill=ffffff,fill opacity=1.0]  plot[domain=-0.6098060014472679:0.5911571672160445,variable=\t]({1.*1.7810109488714547*cos(\t r)+0.*1.7810109488714547*sin(\t r)},{0.*1.7810109488714547*cos(\t r)+1.*1.7810109488714547*sin(\t r)});
+\draw [shift={(-1.46,2.02)},line width=2.pt]  plot[domain=-0.6098060014472679:0.5911571672160445,variable=\t]({1.*1.7810109488714547*cos(\t r)+0.*1.7810109488714547*sin(\t r)},{0.*1.7810109488714547*cos(\t r)+1.*1.7810109488714547*sin(\t r)});
+%\draw [fill=qqqqff] (4.30,3.45) circle (2.5pt);
+%\draw [fill=qqqqff] (4.30,5.45) circle (2.5pt);
+\begin{scriptsize}
+%\draw[color=ffffqq] (0.48,2.17) node {$Vieleck1$};
+\draw [fill=qqqqff] (0.,1.) circle (2.5pt);
+\draw[color=black] (0.5,2.) node {$g$};
+\draw [fill=qqqqff] (0.,3.) circle (2.5pt);
+\draw[color=black] (-0.3,2) node {$\{e,f\}$};
+\draw[color=black] (0.,0.7) node {$\{W_e,W_f\}$};
+\draw[color=black] (0.,3.3) node {$\{V_e,V_f\}$};
+%\draw[color=ffffff] (0.5,2.31) node {$c$};
+%\draw[color=black] (0.5,2.31) node {$d$};
+\end{scriptsize}
+\%end{axis}
+\end{tikzpicture}
+
+%---------------------------------------------------
+%\item Der Fall, das eine Kante $g\in Y_1$ mit $V_e,W_f<_{\alpha}$, aber keine Kante $h \in Y_1$ mit $V_f,W_e$ existiert,  erläuft analog zum zuvor behandelten Fall.
+\end{enumerate}
+\end{bemerkung}
+
+  \begin{bemerkung}
+  Sei $(X,<)$ eine simpliziale Fläche mit n Flächen. Dann gilt: 
+  \begin{enumerate}
+  \item $X$ ist isomorph zu einer simplizialen Fläche $(Y,\prec) \in \mathcal{M}(n\Delta)$.
+  \item Sei $k$ die Anzahl der inneren Kanten von $(X,<)$. Dann ist die Anzahl, der auf $n\Delta$ ausgeführten Mender-Operationen, um $X$ zu erhalten, ebenfalls $k$. Analoge Aussage gilt auch für Cutter-Operationen.
+  \item Es können genau dann keine Mender-Operationen auf $X$ durchgeführt werden, wenn $X$ abgeschlossen ist oder isomorph zu einer abgeschlossenen simplizialen Fläche ist, aus der man eine Fläche entfernt.
+  \item $X=n \cdot \Delta$ genau dann wenn keine Cutter-Operationen auf $X$ angewendet können.
+  \end{enumerate}
+  \end{bemerkung}
+%--------------------------------------------Definition HikingHole-----------------------------
+ \newpage
+%-------Überarbeitung------
+\section*{Das wandernde Loch}
+ Seien $(X,<)$ eine geschlossene simpliziale Fläche, $F \in X_{2}$, $e_{i} \in X_{1}$ und $V_{j} \in X_{0}$ für $i \in \{1,2,3\},j \in \{1,2,3\}$ mit folgenden Eigenschaften:
+ \begin{itemize}
+ \item $\vert X_{2}\vert \geq 3$,
+ \item $e_{i} < F$ für alle $i \in \{1,2,3\}$,
+ \item $V_{i}<e_{j}$ für alle $i \in \{1,2,3\}$ und $j \in \{1,2,3\} \setminus\{i\}$ ,
+ \item $V_{i} < F$ für alle $i \in \{1,2,3\}$.
+\end{itemize}  
+Zudem seien $f,g \in X_1,V_4 \in X_0,F' \in X_2$ so, dass
+\begin{itemize}
+\item $e_3<F'$ und $e_3<F$,
+\item $f,g <F'$, 
+\item $V_1,V_4<f$ und $V_2,V_4<g$.
+\end{itemize}
+%--------------bild----------------------
+\begin{comment}
+\definecolor{ttqqqq}{rgb}{0.2,0.,0.}
+\definecolor{sqsqsq}{rgb}{0.12549019607843137,0.12549019607843137,0.12549019607843137}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-5.056290110700678,
+xmax=5.380866801866215,
+ymin=-0.9227448489396118,
+ymax=4.359364127681193,
+xtick={-5.0,-4.5,...,5.0},
+ytick={-0.5,0.0,...,4.0},]
+\clip(-5.056290110700678,-0.9227448489396118) rectangle (5.380866801866215,4.359364127681193);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.5] (-2.,0.) -- (2.,0.) -- (0.,3.4641016151377553) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.5] (0.,3.4641016151377553) -- (2.,0.) -- (4.,3.464101615137754) -- cycle;
+\draw [line width=2.pt,color=sqsqsq] (-2.,0.)-- (2.,0.);
+\draw [line width=2.pt] (2.,0.)-- (0.,3.4641016151377553);
+\draw [line width=2.pt] (0.,3.4641016151377553)-- (-2.,0.);
+\draw [line width=2.pt,color=ttqqqq] (0.,3.4641016151377553)-- (2.,0.);
+\draw [line width=2.pt] (2.,0.)-- (4.,3.464101615137754);
+\draw [line width=2.pt,color=sqsqsq] (4.,3.464101615137754)-- (0.,3.4641016151377553);
+\begin{scriptsize}
+\draw [fill=qqqqff] (-2.,0.) circle (2.5pt);
+\draw[color=qqqqff] (-2.047666183295526,-0.2934108260899206) node {$V_4$};
+\draw [fill=qqqqff] (2.,0.) circle (2.5pt);
+\draw[color=qqqqff] (2.190727102068595,-0.2934108260899206) node {$V_2$};
+\draw[color=black] (0.05337888214728793,1.23275494822094) node {$F'$};
+\draw[color=sqsqsq] (0.03522730490804116,-0.24676492196181318) node {$g$};
+\draw[color=black] (1.174238776670776,1.9089012003828816) node {$e_3$};
+\draw[color=black] (-1.1900041587411159,1.7862117288338232) node {$f$};
+\draw [fill=qqqqff] (0.,3.4641016151377553) circle (2.5pt);
+\draw[color=qqqqff] (0.09514414231596978,3.75145261535057) node {$V_1$};
+\draw[color=black] (2.0228250126055625,2.3944558915327323) node {$F$};
+\draw[color=black] (3.3162912160860375,1.7636885824689075) node {$e_1$};
+\draw[color=sqsqsq] (2.054590272774244,3.7603620787860503) node {$e_2$};
+\draw [fill=qqqqff] (4.,3.464101615137754) circle (2.5pt);
+\draw[color=qqqqff] (4.087566923569883,3.75145261535057) node {$V_3$};
+\end{scriptsize}
+\end{tikzpicture}
+\end{comment}
+%---------------------------------------------
+\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.5cm,y=1.5cm]
+%\begin{axis}[
+x=1.5cm,y=1.5cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-4.3,
+xmax=7.0600000000000005,
+ymin=-2.46,
+ymax=6.3,
+xtick={-4.0,-3.0,...,7.0},
+ytick={-2.0,-1.0,...,6.0},]
+\clip(-4.3,-0.46) rectangle (3.06,4.3);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=\gelb] (-2.,0.) -- (2.,0.) -- (2.,4.) -- (-2.,4.) -- cycle;
+%\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=\gelb] (-1.,2.) -- (1.,2.) -- (0.,3.7320508075688776) -- cycle;
+%\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=\gelb] (1.,2.) -- (-1.,2.) -- (0.,0.2679491924311226) -- cycle;
+\draw [line width=2.pt] (-1.,2.)-- (1.,2.);
+\draw [line width=2.pt] (1.,2.)-- (0.,3.7320508075688776);
+\draw [line width=2.pt] (0.,3.7320508075688776)-- (-1.,2.);
+\draw [line width=2.pt] (1.,2.)-- (-1.,2.);
+\draw [line width=2.pt] (-1.,2.)-- (0.,0.2679491924311226);
+\draw [line width=2.pt] (0.,0.2679491924311226)-- (1.,2.);
+\begin{scriptsize}
+\draw [fill=ududff] (-1.,2.) circle (2.5pt);
+\draw[color=black] (-1.24,2.07) node {$V_1$};
+\draw [fill=ududff] (1.,2.) circle (2.5pt);
+\draw[color=black] (1.24,2.07) node {$V_2$};
+\draw[color=black] (0.,2.75) node {$F$};
+\draw[color=black] (0.06,1.85) node {$e_3$};
+\draw[color=black] (0.67,2.96) node {$e_1$};
+\draw[color=black] (-0.67,2.96) node {$e_2$};
+\draw [fill=ududff] (0.,3.7320508075688776) circle (2.5pt);
+\draw[color=black] (0.,3.91) node {$V_3$};
+\draw[color=black] (0.,1.31) node {$F'$};
+\draw[color=black] (-0.7,1.16) node {$f$};
+\draw[color=black] (0.7,1.16) node {$g$};
+\draw [fill=ududff] (0.,0.2679491924311226) circle (2.5pt);
+\draw[color=black] (0.,0.1) node {$V_4$};
+\end{scriptsize}
+%\end{axis}
+\end{tikzpicture}
+
+%-----------------------------------------
+Sei außerdem $(Y,\prec)$ eine simpliziale Fläche mit
+\begin{itemize}
+\item $Y_{2}=X_{2}$,
+\item $Y_{1}=(X_{1} \setminus\{e_{1},e_2,e_3,f\} )\cup \{e_{1}^1,e_1^{2},e_{2}^1,e_2^{2},e_{3}^1,e_3^{2},f^1,f^2\}$,
+\item $Y_{0}=(X_{0} \setminus\{V_{1},V_2,V_3\} )\cup \{V_{1}^1,V_1^{2},V_1^{3},V_{2}^1,V_2^{2},V_{3}^1,V_3^{2}\}$
+
+\end{itemize}
+und zugehöriger Inzidenz $\prec$ 
+so, dass durch die Abbildung 
+\[
+\alpha: Y \to X ,x \mapsto 
+\begin{cases}
+x & \text{für } x\in X \cap Y\\
+e_i & \text{für } x =e_i^j ,i=1,2,3,\,j=1,2\\
+V_i &\text{für } x =V_i^j,i=1,2,3,\,j=1,2\\
+V_1 &\text{für } x=V_1^3\\
+f &\text{für } x=f^1,f^2 
+\end{cases}
+\]
+
+eine MendingMap definiert wird. Die Existenz einer solchen Fläche folgt mit der unten beschriebenen Konstruktion. Somit ist $X$ isomorph zu der simplizialen Fläche $X(\alpha)$ und deshalb ist es möglich, $X$ für die unten skizzierte Konstruktion mit $X(\alpha)$ und so die oben beschrieben Knoten und Kanten  mit ihren Urbildern in $Y$ zu identifizieren. \\
+%--------------------------------------------------
+\begin{comment}
+\definecolor{ttqqqq}{rgb}{0.2,0.,0.}
+\definecolor{sqsqsq}{rgb}{0.12549019607843137,0.12549019607843137,0.12549019607843137}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-5.056290110700678,
+xmax=5.380866801866215,
+ymin=-0.9227448489396118,
+ymax=4.359364127681193,
+xtick={-5.0,-4.5,...,5.0},
+ytick={-0.5,0.0,...,4.0},]
+\clip(-5.056290110700678,-0.9227448489396118) rectangle (5.380866801866215,4.359364127681193);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.5] (-2.,0.) -- (2.,0.) -- (0.,3.4641016151377553) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.5] (0.,3.4641016151377553) -- (2.,0.) -- (4.,3.464101615137754) -- cycle;
+\draw [line width=2.pt,color=sqsqsq] (-2.,0.)-- (2.,0.);
+\draw [line width=2.pt] (2.,0.)-- (0.,3.4641016151377553);
+\draw [line width=2.pt] (0.,3.4641016151377553)-- (-2.,0.);
+\draw [line width=2.pt,color=ttqqqq] (0.,3.4641016151377553)-- (2.,0.);
+\draw [line width=2.pt] (2.,0.)-- (4.,3.464101615137754);
+\draw [line width=2.pt,color=sqsqsq] (4.,3.464101615137754)-- (0.,3.4641016151377553);
+\begin{scriptsize}
+\draw [fill=qqqqff] (-2.,0.) circle (2.5pt);
+\draw[color=qqqqff] (-2.0204388174366557,-0.2934108260899206) node {$\{V_4\}$};
+\draw [fill=qqqqff] (2.,0.) circle (2.5pt);
+\draw[color=qqqqff] (2.217954467927465,-0.2934108260899206) node {$\{V_2\}$};
+\draw[color=black] (0.05337888214728793,1.23275494822094) node {$F'$};
+\draw[color=sqsqsq] (0.062454670766911316,-0.24676492196181318) node {\{g\}};
+\draw[color=black] (1.4829819149221139,1.9089012003828816) node {$\{e_3^1,e_3^2\}$};
+\draw[color=black] (-1.4837010042626223,1.9678938264104335) node {$\{f^1,f^2\}$};
+\draw [fill=qqqqff] (0.,3.4641016151377553) circle (2.5pt);
+\draw[color=qqqqff] (0.11237150817483993,3.75145261535057) node {$\{V_1\}$};
+\draw[color=black] (2.0228250126055625,2.3944558915327323) node {F};
+\draw[color=black] (3.6250343543373756,1.7636885824689075) node {$\{e_1^1,e_1^2\}$};
+\draw[color=sqsqsq] (2.2633334110255823,3.7603620787860503) node {$\{e_2^1,e_2^2\}$};
+\draw [fill=qqqqff] (4.,3.464101615137754) circle (2.5pt);
+\draw[color=qqqqff] (4.114794289428753,3.75145261535057) node {$\{V_3\}$};
+\end{scriptsize}
+
+\end{tikzpicture}
+\end{comment}
+%----------------------------bild------------------
+\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.5cm,y=1.5cm]
+%\begin{axis}[
+x=1.5cm,y=1.5cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-4.3,
+xmax=7.0600000000000005,
+ymin=-2.46,
+ymax=6.3,
+xtick={-4.0,-3.0,...,7.0},
+ytick={-2.0,-1.0,...,6.0},]
+\clip(-5.3,-0.46) rectangle (3.06,4.3);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=\gelb] (-2.2,-0.1) -- (2.,-0.1) -- (2.,4.1) -- (-2.2,4.1) -- cycle;
+%\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=\gelb] (-1.,2.) -- (1.,2.) -- (0.,3.7320508075688776) -- cycle;
+%\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=\gelb] (1.,2.) -- (-1.,2.) -- (0.,0.2679491924311226) -- cycle;
+\draw [line width=2.pt] (-1.,2.)-- (1.,2.);
+\draw [line width=2.pt] (1.,2.)-- (0.,3.7320508075688776);
+\draw [line width=2.pt] (0.,3.7320508075688776)-- (-1.,2.);
+\draw [line width=2.pt] (1.,2.)-- (-1.,2.);
+\draw [line width=2.pt] (-1.,2.)-- (0.,0.2679491924311226);
+\draw [line width=2.pt] (0.,0.2679491924311226)-- (1.,2.);
+\begin{scriptsize}
+\draw [fill=ududff] (-1.,2.) circle (2.5pt);
+\draw[color=black] (-1.6,2.2) node {$\{V_1^1,V_1^2,V_1^3\}$};
+\draw [fill=ududff] (1.,2.) circle (2.5pt);
+\draw[color=black] (1.54,2.07) node {$\{V_2^1,V_2^2\}$};
+\draw[color=black] (0.,2.75) node {$F$};
+\draw[color=black] (0.06,1.85) node {$\{e_3^1,e_3^2\}$};
+\draw[color=black] (0.87,2.96) node {$\{e_1^1,e_1^2\}$};
+\draw[color=black] (-0.87,2.96) node {$\{e_2^1,e_2^2\}$};
+\draw [fill=ududff] (0.,3.7320508075688776) circle (2.5pt);
+\draw[color=black] (0.,3.91) node {$\{V_3^1,V_3^2\}$};
+\draw[color=black] (0.,1.31) node {$F'$};
+\draw[color=black] (-1.,1.16) node {$\{f^1,f^2\}$};
+\draw[color=black] (0.8,1.16) node {$\{g\}$};
+\draw [fill=ududff] (0.,0.2679491924311226) circle (2.5pt);
+\draw[color=black] (0.,0.1) node {$\{V_4\}$};
+\end{scriptsize}
+%\end{axis}
+\end{tikzpicture}
+
+%--------------------------------------------------
+Ziel ist es, wie schon erwähnt durch Anwenden der Mender- und Cutteroperatoren aus $(X,<)$ eine simpliziale Fläche $X^H_{(F,f)}$ zu konstruieren. Dies soll durch den nun folgenden Algormithmus realisiert werden, welcher wie folgt definiert wird:
+\begin{enumerate} 
+\item Zunächst soll ein sogenanntes \emph{Loch an der Stelle $F$} erzeugt werden, welches entsteht, wenn man $F$ von der simplizialen Fläche trennt:
+\begin{enumerate}[(i)]
+\item Wende einen $Crater Cut$ $C^{c}_{\{e_{1}^1,e_{1}^2\}}$ an, um aus der Kante $\{e_{1}^1,e_{1}^2\}$ die Kanten $\{e_1^1\}$ und $\{e_1^2\}$ zu erhalten, wobei für $\{e_1^1\}$
+\[
+\{e_1^1\} <F
+\]
+und für $\{e_1^2\}$
+\[
+\{e_1^2\} \nless F
+\]
+gilt.\\
+%---------------------bild---------------------------
+\definecolor{ffffff}{rgb}{1.,1.,1.}
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.4cm,y=1.4cm]
+%\begin{axis}[
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-4.3,
+xmax=18.7,
+ymin=-5.34,
+ymax=6.3,
+xtick={-4.0,-3.0,...,18.0},
+ytick={-5.0,-4.0,...,6.0},]
+\clip(-4.3,-0.34) rectangle (3.7,4.3);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=\gelb] (-2.2,0.) -- (2.,0.) -- (2.,4.2) -- (-2.2,4.2) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.10000000149011612] (-1.,2.) -- (1.,2.) -- (0.,3.7320508075688776) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.10000000149011612] (1.,2.) -- (-1.,2.) -- (0.,0.2679491924311226) -- cycle;
+\draw [line width=2.pt] (0.,3.7320508075688776)-- (-1.,2.);
+\draw [line width=2.pt] (1.,2.)-- (-1.,2.);
+\draw [line width=2.pt] (-1.,2.)-- (0.,0.2679491924311226);
+\draw [line width=2.pt] (0.,0.2679491924311226)-- (1.,2.);
+\draw [rotate around={-60.:(0.5,2.8660254037844513)},line width=2.pt,color=ffffff,fill=ffffff,fill opacity=1.0] (0.5,2.8660254037844513) ellipse (1.4633824013732526cm and 0.1641459454658895cm);
+\draw [rotate around={-60.:(0.5,2.866025403784439)},line width=2.pt] (0.5,2.866025403784439) ellipse (1.463382401373216cm and 0.16414594546590086cm);
+\begin{scriptsize}
+%\draw[color=black] (0.48,2.17) node {$Vieleck1$};
+\draw [fill=ududff] (-1.,2.) circle (2.5pt);
+\draw[color=black] (-1.56,2.27) node {$\{V_1^1,V_1^2,V_1^3\}$};
+\draw [fill=ududff] (1.,2.) circle (2.5pt);
+\draw[color=black] (1.459,2.12) node {$\{V_2^1,V_2^2\}$};
+\draw[color=black] (-0.1,2.37) node {$F$};
+\draw [fill=qqqqff] (0.,3.7320508075688776) circle (2.5pt);
+\draw[color=black] (0.14,4.01) node {$\{V_3^1,V_3^2\}$};
+\draw[color=black] (0.06,1.47) node {$F'$};
+\draw [fill=qqqqff] (0.,0.2679491924311226) circle (2.5pt);
+\draw[color=black] (0.76,1.13) node {$\{g\}$};
+\draw[color=black] (-0.94,1.13) node {$\{f^1,f^2\}$};
+\draw[color=black] (0.36,0.13) node {$\{V_4\}$};
+\draw[color=black] (0.21,2.67) node {$\{e_1^1\}$};
+\draw[color=black] (0.84,3.13) node {$\{e_1^2\}$};
+\draw[color=black] (-0.86,2.97) node {$\{e_2^1,e_2^2\}$};
+\end{scriptsize}
+%\end{axis}
+\end{tikzpicture}
+
+%-------------------------------------------------------
+\item Wende einen $Rip Cut$ $R^{c}_{\{e^1_{2},e^2_{2}\}}$ an, um aus dem Knoten $\{V^1_{3},V^2_{3}\}$ die Knoten $\{V^1_{3}\}$ und $\{V^2_{3}\}$ und aus der Kante $\{e^1_{2},e^2_{2}\}$ die Kanten $\{e^1_{2}\}$ und $\{e^2_{2}\}$ zu erhalten, wobei für $\{e_2^1\}$
+\[
+\{e_2^1\}<F,
+\] 
+für $\{e_2^2\}$
+\[
+\{e^2_2\} \nless F',
+\]
+ für $\{V_3^1\}$
+ \[
+\{V_3^1\}<\{e_2^1\},\{V_3^1\}<\{e_1^1\},
+ \]
+ und für $\{V_3^2\}$
+ \[
+\{V_3^2\}<\{e_2^2\},\{V_3^2\}<\{e_1^2\} 
+ \] gilt.\\
+ %------------------------------bild-------------
+\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
+\definecolor{ffffff}{rgb}{1.,1.,1.}
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.85cm,y=0.85cm]
+
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+xmin=-4.0,
+xmax=14.0,
+ymin=-3.3,
+ymax=5.34,
+xtick={-9.0,-8.0,...,14.0},
+ytick={-5.0,-4.0,...,6.0},]
+\clip(-7.,-3.3) rectangle (4.,5.34);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=\gelb] (4.,-3.) -- (4.,5.) -- (-4.,5.) -- (-4.,-3.) -- cycle;   
+\fill[line width=2.pt,color=ffffff,fill=ffffff,fill opacity=1.0] (-2.,1.) -- (2.,1.) -- (0.,4.464101615137755) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.1] (-2.,1.) -- (0.,-2.44) -- (1.9791273890184695,1.012050807568877) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.550000011920929] (-2.,1.) -- (0.,3.48) -- (2.,1.) -- cycle;
+\draw [line width=2.pt] (-2.,1.)-- (2.,1.);
+\draw [line width=2.pt] (2.,1.)-- (0.,4.464101615137755);
+\draw [line width=2.pt] (0.,4.464101615137755)-- (-2.,1.);
+\draw [line width=2.pt] (-2.,1.)-- (0.,-2.44);
+\draw [line width=2.pt] (0.,-2.44)-- (1.9791273890184695,1.012050807568877);
+\draw [line width=2.pt] (1.9791273890184695,1.012050807568877)-- (-2.,1.);
+\draw [line width=2.pt] (-2.,1.)-- (0.,3.48);
+\draw [line width=2.pt] (0.,3.48)-- (2.,1.);
+\draw [line width=2.pt] (2.,1.)-- (-2.,1.);
+\begin{scriptsize}
+\draw[color=black] (0.12,0.617) node {$\{e_3^1,e_3^2\}$};
+\draw [fill=qqqqff] (-2.,1.) circle (2.5pt);
+\draw[color=black] (-3.01,1.22) node {$\{V_1^1,V_1^2,V_1^3\}$};
+\draw [fill=qqqqff] (2.,1.) circle (2.5pt);
+\draw[color=black] (2.59,1.42) node {$\{V_2^1,V_2^2\}$};
+%\draw[color=ffffff] (0.48,2.33) node {$Vieleck1$};
+%\draw[color=black] (0.07,1.5) node {$e_3$};
+\draw[color=black] (1.37,3.12) node {$\{e_1^2\}$};
+\draw[color=black] (-1.27,3.12) node {$\{e_2^2\}$};
+\draw [fill=qqqqff] (0.,4.464101615137755) circle (2.5pt);
+\draw[color=black] (0.42,4.8) node {$\{V_3^2\}$};
+\draw [fill=qqqqff] (0.,-2.44) circle (2.5pt);
+\draw[color=black] (0.09,-2.84) node {$\{V_4\}$};
+\draw[color=black] (0.1,-0.13) node {F'};
+\draw[color=black] (-1.74,-0.71) node {$\{f^1,f^2\}$};
+\draw[color=black] (1.42,-0.69) node {$\{g\}$};
+\draw [fill=xdxdff] (0.,3.48) circle (2.5pt);
+\draw[color=black] (0.,2.8) node {$\{V_3^1\}$};
+\draw[color=black] (0.06,2.01) node {F};
+\draw[color=black] (-0.95,1.76) node {$\{e_2^1\}$};
+\draw[color=black] (0.85,1.76) node {$\{e_1^1\}$};
+\end{scriptsize}
+
+\end{tikzpicture}
+
+%----------------------------------------------
+ \item Wende einen $Split Cut$ $ S^{c}_{\{e^1_{3},e^2_{3}\}}$ an, um aus der Kante $\{e^1_{3},e^2_{3}\}$ die Kanten $\{e^1_{3}\}$ und $\{e^2_{3}\}$, aus dem Knoten $\{V_1^1,V_1^2,V_1^3\}$ die Knoten $\{V_1^1\}$ und $\{V_1^2,V_1^3\}$ und aus dem Knoten $\{V_2^1,V_2^2\}$ die Knoten $\{V_2^1\}$ und $\{V_2^2\}$, wobei für $\{e_3^1\}$
+\[
+\{e_3^1\}<F,
+\]
+für $\{e_3^2\}$
+\[
+\{e_3^2\} \nless F,\{e_3^2\} < F',
+\]
+für $\{V_1^1\}$
+\[
+\{V_1^1\}<\{e_3^1\},\{V_1^1\}<\{e_2^1\},
+\]
+für $\{V_1^2,V_1^3\}$
+\[
+\{V_1^2,V_1^3\}<\{e_2^2\},\{V_1^2,V_1^3\}<\{e_3^2\},
+\]
+für $\{V_2^1\}$
+\[
+\{V_2^1\}<\{e_1^1\},\{V_2^1\}<\{e_3^1\}
+\]
+und für $\{V_2^2\}$
+\[
+\{V_2^2\}<\{e^2_1\},\{V_2^2\}<\{e_3^2\}
+\] gilt.
+
+\end{enumerate}
+Durch dieses Anwenden der Operatoren erhält man eine simpliziale Fläche $(Y,\prec)\in \mathcal{M}(X)$ mit zwei Zusammenhangskomponenten $X^{1}$ und $X^{2}$, wobei $X^{1}=\{F,\{V^1_{1}\},\{V^1_{2}\},\{V^1_{3}\},\{e^1_{1}\},\{e^1_{2}\},\{e^1_ {3}\}\}$ mit den Inzidenzen 
+\begin{itemize}
+ \item $\{e_{i}^1\} < F$ für alle $i \in \{1,2,3\}$,
+ \item $\{V_{i}^1\}<\{e_{j}^1\}$ für alle $i \in \{1,2,3\}$ und $j \in \{1,2,3\} \setminus\{i\}$ ,
+ \item $\{V_{i}^1\} < F$ für alle $i \in \{1,2,3\}$,
+\end{itemize}
+das Dreieck und $X^{2}$ die Fläche mit fehlendem Dreieck $F$ beschreibt.\\
+Es entstehen also Randkanten $\{e^1_{i}\},\{e^2_{i}\}$ für $i \in \{1,2,3\}$, wobei die Kanten $\{e^2_{i}\}$ zu der Zusammenhangskomponente $X^2$ gehören. \\
+%------------------------bild------------------------
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\definecolor{ffffff}{rgb}{1.,1.,1.}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-3.5,
+xmax=10.0,
+ymin=-3.0,
+ymax=5.2,
+xtick={-9.0,-8.0,...,14.0},
+ytick={-5.0,-4.0,...,6.0},]
+\clip(-4.,-3.3) rectangle (14.,5.34);
+%----------
+%\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.550000011920929] (-4.,-3.) -- (-4.,5.) -- (-3.,5.) -- (-3.,-3.) -- cycle;
+
+%--------------
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=\gelb] (-3.5,-3.) -- (-3.5,5.) -- (3.,5.) -- (3.,-3.) -- cycle;
+\fill[line width=2.pt,color=ffffff,fill=ffffff,fill opacity=1.0] (-2.,1.) -- (2.,1.) -- (0.,4.464101615137755) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.20000000298023224] (-2.,1.) -- (0.,-2.44) -- (1.9791273890184695,1.012050807568877) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=\gelb] (5.,1.) -- (9.,1.) -- (7.,4.464101615137755) -- cycle;
+%\draw [line width=2.pt,color=ffffqq] (-3.5,-3.)-- (-3.5,5.);
+%\draw [line width=2.pt,color=ffffqq] (-3.,5.)-- (3.,5.);
+%\draw [line width=2.pt,color=ffffqq] (3.,5.)-- (3.,-3.);
+%\draw [line width=2.pt,color=ffffqq] (3.,-3.)-- (-3.,-3.);
+\draw [line width=2.pt] (-2.,1.)-- (2.,1.);
+\draw [line width=2.pt] (2.,1.)-- (0.,4.464101615137755);
+\draw [line width=2.pt] (0.,4.464101615137755)-- (-2.,1.);
+\draw [line width=2.pt] (-2.,1.)-- (0.,-2.44);
+\draw [line width=2.pt] (0.,-2.44)-- (1.9791273890184695,1.012050807568877);
+\draw [line width=2.pt] (1.9791273890184695,1.012050807568877)-- (-2.,1.);
+\draw [line width=2.pt] (5.,1.)-- (9.,1.);
+\draw [line width=2.pt] (9.,1.)-- (7.,4.464101615137755);
+\draw [line width=2.pt] (7.,4.464101615137755)-- (5.,1.);
+\begin{scriptsize}
+\draw[color=black] (0,0.7) node {$e_3^2$};
+%\draw[color=black] (7,1.4) node {$e_3^1$};
+
+\draw[color=black] (1.28,2.93) node {$e_1^2$};
+%\draw[color=black] (8.28,2.93) node {$e_1^2$};
+
+\draw[color=black] (-1.28,2.93) node {$\{e_2^2\}$};
+\draw[color=black] (5.7,2.93) node {$\{e_2^1\}$};
+\draw[color=black] (8.3,2.93) node {$\{e_2^1\}$};
+
+\draw[color=black] (-1.88,-0.6) node {$\{f^1,f^2\}$};
+\draw[color=black] (1.68,-0.6) node {$\{g\}$};
+\draw [fill=qqqqff] (-2.,1.) circle (2.5pt);
+\draw[color=black] (-2.551,1.42) node {$\{V_1^2,V_1^3\}$};
+\draw [fill=qqqqff] (2.,1.) circle (2.5pt);
+\draw[color=black] (2.29,1.42) node {$\{V_2^2\}$};
+\draw[color=ffffff] (0.48,2.33) node {$Vieleck1$};
+\draw [fill=qqqqff] (0.,4.464101615137755) circle (2.5pt);
+\draw[color=black] (0.43,4.7) node {$\{V_3^2\}$};
+\draw [fill=qqqqff] (0.,-2.44) circle (2.5pt);
+\draw[color=black] (0.14,-2.75) node {$\{V_4\}$};
+\draw[color=black] (0.1,0.03) node {F'};
+\draw [fill=qqqqff] (5.,1.) circle (2.5pt);
+\draw[color=black] (5.08,0.63) node {$\{V_1^1\}$};
+\draw [fill=qqqqff] (9.,1.) circle (2.5pt);
+\draw[color=black] (9.1,0.67) node {$\{V_2^1\}$};
+\draw[color=black] (7.06,2.33) node {$F$};
+\draw[color=black] (7.06,0.70) node {$\{e_3^1\}$};
+\draw [fill=qqqqff] (7.,4.464101615137755) circle (2.5pt);
+\draw[color=black] (7.14,4.83) node {$\{V_3^1\}$};
+\end{scriptsize}
+
+\end{tikzpicture}
+%-------------------------------------------------------
+\item Nun soll das \emph{Loch an der Stelle F} verschoben werden. 
+\begin{enumerate}[(i)]
+\item Wende einen $Rip Cut$ $R^{c}_{\{f^1,f^2\}}$ an, um aus der Kante $\{f^1,f^2\}$ die Kanten $\{f^1\}$ und $\{f^2\}$ und aus dem Knoten $\{V_1^2,V_1^3\}$ die Knoten $\{V_1^2\}$ und $\{V_1^3\}$ zu erhalten, wobei für $\{f^1\}$
+\[
+\{f^1\} \nless F,\{f^1\} \nless F',
+\]
+für $\{f^2\}$
+\[
+\{f^2\}< F',
+\]
+für $\{V_1^2\}$
+\[
+\{V_1^2\}<\{e_3^2\},\{V_1^2\}<\{f^2\}
+\]
+und für $\{V_1^3\}$
+\[
+\{V_1^3\}<\{f^1\},\{V_1^3\}<\{e_2^2\}.
+\]
+%----------------bild------------------------
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
+\definecolor{ffffff}{rgb}{1.,1.,1.}
+\definecolor{sqsqsq}{rgb}{0.12549019607843137,0.12549019607843137,0.12549019607843137}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-4.5,
+xmax=10.0,
+ymin=-5.0,
+ymax=5.2,
+xtick={-9.0,-8.0,...,14.0},
+ytick={-5.0,-4.0,...,6.0},]
+\clip(-3.664966779911168,-4.336419420914822) rectangle (10.164271214115164,5.25368189432285);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.10000000149011612] (-2.,0.) -- (0.,-3.481320628255737) -- (2.014912102788271,-0.008609506558991509) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.5] (-3.06633318691027,3.9892123475876073) -- (-3.0412642843067688,-3.8824230699117557) -- (2.6995144118949965,-3.9826986803257602) -- (2.6744455092914956,3.9892123475876073) -- cycle;
+\fill[line width=2.pt,color=ffffff,fill=ffffff,fill opacity=1.0] (-2.,0.) -- (2.,0.) -- (0.,3.4641016151377553) -- cycle;
+\fill[line width=2.pt,color=ffffff,fill=ffffff,fill opacity=1.0] (0.,-3.481320628255737) -- (-2.,0.) -- (-1.010683173423175,0.028325736234424664) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.44999998807907104] (4.,0.) -- (8.,0.) -- (6.,3.4641016151377553) -- cycle;
+\draw [line width=2.pt,color=sqsqsq] (-2.,0.)-- (0.,-3.481320628255737);
+\draw [line width=2.pt] (0.,-3.481320628255737)-- (2.014912102788271,-0.008609506558991509);
+\draw [line width=2.pt,color=sqsqsq] (2.014912102788271,-0.008609506558991509)-- (-1.,0.);
+\draw [line width=2.pt,color=ffffff]  (-3.06633318691027,3.9892123475876073)-- (-3.0412642843067688,-3.8824230699117557);
+\draw [line width=2.pt,color=ffffff] (2.6995144118949965,-3.9826986803257602)-- (2.6744455092914956,3.9892123475876073);
+\draw [line width=2.pt,color=sqsqsq] (2.,0.)-- (0.,3.4641016151377553);
+\draw [line width=2.pt] (0.,3.4641016151377553)-- (-2.,0.);
+\draw [line width=2.pt,color=sqsqsq] (0.,-3.481320628255737)-- (-2.,0.);
+\draw [line width=2.pt,color=ffffff] (-1.5,0.)-- (-1.010683173423175,0.028325736234424664);
+\draw [line width=2.pt,color=sqsqsq] (-1.010683173423175,0.028325736234424664)-- (0.,-3.481320628255737);
+\draw [line width=2.pt,color=ffffff] (-2.,0.)-- (-1.010683173423175,0.028325736234424664);
+\draw [line width=2.pt,color=sqsqsq] (4.,0.)-- (8.,0.);
+\draw [line width=2.pt,color=sqsqsq] (8.,0.)-- (6.,3.4641016151377553);
+\draw [line width=2.pt,color=sqsqsq] (6.,3.4641016151377553)-- (4.,0.);
+\begin{scriptsize}
+\draw [fill=qqqqff] (-2.,0.) circle (2.5pt);
+\draw[color=black] (-2.2815938522964825,0.30408366487293736) node {$\{V_1^3\}$};
+\draw [fill=qqqqff] (-0.,-3.481320628255737) circle (2.5pt);
+\draw[color=black] (0.4555720184676383,-3.6314584334627392) node {$\{V_4\}$};
+\draw[color=black] (0.5937265932008994,-0.9368270140003698) node {$F'$};
+\draw[color=black] (1.4210003791164376,-1.7139629947089057) node {$\{g\}$};
+\draw[color=sqsqsq] (0.3555720184676383,-0.27222548459358455) node {$\{e_3^2\}$};
+\draw [fill=qqqqff] (2.014912102788271,-0.108609506558991509) circle (2.5pt);
+\draw[color=black] (2.260808616333726,0.3) node {$\{V_2^2\}$};
+\draw[color=ffffff] (-3.2295566642470322,0.32915256747643856) node {$\{f^1\}$};
+\draw[color=ffffff] (3.21342691526677,0.30408366487293736) node {$h_1$};
+\draw[color=ffffff] (0.5937265932008994,1.3695120255217366) node {$Vieleck1$};
+\draw[color=sqsqsq] (1.258879343435694,2.209320262739025) node {$\{e_1^2\}$};
+\draw[color=black] (-1.199251163777443,2.284526970549529) node {$\{e_2^2\}$};
+\draw [fill=qqqqff] (0.,3.4641016151377553) circle (2.5pt);
+\draw[color=black] (0.23022750545013249,3.7892123475876073) node {$\{V_3^2\}$};
+\draw [fill=ududff] (-1.010683173423175,0.028325736234424664) circle (2.5pt);
+\draw[color=black] (-0.7725285986899139,0.3547726909079489) node {$\{V_1^2\}$};
+\draw[color=sqsqsq] (-1.0352008551986667,-1.0120337218108733) node {$\{f^2\}$};
+\draw[color=ffffff] (-1.4368545176826946,-0.15969103329183398) node {$d$};
+\draw[color=sqsqsq] (-1.5363032968546852,-1.5635495790878988) node {$\{f^1\}$};
+\draw[color=ffffff] (-1.4368545176826946,-0.15969103329183398) node {$l$};
+\draw [fill=qqqqff] (4.,0.) circle (2.5pt);
+\draw[color=black] (4.090838506389312,-0.3477078028180926) node {$\{V_1^1\}$};
+\draw [fill=qqqqff] (8.,0.) circle (2.5pt);
+\draw[color=black] (8.352276338570503,-0.2725010950075892) node {$\{V_2^1\}$};
+\draw[color=black] (6.108885165971154,1.4196498307287388) node {$F$};
+\draw[color=sqsqsq] (5.96626325083409,-0.22208767938658227) node {$\{e_3^1\}$};
+\draw[color=sqsqsq] (7.450347065672471,2.209320262739025) node {$\{e_1^1\}$};
+\draw[color=sqsqsq] (4.842905584494346,2.209320262739025) node {$\{e_2^1\}$};
+\draw [fill=qqqqff] (6.,3.4641016151377553) circle (2.5pt);
+\draw[color=black] (6.321970838100914,3.9892123475876073) node {$\{V_3^1\}$};
+\end{scriptsize}
+
+\end{tikzpicture}
+%----------------------------------------------
+\item Wende einen $RipMender$ $R^{m}_{\{e^2_{1}\},\{e^2_{3}\}}$ an, um die Kanten $\{e^2_{1}\}$ und $\{e^2_{3}\}$ zu einer Kante $\{e^2_{1},e^2_{3}\}$ und die Knoten $\{V_1^2\}$ und $\{V_3^2\}$ zu dem Knoten $\{V_1^2,V_3^2\}$ zusammenzuführen,wobei für $\{e_3^2,e_1^2\}$
+\[
+\{e_3^2,e_1^2\}<F'
+\]
+und für $\{V_1^2,V_3^2\}$
+\[
+\{V_1^2,V_3^2\}<\{e_2^2\},\{V_1^2,V_3^2\}<\{e^2_{1},e^2_{3}\}
+\] gilt.
+\end{enumerate}
+%\centerline{$\textcolor{red}{Bild4}$}
+%-----------------------bild---------------------------
+\begin{comment}
+\definecolor{ffffff}{rgb}{1.,1.,1.}
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.5cm,y=1.5cm]
+\begin{axis}[
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-3.583376623376623,
+xmax=16.330043290043285,
+ymin=-4.489177489177493,
+ymax=5.588744588744593,
+xtick={-3.0,-2.0,...,16.0},
+ytick={-4.0,-3.0,...,5.0},]
+\clip(-3.583376623376623,-4.489177489177493) rectangle (16.330043290043285,5.588744588744593);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.5] (-2.,0.) -- (2.,0.) -- (2.,4.) -- (-2.,4.) -- cycle;
+\fill[line width=2.pt,color=ffffff,fill=ffffff,fill opacity=1.0] (0.,1.) -- (0.,3.) -- (-1.7320508075688776,2.) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.4000000059604645] (0.,3.) -- (0.,1.) -- (1.7320508075688776,2.) -- cycle;
+\draw [line width=2.pt] (0.,1.)-- (0.,3.);
+\draw [line width=2.pt] (0.,3.)-- (-1.7320508075688776,2.);
+\draw [line width=2.pt] (-1.7320508075688776,2.)-- (0.,1.);
+\draw [line width=2.pt] (0.,3.)-- (0.,1.);
+\draw [line width=2.pt] (0.,1.)-- (1.7320508075688776,2.);
+\draw [line width=2.pt] (1.7320508075688776,2.)-- (0.,3.);
+\begin{scriptsize}
+\draw[color=ffffqq] (0.3993073593073588,2.151515151515153) node {$Vieleck1$};
+\draw [fill=qqqqff] (0.,1.) circle (2.5pt);
+\draw[color=qqqqff] (0.12225108225108178,1.3203463203463215) node {$E$};
+\draw [fill=qqqqff] (0.,3.) circle (2.5pt);
+\draw[color=qqqqff] (0.12225108225108178,3.3116883116883145) node {$F$};
+\draw[color=ffffff] (-0.17212121212121256,2.151515151515153) node {$Vieleck2$};
+\draw [fill=qqqqff] (-1.7320508075688776,2.) circle (2.5pt);
+\draw[color=qqqqff] (-1.6093506493506495,2.3246753246753267) node {$G$};
+\draw[color=ffffqq] (0.9880519480519474,2.151515151515153) node {$Vieleck3$};
+\draw [fill=qqqqff] (1.7320508075688776,2.) circle (2.5pt);
+\draw[color=qqqqff] (1.853852813852813,2.3246753246753267) node {$H$};
+\end{scriptsize}
+\end{axis}
+\end{tikzpicture}
+\end{comment}
+
+%----------------------------------------------------------
+%-----------------------bild----------------------------------
+\definecolor{ffffff}{rgb}{1.,1.,1.}
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.4cm,y=1.4cm]
+%\begin{axis}[
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-3.583376623376623,
+xmax=16.330043290043285,
+ymin=-4.489177489177493,
+ymax=5.588744588744593,
+xtick={-3.0,-2.0,...,16.0},
+ytick={-4.0,-3.0,...,5.0},]
+\clip(-3.583376623376623,-0.289177489177493) rectangle (16.330043290043285,4.588744588744593);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=\gelb] (-2.2,0.) -- (2.2,0.) -- (2.2,4.) -- (-2.2,4.) -- cycle;
+\fill[line width=2.pt,color=white,fill=ffffff,fill opacity=1.0] (0.,1.) -- (0.,3.) -- (-1.7320508075688776,2.) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.] (0.,3.) -- (0.,1.) -- (1.7320508075688776,2.) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=\gelb] (3.,1.) -- (5.594112554112552,0.9696969696969713) -- (4.323299471110349,3.231415856986091) -- cycle;
+\draw [line width=2.pt] (0.,1.)-- (0.,3.);
+\draw [line width=2.pt] (0.,3.)-- (-1.7320508075688776,2.);
+\draw [line width=2.pt] (-1.7320508075688776,2.)-- (0.,1.);
+\draw [line width=2.pt] (0.,3.)-- (0.,1.);
+\draw [line width=2.pt] (0.,1.)-- (1.7320508075688776,2.);
+\draw [line width=2.pt] (1.7320508075688776,2.)-- (0.,3.);
+\draw [line width=2.pt] (3.,1.)-- (5.594112554112552,0.9696969696969713);
+\draw [line width=2.pt] (5.594112554112552,0.9696969696969713)-- (4.323299471110349,3.231415856986091);
+\draw [line width=2.pt] (4.323299471110349,3.231415856986091)-- (3.,1.);
+\begin{scriptsize}
+\draw[color=black] (0.6993073593073588,2.051515151515153) node {$F'$};
+\draw [fill=qqqqff] (0.,1.) circle (2.5pt);
+\draw[color=black] (0.12225108225108178,0.7203463203463215) node {$\{V_4\}$};
+\draw [fill=qqqqff] (0.,3.) circle (2.5pt);
+\draw[color=black] (0.10225108225108178,3.2116883116883145) node {$\{V_1^2,V_3^2\}$};
+%\draw[color=ffffff] (-0.17212121212121256,2.151515151515153) node {$Vieleck2$};
+\draw [fill=qqqqff] (-1.7320508075688776,2.) circle (2.5pt);
+\draw[color=black] (-1.8593506493506495,2.2246753246753267) node {$\{V_1^3\}$};
+%\draw[color=ffffqq] (0.9880519480519474,2.151515151515153) node {$Vieleck3$};
+\draw [fill=qqqqff] (1.7320508075688776,2.) circle (2.5pt);
+\draw[color=black] (1.893852813852813,2.2246753246753267) node {$\{V_2^2\}$};
+\draw [fill=qqqqff] (3.,1.) circle (2.5pt);
+\draw[color=black] (2.717922077922077,1.1246753246753267) node {$\{V_1^1\}$};
+\draw [fill=qqqqff] (5.594112554112552,0.9696969696969713) circle (2.5pt);
+\draw[color=black] (5.9153246753246725,1.1246753246753267) node {$\{V_2^1\}$};
+\draw[color=black] (4.31099567099567,1.8961038961038983) node {$F$};
+\draw [fill=qqqqff] (4.323299471110349,3.231415856986091) circle (2.5pt);
+\draw[color=black] (4.45125541125541,3.5584415584415625) node {$\{V_3^1\}$};
+\draw[color=black] (4.31125541125541,0.745584415584415625) node {$\{e_3^1\}$};
+\draw[color=black] (3.31099567099567,2.1961038961038983) node {$\{e_2^1\}$};
+\draw[color=black] (5.31099567099567,2.1961038961038983) node {$\{e_1^1\}$};
+\draw[color=black] (-0.26099567099567,2.01961038961038983) node {$\{f^2\}$};
+\draw[color=black] (-1.01099567099567,1.2961038961038983) node {$\{f^1\}$};
+\draw[color=black] (-1.01099567099567,2.6961038961038983) node {$\{e_2^2\}$};
+\draw[color=black] (1.01099567099567,1.2961038961038983) node {$\{g\}$};
+\draw[color=black] (1.11099567099567,2.6961038961038983) node {$\{e_3^2,e_1^2\}$};
+\end{scriptsize}
+
+%\end{axis}
+\end{tikzpicture}
+
+%--------------------------------------------------------------
+\item Zuletzt müssen nun die zwei Zusammenhangskomponenten mithilfe der folgenden Operationen wieder zusammengesetzt werden:
+\begin{enumerate}[(i)]
+\item Wende einen $SplitMender$ $S^{m}_{(\{V^1_{1}\},\{e^1_{3}\}),(\{V_{4}\},\{f^2\})}$ an, um die Kanten $\{f^2\}$ und $\{e_3^1\}$ zu der Kante $\{e_3^1,f^2\}$ zusammenzuführen und um so ebenfalls aus den Knoten $\{V_1^1\}$ und $\{V_4\}$ den Knoten $\{V_1^1,V_4\}$ und aus den Knoten $\{V_1^2,V_3^2\}$ und $\{V_2^1\}$ den Knoten $\{V_1^2,V_3^2,V_2^1\}$ hervorzubringen, wobei für $\{e_3^1,f^2\}$
+\[
+\{e_3^1,f^2\}<F,\{e_3^1,f^2\}<F',
+\]
+für $\{V_1^1,V_4\}$
+\[
+\{V_1^1,V_4\}<\{f^1\},\{V_1^1,V_4\}<\{e_2^1\},\{V_1^1,V_4\}<\{e_3^1,f^2\},\{V_1^1,V_4\}<\{g\}
+\]
+und für $\{V_1^2,V_2^1,V_3^2\}$
+\begin{align*}
+\{V_1^2,V_2^1,V_3^2\}<\{e_2^2\},&\{V_1^2,V_2^1,V_3^2\}<\{e_1^1\},\{V_1^2,V_2^1,V_3^2\}<\{e_3^1,f^2\},\\
+&\{V_1^2,V_2^1,V_3^2\}<\{e_3^2,e_1^2\}
+\end{align*}
+%---------------bild----------------------------
+%\begin{comment}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
+\definecolor{ffffff}{rgb}{1.,1.,1.}
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.5cm,y=1.5cm]
+%\begin{axis}[
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-4.3,
+xmax=7.0600000000000005,
+ymin=-2.46,
+ymax=6.3,
+xtick={-4.0,-3.0,...,7.0},
+ytick={-2.0,-1.0,...,6.0},]
+\clip(-4.3,-0.46) rectangle (7.06,4.3);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=\gelb] (-2.,0.) -- (2.1,0.) -- (2.1,4.) -- (-2.,4.) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.1499999940395355] (0.,3.) -- (0.,1.) -- (1.7320508075688776,2.) -- cycle;
+\fill[line width=2.pt,color=ffffff,fill=ffffff,fill opacity=1.0] (0.,1.) -- (0.,3.) -- (-1.7320508075688776,2.) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=\gelb] (0.,3.) -- (-1.,2.) -- (0.,1.) -- cycle;
+\draw [line width=2.pt] (0.,3.)-- (0.,1.);
+\draw [line width=2.pt] (0.,1.)-- (1.7320508075688776,2.);
+\draw [line width=2.pt] (1.7320508075688776,2.)-- (0.,3.);
+\draw [line width=2.pt] (0.,1.)-- (0.,3.);
+\draw [line width=2.pt] (0.,3.)-- (-1.7320508075688776,2.);
+\draw [line width=2.pt] (-1.7320508075688776,2.)-- (0.,1.);
+\draw [line width=2.pt] (0.,3.)-- (-1.,2.);
+\draw [line width=2.pt] (-1.,2.)-- (0.,1.);
+\begin{scriptsize}
+\draw[color=black] (-1.04,1.37) node {$\{f^1\}$};
+\draw [fill=qqqqff] (0.,3.) circle (2.5pt);
+\draw[color=black] (0.14,3.17) node {$\{V_1^2,V_2^1,V_3^2\}$};
+\draw[color=black] (0.1,0.77) node {$\{V_1^1,V_4\}$};
+\draw [fill=qqqqff] (0.,1.) circle (2.5pt);
+\draw[color=black] (0.64,1.97) node {$F'$};
+\draw[color=black] (0.34,2.27) node {$\{e_3^1f^2\}$};
+\draw[color=black] (1.04,2.71) node {$\{e_3^2,e_1^2\}$};
+\draw[color=black] (0.94,1.31) node {$\{g\}$};
+\draw [fill=qqqqff] (1.7320508075688776,2.) circle (2.5pt);
+\draw[color=black] (1.88,2.17) node {$\{V_2^2\}$};
+\draw[color=black] (-0.3,2.01) node {$F$};
+\draw [fill=qqqqff] (-1.7320508075688776,2.) circle (2.5pt);
+\draw[color=black] (-1.8,2.22) node {$\{V_1^3\}$};
+\draw [fill=ududff] (-1.,2.) circle (2.5pt);
+\draw[color=black] (-1.26,2.0) node {$\{V_3^1\}$};
+\draw[color=black] (-1.03,2.66) node {$\{e_2^2\}$};
+\draw[color=black] (-0.33,2.37) node {$\{e_1^1\}$};
+\draw[color=black] (-0.33,1.62) node {$\{e_2^1\}$};
+\end{scriptsize}
+%\end{axis}
+\end{tikzpicture}
+%\end{comment}
+%------------------------------------------------
+\item Wende einen $RipMender$ $R^m_{\{e^1_{2}\},\{f^1\}}$ an, um die Kanten $\{e^1_{2}\}$ und $\{f^1\}$ zu der Kante $\{e^1_{2}\},\{f^1\}$ und die Knoten $\{ V_1^3\}$ und $\{V_3^1\}$ zu dem Knoten $\{V_1^3,V_3^1\}$ zusammenzuführen, wobei für $\{e_2^1,f^1\}$
+\[
+\{e_2^1,f^1\}<F
+\]
+und für $\{V_1^3,V_3^1\}$
+\[
+\{V_1^3,V_3^1\}<\{e_1^1\},\{V_1^3,V_3^1\}<\{e_2^2\},\{V_1^3,V_3^1\}<\{e_2^1,f^1\}
+\]
+gilt.\\
+%-------------------------bild-------------------------
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
+\definecolor{ffffff}{rgb}{1.,1.,1.}
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.5cm,y=1.5cm]
+%\begin{axis}[
+x=1.5cm,y=1.5cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-4.3,
+xmax=7.0600000000000005,
+ymin=-2.46,
+ymax=6.3,
+xtick={-4.0,-3.0,...,7.0},
+ytick={-2.0,-1.0,...,6.0},]
+\clip(-4.3,-0.46) rectangle (7.06,4.3);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=\gelb] (-2.5,0.) -- (2.2,0.) -- (2.2,4.) -- (-2.5,4.) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.] (0.,3.) -- (0.,1.) -- (1.7320508075688776,2.) -- cycle;
+\fill[line width=2.pt,color=ffffff,fill=ffffff,fill opacity=1.0] (0.,1.) -- (0.,3.) -- (-1.7320508075688776,2.) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.5] (0.,3.) -- (-1.74,2.) -- (0.,1.) -- cycle;
+\draw [line width=2.pt] (0.,3.)-- (0.,1.);
+\draw [line width=2.pt] (0.,1.)-- (1.7320508075688776,2.);
+\draw [line width=2.pt] (1.7320508075688776,2.)-- (0.,3.);
+\draw [line width=2.pt] (0.,1.)-- (0.,3.);
+\draw [line width=2.pt] (-1.7320508075688776,2.)-- (0.,1.);
+\draw [line width=2.pt] (-1.74,2.)-- (0.,1.);
+\draw [rotate around={29.886526940424037:(-0.87,2.5)},line width=2.pt,color=ffffff,fill=ffffff,fill opacity=1.0] (-0.87,2.5) ellipse (1.41989009757162764cm and 0.22745816720870826cm);
+\draw [rotate around={29.886526940424037:(-0.87,2.5)},line width=2.pt] (-0.87,2.5) ellipse (1.41989009757163032cm and 0.2274581672087103cm);
+\begin{scriptsize}
+\draw[color=black] (-0.5,1.9) node {$F$};
+\draw [fill=qqqqff] (0.,3.) circle (2.5pt);
+\draw[color=black] (0.14,3.23) node {$\{V_1^2,V_2^1,V_3^2\}$};
+\draw [fill=qqqqff] (0.,1.) circle (2.5pt);
+\draw[color=black] (0.14,0.75) node {$\{V_1^1,V_4\}$};
+\draw[color=black] (1.04,2.75) node {$\{e_3^2,e_1^2\}$};
+\draw [fill=qqqqff] (1.7320508075688776,2.) circle (2.5pt);
+\draw[color=black] (1.88,2.22) node {$\{V_2^2\}$};
+\draw[color=black] (0.8,2.) node {$F'$};
+\draw[color=black] (0.4,2.32) node {$\{e_3^1,f^2\}$};
+\draw [fill=qqqqff] (-1.7320508075688776,2.) circle (2.5pt);
+\draw[color=black] (-2.1,2.22) node {$\{V_1^3,V_3^1\}$};
+\draw [fill=qqqqff] (-1.74,2.) circle (2.5pt);
+\draw[color=black] (-1.0,2.87) node {$\{e_2^2\}$};
+\draw[color=black] (-1.0,1.26) node {$\{e_2^1,f^1\}$};
+%\draw[color=black] (-1.16,2.25) node {$c$};
+\draw[color=black] (-0.65,2.2) node {$\{e^1_1\}$};
+\draw[color=black] (0.94,1.31) node {$\{g\}$};
+\end{scriptsize}
+%\end{axis}
+\end{tikzpicture}
+
+%-------------------------------------------------------
+
+\item Wende einen $Crater Mender$ $R^{m}_{\{e_1^1\},\{e^2_{2}\}}$ an, um die Kanten $\{e_1^1\}$ und $\{e^2_{2}\}$ zu einer Kante $\{e_1^1,e_2^2\}$ zu vereinen, wobei für $\{e_1^1,e_2^2\}$
+\[
+\{e_1^1,e_2^2\}<F,\{V_1^3,V_3^1\}<\{e_1^1,e_2^2\},\{V_1^2,V_2^1,V_3^2\}<\{e_1^1,e_2^2\}
+\]
+gilt.
+\end{enumerate}
+\end{enumerate}
+%\centerline{$\textcolor{red}{Bild5}$}
+%----------------------------bild------------------
+\begin{comment}
+\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.5cm,y=1.5cm]
+%\begin{axis}[
+x=1.5cm,y=1.5cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-4.3,
+xmax=7.0600000000000005,
+ymin=-2.46,
+ymax=6.3,
+xtick={-4.0,-3.0,...,7.0},
+ytick={-2.0,-1.0,...,6.0},]
+\clip(-4.3,-0.46) rectangle (3.06,4.3);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=\gelb] (-2.5,-0.1) -- (2.4,-0.1) -- (2.4,4.1) -- (-2.5,4.1) -- cycle;
+%\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=\gelb] (-1.,2.) -- (1.,2.) -- (0.,3.7320508075688776) -- cycle;
+%\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=\gelb] (1.,2.) -- (-1.,2.) -- (0.,0.2679491924311226) -- cycle;
+\draw [line width=2.pt] (-1.,2.)-- (1.,2.);
+\draw [line width=2.pt] (1.,2.)-- (0.,3.7320508075688776);
+\draw [line width=2.pt] (0.,3.7320508075688776)-- (-1.,2.);
+\draw [line width=2.pt] (1.,2.)-- (-1.,2.);
+\draw [line width=2.pt] (-1.,2.)-- (0.,0.2679491924311226);
+\draw [line width=2.pt] (0.,0.2679491924311226)-- (1.,2.);
+\begin{scriptsize}
+\draw [fill=ududff] (-1.,2.) circle (2.5pt);
+\draw[color=black] (-1.6,2.2) node {$\{V_1^1,V_1^2,V_1^3\}$};
+\draw [fill=ududff] (1.,2.) circle (2.5pt);
+\draw[color=black] (1.54,2.07) node {$\{V_2^1,V_2^2\}$};
+\draw[color=black] (0.,2.75) node {$F$};
+\draw[color=black] (0.06,1.85) node {$\{e_3^1,e_3^2\}$};
+\draw[color=black] (0.87,2.96) node {$\{e_1^1,e_1^2\}$};
+\draw[color=black] (-0.87,2.96) node {$\{e_2^1,e_2^2\}$};
+\draw [fill=ududff] (0.,3.7320508075688776) circle (2.5pt);
+\draw[color=black] (0.,3.91) node {$\{V_3^1,V_3^2\}$};
+\draw[color=black] (0.,1.31) node {$F'$};
+\draw[color=black] (-1.,1.16) node {$\{f^1,f^2\}$};
+\draw[color=black] (0.8,1.16) node {$\{g\}$};
+\draw [fill=ududff] (0.,0.2679491924311226) circle (2.5pt);
+\draw[color=black] (0.,0.1) node {$\{V_4\}$};
+%\draw[color=black] (0.94,1.31) node {$\{g\}$};
+\end{scriptsize}
+%\end{axis}
+\end{tikzpicture}
+\end{comment}
+%-------------------------------------------
+%--------------------bild-------------------------
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
+\definecolor{ffffff}{rgb}{1.,1.,1.}
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\definecolor{ffffqq}{rgb}{1.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.5cm,y=1.5cm]
+%\begin{axis}[
+x=1.5cm,y=1.5cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-4.3,
+xmax=7.0600000000000005,
+ymin=-2.46,
+ymax=6.3,
+xtick={-4.0,-3.0,...,7.0},
+ytick={-2.0,-1.0,...,6.0},]
+\clip(-5.3,-0.46) rectangle (7.06,4.3);
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=\gelb] (-2.5,0.) -- (2.2,0.) -- (2.2,4.) -- (-2.5,4.) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.] (0.,3.) -- (0.,1.) -- (1.7320508075688776,2.) -- cycle;
+\fill[line width=2.pt,color=ffffff,fill=ffffff,fill opacity=0.] (0.,1.) -- (0.,3.) -- (-1.7320508075688776,2.) -- cycle;
+\fill[line width=2.pt,color=ffffqq,fill=ffffqq,fill opacity=0.] (0.,3.) -- (-1.74,2.) -- (0.,1.) -- cycle;
+\draw [line width=2.pt] (0.,3.)-- (0.,1.);
+\draw [line width=2.pt] (0.,1.)-- (1.7320508075688776,2.);
+\draw [line width=2.pt] (1.7320508075688776,2.)-- (0.,3.);
+\draw [line width=2.pt] (0.,1.)-- (0.,3.);
+\draw [line width=2.pt] (-1.7320508075688776,2.)-- (0.,1.);
+\draw [line width=2.pt] (0.,3.)-- (-1.74,2.);
+\draw [line width=2.pt] (-1.74,2.)-- (0.,1.);
+\begin{scriptsize}
+%\draw[color=ffffqq] (-0.84,1.27) node {$Vieleck1$};
+%\draw [fill=qqqqff] (0.,3.) circle (2.5pt);
+%\draw[color=qqqqff] (0.14,3.37) node {$E$};
+%\draw [fill=qqqqff] (0.,1.) circle (2.5pt);
+%\draw[color=qqqqff] (0.14,1.37) node {$F$};
+%\draw[color=ffffqq] (1.04,3.11) node {$Vieleck2$};
+%\draw [fill=qqqqff] (1.7320508075688776,2.) circle (2.5pt);
+%\draw[color=qqqqff] (1.88,2.37) node {$G$};
+%\draw[color=ffffff] (-0.1,2.17) node {$Vieleck3$};
+%\draw [fill=qqqqff] (-1.7320508075688776,2.) circle (2.5pt);
+%\draw[color=qqqqff] (-1.6,2.37) node {$H$};
+%\draw [fill=ududff] (-1.74,2.) circle (2.5pt);
+%\draw[color=ududff] (-1.6,2.37) node {$I$};
+%\draw[color=black] (-0.93,3.) node {$f_1$};
+%\draw[color=black] (-0.98,1.41) node {$e$};
+%\end{comment}
+%-----------------------------
+\draw[color=black] (-0.6,2.) node {$F$};
+\draw [fill=qqqqff] (0.,3.) circle (2.5pt);
+\draw[color=black] (0.14,3.23) node {$\{V_1^2,V_2^1,V_3^2\}$};
+\draw [fill=qqqqff] (0.,1.) circle (2.5pt);
+\draw[color=black] (0.14,0.75) node {$\{V_1^1,V_4\}$};
+\draw[color=black] (1.04,2.75) node {$\{e_3^2,e_1^2\}$};
+\draw [fill=qqqqff] (1.7320508075688776,2.) circle (2.5pt);
+\draw[color=black] (1.88,2.22) node {$\{V_2^2\}$};
+\draw[color=black] (0.8,2.) node {$F'$};
+\draw[color=black] (0.4,2.32) node {$\{e_3^1,f^2\}$};
+\draw [fill=qqqqff] (-1.7320508075688776,2.) circle (2.5pt);
+\draw[color=black] (-2.1,2.22) node {$\{V_1^3,V_3^1\}$};
+\draw [fill=qqqqff] (-1.74,2.) circle (2.5pt);
+\draw[color=black] (-1.0,2.77) node {$\{e_1^1,e_2^2\}$};
+\draw[color=black] (-1.0,1.26) node {$\{e_2^1,f^1\}$};
+%\draw[color=black] (-1.16,2.25) node {$c$};
+%\draw[color=black] (-0.65,2.2) node {$\{e^1_1\}$};
+\draw[color=black] (0.94,1.31) node {$\{g\}$};
+\end{scriptsize}
+%\end{axis}
+\end{tikzpicture}
+
+%-------------------------------------------------
+\begin{bemerkung}
+Es gibt für ein nach dem erstem Schritt entferntes Dreieck $F \in X_{2}$ drei Möglichkeiten, um eine von den drei entstandenen Randkanten auszuwählen. Dann gibt es weiterhin zwei Möglichkeiten, eine Kante wie in $(1)$ beschrieben auszuwählen und dann letztlich drei Möglichkeiten, um das im erstem Schritt herausgenommene Dreieck wieder einzufügen. Deshalb ist die nach dem Algorithmus entstandene simpliziale Fläche nicht eindeutig. Weshalb folgende Notation eingeführt wird: \\
+Wir nennen die durch den Algorithmus entstandene simpliziale Fläche $X^{H}_{(F,f)}$, falls im ersten Schritt ein \emph{Loch an der Stelle F} entsteht und im zweitem der Operator \emph{RipCut} auf die Kante $f$ in $X$ bzw. $\{f^1,f^2\}$ in $X(\alpha)$ angewendet wird. Hierdurch wird $X^{H}_{(F,f)}$ eindeutig festgelegt, denn dadurch entsteht genau ein Randkantenpaar $\{e^1,e^2\}$ vom Typ 1, mit $f^i \notin \{e^1,e^2\}$ und nur auf dieses Randkantenpaar wird dann im darauf folgendem Schritt ein \emph{RipMender} angewendet werden.\\ Sind $F$ und $f$ aus dem Kontext klar, so schreibt man nur $X^H$.
+\end{bemerkung}
+%\centerline{$\textcolor{red}{Bild 6}$}
+\begin{bemerkung}
+\begin{itemize}
+\item Für eine geschlossene simpliziale Fläche $(X,<),F \in X_2$ und $f \in X_1$ ist $X^H_{(F,f)}$ wieder eine geschlossene simpliziale Fläche.
+\item Mit den Bezeichnungen wie oben gilt: $(X^H_{(F,f)})^H_{(F,\{e_1^2,e_3^2\})}\cong X$.
+\end{itemize}
+\end{bemerkung}
+Es stellt sich nun die Frage, welche und wie viele simpliziale Flächen mithilfe des obigen Algorithmus konstruiert werden können, wenn man diese mehrfach auf eine simpliziale Fläche anwendet. Dazu werden folgende Definitionen eingeführt.\\\\
+\begin{definition}
+Für eine geschlossene simpliziale Fläche $(X,<)$ ist 
+\[
+H(X):=\{(F,f)\in X_{1}\times X_{2} \text{ }\vert \text{ }\vert X_{0}(f) \cap X_{0}(F)\vert = 1 \land X_2(f) \cap X_2(X_1(F))\neq \emptyset\}
+\]
+die Menge aller Tupel $(F,f)$, auf die der Algorithmus anwendbar ist.
+\end{definition}
+
+\begin{definition}
+Für eine geschlossene simpliziale Fläche $(X,<)$ wird die m-fache Anwendung des Algorithmus wie folgt definiert:\\
+Für $(F_{1},f_{1})\in H(X) $ ist $X^{H}_{(F,f,1)}:=X^{H}_{(F,f)}$. Und für $(F_{i+1},f_{i+1}) \in H(X^{H}_{(F,f,i)})$ ist $X^{H}_{(F,f,i+1)}:=(X^{H}_{(F,f,i)})^{H}_{(F_{i+1},f_{i+1})}$. Wir nennen dann die Sequenz $\sigma=((F_{1},f_{1}),\ldots,(F_{m},f_{m}))$
+eine \emph{H-Sequenz} der Länge $m$ von X.\\
+Falls jedoch der Bezug zur H-Sequenz $\sigma$ klar ist, so schreibt man 
+\[
+X^{\sigma}_{i+1}:=X^{H(\sigma)}_{i+1}:=X^{H}_{(F,f,i+1)}:=(X^{H}_{(F,f,i)})^{H}_{(F_{i+1},f_{i+1})}
+\]
+
+\end{definition}
+
+\begin{definition}
+Für eine geschlossene simpliziale Fläche $(X,<)$ ist 
+\[
+H_{X}:=\{X^{H(\sigma)}_{m}\vert \sigma \text{ eine H-Sequenz und } m\in \mathbb{N}\}
+\]
+die Menge aller simplizialen Fläche die mithilfe von HikingHole ausgehend von $X$ konstruiert werden können.
+\end{definition}
+
+
+%\nocite{*}\bibliography{literatur}
+%\bibliographystyle{plain}
+\end{document}

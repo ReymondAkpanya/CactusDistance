@@ -820,8 +820,6 @@ bringen lässt, wobei $A\in \{0,1\}^{l}$ und $B\in \{0,1\}^{n-l}$.
 
 Analog
 \end{proof}
-$\textcolor{red}{zusmmenhang-zwischen-den-Flaechengraphen-eines-Multitetraeders}$ $\textcolor{red}{ -und-seinem-Kind}$
-
 \section{Manipulation simplizialer Flächen}
 Dieses Kapitel beschreibt das Manipulieren simplizialer Flächen, um neue simpliziale Flächen konstruieren. Im Genauerem werden nun die Operationen
 \begin{itemize}
@@ -1078,8 +1076,26 @@ X_i =X^{e_1}_i \text{ fuer i=0,1,2}
 
 
 \begin{definition}
-Sei $X$ eine vertex-treue Sphäre. Man nennt eine Kante $e$ \emph{drehbar}, falls die simpliziale Fläche $Y,$ die durch die Ecken $Y_0= X_0(X_2(e))$, die Kanten $Y_1= X_1(X_2(e))$ und die Flächen $Y_2=X_2(e)$ beschrieben wird, zu einem Butterfly isomorph ist und es keine Kante $e'$ mit $X_0(e')=X_0(X_2(e))-X_0(e)$ gibt.
+Sei $X$ eine vertex-treue Sphäre. Man nennt eine Kante $e\in X_1$ \emph{drehbar}, falls es keine Kante $e'\in X_1\setminus \{e\}$ mit $X_0(e')=X_0(X_2(e))-X_0(e)$ gibt.
 \end{definition}
+\textbf{In Gap:}
+\begin{center}
+$\fbox{
+\parbox{14cm}{
+\begin{tabbing}
+\textcolor{blue}{gap$>$}IsTu\=rnableEdge:=function(S,e)\\
+\textcolor{red}{$>$}\> local g,voe;\\
+\textcolor{red}{$>$}\> voe:=VerticesOfEdge(S,e);\\
+\textcolor{red}{$>$}\> for \=g in Edges(S) do\\
+\textcolor{red}{$>$}\>\> if g\=$<>$ e and Set(VerticesOfEdge(S,g))=Set(voe) then\\
+\textcolor{red}{$>$}\>\>\> return false;\\
+\textcolor{red}{$>$}\>\> fi;\\
+\textcolor{red}{$>$}\> od;\\
+\textcolor{red}{$>$}\> return true;\\
+\textcolor{red}{$>$}end;
+\end{tabbing}
+}}$
+\end{center}
 \begin{definition}
 Sei $X$ eine vertex-treue Sphäre, $\xi$ der zugehörige Flächenträger und $e$ eine drehbare Kante in $X$. Dann definiert man die durch die Kantendrehung $e$ entstandene Sphäre $X^e$ durch den Flächenträger $\xi \Delta Pot_3(X_0(X_2(e))).$
 \end{definition}
@@ -1141,7 +1157,26 @@ Für eine Sphäre $(X,<)$ und Kanten $e_1,\ldots,e_n$ in $X$ führt man die folg
 \end{itemize}
 Man nennt $E=(e_1,\ldots,e_n)$ eine drehbare Kantensequenz in $X$ und $X^E$ die durch die Kantensequenz entstandene simpliziale Fläche. 
 \end{definition}
-
+\textbf{In Gap:}
+\begin{center}
+$\fbox{
+\parbox{14cm}{
+\begin{tabbing}
+\textcolor{blue}{gap$>$}Edge\=TurnSequnce:=function(S,TurnEdges)\\
+\textcolor{red}{$>$}\> local tempS;\\
+\textcolor{red}{$>$}\> tempS:=S;\\
+\textcolor{red}{$>$}\> for \=e in TurnEdges do\\
+\textcolor{red}{$>$}\>\> if I\=sTurnableEdge(tempS,e) then\\
+\textcolor{red}{$>$}\>\>\> tempS:=EdgeTurn(tempS,e);\\
+\textcolor{red}{$>$}\>\> else\\
+\textcolor{red}{$>$}\>\>\> return false;\\
+\textcolor{red}{$>$}\> \>fi;\\
+\textcolor{red}{$>$}\> od;\\
+\textcolor{red}{$>$}\> return tempS;\\
+\textcolor{red}{$>$}end;
+\end{tabbing}
+}}$
+\end{center}
 \begin{bemerkung}
 Kantendrehungen sind nicht kommutativ. Das heißt im Allgemeinen gilt für drehbare Kanten $e_1,e_2$ in $X$ zwischen $X^{(e_1,e_2)}$ und $X^{(e_2,e_1)}$ keine Gleichheit. 
 
@@ -1617,6 +1652,7 @@ Die untenstehende Tabelle beinhaltet die Anzahlen der Multi-Tetraeder mit bis zu
 \end{tabular}
 \end{center}
 Um die Multi-Tetraeder in den drei dimensionalen reellen Raum einzubetten muss man für jede Ecke eine reelle Koordinatenspalte bestimmen. Die Vorgehensweise für Multi-Tetraeder soll nun an dieser Stelle formuliert werden:\\
+Sei $X$ ein Multi-Tetraeder, $F$ eine Fläche in $X$ und $V_1,V_2,V_3\in X_0(F)$ mit den zugehörigen Koordinatenspalten $x_1,x_2,x_3\in \mathbb{R}^3.$ Durch eine Tetraedererweiterung an der Stelle $F$ erhalten wir eine neue Ecke $V,$ dessen Koordinatenspalte wir noch bestimmen müssen.
 Mithilfe dessen laesst sich in Gap leicht nachrechnen, ob die reelle drei-dimensionale einbettung eines Multi-Tetraeders sich selbst durchbohrt.\\
 \textbf{In Gap:}
 \begin{center}
@@ -1817,6 +1853,7 @@ X\cong (n+1)^2
  \]
  schließen kann.\\
 \end{proof}
+\begin{center}
 $\fbox{
 \parbox{13.4cm}{
 \begin{tabbing}
@@ -1836,7 +1873,8 @@ $\fbox{
 \textcolor{red}{$>$}\> return Minimum(tempV)+1;\\
 \textcolor{red}{$>$}end;\\
 \end{tabbing}
-}}$\\
+}}$
+\end{center}
 Diese Beobachtung wird nützlich sein, um erste Beobachtungen über die Kaktus-Distanz einer vertex-treuen Sphäre anzustellen. Hierfür definieren wir anlehnend an den obigen Satz die Menge $D$ als die Menge aller Tupel $(V_1,V_2)\in X_0 \times X_0$, die nicht benachbart sind und $ X_0(X_1(V_1))\cap X_0(X_1(V_2))\neq \emptyset$ erfüllen.
 \begin{satz}
 Sei $(X,<)$ eine vertex-treue Sphäre, die kein Multi-Tetraeder ist. Dann ist 
@@ -1984,31 +2022,37 @@ Nutzen wir GAP um Beispiele für Tetraederzerlegungen zu konstruieren. Betrachte
 \end{center}
 \caption{Oktaeder}
 \end{figure}
+\begin{center}
 $\fbox{
 \parbox{15cm}{
 \textcolor{red}{gap$>$} \textcolor{blue}{O;}\newline 
 simplicial surface (6 vertices, 12 edges, and 8 faces) \newline
 \textcolor{red}{gap$>$} \textcolor{blue}{VerticesOfFaces(O);}\newline
 [ [ 1, 2, 3 ], [ 2, 5, 6 ], [ 1, 2, 5 ], [ 2, 3, 6 ], [ 1, 4, 5 ],  [ 3, 4, 6 ], [ 1, 3, 4 ], [ 4, 5, 6 ] ]
-}}$\\\\
+}}$
+\end{center}
 Man kann nun auf folgende Weise Tetraederzerlegungen erzeugen.
 Seien $V_1,V_2$ zwei nicht benachbarte Ecken des Oktaeders.
-Die 4-elementigen Teilmengen der Tetraederzerlegung sind genau die Butterflies, die $V_1$ und $V_2$ enthalten.\\\\
+Die 4-elementigen Teilmengen der Tetraederzerlegung sind genau die Butterflies, die $V_1$ und $V_2$ enthalten.
+\begin{center}
 $\fbox{
 \parbox{15cm}{
 \textcolor{red}{gap$>$}  \textcolor{blue}{D1:=[[1,2,3,6],[1,2,5,6],[1,4,5,6],[1,3,4,6]];}\newline
 [ [ 1, 2, 3, 6 ], [ 1, 2, 5, 6 ], [ 1, 4, 5, 6 ], [ 1, 3, 4, 6 ] ]\newline
 \textcolor{red}{gap$>$}  \textcolor{blue}{D2:=[[2,3,1,4],[2,4,5,6],[2,1,5,4],[2,3,4,6]];}\newline
 [ [ 2, 3, 1, 4 ], [ 2, 4, 5, 6 ], [ 2, 1, 5, 4 ], [ 2, 3, 4, 6 ] ]
-}}$\\\\
-Mit GAP lässt sich leicht verifizieren, dass $D_1$ und $D_2$  Tetraederzerlegungen sind.\\\\
+}}$
+\end{center}
+Mit GAP lässt sich leicht verifizieren, dass $D_1$ und $D_2$  Tetraederzerlegungen sind.
+\begin{center}
 $\fbox{
 \parbox{15cm}{
 \textcolor{red}{gap$>$}  \textcolor{blue}{IsTetrahedrialDecomposition(O,D1);}\newline
  true \newline
 \textcolor{red}{gap$>$}  \textcolor{blue}{IsTetrahedrialDecomposition(O,D2);}\newline
  true
- }}$ \\\\
+ }}$ 
+ \end{center}
 Vielmehr sind beide minimal. Angenommen es gibt eine Tetraederzerlegung $D'$ des Oktaeders mit $\vert D' \vert\leq 3$. Dann muss es ein $d\in D'$ geben, welches die Eckenmenge von drei paarweise verschiedenen Flächen als Teilmengen enthält. Dies bedeutet aber, dass es im Oktaeder eine Ecke vom Grad 3 gibt, was ein Widerspruch ist. 
 \begin{comment}
 \begin{bsp}
@@ -2141,7 +2185,8 @@ $[ 4, 4, 4, 5, 5, 5, 5, 4 ]$
 \end{center}
 \caption{vertex-treue Sphäre mit 12 Flächen}
 \end{figure}
-Durch den oben eingeführten Algorithmus zum Annähern der Kaktusdistanz, lässt sich in diesem Fall sogar die exakte Kaktusdistanz bestimmen. Anhand der Grade der Ecken erkennen wir, dass $S$ nicht isomorph zum Double-6-gon ist. Also ist die Kaktusdistanz mindestens zwei.\\
+Durch den oben eingeführten Algorithmus zum Annähern der Kaktusdistanz, lässt sich in diesem Fall sogar die exakte Kaktusdistanz bestimmen. Anhand der Grade der Ecken erkennen wir, dass $S$ nicht isomorph zum Double-6-gon ist. Also ist die Kaktusdistanz mindestens zwei.
+\begin{center}
  \fbox{
 \parbox{15cm}{
 \textcolor{red}{gap$>$}\textcolor{blue}{ AlgorithmCactus(S);}\\
@@ -2154,8 +2199,10 @@ simplicial surface (8 vertices, 18 edges, and 12 faces)\newline
 simplicial surface (8 vertices, 18 edges, and 12 faces)\newline 
 \textcolor{red}{gap$>$} \textcolor{blue}{IsCactus(C);}\newline 
 true
- }}\\
-Da es sich bei der Sphäre $C$ um einen Multitetraeder handelt, liefert \Cref{zerlegung} eine Tetraederzerlegung von $C.$\\ 
+ }}
+ \end{center}
+Da es sich bei der Sphäre $C$ um einen Multitetraeder handelt, liefert \Cref{zerlegung} eine Tetraederzerlegung von $C.$
+\begin{center}
  $\fbox{
 \parbox{15cm}{
 \textcolor{red}{gap$>$}\textcolor{blue}{ VerticesOfFaces(s);}\newline 
@@ -2166,8 +2213,10 @@ $  [ 3, 6, 7 ],
 \textcolor{red}{gap $>$}\textcolor{blue}{d:=[ [1, 4, 6, 7 ], [ 3, 5, 6, 7 ], [ 2, 4, 5, 6 ],[ 8, 4, 5, 7 ], [ 4, 5, 6, 7 ]];}\newline
 \textcolor{red}{gap $>$} \textcolor{blue}{IsTetrahedrialDecomposition(C,d);}\newline
 true
- }}$\\
- Ausgehend von der Tetraederzerlegung des Multitetraders $C$ können wir gezielt durch Anwenden der Kantendrehungen an den Kanten $4$ und $5$ und der im Beweis von \Cref{tzer} präsentierten Fallunterscheidung gezielt eine Tetraederzerlegung der Sphäre $S$ konstruieren.\\
+ }}$
+ \end{center}
+ Ausgehend von der Tetraederzerlegung des Multitetraders $C$ können wir gezielt durch Anwenden der Kantendrehungen an den Kanten $4$ und $5$ und der im Beweis von \Cref{tzer} präsentierten Fallunterscheidung gezielt eine Tetraederzerlegung der Sphäre $S$ konstruieren.
+ \begin{center}
  $\fbox{
 \parbox{15cm}{
 \textcolor{red}{gap$>$} \textcolor{blue}{FacesOfEdge(C,4);;}\newline 
@@ -2185,6 +2234,7 @@ true\newline
 \textcolor{red}{gap$>$}\textcolor{blue}{IsTetrahedrialDecomposition(S,ddd);}\newline 
 true
  }}$
+ \end{center}
 %\end{bsp}
 \begin{lemma}
 Seien $X$ und $Y$ Sphären und $\phi:X\to Y$ ein Isomorphismus von $X$ nach $Y$. Für eine Tetraederzerlegung $D$ von $X$ ist \[
@@ -2228,7 +2278,7 @@ $\fbox{
 Seien $X$ und $Y$ vertex-treue Sphären, die durch die Flächenträger $\xi_X$ bzw. $\xi_Y$ dargestellt werden. Um $X$ und $Y$ durch einen 3-Waist an Flächen $F\in X_2$ und $F'\in Y_2$ zu verbinden, muss man die Annahme treffen, dass
 $X_0(F)=Y_0(F')$ und $X_0\setminus X_0(F)\cap Y_0\setminus Y_0(F')=\emptyset.$ Dann bildet die Sphäre $X\#Y$ repräsentiert durch $\xi_W=\xi_X \Delta \xi_Y$ eine wohldefinierte simpliziale Fläche.
 \end{definition}
-\begin{bemerkung}
+\begin{bemerkung}\label{3waist}
 Obige Definition lässt sich leicht verallgemeinern. Falls $X_0$ und $Y_0$ disjunkt sind, kann man das Zusammensetzen der Sphären mithilfe einer Permutation $\phi=(v_1v_1')(v_2v_2')(v_3v_3')$ für $X_0(F)=\{v_1,v_2,v_3\}$ und $Y_0(F')=\{v_1',v_2',v_3'\}$ durchführen. Man identifiziert $\xi_Y$ mit der Menge  
 \[
 \{\phi (y)\mid y\in \xi_Y \}.
@@ -2260,7 +2310,29 @@ Dann bilden die Kanten $\{2,3\},\{3,4\}$ und $\{2,4\}$ einen 3-Waist. Also sind 
 =&Pot_3(\{1,2,3,4\})\cup Pot_3(\{5,6,7,8\})
 \end{align*}
 \end{bsp}
-Mithilfe des SimplicialSurfaces Paket kann man die Sphären mit genau einem 3-Waist berechnen. Die folgende Tabelle zeigt die Anzahl $k_n$ der Sphären mit genau einem 3 Waist und $n$ Flächen. \\
+\begin{bemerkung}
+Sei $X$ eine vertex-treue Square und $W_1,\ldots,W_n$ 4-Waists in $X.$ Durch  $n$-maliges Anwenden der $\Cref{3waist}$ erhalten wir eine simpliziale Flaeche $Y,$ die aus $n+1$ Zusammenhangskomponenten besteht. Es existieren also vertex-Spharen $_1,\ldots,Z_{n+1}$ ohne 3-wiasts, sodass
+\[
+Y_i=\bigcup_{j=1}^{n+1}(Z_j)_i 
+\]
+fuer $i=0,1,2$ ist. Wir nennen $Z_1,\ldots,Z_n$ die Building Blocks von $X$ und definieren durch 
+\[
+\prod_{i=1}^{n+1} B_i^{t_i},
+\]
+wobei $t_i\vert\{j \mid 1\leq j\leq n+1,\,(Z_j)_2=i\}\vert$ ist, den \emph{Blocktyp} von $X.$
+\end{bemerkung}
+\begin{lemma}
+Seien $X$ bzw $Y$ vertex-treue Sphären mit zugehörigen Blocktypen $\prod B_i^{t_i}$ und 
+\end{lemma}
+\begin{lemma}
+ Sei $X$ ein Multi-Tetraeder und $Aut(X)$ die Automorphismengruppe von $X$. Dann ist $Aut(X)$ auflösbar. Weiterhin seien $l, l'$  minimal mit der Eigenschaft, dass
+ \[
+\vert Aut(X)^l \vert  = \vert Aut(X)^{(1)})\vert = 1
+\]
+ist. Dann $l \leq l'$
+\end{lemma}
+Mithilfe des SimplicialSurfaces Paket kann man die Sphären mit genau einem 3-Waist berechnen. Die folgende Tabelle zeigt die Anzahl $k_n$ der Sphären mit genau einem 3 Waist und $n$ Flächen. 
+\begin{center}
 \begin{tabular}[h]{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
 \textbf{$\vert X_2\vert$}& \textbf{4} &  \textbf{6}& \textbf{8} & \textbf{10} & \textbf{12} & \textbf{14}&\textbf{16}&\textbf{18}&\textbf{20}&\textbf{22}&\textbf{24}&\textbf{26}&\textbf{28}\\
@@ -2268,9 +2340,9 @@ Mithilfe des SimplicialSurfaces Paket kann man die Sphären mit genau einem 3-Wa
  \textbf{$k_n$}  &0& 1& 0& 1 &1& 4& 14& 52 &237& 1132& 5729& 30100& 162410\\
  \hline
 \end{tabular}
-
+\end{center}
 Zudem listen wir den Vertex Counter, Face-counter und die Automorphismengruppen für die Sphären mit bis zu 16 Flächen auf.
-
+\begin{center}
 \begin{tabular}[h]{|c|c|c|c|c|}
 \hline
 n &Zshngs.-& Vertex & Facecounter & Aut.\\
@@ -2295,7 +2367,7 @@ n &Zshngs.-& Vertex & Facecounter & Aut.\\
   &          &$v_4^6v_5^1v_6^2v_7^1$ &$f^1_{4^3}f^2_{4^2,5}f^2_{4^2,6}f^3_{4^7}f^2_{4,5,6}f^1_{4,6^2}f^4_{4,6,7}f^1_{5,6^2}$ &$C_2$\\
  \hline
 \end{tabular}
-
+\end{center}
 
 \begin{bemerkung}
 Sei $X$ eine Sphäre ohne Ecken vom Grad 3 und $F$ eine Fläche in $X$. Dann ist $Aut(T^F(X))$ eine Untergruppe von $S_3.$ 
@@ -2328,7 +2400,8 @@ An dieser Stelle lasst sich wieder erkennen, dass das Abschwächen
 der Voraussetzung zu einem anderem Ergebnis fuhrt.
 \end{bemerkung}
 Die Anzahlen aller Sphären mit mindestens einem 3-Waist und bis zu 26 Flächen,
-die keine Multi-Tetraeder sind, liefert uns folgende Tabelle.\\
+die keine Multi-Tetraeder sind, liefert uns folgende Tabelle.
+\begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
 \textcolor{blue}{$\#$ 3-Waists }&\textbf{4}& \textbf{6}& \textbf{8}& \textbf{10}& \textbf{12}& \textbf{14}& \textbf{16}& \textbf{18}& \textbf{20}& \textbf{22}& \textbf{24}& \textbf{26}\\
@@ -2352,6 +2425,10 @@ die keine Multi-Tetraeder sind, liefert uns folgende Tabelle.\\
 \textcolor{blue}{9} &0& 0& 0& 0& 0& 0& 0& 0& 0& 0& 0& 337437\\
 \hline
 \end{tabular}
+\end{center}
+\[
+\textcolor{red}{zusammenhang-facegraphen-3-waist }
+\]
 \section{Multi-Sphären}
 In diesem Kapitel dieser Arbeit wollen wir die in Kapitel 6 vorgestellte Konstruktion von Multitetraedern durch Tetraedererweiterungen für beliebige vertex-treue Flächen erweitern.   
 \begin{definition}

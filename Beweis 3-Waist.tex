@@ -312,21 +312,83 @@ Analoges Vorgehen liefert die Orientierungen:
 \end{align*}
 Durch Betrachtung von $o(F_1)$ und $o(F_2)$ erhalten wir den gewünschten Widerspruch, denn diese sind nicht kohärent.
 \end{proof}
+
+Durch näheres Betrachten des obigen Beweises erhalten wir eine neue Charakterisierung der Orientierbarkeit einer vertex-treuen Sphäre.
 \newpage
 $\textcolor{red}{untenstehende\, sachen\, muessen\, noch\, ausformuliert\, werden}$
 \begin{lemma}
-Sei $X$ eine vertex-treue Sphäre mit einer Ecke vom Grad 3,  $Y$ die Sphäre die durch das Entfernen der Tetraeder entsteht und $\zeta:=\zeta(Y)$ die Kaktus-Distanz von $Y$. Weiterhin seien $e_1,\ldots,e_{\zeta}$ drehbare Kanten in $Y,$ sodass $Y^{(e_1,\ldots,e_{\zeta})}$ ein Multi-Tetraeder ist. Dann gilt
+Sei $X$ eine vertex-treue Sphäre mit einer Ecke $V\in X_0$ vom Grad 3,  $Y$ die Sphäre die durch das Entfernen des Tetraeders entsteht, also $Y=T_V(X),$ und $\zeta:=\zeta(Y)$ die Kaktus-Distanz von $Y.$ Weiterhin seien $e_1,\ldots,e_{\zeta}$ drehbare Kanten in $Y,$ sodass $Y^{(e_1,\ldots,e_{\zeta})}$ ein Multi-Tetraeder ist. Dann gilt
 \[
 \zeta(X)\leq \vert\{e_i\mid \, e_i \notin M_X\}\vert+2*\vert \{e_j\mid \, e_i \in M_X\}\vert,
 \]
 wobei $M_X=\{e\in X_2\mid \,\exists\,V\in X_0\, :\, \deg_X(V)=3 \, \wedge \, e \in X_1(X_2(V))-X_1(V) \}$
 \end{lemma}
+Die wesentliche Idee für den Beweis wurde bereits in ... präsentiert. Diese muss nur auf diese Situation angepasst werden.
 \begin{proof}
-Beweis folgt noch.
+Die Aussage ist gezeigt, wenn wir die drehbare Kantensequenz $E:=(e_1,\ldots,e_{\xi})$ in $Y$ in eine drehbare Kantensequenz in $X$ umstrukturieren können. Hierfür sei $X^0:=X$ und $E_0:=().$ Weiterhin seien $X^i$ und $E_i:=(e'_1,\ldots,e'_l)$ für $0\leq i < \xi$ und ein geeignetes $l$ schon konstruiert. Dann führen wir folgende Fallunterscheidung an:
+\begin{itemize}
+\item Falls $e_{i+1} \notin M_X $ ist, so wähle $X^{i+1}:={(X^i)}^{e_{i+1}}$ und $E_{i+1}:=(e'_1,\ldots,e'_l,e_{i+1})$. Damit ist 
+\[
+T^F(Y^{(e_1,\ldots,e_{i+1})})\cong X^{E_{i+1}}
+\]
+und in $X^{E_{i+1}}$ existiert kein 2-Waist, denn sonst wäre dieser schon in $Y^{(e_1,\ldots,e_{i+1})}$ enthalten. Damit ist $E_{i+1}$ eine drehbare Kantensequenz.
+\item Falls $e_{i+1}\in M_X$ ist, muss man Kantendrehungen wie im Folgendem beschrieben anwenden:\\
+Seien weiterhin $F_1,F_2,F_3,$ die zu $V$ inzidenten Flächen und ohne Einschränkung $e_{i+1}<F_1$ und $e$ die Kante, für die $\vert {(X^i)^{e_{i+1}}}_2(e)\cup \{F_1,F_2,F_3\}\vert =1$ gilt.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=18cm 20cm 5cm 23cm]{proof}
+\end{center}
+\caption{Kantendrehung}
+\end{figure}
+Dann definiert man $X^{i+1}:={X^i}^{(e_{i+1},e)}$ und $E^{i+1}:=(e'_1,\ldots,e'_l,e_{i+1},e).$ Dies liefert erneut
+\[
+T^F(Y^{(e_1,\ldots,e_{i+1})})\cong X^{E_{i+1}}
+\] 
+\end{itemize}
+ Durch das Drehen der Kanten $e_{i+1}$ und $e$ können keine 2-Waists entstehen, wodurch $E_{i+1}$ drehbar ist.
+Nach endlich vielen Schritten erhält man also eine drehbare Kantensequenz $E'$ in $X$ sodass 
+\[X^{E'}\cong T^F(Y^E)
+\]ist.
+Also erhalten wir durch Anwenden der drehbaren Kantensequenz $E'$ auf $X$ einen Multi-Tetraeder. Die Abschätzung in der Formulierung des Lemmas erhalten wir durch die obige Fallunterscheidung.
 \end{proof}
-\newpage
-Dieses Lemma bildet die Grundidee für den folgenden Algorithmus, der die Kaktus-Distanz einer Sphäre annähert.
-
+\begin{bemerkung}
+Dieses Lemma bildet die Grundidee für den folgenden Algorithmus, der die Kaktus-Distanz einer Sphäre annähert. Und zwar wählen wir eine Ecke mit minimalen Grad. An dieser Ecke führen wir solange Kantendrehungen durch, bis eine Ecke vom Grad 3 erzeugt wird. Dann entfernen wir diesen Tetraeder und führen diese Prozedur erneut aus. Durch Iterieren dieses Vorgehens tritt nach endlich vielen Schritten der Fall ein, dass die konstruierte Sphäre isomorph zu einem Multi-Tetraeder ist. Durch obiges Lemma werden die in den Zwischenschritten des beschriebenen Verfahrens konstruierten Kantensequenzen zu einer Kantensequenz in der ursprünglichen Sphäre übersetzt. Somit liefert diese Kantensequenz einen Multi-Tetraeder und wir erhalten die gewünschte Abschätzung der Kantensequenz
+\end{bemerkung}
+\begin{bemerkung}
+Sei $X$ ein Multi-Tetraeder und $V$ eine Ecke vom Grad 3 in $X$. Seien $e_1,e_2\in X_1(X_2(V))-X_1(V)$ zwei Kanten des Tetraeders an der Stelle $V.$ Dann ist $Y=\beta_{e_1,e_2}(X)$ ein Multi-Tetraeder. Durch das Einsetzen des Schmetterlings entstehen zwei neue Ecken $V',V'',$ wobei $V'\in X_0(X_2(V))$ ist. Da $V'$ zu den beiden Flaechen vom Schmetterling und zu zwei Flaechen des Tetraeders an der Stelle $V$ inzident ist gilt $deg_Y(V')=4.$ Durch Entfernen des Tetraeder an der Stelle $V$ erhalten wir $deg(V')=3$ in $T_F(Y), $ also ist $T_F(Y) $ und somit auch $Y$ ein Multi-Tetraeder   
+\end{bemerkung}
+\begin{lemma}
+Sei $n\in \mathbb{N}$ und $0\leq i \leq n.$ Dann ist 
+\[
+\xi((n)\bar{2l}(n))\leq 2l+1
+\]
+\end{lemma}
+\begin{proof}
+Wir zeigen diese Aussage, indem wir die Sphäre $X=(n)\bar{2l}(n)$ mit 2l Kantendrehungen in die Sphäre $(n+l)^2$ umformen. Seien $V_1$ und $V_2$ die Ecken der $n$-gons. Dann gilt es Arten von Kanten in $X$
+\begin{itemize}
+\item Es gibt Kanten $e_1,\ldots, e_l\in X_1$, sodass 
+\[
+X_1(X_2(V_1))-X_1(V_1)-X_1(V_2)=\{e_1,\ldots,e_l\}
+\] gilt,
+\item es gibt Kanten $e'_1,\ldots,e'_l\in X_1, $ die
+\[
+X_1(X_2(V_2))-X_1(V_2)-X_1(V_1)=\{e'_1,\ldots,e'_l\}
+\] erfüllen.
+\end{itemize}
+Weiterhin gilt $\{e_1,\ldots,e_l\}\cap\{e_1',\ldots,e_l'\}=\emptyset$
+Durch Anwenden der drehbaren Kantensequenz $(e_1,\ldots,e_l)$ auf $X$ erhalten wir eine Sphäre $Y$ mit $deg_Y(V_1)=n+l.$ Dadurch erhalten wir durch drehen der Kanten $e_1',\ldots,e_l'$ die Sphäre $Z$ mit 
+\[
+deg_Z(V_1)=deg_Z(V_2)=n+l.
+\]
+Da für alle $V\in Z_0-\{V_1,V_2\}$ die Gleichheit 
+\[
+deg_Z(V)=4
+\]
+gilt und $V_1,V_2$ in $Z$ nicht benachbart sind, muss schon $Z\cong (n+l)^2$ gelten. Daraus folgt die Behauptung.
+\end{proof}
+In der Formulierung des Lemmas gilt aber keine Gleichheit.
+Denn für die Sphäre $X=(4)\bar{2}(4)$ ergibt sich die Schranke $\xi(X)\leq 3.$ Die Sphäre kann jedoch mithilfe von 2 Kantendrehungen in einen Multi-Tetraeder umgeformt werden. Wir werden jedoch sehen, dass diese Schranke noch schärfer formuliert werden kann. 
+\newpage 
 \begin{center}
 $\fbox{
 \parbox{15cm}{
@@ -380,5 +442,44 @@ vertices:=Difference(vertices,[tempV]);\\
 %    return true;
 %end;
 
+\newpage 
+\begin{lemma}\label{grad3}
+Für  jede vertex-treue Sphäre $X$ existiert eine Kantensequenz $E=(e_1,\ldots,e_n),$ sodass $X^E$ eine vertex-treue Sphäre ist und es in $X^E$ eine Ecke vom Grad 3 gibt.
+\end{lemma}
+\begin{comment}
+Beweisskizze\\
+Die Idee des Beweises ist es, eine Folge von Ecken und damit auch eine Folge von vertex-treuen Sphären, entstanden durch das Anwenden von Kantensequenzen an $X$, zu konstruieren, sodass nach endlich vielen Schritten eine Ecke vom Grad 3 erzwungen wird. Hierfür wendet man iterativ Kantendrehungen an den Kanten ausgewählter Ecken der Sphäre an.
+Falls dadurch eine Ecke an einer nicht drehbaren Kante liegt, gibt es 2 Fälle, die auftreten können. Entweder es gibt bereits eine Ecke vom Grad 3 oder die beiden anderen Ecken des von der Kante induzierten Butterflys sind adjazent.
+ Falls also durch Anwenden einer allgemeinen Kantendrehung ein 2-Waist entsteht, kann man die Sphäre in zwei 2-Waist Komponenten unterteilen. Diese liefern den Schlüssel zum Nachweis der Aussage. Denn durch leichtes Abändern liefern diese Komponenten in der Sphäre, die eine Kantendrehung von der Sphäre mit dem 2-Waist entfernt ist, die Information, welche Ecken zum konstruieren Folge geeignet sind.
+\end{comment}
+\begin{proof} 
 
+Falls $X$ eine Ecke vom Grad 3 hat, so ist nichts zu zeigen. Sei also $X$ eine vertex-treue Sphäre ohne Ecken vom Grad 3, $V$ eine beliebige Ecke in $X$ und $X_1(V)=\{e_1,\ldots,e_k\}$ die Menge der Kanten, die zu $V$ inzident sind.
+Es gilt $deg_X(V)=\vert X_1(V) \vert.$ Für $V'\in X_0(e_1)$ gilt dann ebenfalls
+\[
+deg_{X^{e_1}}(V')=deg_{X}(V')-1
+\]
+ Falls also Kanten $e_1\ldots, e_i \in X_1(V)$ existieren, sodass $E=(e_1,\ldots,e_i)$ eine drehbare Kantensequenz ist und es in $X^E$ eine Ecke vom Grad 3 gibt, so ist die Aussage gezeigt. Andernfalls gibt es ein $1\leq r \leq k$, sodass $X^{[e_1,\ldots ,e_r]}$ einen 2-Waist $(e_r,e)$ mit zugehörigen 2-Waist Komponenten $M^1,M^2$ hat und $(e_1,\ldots, e_{r-1})$ eine drehbare  Kantensequenz ist. Es muss $\vert M^1 \vert,\vert M^2 \vert >2$ gelten, denn sonst gibt es in $X^{[e_1,\ldots,e_{r}]}$ eine Ecke vom Grad 2, woraus man auf eine Ecke vom Grad 3 in $X^{(e_1,\ldots,e_{r-1})}$ schließen kann.
+Man definiert nun 
+\begin{align*}
+&Y^1:=X^{(e_1,\ldots,e_{r-1})}\\
+&M^1:=M_1 - {({X}^{[e_1,\ldots,e_r]})}_2(\{e_r,e\})\\
+&E^1:=(e_1,\ldots,e_{r-1})
+\end{align*}
+und $V^1$ als einen Knoten in ${Y^1}_0(M_1)-{Y^1}_0({Y^1}_2(\{e_r,e\})).$
+ Sei also nun für $j\in \mathbb{N}$ die vertex-treue Sphäre $Y^j$ und die Menge $M^j$ zusammen mit einer drehbaren Kantensequenz $E^j=(e_1,\ldots, e_l)$ und einer Ecke $V^j$ in ${Y^j}_0(M^j)$ schon gegeben. 
+Falls Kanten $e'_1,\ldots,e'_m\in {Y^j}_1(V^i)$ existieren,
+ sodass $(e_1,\ldots ,e_l,e'_1,\ldots e'_m)$ eine drehbare Kantensequenz ist und ${Y^i}^{(e'_1,\ldots e'_m)}$
+  eine Ecke vom Grad 3 besitzt, so folgt die Behauptung. Falls dies nicht der Fall ist, so gibt es ein $1\leq i \leq m$, sodass $(e'_1,\ldots e'_{i-1})$ eine drehbare Kantensequenz und $(e'_{i},e')$ ein 2-Waist in ${Y^i}^{[e'_1,\ldots e'_{i}]}$ ist. Durch Anwenden der Kantensequenz $(e'_1,\ldots e'_{i})$ erhält man also die 2-Waist Komponenten $M,M',$ wobei $M \subseteq M^i$ ist. Falls $\vert M \vert >2$ ist, so wählt man
+  \begin{align*}
+  Y^{j+1}:={Y^j}^{(e'_1,\ldots e'_{i-1})}\\
+  M^{j+1}:=M-{({Y^j}^{[e_1,\ldots, e_r]})}_2(\{e_r,e\})\\
+  E^{i+1}:=(e_1,\ldots e_l,e'_1 \ldots, e'_{i-1})\\
+\end{align*}   
+und $V^{i+1}$ als eine Ecke in ${Y^{j+1}}_0(M)-{Y^{j+1}}_0({Y^{j+1}}_2(\{e'_i,e'\}))$ Für die absteigende 
+\[
+M^{j+1}\subset M^j\subset \ldots \subset M_1 
+\]
+muss nach endlich vielen Schritten der Fall $\vert M^k \vert=2$ eintreten, was bedeutet, das $E^{k}=[e_1,\ldots ,e_{n}]$ eine solche Kantensequenz ist, sodass reduzieren auf $(e_1, \ldots e_{n-1})$ eine drehbare Kantensequenz liefert und $X^{(e_1,\ldots,e_{n-1})}$ eine Ecke vom Grad 3 liefert.  
+\end{proof}
 \end{document}

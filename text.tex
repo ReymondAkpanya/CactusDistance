@@ -78,53 +78,93 @@ tmargin={2.5cm},bmargin = {2.5cm}]{geometry}
 %}
 %------------------------------
 \begin{document}
-\subsection{Facegraphen von Multi-Tetraedern}
-In Kapitel 3 haben wir uns Facegraphen von simplizialer Flächen gewidmet. In diesem Abschnitt betrachten wir im Genauen die Facegraphen von Multitetraedern. Es lässt sich nämlich ein Zusammenhang zwischen dem Facegraphen eines Multitetraeders und der Sphäre, die durch eine Tetraedererweiterung konstruiert wird, erkennen.\\\\
-Den Facegraphen des Tetraeders haben wir bereits kennengelernt. Dieser wird bis auf Isomorphie durch $G_T=(V,E)$ mit $V=\{F_1,F_2,F_3,F_4\}$ und $E=Pot_2(V)$ dargestellt.
+\subsection{Flächengraph von Multi-Tetraedern}
+In Kapitel 3 haben wir uns den Flächengraphen simplizialer Flächen gewidmet. In diesem Abschnitt betrachten wir im Genauen die Flächengraphen von Multi-Tetraedern. Es lässt sich nämlich ein Zusammenhang zwischen dem Flächengraphen eines Multi-Tetraeders und der Sphäre, die durch eine Tetraedererweiterung konstruiert wird, erkennen.\\\\
+Den Flächengraphen des Tetraeders haben wir bereits kennengelernt. Dieser wird bis auf Isomorphie durch $G_T=(V,E)$ mit $V=\{F_1,F_2,F_3,F_4\}$ und $E=Pot_2(V)$ dargestellt.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[viewport=0cm 20.5cm 14cm 23cm]{Image_FaceGraphTetraeder}
 \end{center}
-\caption{Face-Graph des Tetraeders}
+\caption{Flächengraph des Tetraeders}
 \end{figure}
 
-Durch eine Tetraedererweitung am Tetraeder wird der Double-Tetraeder mit zugehörigem Facegraph $G_{DT}$ konstruiert. Diesen enthalten wir bis auf Isomorphie durch die Ecken $V=\{F_1,\ldots,F_6\}$ und die Kanten 
-\[
-\{\{F_1,F_2\},\{F_1,F_3\},\{F_1,F_4\},\{F_2,F_3\},\{F_2,F_4\},\{F_3,F_5\},\{F_3,F_6\},\{F_4,F_6\},\{F_5,F_6\}\}.
-\]
-
+Durch eine Tetraedererweitung am Tetraeder wird der Doppel-Tetraeder mit zugehörigem Flächengraph $G_{DT}$ konstruiert. Diesen enthalten wir bis auf Isomorphie durch die Knoten $V=\{F_1,\ldots,F_6\}$ und die Kanten 
+\begin{align*}
+E=\{&\{F_1,F_2\},\{F_1,F_3\},\{F_1,F_4\},\{F_2,F_4\}\\
+&\{F_2,F_5\},\{F_3,F_5\},\{F_3,F_6\},\{F_4,F_6\},\{F_5,F_6\}\}.
+\end{align*}
 \begin{figure}[H]
 \begin{center}
-\includegraphics[viewport=0cm 20.5cm 14cm 23cm]{Image_FaceGraphdoubleTetraeder}
+\includegraphics[viewport=2cm 20.5cm 14cm 22.2cm]{Image_FaceGraphdoubleTetraeder}
 \end{center}
-\caption{Face-Graph des Tetraeders}
+\caption{Face-Graph des Doppel-Tetraeders}
 \end{figure}
-Durch genaueres Hinschauen lässt sich erkennen, dass der zu $F_3$ zugehörige Knoten im ursprünglichen Graphen des Tetraeders unter Berücksichtigung der Inzidenzen in drei weitere Knoten aufgeteilt wurde. Im Allgemeinen ist dieses Phänomen weiterhin erkennbar, weshalb wir dieses an dieser Stelle beschreiben wollen.\\
-Sei $X$ ein Multi-Tetraeder mit zugehörigem Facegraph $G_X$ und $F\in X_2$ eine Fläche mit $X_2(X_1(F))=\{F_1,F_2,F_3\}.$ 
-Da für die Skizzierung des erwähnten Zusammenhangs nur die Knoten der Flächen $F,F_1,F_2,F_3$ relevant sind, wird in den folgenden Abbildungen auch nur dieser Ausschnitt des Facegraphen dargestellt. Der Facegraph kann mehr Knoten und Inzidenzen enthalten, diese sind aber für unsere Zwecke nicht von Bedeutung.
+Durch genaueres Hinschauen lässt sich erkennen, dass der zu der Fläche $F_3$ zugehörige Knoten im ursprünglichen Graphen des Tetraeders durch die Erweiterung unter Berücksichtigung der Inzidenzen in drei neue Knoten aufgeteilt wird. Im Allgemeinen ist dieses Phänomen weiterhin erkennbar, weshalb wir dieses an dieser Stelle beschreiben wollen.\\
+Sei $X$ ein Multi-Tetraeder mit zugehörigem Flächengraph $G_X$ und $F\in X_2$ eine Fläche mit $X_2(X_1(F))=\{F,F_1,F_2,F_3\}$ für geeignete Flächen. 
+Da für die Skizzierung des erwähnten Zusammenhangs nur die Knoten der Flächen $F,F_1,F_2,F_3$ relevant sind, wird in den folgenden Abbildungen auch nur dieser Ausschnitt des Flächengraphen dargestellt. Der Flächengraph kann mehr Knoten und Inzidenzen enthalten, diese sind aber für unsere Zwecke nicht von Bedeutung.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[viewport=3cm 19.6cm 14cm 23cm]{Image_fg1}
 \end{center}
-\caption{Ausschnitt eines Facegraphen eines Multitetraeders}
+\caption{Ausschnitt eines Flächengraphen eines Multi-Tetraeders}
 \end{figure}
-Auf Ebene der simplizialen Flächen wird bei einer Tetraedererweiterung die Fläche $F$ entfernt und durch den 3-gon mit den Flächen $\{F_a,F_b,F_c\}$ so ersetzt, dass $F_1$ und $F_a$, $F_2$ und $F_b$ bzw. $F_3$ und $F_c$ benachbarte Flächen in der konstruierten Sphäre sind. Dieses Vorgehen muss nun nur noch auf der Ebene der Facegraphen nachgeahmt werden.\\
+Auf Ebene der simplizialen Flächen wird bei einer Tetraedererweiterung die Fläche $F$ entfernt und durch den 3-gon mit den Flächen $\{F_a,F_b,F_c\}$ so ersetzt, dass $F_1$ und $F_a$, $F_2$ und $F_b$ bzw. $F_3$ und $F_c$ benachbarte Flächen in der konstruierten Sphäre sind. Dieses Vorgehen muss nun nur noch auf der Ebene der Flächengraphen nachgeahmt werden.\\
 Bei einer Tetraedererweiterung wird in einem ersten Schritt der Knoten $F$ durch die Knoten $F_a,F_b,F_c$ ersetzt, wobei $F_a,F_b,F_c$ die Flächen des angehängten Tetraeders sind. Dann werden die Kanten $\{F,F_1\},\{F,F_2\}$ und $\{F,F_3\}$ in dem Graphen gelöscht.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[viewport=3cm 19.7cm 14cm 23cm]{Image_fg2}
 \end{center}
-\caption{Ausschnitt eines Facegraphen eines Multitetraeders}
+\caption{Ausschnitt eines Flächengraphen eines Multi-Tetraeders}
 \end{figure}
-Zuletzt werden die Inzidenzen 
+Daraufhin werden die Inzidenzen 
 \[
 \{F_a,F_b\},\{F_a,F_c\},\{F_b,F_c\},\{F_1,F_a\},\{F_2,F_b\},\{F_3,F_c\}
 \] 
-in dem Graphen hergestellt, um so schließlich den Facegraphen des Multitetraeders, der durch die Tetraedererweiterung entstanden ist, zu erzeugen.
+in dem letzterem Graphen hergestellt, um so schließlich den Flächengraph des Multi-Tetraeders, der durch die Tetraedererweiterung entstanden ist, zu erzeugen.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[viewport=3cm 19.7cm 14cm 23cm]{Image_fg3}
 \end{center}
-\caption{Ausschnitt eines Facegraphen eines Multitetraeders}
+\caption{Ausschnitt eines Flächengraphen eines Multi-Tetraeders}
 \end{figure}
+\begin{bsp}
+Im folgenden Beispiel steht die Verdeutlichung der obigen Prozedur im Vordergrund. Deshalb soll auf eine genaue Definition der zugehörigen Flächengraphen durch Knoten und Kanten verzichtet werden. Wir geben uns an dieser Stelle mit den Abbildungen der jeweiligen Graphen zufrieden. \\
+Den Flächengraph des Tetraeders haben wir bereits in dem einführenden Beispiel gesehen.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8,viewport=10cm 19.5cm 5cm 22.5cm]{mttry1}
+
+\end{center}
+\caption{Ausschnitt eines Flächengraph eines Multi-Tetraeders}
+%\caption{Kantendrehung}
+\end{figure}
+Durch eine Tetraederweiterung an der Fläche 1 erhalten wir die neuen Flächen 5,6,7 und den zugehörigen Graphen unter Beachtung der neuen Inzidenzen.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=10cm 19.5cm 5cm 23.cm]{Mttry4}
+\end{center}
+\caption{Flächengraph des Doppel-Tetraeders}
+\end{figure}
+Durch eine Tetraedererweiterung am Doppel-Tetraeder an der Fläche 2 erhalten wir bis auf Isomorphie den Multi-Tetraeder mit 8 Flächen, der folgenden Flächengraphen besitzt. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.5,viewport=16cm 14.5cm 5cm 24cm]{bsp9}
+\end{center}
+\caption{Flächengraph eines Multi-Tetraeders}
+\end{figure}
+Anhängen eines Tetraeders an der Fläche 3 liefert uns einen Multi-Tetraeder mit 10 Flächen und folgendem Flächengraph.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.6,viewport=15.5cm 14.cm 5cm 23cm]{bsp10}
+\end{center}
+\caption{Flächengraph eines Multi-Tetraeders}
+\end{figure}
+Schließlich kommt durch eine Erweiterung an der Fläche 7 folgender Flächengraph zustande.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.6,viewport=16cm 14cm 5cm 23cm]{bsp11}
+\end{center}
+\caption{Flächengraph eines Multi-Tetraeders}
+\end{figure}
+\end{bsp}
 \end{document}

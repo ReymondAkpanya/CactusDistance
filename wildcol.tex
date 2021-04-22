@@ -1,0 +1,319 @@
+
+\documentclass[12pt,titlepage,twoside,cleardoublepage]{article}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,lmargin={4cm},rmargin={2cm},
+tmargin={2.5cm},bmargin = {2.5cm}]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pdfpages} 
+%\usepackage[pdftex,article]{geometry}
+\usepackage{amsthm}
+%\usepackage{ngerman,amsthm}
+\usepackage{lineno} 
+\usepackage{lineno, blindtext} 
+\usepackage{cleveref}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{thmtools}
+\usepackage{tabularx}
+\linespread{1.25}
+\usepackage{color}
+\usepackage{verbatim}
+\newcommand{\gelb}{0.550000011920929}
+\usepackage{pgf,tikz,pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+%\numberwithin{equation}{chapter}
+%\usepackage{scrheadings}
+\pagestyle{headings}
+\usepackage{titlesec}     
+\usepackage{tikz}   
+\usepackage{graphicx}        % für Kontrolle der Abschnittüberschriften
+
+%\begin{comment}
+\newtheorem{zahl}{}[section]
+%\setcounter{zahl}{1}
+%\newtheorem{section}{section}[section]
+\newtheorem{definition}[zahl]{Definition}
+\newtheorem{vor}[zahl]{Vorüberlegung}
+\newtheorem{lemma}[zahl]{Lemma}
+\newtheorem{folgerung}[zahl]{Folgerung}
+\newtheorem{bsp}[zahl]{Beispiel}
+\newtheorem{herleitung}[zahl]{Herleitung}
+\newtheorem{bemerkung}[zahl]{Bemerkung}
+\newtheorem{satz}[zahl]{Satz}
+\newtheorem{beweisidee}[zahl]{Beweisidee}
+\numberwithin{equation}{section}
+
+
+%-----------------------------------------------
+
+%\end{comment}
+ %Nummerierung mit Kapitelnummern
+%-------------------------
+%\newcommand{\secnumbering}[1]{% 
+ % \setcounter{chapter}{0}% 
+  %\setcounter{section}{0}% 
+  %\renewcommand{\thechapter}{\csname #1\endcsname{chapter}.}% nach Duden gehört 
+                                  % der Punkt hier hin bei gemischten Zählungen 
+%  \renewcommand{\thesection}{\thechapter\csname #1\endcsname{section}}% 
+%}
+%------------------------------
+\begin{document}
+\begin{satz}\label{wild}
+Sei $X$ ein Multi-Tetreader. Dann besitzt $X$ eine wilde Färbung.
+\end{satz}
+\begin{proof}
+Wir weisen diese Aussage per Induktion nach. Für einen Tetraeder mit dem Flächenträger
+\[
+\{\{1,2,3\},\{1,2,4\},\{1,3,4\},\{2,3,4\}\}
+\] erhalten wir eine wilde Färbung durch die Abbildung
+\begin{align*}
+\omega(e)=\Biggl\{
+\begin{tabular}[l]{lcr}
+a, falls e=\{1,2\},\{3,4\}\\
+b, falls e=\{1,3\},\{2,4\}\\
+c, falls e=\{1,4\},\{2,3\}
+\end{tabular}.
+\end{align*}
+Da der Tetraeder eine vertex-treue Sphäre ist, wurden an dieser Stelle die Kanten mit den inzidenten Ecken identifiziert.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=0cm 23.6cm 6cm 27cm]{wildcTet}
+\end{center}
+\caption{wild gefärbter Tetraeder}
+\end{figure}
+Sei nun $X$ ein Multi-Tetraeder mit $n=\vert X_2 \vert >4$ und $V\in X_0$ eine Ecke vom Grad 3. Dann erhalten wir durch Entfernen des Tetraeders an der Stelle $V$ den Multi-Tetraeder $Y=T_V(X)$ mit $\vert Y_2 \vert=n-2.$ Deshalb erhalten wir für $Y$ eine wilde Färbung $\omega:Y_1\to \{a,b,c\}.$ Diese kann auf genau eine Art und Weise zu einer wilden Färbung auf $X$ erweitert werden.
+Denn seien $F_1,F_2,F_3$ die Flächen des angehängten Tetraeders. Dann gilt $X_1(X_2(V))=\{e_1,e_2,e_3\}\cup \{e_a,e_b,e_c\},$ wobei $e_1,e_2,e_3$ geeignete Kanten in $X_1-Y_1$ und $e_a,e_b,e_c$ geeignete Kanten in $Y$ sind. Da die letzteren Kanten zu derselben Fläche $F\in Y_2$ inzident sind, müssen diese Kanten paarweise verschieden gefärbt sein, also  muss ohne Einschränkung $
+\omega(e_a)=a,\omega(e_b)=b$ und $\omega(e_c)=c$
+gelten.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=0cm 24.5cm 5cm 27cm]{colouredTriangle}
+\end{center}
+\caption{Ausschnitt der wild-gefärbten Sphäre $Y$}
+\end{figure}
+Die Flächen des Tetraeders an der Stelle $V$ sind zu genau einer Kante aus der Menge $\{e_a,e_b,e_c\}$ und genau zwei Kanten aus der Menge $\{e_1,e_2,e_3\}$ inzident. Deshalb erhalten wir ohne Einschränkung 
+\begin{align*}
+&X_1(F_1)=\{e_1,e_2,e_a\},\\
+&X_1(F_2)=\{e_2,e_3,e_b\}\\
+& X_1(F_3)=\{e_1,e_3,e_a\}.\\
+\end{align*}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.9,viewport=0cm 19.5cm 10cm 26.cm]{notcol3gon}
+\end{center}
+\caption{Ausschnitt der Sphäre $X$}
+\end{figure}
+Die wilde Färbung $\omega$ auf $Y$ muss nun durch Ergänzen der fehlenden Bilder zu einer wilden Färbung $\omega_X$ auf $X$ erweitert werden. Für $e\in Y_1\subseteq X_1$ gilt also $\omega_X(e)=\omega(e).$  
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.9,viewport=0cm 19.5cm 10cm 27cm]{col3gon}
+\end{center}
+\caption{Ausschnitt der teilweise wild-gefärbten Sphäre $X$}
+\end{figure}
+Da $e_1 \in X_1(F_1)\cap X_1(F_3)$ ist und die Gleichheiten $\omega_X(e_c)=\omega(e_c)=c$ und $\omega_X(e_a)=\omega(e_a)=a$ gelten, muss $\omega_X(e_1)=b$ sein, da sonst keine wilde Färbung zustande kommt. Analog erhalten wir $\omega_X(e_2)=c$ und $\omega_X(e_3)=a$ und schlussendlich eine Färbung der Sphäre $X$.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.9,viewport=0cm 19.5cm 10cm 27cm]{col3gon2}
+\end{center}
+\caption{Ausschnitt der wild-gefärbten Sphäre $X$}
+\end{figure}
+\end{proof}
+Durch analoge Beweisführung kann ebenfalls gezeigt werden, dass für Multi-Tetraeder eine gleichschenklige Färbung existiert. 
+
+\begin{satz}
+Sei $X$ ein Multi-Tetraeder. Dann besitzt $X$ bis auf Permutation der Farben $a,b,c$ genau eine wilde Färbung.
+\end{satz}
+\begin{proof}
+Angenommen obige Aussage gilt nicht. Dann gibt es einen bezüglich der Flächenanzahl minimalen Multi-Tetraeder $X$, sodass $\omega_1$ und $\omega_2$ zwei wilde Färbungen mit 
+\begin{align} \label{eq}
+\{\omega_1^{-1}(\{a\}),\omega_1^{-1}(\{b\}),\omega_1^{-1}(\{c\})\}\neq \{\omega_2^{-1}(\{a\}),\omega_2^{-1}(\{b\}),\omega_2^{-1}(\{c\}\}
+\end{align}
+sind. Wir können $\vert X_2\vert >4$ annehmen, da die wilde Färbung des Tetraeders eindeutig ist. Zudem sei $V$ eine Ecke vom Grad 3 in $X.$ Da jeweils zwei der drei Kanten in $X_1(V)$ inzident zu derselben Fläche sind, müssen die Kanten in $X_1(V)$ unter den Färbungen $\omega_1$ und $\omega_2$ paarweise verschiedene Farben erhalten. Deshalb können wir ohne Einschränkung 
+\[
+\omega_1(e)=\omega_2(e)
+\] 
+für alle $e\in X_1(V)$ annehmen. Beachte, dass hierdurch die Bedingung (\ref{eq}) nicht verletzt wird. Durch Entfernen des Tetraeders an der Stelle $V$ erhalten wir den Multi-Tetraeder $Y=T_V(X)$ und durch Einschränken der Färbungen $\omega_1$ und $\omega_2$ auf $Y_1-X_1(V)$ erhalten wir wilde Färbungen auf $Y$. Da $X$ minimal mit der Eigenschaft der nicht eindeutigen Färbung war, muss
+\[
+\omega_1(e)=\omega_2(e)
+\]
+für alle $e\in Y_1$ gelten, woraus direkt $\omega_1=\omega_2$ folgt. Somit erhalten wir den gewünschten Widerspruch.
+\end{proof}
+Jedoch sind gleichschenklige Färbungen von Multi-Tetraedern nicht eindeutig. Dieser Sachverhalt lässt sich am Beispiel des Doppel-Tetraeders erkennen.
+\begin{center}
+$\fbox{
+\parbox{14cm}{
+\textcolor{red}{gap$>$} \textcolor{blue}{ DT;}\\
+simplicial surface (5 vertices, 9 edges, and 6 faces)
+}}$
+\end{center}
+Die gleichschenklig gefärbten Doppel-Tetraeder erhalten wir durch Aufrufen des Befehls 
+\textsf{AllIsoscelesColouredSurfaces}.
+\begin{center}
+$\fbox{
+\parbox{14cm}{
+\textcolor{red}{gap$>$} \textcolor{blue}{AllIsoscelesColouredSurfaces(DT);}\newline
+[ isosceles coloured surface (5 vertices, 9 edges and 6 faces),\newline
+  isosceles coloured surface (5 vertices, 9 edges and 6 faces) ]
+}}$
+\end{center}
+Dabei zeigt die nächste Abbildung die erste Färbung des Doppel-Tetraeders 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=0cm 22cm 5cm 27cm]{dt1}
+\end{center}
+\caption{gleichschenklig gefärbter Doppel-Tetraeder}
+\end{figure}
+und folgendes Bild die zweite berechnete Färbung des Doppel-Tetraeders.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=0cm 22.cm 5cm 27cm]{dt2}
+\end{center}
+\caption{gleichschenklig gefärbter Doppel-Tetraeder}
+\end{figure}
+\begin{lemma}
+Sei $X$ ein Multi-Tetraeder. Falls $X$ eine zahme Färbung besitzt, muss diese eine $rrr$-Struktur sein.
+\end{lemma}
+\begin{proof}
+Sei $\omega$ eine zahme Färbung auf $X$ und $V$ eine Ecke vom Grad 3 in $X.$ Weiterhin seien $F_1,F_2,F_3\in X_2(V)$ und $e_1,e_2,e_3,e_a,e_b,e_c\in X_1$ paarweise verschieden, sodass 
+\begin{align*}
+&X_1(F_1)=\{e_1,e_2,e_a\},\\
+&X_1(F_2)=\{e_2,e_3,e_b\}, \\
+&X_1(F_3)=\{e_1,e_3,e_c\},
+\end{align*}
+gilt.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8,viewport=0cm 19.5cm 10cm 26.cm]{notcol3gon}
+\end{center}
+\caption{Ausschnitt der Sphäre $X$}
+\end{figure}
+Da jeweils zwei der drei Kanten $e_1,e_2,e_3$ inzident zu derselben Fläche sind, muss ohne Einschränkung $\omega(e_1)\neq\omega(e_2)\neq\omega(e_3)$ gelten. Durch setzen der Farben $\omega(e_1)=b,\omega(e_2)=c,\omega(e_3)=a$ folgt direkt $\omega(e_a)=a,\omega(e_b)=b,\omega(e_c)=c.$  Durch Betrachten der Typen der Kanten $e_1,e_2,e_3$ folgt die Behauptung.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8,viewport=0cm 19.5cm 10cm 27cm]{col3gon2}
+\end{center}
+\caption{Ausschnitt der wild-gefärbten Sphäre $X$}
+\end{figure}
+\end{proof}
+Im Folgenden wollen wir untersuchten, welche Multi-Tetraeder eine zahme Färbung besitzen. Mit dem Tetraeder haben wir bereits ein Beispiel gesehen. Mit der Definition des \emph{Sterns}, erhalten wir ein weiteres Beispiel.
+\begin{definition}
+Der \emph{Stern} $S$ ist der Multi-Tetraeder, der durch das Symbol $1_11_21_31_4$ konstruiert wird.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.01]{stern}
+\end{center}
+\caption{Stern}
+\end{figure}
+\end{definition}
+\begin{definition}
+Sei $X$ ein Multi-Tetraeder. Durch das iterative Entfernen aller Tetraeder entsteht im Sinne von Definition ?? eine Kette 
+\[
+X=X^{(0)}\to X^{(1)}\to \ldots \to X^{(t)}\cong X^{(t+1)}
+\]
+Wir nennen einen Multi-Tetraeder \emph{maximal}, falls $X^{(t)}\cong T$ ist und für alle $0\leq i< t$ die Gleichheit
+\[
+\vert \{V\in X_0^{(i)}\,\mid \, deg(V)=3\}\vert=\vert X^{(i+1)}_2\vert 
+\]
+gilt.
+\end{definition}
+Damit sind der Tetraeder und der oben definierte Stern maximal. 
+Denn für den Stern ergibt sich die Kette 
+\[
+S\to S^{(1)}=T.
+\]
+und es gilt 
+\[
+\vert \{V\in S_0\,\mid \, deg(V)=3\}\vert=4=\vert T_2\vert .
+\]
+Der Multi-Tetraeder $X$, den wir durch das Symbol $1_11_21_3$ erhalten, ist jedoch nicht maximal. Es gilt zwar
+\[
+X\to X^{(1)}=T,
+\] 
+aber zweite Teil der Definition wird von der Sphäre $X$ nicht erfüllt, denn 
+\[
+\vert \{V\in X_0\,\mid \, deg(V)=3\}\vert=2\neq 4=\vert T_2\vert.
+\]
+\begin{lemma}\label{max}
+Sei $X$ ein maximaler Multi-Tetraeder. Dann existiert eine zahme Färbung auf $X.$
+\end{lemma}
+\begin{proof}
+Wir weisen die Aussage induktiv nach. Bei dem Tetraeder und dem Stern kann nachgerechnet werden, dass eine zahme Färbung existiert und das diese eine $rrr$-Struktur bildet. Sei nun $X$ ein maximaler Multi-Tetraeder, der nicht isomorph zum Stern oder Tetraeder ist.
+ Dann ist $Y=X^{(1)}$ ebenfalls maximal und nach Induktionsvoraussetzung erhalten wir eine zahme Färbung $\omega$ auf $Y,$ die eine $rrr$-Struktur bildet. Seien nun $F_1$ und $F_2$ zwei beliebige benachbarte Flächen in $Y$, die $Y_1(F_1)=\{e_a,e_b,e_c\}$ und $Y_1=\{e_a,e_b',e_c'\}$ und $Y_0(e_b)\cap Y_0(e_c')\neq \emptyset$ für geeignete Kanten erfüllen.
+Da $Y$ eine zahme Färbung besitzt und diese eine $rrr$-Struktur bildet, gilt ohne Einschränkung
+\begin{align*}
+&\omega(e_a)=a\\
+&\omega(e_b)=b=\omega(e_b')\\
+&\omega(e_c)=c=\omega(e_c')
+\end{align*}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8,viewport=0cm 21.6cm 13cm 27cm]{tamcol2}
+\end{center}
+\caption{Ausschnitt der wild-gefärbten Sphäre $Y$}
+\end{figure}
+In $X$ werden die Flächen $F_1$ und $F_2$ durch Tetraeder ersetzt. Und die wilde Färbung auf $Y$ muss nun durch Ergänzen der fehlenden Farben der neuen Kanten zu einer wilden Färbung auf $X$ ergänzt werden. Seien nun also $f_1,f_2,f_3$ die Flächen des Tetraeders, der $F_1$ ersetzt und $f'_1,f'_2,f'_3$ die Flächen des Tetraeders der $F_2$ ersetzt, sodass für geeignete Kanten folgende Relationen erfüllt sind:
+\begin{align*}
+&X_1(f_1)=\{e_a,e_1,e_2\}\\
+&X_1(f_2)=\{e_b,e_2,e_3\}\\
+&X_1(f_3)=\{e_c,e_1,e_3\}\\
+&X_1(f'_1)=\{e_a,e_1',e_2'\}\\
+&X_1(f'_2)=\{e_b',e_2',e'_3\}\\
+&X_1(f'_3)=\{e_c',e'_1,e'_3\}
+\end{align*}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8,viewport=0cm 21.6cm 13cm 27cm]{tamcol3}
+\end{center}
+\caption{Ausschnitt der wild-gefärbten Sphäre $X$}
+\end{figure}
+Dann erhalten wir durch analoges Vorgehen wie im Beweis von \Cref{wild}, eine wilde Färbung $\omega_X$ auf $X$ als eine eindeutige Erweiterung der Färbung auf $Y,$ welche insbesondere die $rrr-$Struktur auf dem Multi-Tetraeder $X$ fortfuhrt. Für $e\in X_1$ ergibt sich diese durch 
+\begin{align*}
+\omega_X(e)=\Biggl\{\begin{tabular}[l]{lcr}
+a, falls $e=e_3,e_3'$\\
+b, falls $e=e_1,e_1'$\\
+c, falls $e=e_2,e_2'$\\
+$\omega(e)$, sonst
+\end{tabular}.
+\end{align*}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8,viewport=0cm 21.6cm 13cm 27cm]{tamcol}
+\end{center}
+\caption{Ausschnitt der wild-gefärbten Sphäre $X$}
+\end{figure}
+\end{proof}
+Wenn man den Beweis genauer betrachtet, kann man folgende Folgerung formulieren.
+\begin{folgerung}
+Sei $X$ ein Multi-Tetraeder mit einer zahmen Färbung. Sei $Y$ der Mlti-Tetraeder, der dadurch entsteht, dass an allen Flächen von $Y$ Tetraedererweiterungen durchgeführt werden. Dann existiert eine zahme Färbung auf $Y.$
+\end{folgerung}
+Die Rückrichtung von \Cref{max} gilt jedoch nicht, dies halten wir mit folgendem Beispiel fest:\\
+Die Sphäre, die wir betrachten ist der Multi-Tetraeder mit 20 Flächen, der durch das Symbol $1_21_12_42_32_13_43_33_2$ beschrieben wird.
+\begin{center}
+$\fbox{
+\parbox{14cm}{
+\textcolor{red}{gap$>$} \textcolor{blue}{s;}\newline
+simplicial surface (12 vertices, 30 edges, and 20 faces)\newline
+\textcolor{red}{gap$>$} \textcolor{blue}{GetSymbol(s);}\newline
+[ [ 1, 2 ], [ 1, 1 ], [ 2, 4 ], [ 2, 3 ], [ 2, 1 ], [ 3, 4 ], [ 3, 3 ],
+  [ 3, 2 ] ]\newline
+\textcolor{red}{gap$>$}\textcolor{blue}{ Length(AllTameColouredSurfaces(s));}\newline
+1
+}}$
+\end{center}
+Dieser besitzt also eine zahme Färbung. Jedoch ist $s$ nicht maximal wie durch folgende Rechnung gezeigt werden kann.
+\begin{center}
+$\fbox{
+\parbox{14cm}{
+\textcolor{red}{gap$>$} \textcolor{blue}{RemoveAllTetra(s);}\newline
+simplicial surface (6 vertices, 12 edges, and 8 faces)\newline
+\textcolor{red}{gap$>$}\textcolor{blue}{ Length(Filtered(Vertices(s),g->FaceDegreeOfVertex(s,g)=3));}\newline
+6
+}}$
+\end{center}
+\end{document}

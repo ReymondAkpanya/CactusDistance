@@ -136,14 +136,7 @@ Zu Beginn dieser Arbeit werden, um ein Verständnis von simplizialen Flächen zu
 \end{center}
 %\caption{Kantendrehung}
 \end{figure}
-\subsection{Definition}
-\textbf{Resultate} \\
-$\fbox{
-\parbox{14cm}{\begin{itemize}
-\item Definition einer simplizialen Fl\"ache 
-\item elementare Eigenschaften simplizialer Fl\"achen
-\end{itemize}
-}}$\\
+\subsection{Grundlegende Konzepte}
 \begin{definition}  \label{def1} 
 Seien $X_0,X_1,X_2$ nichtleere Mengen so, dass $X=X_{0} \biguplus X_{1} \biguplus X_{2}$ eine abzählbare Menge und $<$ eine transitive Relation auf   
 \[
@@ -173,7 +166,7 @@ genau eine Fläche $F \in X_{2}$ mit $e < F$. Im ersten Fall sind $F_{1}$ und $F
   Das Tupel $(F_1,\ldots,F_n)$ wird auch \emph{Schirm} genannt. Falls es zudem eine Kante $e\in X_1$ mit $e<F_{1},F_{n}$ gibt, so ist $V$ eine \emph{innere Ecke}. Ist $V$ keine innere Ecke, so ist sie eine \emph{Randecke}.
 \begin{figure}[H]
 \begin{center}
-\includegraphics[viewport=0cm 24cm 5cm 27cm]{Image_Def14}
+\includegraphics[viewport=0cm 24cm 12cm 27cm]{Image_Def14}
 \end{center}
 %\caption{Kantendrehung}
 \end{figure} 
@@ -1601,10 +1594,11 @@ und Anwenden der beiden Kantendrehungen im zweitem Fall sorgen, dafür das $deg(
 Sei $X$ eine vertex-treue Sphäre und $E=(e_1,\ldots ,e_n)$ eine Kantensequenz in $X$. Man nennt $E$ eine vertex-treue Kantensequenz, falls für alle $1\leq i \leq n$ die Sphäre $X^{(e_1,\ldots,e_i)}$ vertex-treu ist.
 \end{definition}
 \end{comment}
+In Folgenden werden wir die Transitivität der Kantendrehung unter strikteren Voraussetzungen beweisen. Die Idee dieses Beweises ist die Vertauschbarkeit von Kantendrehungen und Tetraeder-Erweiterungen zu verwenden. Seien hierfür $X$ eine Sphäre mit einer Ecke vom Grad 3 und $Y=T_V(X)$. Weiterhin sei $F$ die Fläche in $Y,$ die den Tetraeder ersetzt. Unter der Verträglichkeit von Kantendrehungen ist gemeint, dass Kantendrehungen auf $Y$ anwenden und daraufhin den Tetraeder wieder anhängen zum selben Ergebnis führt wie die Kantendrehungen direkt auf $X$ anzuwenden. Kantendrehungen an Kanten der Fläche $F$ in $Y$ haben zur Folge, dass der Tetraeder an $V$ in $X$ wandern muss. Dies skizzieren wir im nachstehenden Beweis. Die nächste Skizze soll die erwähnte Verträglichkeit verdeutlichen. Hierfür sei $e$ eine drehbare Kante, die in $Y$ an der Fläche $F$ liegt. Also liegt $e$ in der Sphäre $X$ am Tetraeder an $V$. Wir wollen also eine drehbare Kantensequenz $E$ konstruieren, sodass Entfernen des Tetraeders in $X$ und Kante $e$ in der resultierenden Sphäre $e$ dasselbe Ergebnis herbeiführt wie die Kantensequenz $E$ auf $X$ anzuwenden. Das Konstruieren der drehbaren Kantensequenz $E$ soll im Beweis des Satzes genauer skizziert werden.
 \begin{center}
 \begin{figure}[H]
 \includegraphics[scale=.95,viewport=0cm 17cm 19cm 27cm]{comute}
-\caption{Vertauschbarkeit der Tetraeder-Erweiterung und Kantendrehung}
+\caption{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung}
 \end{figure}
 \end{center}
 \begin{satz}\label{3eck}
@@ -1830,22 +1824,11 @@ Somit folgt die Behauptung.
 \end{proof}
 %--------------------------------------------------------
 \section{Multi-Tetraeder}\label{kapitelmultitetraeder}
-\textbf{benötigte Vorkenntnisse} 
-\begin{center}
-$\fbox{
-\parbox{14cm}{\begin{itemize}
-\item Grundlagen
-\item vertex-treue Sph\"aren
-\item Kantendrehungen 
-\end{itemize}
-}}$
-\end{center}
-
-In diesem Kapitel werden die sogenanntem \emph{Multi-Tetraeder} thematisiert. Diese bilden eine Klasse von vertex-treuen Sphären. Die hier einführenden Erkenntnisse sind ebenfalls dem oben genannten Skript zu entnehmen. Wir werden elementare Eigenschaften dieser Klasse von Sphären untersuchen und ebenfalls Invarianten in dieser angeben. Außerdem wird die Kaktus-Distanz einer vertex-treuen Sphäre als die minimale Anzahl an Kantendrehungen, um aus der Sphäre einen Multi-Tetraeder zu konstruieren, definiert. Es werden zwei Algorithmen zum Annähern der Kaktus-Distanz präsentiert und für einige Sphären die Kaktus-Distanz exakt bestimmt. \\\\
+In diesem Kapitel werden die sogenanntem \emph{Multi-Tetraeder} thematisiert. Diese bilden eine Klasse von vertex-treuen Sphären. Die hier einführenden Erkenntnisse sind ebenfalls dem oben genannten Skript zu entnehmen. Wir werden elementare Eigenschaften dieser Klasse von Sphären untersuchen und ebenfalls Invarianten in dieser angeben. Außerdem wird die Kaktus-Distanz einer vertex-treuen Sphäre als die minimale Anzahl an Kantendrehungen, um aus der Sphäre einen Multi-Tetraeder zu konstruieren, definiert. Es werden zwei Algorithmen zum Annähern der Kaktus-Distanz präsentiert und für einige Sphären die Kaktus-Distanz exakt bestimmt.
 
 \subsection{Konstruktion und Klassifikation}\label{cactus}
 Wir führen zunächst die Definition eines Multi-Tetraeders ein.
-\begin{definition}
+\begin{definition}\label{defcac}
 Sei $X$ eine vertex-treue Sphäre mit $\vert X_0\vert \geq 6.$
 \begin{enumerate}
 \item Die simpliziale Fläche, die durch Entfernen aller Tetraeder entsteht, wird durch $X^{(1)}$ definiert. Für $i>1$ definieren wir analog 
@@ -2053,7 +2036,7 @@ Die Enkel von $DT$ vom Typ $(2,2)$ erhalten wir durch
 \begin{center}
  $\fbox{
 \parbox{14cm}{
-\textcolor{red}{gap$>$} \textcolor{blue}{L:=[];;}\newline
+\textcolor{red}{gap$>$} \textcolor{blue}{L:=[\,];;}\newline
 \textcolor{red}{gap$>$} \textcolor{blue}{Cartesian(FacesOfVertex(DT,1),FacesOfVertex(DT,5));}\newline
 [ [ 1, 4 ], [ 1, 5 ], [ 1, 6 ], [ 2, 4 ], [ 2, 5 ], [ 2, 6 ], [ 3, 4 ],
   [ 3, 5 ], [ 3, 6 ] ]\newline
@@ -2075,7 +2058,7 @@ Die Enkel von $DT$ vom Typ $(2,2)$ erhalten wir durch
  \begin{center}
  $\fbox{
 \parbox{14cm}{
-\textcolor{red}{gap$>$} \textcolor{blue}{L:=[];;}\newline
+\textcolor{red}{gap$>$} \textcolor{blue}{L:=[\,];;}\newline
 \textcolor{red}{gap$>$} \textcolor{blue}{Combinations(Faces(DT),3);;}\newline
 \textcolor{red}{gap$>$} \textcolor{blue}{List(last,g-$>$List(g,h-$>$VerticesOfFace(DoubleTet,h)));;}\newline
 \textcolor{red}{gap$>$} \textcolor{blue}{Filtered(last,g-$>$Intersection(Union(g),[1,5])$<>$[]);;}\newline
@@ -2485,6 +2468,7 @@ X\cong (n+1)^2
  \]
  gefolgert werden kann.
 \end{proof}
+\begin{comment}
 \begin{center}
 $\fbox{
 \parbox{13.4cm}{
@@ -2507,6 +2491,7 @@ $\fbox{
 \end{tabbing}
 }}$
 \end{center}
+\end{comment}
 Diese Beobachtung wird nützlich sein, um erste Beobachtungen über die Kaktus-Distanz einer vertex-treuen Sphäre anzustellen. Hierfür definieren wir anlehnend an den obigen Satz die Menge $D$ als die Menge aller Tupel $(V_1,V_2)\in X_0 \times X_0$, die nicht benachbart sind und $ X_0(X_1(V_1))\cap X_0(X_1(V_2))\neq \emptyset$ erfüllen.
 \begin{satz}
 Sei $(X,<)$ eine vertex-treue Sphäre, die kein Multi-Tetraeder ist. Dann ist 
@@ -2666,7 +2651,7 @@ wobei $M=X_1(X_2(V))-X_1(V)$ ist.
 Die wesentliche Idee für den Beweis wurde bereits im Beweis von \Cref{3eck} präsentiert. Diese muss nur auf diese Situation angepasst werden.
 \begin{proof}
 Wir weisen diese Aussage nach, indem wir die drehbare Kantensequenz $E:=(e_1,\ldots , e_{\zeta})$
-in $Y$ in eine drehbare Kantensequenz in $X$ umstrukturieren können, die aus $X$ einen
+in $Y$ in eine drehbare Kantensequenz in $X$ umstrukturieren, die aus $X$ einen
 Multi-Tetraeder hervorbringt. Dabei halten wir fest, wie viele Kantendrehungen angewendet wurden, um das Übersetzen der Kantensequenz zu ermöglichen.
 Wir wollen also aus der Kantensequenz in $Y$ eine Kantensequenz $E'=(e'_1,\ldots e'_k)$ in $X$ konstruieren, die Folgendes erfüllt:
 \begin{itemize}
@@ -2715,26 +2700,71 @@ Es gibt genau eine Nachbar-Ecke $\tilde{V}$ von $V_1,$ die ungleich $V,V'$ ist u
 \end{proof}
 \end{comment}
 Für den Ikosaeder ergibt sich nach Vorgehensweise des ersten Algorithmus 10 als Schranke der Kaktus-Distanz.
-Bei der Implementierung dieses Algorithmus erhalten wir 8 als verbesserte Schranke. Diese ist jedoch nicht gut genug, da die Kaktus-Distanz des Ikosaeders  ist. Dies kann mit GAP verifiziert werden.
+Bei der Implementierung des zweiten Algorithmus erhalten wir 8 als verbesserte Schranke. Diese ist jedoch nicht gut genug, da der Ikosaeder mit sechs Kantendrehungen in einen Multi-Tetraeder verwandelt werden kann. Dies kann mit GAP verifiziert werden.\\
+Durch Implementierung der beiden Algorithmen zum Annähern der Kaktus-Distanz können wir diese miteinander und mit der Kaktus-Distanz der Sphären vergleichen. Die Resultate werden in der folgenden Tabelle für die vertex-treuen Sphären ohne 3-Taillen mit bis zu 14 Flächen dargestellt. 
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+
+$\textbf{X}$&$\textbf{$\zeta$(X)}$&\textbf{Algorithmus 1}&\textbf{Algorithmus 2}\\
+\hline
+$T$&0&0&0\\
+\hline
+$(4)^2$&1&1&1\\
+\hline
+$(5)^2$&1&1&1\\
+\hline
+$(6)^2$&1&1&1\\
+\hline
+$(5)\overline{2}(5)$&2&3&2\\
+\hline
+$(6)\overline{2}(6)$&2&3&2\\
+\hline
+$(7)^2$&1&1&1\\
+\hline
+$(6)\overline{3}(5)$&2&4&2\\
+\hline
+$(5)\overline{4}(5)$&3&5&3\\
+\hline
+\end{tabular} 
+\end{center}
+Damit ist der erste Algorithmus nur für Kaktus-Distanz 1 exakt, wohingegen der zweite die Sphären mit Kaktus-Distanz 2 verifizieren kann. Bei den vertex-treuen Sphären mit 18 Flächen gibt es erstmals eine Sphäre deren Kaktus-Distanz echt kleiner als die mit dem zweitem Algorithmus berechnete Schranke.
+Um den zweiten Algorithmus zu optimieren muss, die Wahl der Kanten genauer betrachtet werden. Beispielsweise kann vermieden werden, dass Kanten, die vor dem Entfernen eines Tetraeders an einem Tetraeder lagen, gedreht werden. Dies führt nämlich dazu, dass zwei Kantendrehungen angewendet werden müssen, um die Verträglichkeit von Kantendrehung und Tetraeder-Erweiterung zu gewährleisten.\\
+Die Tatsache, dass der zweite Algorithmus eine Verbesserung darstellt geht ebenfalls aus der Tabelle hervor. Dies sollte aber nicht verwunderlich sein, da bei der ersten Vorgehensweise nur die Distanz zum Doppel-$n$-Gon  ausgenutzt wird. Bei dem zweiten Algorithmus jedoch, muss der konstruierte Multi-Tetraeder nicht derjenige sein, der eine Kantendrehung vom $(n)^2$ entfernt ist.
 \begin{satz}
-Sei $n \geq 5.$ Dann ist $\zeta((n)\overline{2}(n))=2.$
+Sei $n \geq 4.$ Dann ist $\zeta((n)\overline{2}(n))=2.$
 \end{satz}
 \begin{proof}
-Die Sphäre $(n)\overline{2}(n)$ entsteht durch eine Schmetterlings-Einsetzung am Doppel-$n$-Gon an zwei adjazenten Kanten, die jeweils zu zwei Ecken vom Grad 4 inzident sind. Seien $V_1,V_2,V_3,V_4$ die Ecken dieses Schmetterlings. Dann gilt ohne Einschränkung 
+Wir nutzen den vorgestellten Algorithmus zum Nachweis dieser Aussage.
+Die Sphäre $(n)\overline{2}(n)$ entsteht durch eine Schmetterlings-Einsetzung am Doppel-$n$-Gon an zwei adjazenten Kanten, die jeweils zu zwei Ecken vom Grad 4 inzident sind. Seien $V_1,V_2,V_3,V_4$ die Ecken des eingesetzten Schmetterlings. Dann gilt ohne Einschränkung 
 \begin{align*}
-deg(V_1)=deg(V_2)=5\\
-deg(V_3)=deg(V_4)=4
-\end{align*}  
-\[
-\textcolor{red}{bild}
-\]
-Durch Drehen der Kante $\{V_3,V_4\}$ entstehen Tetraeder an $V_3$ und $V_4.$ Dann ist $Y=T_{V_3}(T_{V_4}(X))$ eine Sphäre, die isomorph zum Double-$n-1$-Gon ist. Es gilt also $\zeta (Y)=2$ und somit $\zeta (X)\leq 2.$ Da $X$ eine vertex-treue Sphäre ist, die nicht zum Double-$n$-Gon isomorph ist, muss $\zeta(X)\geq 2$ gelten, wodurch die Behauptung folgt. 
+deg_X(V_1)=deg_X(V_2)=5\\
+deg_X(V_3)=deg_X(V_4)=4
+\end{align*}
+Durch Drehen der Kante $\{V_3,V_4\}$ entstehen Tetraeder an $V_3$ und $V_4.$ 
+  
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=10cm 23cm 5cm 27cm]{zeta2}
+\end{center}
+\caption{skizzierte Kantendrehung am Beisiel $(4)\overline{2}(4)$}
+\end{figure}
+Dann ist $Y=T_{V_3}(T_{V_4}(X))$ eine Sphäre, die isomorph zum Double-$(n-1)$-Gon ist. Es gilt also $\zeta (Y)=1$ und da $X$ wegen $n\geq 4$ die Sphäre Kanten besitzt, die nicht keinem der beiden Tetraeder liegen, gilt $\zeta (X)\leq 2.$ Da $x$ eine vertex-treue Sphäre ist, die nicht zum Double-$n$-Gon isomorph ist, muss $\zeta(X)\geq 2$ gelten, wodurch die Behauptung folgt. 
 \end{proof}
-\begin{satz}
-pfvd
-\end{satz}
+Beim genaueren Betrachten des Beweises ist zu erkennen, dass wir weitere Sphären mit Kaktus-Distanz 2 angeben können.
+Dies halten wir in der nachstehenden Folgerung fest.
+\begin{folgerung}
+Sei $n\geq 4.$ Dann ist $\zeta ((n+1)\overline{3}(n))=2.$
+\end{folgerung}
+Bei der Konstruktion der Sphäre $(n+1)\overline{3}(3)$ wird der 3-Strip verwendet. Es gibt zwei Ecken des Eingesetzten 3-Strips, die Grad 4 haben. Durch Drehen der Kante, die zu diesen Ecken inzident ist und Entfernen der beiden resultierenden Tetraeder erhalten wir den Doppel-$(n)$-Gon, wodurch die Aussage gezeigt ist.
 \begin{bemerkung}
-Sei $X$ ein Multi-Tetraeder und $V$ eine Ecke vom Grad 3 in $X$. Seien $e_1,e_2\in X_1(X_2(V))-X_1(V)$ zwei Kanten des Tetraeders an der Stelle $V.$ Dann ist $Y=\beta_{e_1,e_2}(X)$ ein Multi-Tetraeder. Durch das Einsetzen des Schmetterlings entstehen zwei neue Ecken $V',V'',$ wobei $V'\in X_0(X_2(V))$ ist. Da $V'$ zu den beiden Flächen vom Schmetterling und zu zwei Flächen des Tetraeders an der Stelle $V$ inzident ist gilt $\deg_Y(V')=4.$ Durch Entfernen des Tetraeder an der Stelle $V$ erhalten wir $\deg(V')=3$ in $T_F(Y), $ also ist $T_F(Y) $ und somit auch $Y$ ein Multi-Tetraeder   
+Wenn wir den Begriff der Kaktus-Distanz verallgemeinern, erhalten wir eine Metrik auf der Menge der Isomorphieklassen der Sphären ohne 2-Taillen. Für vertex-treue Sphären $X$ und $Y$ definieren wir die Distanz $d(X,Y)$ als die minimale Anzahl an Kantendrehungen, um $X$ isomorph in $Y$ umzuformen. 
+\begin{itemize}
+\item Für zwei vertex-treue Sphäre $X$ und $Y$ ist die Distanz $d(X,Y)$ eine nicht negative ganze Zahl.
+\item Die Nulltreue ist klarerweise erfüllt.
+\item Für alle vertex-treuen Sphären gilt $d(X,Y)=d(Y,X).$
+\item Sei $Z$ eine weitere vertex-treue Sphäre. Dann existiert eine Kantensequenz, die bei Anwenden auf $X$ die Sphäre $Z$ hervorbringt und es existiert eine weitere Kantensequenz, die durch Anwenden auf $Y$ die Sphäre $Z$ erzeugt. Diese Kantensequenzen können wir dann zu einer Kantensequenz, die $X$ in $Y$ umformt, zusammensetzen. Also muss $d(X,Y)\leq d(X,Z)+d(Y,Z)$ gelten.
+\end{itemize}
 \end{bemerkung}
 
 \subsection{Tetraeder-Zerlegung}
@@ -2751,7 +2781,7 @@ $D$ ist eine minimale Tetraeder-Zerlegung, falls $\vert D \vert\leq \vert D' \ve
 Nutzen wir GAP, um Beispiele für Tetraeder-Zerlegungen zu konstruieren. Betrachten wir als vertex-treue Sphäre den Oktaeder.
 \begin{figure}[H]
 \begin{center}
-\includegraphics[viewport=17cm 17cm 5cm 20cm]{Image_Octahedron}
+\includegraphics[viewport=17cm 17cm 5cm 20.7cm]{Image_Octahedron}
 \end{center}
 \caption{Oktaeder}
 \end{figure}
@@ -2979,6 +3009,9 @@ true
  }}$
  \end{center}
 %\end{bsp}
+\[
+\textcolor{red}{fehler}
+\]
 \begin{lemma}
 Seien $X$ und $Y$ Sphären und $\phi:X\to Y$ ein Isomorphismus von $X$ nach $Y$. Für eine Tetraeder-Zerlegung $D$ von $X$ ist \[
 \phi(D):=\{\phi(d)\mid d\in D\}
@@ -2990,10 +3023,11 @@ Sei $F$ eine Fläche in $X$, dann existiert genau eine Fläche $F'$ mit $\phi(F'
   Angenommen es existiert ein weiteres $d'\in \phi(D)$ mit $X_0(F)\subseteq d'$. Dann folgt direkt $X_0(F)\in \phi^{-1}(d').$
    Da $d$ eindeutig mit der Eigenschaft $X_0(F')\subseteq d,$ muss also $\phi^{-1}(d')=d$ sein. Dies bedeutet aber $d'=\phi(d).$ Sei nun $n\in \Pot_3(X_2)-\{X_0(F)\mid \,F \in X_2\}.$ Angenommen es existiert ein $d\in \phi(D)$ mit $n\subseteq d.$ Somit erhalten wir $\phi^{_1}(n)\in d_1:=\phi^{-1}(d)\in D.$ Da  $D$ eine Tetraeder-Zerlegung ist existiert ein weiteres $d_2$ mit $\phi^{n}\subseteq d_2,$ woraus wir $n\in subseteq \phi(d_1)\phi(d_2).$ Die Aussage, dass es genau zwei Elemente in $\phi(D)$ mit dieser Eigenschaft gibt erhalten wir mit analoger Begründung wie oben.  
 \end{proof}
-Mithilfe der Tetraeder-Zerlegung erhalten wir eine neue Anschauung der vertex-treuen Sphären. Durch eine Tetraeder-Zerlegung erhalten wir nämlich eine Repräsentation unserer Sphären durch eine Menge vierelementiger Mengen. Den Übergang von dieser zu der Sphäre liefert uns die symmetrische Differenz. Hierfür definieren wir die symmetrische $\Delta D$ einer eine Tetraeder-Zerlegung $D:$
+Mithilfe der Tetraeder-Zerlegung erhalten wir eine neue Anschauung der vertex-treuen Sphären. Durch eine Tetraeder-Zerlegung erhalten wir nämlich eine Repräsentation unserer Sphären durch eine Menge vierelementiger Mengen. Den Übergang von dieser zu der Sphäre liefert uns die symmetrische Differenz. Hierfür definieren wir die symmetrische Differenz $\Delta D$ einer Tetraeder-Zerlegung $D:$
 \begin{itemize}
-\item Falls $\vert D\vert =1,$ also $D=\{d\}$ ist, dann ist $\Delta D:=\Pot_3(d).$
-\item Falls $\vert D\vert >1,$ also $D=\{d_1,\ldots,d_n\}$ für ein $n>1$ ist, erhalten wir $\Delta D$ durch
+\item Falls $\vert D\vert =1,$ also $D=\{d\}$ ist, dann wählen wir $\Delta D:=\Pot_3(d).$
+\item Falls $\vert D\vert >1$ ist, dann hat die Tetraeder-Zerlegung für ein $n>1$ die Gestalt $D=\{d_1,\ldots,d_n\}.$
+Wir  erhalten $\Delta D$ in diesem Fall durch
 \[
 \Pot_3(d_1)\Delta \ldots \Delta \Pot_3(d_n).
 \]
@@ -3012,28 +3046,20 @@ D=\{\{1,2,3,6\},\{1,2,5,6\},\{1,4,5,6\},\{1,3,4,6\}\}.
  Aus dieser erhalten wir 
  \begin{align*}
 \Delta D=&\Pot_3(\{1,2,3,6\},\{1,2,5,6\},\{1,4,5,6\},\{1,3,4,6\})\\
-=&\{\{1,2,3\},\{2,5,6\},\{1,2,5\},\{2,3,6\},\{1,4,5\},\{3,4,6\},\{1,3,4\},\{4,5,6\}\}
+=&\{\{1,2,3\},\{2,5,6\},\{1,2,5\},\{2,3,6\},\\
+&\{1,4,5\},\{3,4,6\},\{1,3,4\},\{4,5,6\}\}
 \end{align*}
-und dies bildet erneut den Flächen-Träger des Oktaeders.
+und dies bildet erneut einen Flächen-Träger des Oktaeders.
 \end{itemize} 
-Diese Beispiele motivieren folgendes Lemma.
+Diese Beispiele dienen zur Motivation folgendes Lemmas.
 \begin{lemma}
 Sei $X$ eine vertex-treue Sphäre und $D$ eine Tetraeder-Zerlegung von $X.$ Dann ist $\Delta D$ ein Flächen-Träger von $X.$
 \end{lemma}
 \begin{proof}
-Sei $D=\{d_1,\ldots,d_n\}$ für ein $n>1.$
-Weiterhin sei $F$ eine beliebige Fläche in $X.$ Dann existiert genau ein $i$ mit $X_0(F)\subseteq d_i.$ Damit ist $X_0(F) \in \Delta D.$ Sei nun $N\in \Pot_3(X_0)-\{X_0(F)\mid F\in X_2\}.$ da $D$ eine Tetraeder-Zerlegung ist, gibt es entweder kein $d\in D$ mit $N\subseteq d$ oder genau zwei $d_1,d_2$ mit $N\subseteq d_1,d_2.$ Falls ersteres der Fall ist, dann ist $N\notin \Delta.$ Im zweiten Fall erhalten wir $N\in \bigcup \Pot_3(d_i),$ aber auch $N\in \bigcup Pot_3(d_i)\cap \Pot_3(d_j),$ wodurch $N\notin \Delta D$ ist. 
-Also ist $\Delta D=\{X_0(F)\mid F\in X_2\}.$ 
+Sei $D=\{d_1,\ldots,d_n\}$ für ein $n>1$
+und $F$ eine beliebige Fläche in $X.$ Dann existiert genau ein $i$ mit $X_0(F)\subseteq d_i.$ Damit ist $X_0(F) \in \Delta D.$ Betrachten wir nun $N\in \Pot_3(X_0)-\{X_0(F)\mid F\in X_2\}.$ Da $D$ eine Tetraeder-Zerlegung ist, gibt es entweder kein $d\in D$ mit $N\subseteq d$ oder genau zwei $d_1,d_2$ mit $N\subseteq d_1,d_2.$ Falls ersteres der Fall ist, folgt direkt $N\notin \Delta D.$ Im zweiten Fall erhalten wir $N\in \bigcup \Pot_3(d_i),$ aber auch $N\in \bigcup Pot_3(d_1)\cap \Pot_3(d_2),$ wodurch wieder $N\notin \Delta D$ folgt. 
+Also ist insgesamt $\Delta D=\{X_0(F)\mid F\in X_2\}.$ 
 \end{proof}
-\begin{bemerkung}
-Wenn wir den Begriff der Kaktus-Distanz verallgemeinern, erhalten wir eine Metrik auf der Menge der Isomorphieklassen der Sphären ohne 2-Taillen. Für vertex-treue Sphären $X$ und $Y$ definieren wir die Distanz $d(X,Y)$ als die minimale Anzahl an Kantendrehungen, um $X$ isomorph in $Y$ umzuformen. 
-\begin{itemize}
-\item Für zwei vertex-treue Sphäre $X$ und $Y$ ist die Distanz $d(X,Y)$ eine nicht negative ganze Zahl.
-\item Die Nulltreue ist klarerweise erfüllt.
-\item Für alle vertex-treuen Sphären gilt $d(X,Y)=d(Y,X).$
-\item Sei $Z$ eine weitere vertex-treue Sphäre. Kantensequenzen, die $X$ in $Z$ und $Y$ in $Z$ können wir zusammensetzen zu einer Kantensequenz, die $X$ in $Y$ umformt. Also muss $d(X,Y)\leq d(X,Z)+d(Y,Z)$ gelten.
-\end{itemize}
-\end{bemerkung}
 \subsection{wilde Färbungen auf Multi-Tetraedern}
 \begin{satz}\label{wild}
 Sei $X$ ein Multi-Tetraeder. Dann besitzt $X$ eine wilde Färbung.
@@ -3059,12 +3085,12 @@ Da der Tetraeder eine vertex-treue Sphäre ist, wurden an dieser Stelle die Kant
 \caption{wild gefärbter Tetraeder}
 \end{figure}
 Sei nun $X$ ein Multi-Tetraeder mit $n=\vert X_2 \vert >4$ und $V\in X_0$ eine Ecke vom Grad 3. Dann erhalten wir durch Entfernen des Tetraeders an der Stelle $V$ den Multi-Tetraeder $Y=T_V(X)$ mit $\vert Y_2 \vert=n-2.$ Deshalb erhalten wir für $Y$ eine wilde Färbung $\omega:Y_1\to \{a,b,c\}.$ Diese kann auf genau eine Art und Weise zu einer wilden Färbung auf $X$ erweitert werden.
-Denn seien $F_1,F_2,F_3$ die Flächen des angehängten Tetraeders. Dann gilt $X_1(X_2(V))=\{e_1,e_2,e_3\}\cup \{e_a,e_b,e_c\},$ wobei $e_1,e_2,e_3$ geeignete Kanten in $X_1-Y_1$ und $e_a,e_b,e_c$ geeignete Kanten in $Y$ sind. Da die letzteren Kanten zu derselben Fläche $F\in Y_2$ inzident sind, müssen diese Kanten paarweise verschieden gefärbt sein, also  muss ohne Einschränkung $
-\omega(e_a)=a,\omega(e_b)=b$ und $\omega(e_c)=c$
+Denn seien $F_1,F_2,F_3$ die Flächen des angehängten Tetraeders. Dann gilt $X_1(X_2(V))=\{e_1,e_2,e_3\}\cup \{e_a,e_b,e_c\},$ wobei $X_1(V)=\{e_1,e_2,e_3\}$ ist und $e_a,e_b,e_c$ geeignete Kanten in $Y_1$ sind. Da die letzteren Kanten zu derselben Fläche $F\in Y_2$ inzident sind, müssen diese Kanten unter $\omega$ paarweise verschieden gefärbt sein, also  muss ohne Einschränkung $
+\omega(e_a)=a,$ $\omega(e_b)=b$ und $\omega(e_c)=c$
 gelten.
 \begin{figure}[H]
 \begin{center}
-\includegraphics[viewport=0cm 25.2cm 5cm 27cm,scale=1.1]{colouredTriangle}
+\includegraphics[viewport=0cm 23.7cm 5cm 26.7cm,scale=1.1]{colouredTriangle}
 \end{center}
 \caption{Ausschnitt der wild-gefärbten Sphäre $Y$}
 \end{figure}
@@ -3080,7 +3106,7 @@ Die Flächen des Tetraeders an der Stelle $V$ sind zu genau einer Kante aus der 
 \end{center}
 \caption{Ausschnitt der Sphäre $X$}
 \end{figure}
-Die wilde Färbung $\omega$ auf $Y$ muss nun durch Ergänzen der fehlenden Bilder zu einer wilden Färbung $\omega_X$ auf $X$ erweitert werden. Für $e\in Y_1\subseteq X_1$ gilt also $\omega_X(e)=\omega(e).$  
+Die wilde Färbung $\omega$ auf $Y$ muss nun durch Ergänzen der fehlenden Bilder zu einer wilden Färbung $\omega_X$ auf $X$ erweitert werden. Für $e\in Y_1\subseteq X_1$ setzen wir  also $\omega_X(e)=\omega(e).$  
 \begin{figure}[H]
 \begin{center}
 \includegraphics[scale=0.9,viewport=0cm 19.5cm 10cm 27cm]{col3gon}
@@ -3105,11 +3131,11 @@ Angenommen obige Aussage gilt nicht. Dann gibt es einen bezüglich der Flächena
 \begin{align} \label{eq}
 \{\omega_1^{-1}(\{a\}),\omega_1^{-1}(\{b\}),\omega_1^{-1}(\{c\})\}\neq \{\omega_2^{-1}(\{a\}),\omega_2^{-1}(\{b\}),\omega_2^{-1}(\{c\}\}
 \end{align}
-sind. Wir können $\vert X_2\vert >4$ annehmen, da die wilde Färbung des Tetraeders eindeutig ist. Zudem sei $V$ eine Ecke vom Grad 3 in $X.$ Da jeweils zwei der drei Kanten in $X_1(V)$ inzident zu derselben Fläche sind, müssen die Kanten in $X_1(V)$ unter den Färbungen $\omega_1$ und $\omega_2$ paarweise verschiedene Farben erhalten. Deshalb können wir ohne Einschränkung 
+sind. Wir können $\vert X_2\vert >4$ annehmen, da der Tetraeder bis auf Permutation der Farben genau eine wilde Färbung besitzt. Sei $V$ eine Ecke vom Grad 3 in $X.$ Da jeweils zwei der drei Kanten in $X_1(V)$ inzident zu derselben Fläche sind, müssen die Kanten in $X_1(V)$ unter den Färbungen $\omega_1$ und $\omega_2$ paarweise verschiedene Farben erhalten. Deshalb können wir ohne Einschränkung 
 \[
 \omega_1(e)=\omega_2(e)
 \] 
-für alle $e\in X_1(V)$ annehmen. Beachte, dass hierdurch die Bedingung (\ref{eq}) nicht verletzt wird. Durch Entfernen des Tetraeders an der Stelle $V$ erhalten wir den Multi-Tetraeder $Y=T_V(X)$ und durch Einschränken der Färbungen $\omega_1$ und $\omega_2$ auf $Y_1-X_1(V)$ erhalten wir wilde Färbungen auf $Y$. Da $X$ minimal mit der Eigenschaft der nicht eindeutigen Färbung war, muss
+für alle $e\in X_1(V)$ annehmen. Es sei angemerkt, dass hierdurch die Bedingung (\ref{eq}) nicht verletzt wird. Durch Entfernen des Tetraeders an der Stelle $V$ erhalten wir den Multi-Tetraeder $Y=T_V(X)$ und durch Einschränken der Färbungen $\omega_1$ und $\omega_2$ auf $Y_1=X_1-X_1(V)$ erhalten wir wilde Färbungen auf $Y$. Da $X$ minimal mit der Eigenschaft der nicht eindeutigen Färbung war, muss
 \[
 \omega_1(e)=\omega_2(e)
 \]
@@ -3172,21 +3198,29 @@ Da jeweils zwei der drei Kanten $e_1,e_2,e_3$ inzident zu derselben Fläche sind
 \caption{Ausschnitt der wild-gefärbten Sphäre $X$}
 \end{figure}
 \end{proof}
-Im Folgenden wollen wir untersuchten, welche Multi-Tetraeder eine zahme Färbung besitzen. Mit dem Tetraeder haben wir bereits ein Beispiel gesehen. Mit der Definition des \emph{Sterns}, erhalten wir ein weiteres Beispiel.
+Im Folgenden wollen wir untersuchten, welche Multi-Tetraeder eine zahme Färbung besitzen. Mit dem Tetraeder haben wir bereits ein Beispiel eines zahm gefärbten Multi-Tetraeders gesehen. Mit der Definition des \emph{Sterns}, erhalten wir ein weiteres Beispiel.
 \begin{definition}
 Der \emph{Stern} $S$ ist der Multi-Tetraeder, der durch das Symbol $1_11_21_31_4$ konstruiert wird.
-\[
-\textcolor{red}{bild}
-\]
 \begin{figure}[H]
 \begin{center}
-\includegraphics[scale=0.01]{stern}
+\includegraphics[scale=0.7,viewport=0cm 2.5cm 8cm 8cm]{star}
 \end{center}
 \caption{Stern}
 \end{figure}
 \end{definition}
+Der Stern ist ein weiterer Multi-Tetraeder mit einer zahmen Färbung. Dieser entsteht durch Tetraeder-Erweiterungen an allen Flächen des Tetraeders. 
+\begin{center}
+$\fbox{\parbox{14cm}{
+\textcolor{red}{gap$>$} \textcolor{blue}{MultiTetraederBySymbol([[1,1],[1,2],[1,3],[1,4]]);}\newline
+simplicial surface (8 vertices, 18 edges, and 12 faces)\newline
+\textcolor{red}{gap$>$}\textcolor{blue}{ AllTameColouredSurfaces(last);}\newline
+[ tame coloured surface (RRR with 8 vertices, 18 edges and 12 faces)
+ ]
+}}$
+\end{center}
+Wir wollen nun anlehnend an den Stern \emph{maximale} Multi-Tetraeder charakterisieren.
 \begin{definition}
-Sei $X$ ein Multi-Tetraeder. Durch das iterative Entfernen aller Tetraeder entsteht im Sinne von Definition \textcolor{red}{??} eine Kette 
+Sei $X$ ein Multi-Tetraeder. Durch das iterative Entfernen aller Tetraeder entsteht im Sinne von Definition \ref{defcac} eine Kette 
 \[
 X=X^{(0)}\to X^{(1)}\to \ldots \to X^{(t)}\cong X^{(t+1)}
 \]
@@ -3211,13 +3245,13 @@ X\to X^{(1)}=T,
 \] 
 aber zweite Teil der Definition wird von der Sphäre $X$ nicht erfüllt, denn 
 \[
-\vert \{V\in X_0\,\mid \, \deg(V)=3\}\vert=2\neq 4=\vert T_2\vert.
+\vert \{V\in X_0\,\mid \, \deg(V)=3\}\vert=3\neq 4=\vert T_2\vert.
 \]
-\begin{lemma}
+\begin{lemma}\label{max}
 Sei $X$ ein maximaler Multi-Tetraeder. Dann existiert eine zahme Färbung auf $X.$
 \end{lemma}
 \begin{proof}
-Wir weisen die Aussage induktiv nach. Bei dem Tetraeder und dem Stern kann nachgerechnet werden, dass eine zahme Färbung existiert und das diese eine $rrr$-Struktur bildet. Sei nun $X$ ein maximaler Multi-Tetraeder, der nicht isomorph zum Stern oder Tetraeder ist.
+Wir weisen die Aussage induktiv nach. Bei dem Tetraeder und dem Stern kann nachgerechnet werden, dass eine zahme Färbung existiert und somit diese Multi-Tetraeder $rrr$-Strukturen bilden. Sei nun $X$ ein maximaler Multi-Tetraeder, der nicht zum Stern oder Tetraeder isomorph ist.
  Dann ist $Y=X^{(1)}$ ebenfalls maximal und nach Induktionsvoraussetzung erhalten wir eine zahme Färbung $\omega$ auf $Y,$ die eine $rrr$-Struktur bildet. Seien nun $F_1$ und $F_2$ zwei beliebige benachbarte Flächen in $Y$, die $Y_1(F_1)=\{e_a,e_b,e_c\}$ und $Y_1=\{e_a,e_b',e_c'\}$ und $Y_0(e_b)\cap Y_0(e_c')\neq \emptyset$ für geeignete Kanten erfüllen.
 Da $Y$ eine zahme Färbung besitzt und diese eine $rrr$-Struktur bildet, gilt ohne Einschränkung
 \begin{align*}
@@ -3263,9 +3297,9 @@ $\omega(e)$, sonst
 \caption{Ausschnitt der wild-gefärbten Sphäre $X$}
 \end{figure}
 \end{proof}
-Wenn der Beweis genauer betrachtet wird, kann folgende Folgerung formuliert werden.
+Wenn der Beweis genauer betrachtet wird, kann die nachstehende Folgerung formuliert werden.
 \begin{folgerung}
-Sei $X$ ein Multi-Tetraeder mit einer zahmen Färbung. Sei $Y$ der Multi-Tetraeder, der dadurch entsteht, dass an allen Flächen von $Y$ Tetraeder-Erweiterungen durchgeführt werden. Dann existiert eine zahme Färbung auf $Y.$
+Sei $X$ ein Multi-Tetraeder mit einer zahmen Färbung. Sei $Y$ der Multi-Tetraeder, der dadurch entsteht, dass an allen Flächen von $X$ Tetraeder-Erweiterungen durchgeführt werden. Dann existiert eine zahme Färbung auf $Y.$
 \end{folgerung}
 Die Rückrichtung von \Cref{max} gilt jedoch nicht, dies halten wir mit folgendem Beispiel fest:\\
 Die Sphäre, die wir betrachten ist der Multi-Tetraeder mit 20 Flächen, der durch das Symbol $1_21_12_42_32_13_43_33_2$ beschrieben wird.
@@ -3287,19 +3321,16 @@ $\fbox{
 \parbox{14cm}{
 \textcolor{red}{gap$>$} \textcolor{blue}{RemoveAllTetra(s);}\newline
 simplicial surface (6 vertices, 12 edges, and 8 faces)\newline
-\textcolor{red}{gap$>$}\textcolor{blue}{ Length(Filtered(Vertices(s),g->FaceDegreeOfVertex(s,g)=3));}\newline
+\textcolor{red}{gap$>$}\textcolor{blue}{ Length(Filtered(Vertices(s),g-$>$FaceDegreeOfVertex(s,g)=3));}\newline
 6
 }}$
 \end{center}
-\begin{satz}
-Sei $X$ ein Multi-Tetraeder. Dann besitzt $X$ genau dann eine zahme Färbung, wenn $X$ maximal ist,
-\end{satz}
 \subsection{Flächengraph von Multi-Tetraedern}
 In Kapitel 3 haben wir uns den Flächengraphen simplizialer Flächen gewidmet. In diesem Abschnitt betrachten wir im Genauen die Flächengraphen von Multi-Tetraedern. Es lässt sich nämlich ein Zusammenhang zwischen dem Flächengraphen eines Multi-Tetraeders und der Sphäre, die durch eine Tetraeder-Erweiterung konstruiert wird, erkennen.\\\\
 Den Flächengraphen des Tetraeders haben wir bereits kennengelernt. Dieser wird bis auf Isomorphie durch $G_T=(V,E)$ mit $V=\{F_1,F_2,F_3,F_4\}$ und $E=\Pot_2(V)$ dargestellt.
 \begin{figure}[H]
 \begin{center}
-\includegraphics[viewport=0cm 20.5cm 14cm 23cm]{Image_FaceGraphTetraeder}
+\includegraphics[viewport=1.5cm 20.5cm 18cm 23cm]{Image_FaceGraphTetraeder}
 \end{center}
 \caption{Flächengraph des Tetraeders}
 \end{figure}
@@ -3330,7 +3361,7 @@ Bei einer Tetraeder-Erweiterung wird in einem ersten Schritt der Knoten $F$ durc
 \begin{center}
 \includegraphics[viewport=3cm 19.7cm 14cm 23cm]{Image_fg2}
 \end{center}
-\caption{Ausschnitt eines Flächengraphen eines Multi-Tetraeders}
+\caption{Graph, der aus dem Flächengraph des Multi-Tetraeders hervorgeht}
 \end{figure}
 Daraufhin werden die Inzidenzen 
 \[
@@ -3384,9 +3415,7 @@ Schließlich kommt durch eine Erweiterung an der Fläche 7 folgender Flächengra
 \end{figure}
 \end{bsp}
 \subsection{Eigenwerte von Multi-Tetraedern}\label{eigenwerte}
-\[
-Einleitung 
-\]
+In diesem Abschnitt wollen wir uns eine interessante Invariante der Multi-Tetraeder anschauen, nämlich das \emph{Tetraeder-Polynom}. Hierfür werden wir den Begriff der Einbettung definieren und dann als Ziel beobachten, wie sich die Multi-Tetraeder unter dieser Invariante verhalten.
 \begin{definition}
 Sei $X$ ein Multi-Tetraeder. Wir nennen eine Abbildung 
 \[
@@ -3398,9 +3427,9 @@ eine reelle Einbettung von $X,$ falls ein $d\in \mathbb{R}^+$ existiert, sodass 
 \] 
 gilt. Wir nennen $c$ eine vertex-treue Einbettung, falls $c(V)\neq c(V')$ für $V\neq V'$ ist.
 \end{definition}
-Dies ist nur eine Umformulierung aus dem in Kapitel \ref{cactus} vorgestellten Resultat. An dieser Stelle sei angemerkt, das nicht klar ist, ob es zu einem Multi-Tetraeder immer eine vertex-treue Einbettung existiert.
+Dies ist nur eine Umformulierung aus dem in Kapitel \ref{cactus} vorgestellten Resultat. An dieser Stelle sei angemerkt, das nicht klar ist, dass stets eine vertex-treue Einbettung eines Multi-Tetraeder existiert.
 \begin{definition}
-Sei $X$ ein Multi-Tetraeder mit $n=\vert X_0\vert $und $c:X_0\to \mathbb{R}^3$ eine reelle Einbettung von $X.$ Die Matrix $K\in \mathbb{R}^{3\times n}$ definiert durch
+Sei $X$ ein Multi-Tetraeder mit $n=\vert X_0\vert $ und $c:X_0\to \mathbb{R}^3$ eine reelle Einbettung von $X.$ Die Matrix $K\in \mathbb{R}^{3\times n}$ definiert durch
 \[
 (K^c_X)_{-,i}=c(V_i)
 \] 
@@ -3416,7 +3445,7 @@ Weiterhin sei $1_{3\times n}\in \mathbb{R}^{3\times n}$ die Matrix, in der jeder
 gegeben. 
 \end{definition} 
 Wir können ohne Einschränkung der Allgemeinheit annehmen, dass $d=\sqrt{2}$ ist. 
-Für die in Kapitel \textcolor{red}{...} vorgestellte reelle vertex-treue Einbettung des Tetraeders ist
+Für die in Kapitel \ref{cactus} vorgestellte reelle  Einbettung des Tetraeders ist
 \[
 K_T=\left(\begin{tabular}{cccc}
 1&1&-1&1\\
@@ -3454,17 +3483,16 @@ Seien $X$ ein Multi-Tetraeder und $c,c':X_0\to \mathbb{R}^3$ zwei reelle vertex-
 \begin{proof}
 Wenn wir annehmen, dass der Abstand von zwei benachbarten Ecken unter beiden Einbettungen gleich ist, muss $c'$ durch eine Komposition einer Translation oder einer orthogonalen Abbildung mit $c$ entstanden sein. 
 \begin{itemize}
-\item Angenommen es existiert ein $x\in \mathbb{R}^3,$ sodass $c(V)=c'(V)$ für alle $V\in X_0$ ist. Dann gilt 
+\item Angenommen es existiert ein $x\in \mathbb{R}^3,$ sodass $c'(V)=c(V)+x$ für alle $V\in X_0$ ist. Dann gilt 
 \begin{align*}
-&(K_X^{c'}-S_X^{c'}1_{3\times n})_{-,i}=c'(V_i)-S_X^{c}\\
-=&c(V_i)+x-S_X^c-x=(K_X^{c'}-S_X^{c'}1_{3\times n})_{-,i}
+&(K_X^{c'}-S_X^{c'}1_{3\times n})_{-,i}=c'(V_i)-S_X^{c'}\\
+=&c(V_i)+x-S_X^c-x=(K_X^{c}-S_X^{c}1_{3\times n})_{-,i}
 \end{align*}
 Also folgt direkt $\mathcal{T}_X^c=\mathcal{T}_X^{c'}$
 \item Falls eine orthogonale Matrix $O\in \mathbb{R}^{3\times 3}$ mit $c'(V)=Oc(V)$ existiert dann ist $S_X^{c'}=OS_X^c.$ Da wir die Einträge der Matrix $\mathcal{T}_X^{c'}$ über die Skalarprodukte der verschiedenen Zeilen der Matrix $\mathcal{T}_X^{c'}$ erhalten, und orthogonale Matrizen, das Skalarprodukt unverändert lassen, folgt die Behauptung.
 \end{itemize} 
 \end{proof}
-Also können wir von nun an den Bezug zur Einbettung vernachlässigen und nur noch $\mathcal{T}_X$ schreiben.
-Beispielsweise ist das Tetraeder-Polynom des Tetraeders durch $(x-4)^3$ gegeben.
+Also können wir von nun an den Bezug zur Einbettung vernachlässigen und nur noch $\mathcal{T}_X$ schreiben. 
 \begin{bemerkung}
 Es ist möglich, das obige Lemma in einem allgemeineren Kontext zu formulieren, nämlich für Einbettungen von vertex-treuen Sphären. Da wir aber an dieser Stelle nur an einer Invariante für Multi-Tetraeder interessiert sind, wird hier darauf verzichtet. 
 \end{bemerkung}
@@ -3472,7 +3500,8 @@ Führen wir nun das oben erwähnte Tetraeder-Polynom ein.
 \begin{definition}
 Sei $X$ ein Multi-Tetraeder und $c:X_0\to \mathbb{R}^3$ eine vertex-treue Einbettung. Dann nennen wir das charakteristische Polynom der Matrix $\mathcal{T}_X$ das \emph{Tetraeder-Polynom} von $X.$
 \end{definition}
-Es stellt sich heraus, dass das Tetraeder-Polynom eine interessante Invariante der Multi-Tetraeder ist. Für geringere Anzahl an Flächen geben wir die Anzahl der Klassen an, in die die Menge der Multi-Tetraeder unter dieser Invariante aufgeteilt wird.
+Beispielsweise ist das Tetraeder-Polynom des Tetraeders durch $(x-4)^3$ gegeben.
+Es stellt sich heraus, dass das Tetraeder-Polynom eine interessante Invariante der Multi-Tetraeder ist. Für geringere Anzahlen an Flächen geben wir die Anzahl der Klassen an, in die die Menge der Multi-Tetraeder unter dieser Invariante aufgeteilt wird.
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
@@ -3486,20 +3515,130 @@ Es stellt sich heraus, dass das Tetraeder-Polynom eine interessante Invariante d
 \hline
 \end{tabular}
  \end{center}
- \section{2-Taillen-freie Sphären}
- \textbf{benötigte Vorkenntnisse}\\
-$\fbox{
-\parbox{14cm}{\begin{itemize}
-\item Grundlagen 
-\item vertex-treue Sph\"aren
-\item Kantendrehung
-\end{itemize}
-}}$\\\\
-
-\subsection{vertex-treue Sphären mit genau einem 3-Taille}
+ An den letzteren Zahlenbeispielen ist zu erkennen, dass die Invariante nicht trennend ist. Die reellen Einbettungen der Multi-Tetraeder, die dasselbe Tetraeder-Polynom haben ähneln sich jedoch sehr. Dies kann durch plotten der Multi-Tetraeder beobachtet werden.\\
+ Für die Multi-Tetraeder mit bis zu 10 Flächen geben wir nun, die oben eingeführten Eigenschaften an.\\
+ \begin{large}
+ \textbf{Multi-Tetraeder $\textbf{1}_\textbf{1}$}
+ \end{large}\\
+\underline{Koordinaten-Matrix} 
+ \[
+K_{DT}=\left(\begin{tabular}{ccccc}
+1&-1&-1&1&-$\frac{5}{3}$ \\
+1&-1&1&-1&-$\frac{5}{3}$\\
+-1&-1&1&1&$\frac{5}{3}$\\
+\end{tabular}\right)
+\] 
+\underline{Tetraeder-Matrix}
+ \[
+K_{DT}=\left(\begin{tabular}{ccc}
+$\frac{56}{9}$&$\frac{20}{9}$&$-\frac{20}{9}$ \\
+$\frac{20}{9}$&$\frac{56}{9}$&$-\frac{20}{9}$\\
+-$\frac{20}{9}$&$-\frac{20}{9}$&$\frac{56}{9}$\\
+\end{tabular}\right)
+\] 
+\underline{Tetraeder-Polynom}
 \[
-\textcolor{red}{small-introduction}
+x^3-\frac{56}{3}x^2+\frac{304}{3}-\frac{512}{3}
 \]
+ \begin{large}
+ \textbf{Multi-Tetraeder $\textbf{1}_\textbf{1}\textbf{1}_\textbf{2}$}
+ \end{large}\\
+ \underline{Koordinaten-Matrix}
+\[ 
+K_{X}=\left(\begin{tabular}{cccccc}
+1&-1&-1&1&-$\frac{5}{3}$&$\frac{5}{3}$ \\
+1&-1&1&-1&-$\frac{5}{3}$&-$\frac{5}{3}$\\
+-1&-1&1&1&$\frac{5}{3}$&-$\frac{5}{3}$\\
+\end{tabular}\right)
+\] 
+\underline{Tetraeder-Matrix}
+\[
+K_T=\left(\begin{tabular}{ccc}
+$\frac{208}{27}$&0&0\\
+0&$\frac{86}{9}$&$\frac{50}{9}$\\
+0&$\frac{50}{9}$&$\frac{86}{9}$\\
+\end{tabular}\right)
+\] 
+\underline{Tetraeder-Polynom}
+\[
+x^3-\frac{724}{27}x^2+\frac{50464}{243}x-\frac{113152}{242}
+\]
+\begin{large}
+ \textbf{Multi-Tetraeder $\textbf{1}_\textbf{1}\textbf{1}_
+ \textbf{2}\textbf{1}_
+ \textbf{3}$}
+\end{large} \\
+ \underline{Koordinaten-Matrix}
+ \[ 
+K_{X}=\left(\begin{tabular}{ccccccc}
+1&-1&-1&1&$\frac{5}{3}$&-$\frac{5}{3}$&-$\frac{5}{3}$ \\
+1&-1&1&-1&-$\frac{5}{3}$&-$\frac{5}{3}$&$\frac{5}{3}$\\
+-1&-1&1&1&-$\frac{5}{3}$&$\frac{5}{3}$&-$\frac{5}{3}$\\
+\end{tabular}\right)
+\] 
+\underline{Tetraeder-Matrix}
+\[
+K_T=\left(\begin{tabular}{ccc}
+$\frac{752}{63}$& $-\frac{200}{63}$&$ -\frac{200}{63}$ \\
+ $-\frac{200}{63}$&$ \frac{752}{63}$&$ -\frac{200}{63}$\\
+ $ -\frac{200}{63}$& $-\frac{200}{63}$& $\frac{752}{63}$ \\
+\end{tabular}\right)
+\]
+\underline{Tetraeder-Polynom}
+\begin{align*}
+&x^3-\frac{6768}{189}x^2+\frac{2026944}{5103}x-\frac{6510592}{5103}\\
+=&x^3-\frac{752}{21}x^2+\frac{25024}{63}x-\frac{6510592}{5103}
+\end{align*}
+ \begin{large}
+ \textbf{Multi-Tetraeder $\textbf{1}_\textbf{1}\textbf{1}_\textbf{2}\textbf{2}_\textbf{2}$}
+ \end{large}\\
+ \underline{Koordinaten-Matrix}
+\[
+K_T=\left(\begin{tabular}{ccccccc}
+ 1&-1&-1&1&$-\frac{5}{3}$&$\frac{5}{3}$&$-\frac{1}{9}$\\
+ 1&-1&1&-1&$-\frac{5}{3}$&$\frac{5}{3}$&$-\frac{1}{9}$\\
+-1&-1&1&1&$\frac{5}{3}$&$\frac{5}{3}$&$\frac{31}{9}$\\
+\end{tabular}\right)
+\] 
+\underline{Tetraeder-Matrix}
+\[
+K_T=\left(\begin{tabular}{ccc}
+$\frac{1808}{189}$& $\frac{1052}{189}$& $-\frac{52}{189}$ \\
+ $\frac{1052}{189}$& $\frac{1808}{189}$& $-\frac{52}{189}$ \\
+ $-\frac{52}{189}$& $-\frac{52}{189}$& $\frac{104}{7}$ \\ 
+\end{tabular}\right)
+\]
+\underline{Tetraeder-Polynom}
+\[
+  x^3-\frac{6424}{189}x^2+\frac{1758640}{5103}x-\frac{4585984}{5103}
+\]
+ \begin{large}
+ \textbf{Multi-Tetraeder $\textbf{1}_\textbf{1}\textbf{1}_\textbf{2}\textbf{2}_\textbf{4}$}
+ \end{large}\\
+\underline{Koordinaten-Matrix} 
+ \[
+K_T=\left(\begin{tabular}{ccccccc}
+ 1&-1&-1&1&$-\frac{5}{3}$&$\frac{5}{3}$&$-\frac{31}{9}$\\
+ 1&-1&1&-1&$-\frac{5}{3}$&$\frac{5}{3}$&$-\frac{1}{9}$\\
+-1&-1&1&1&$\frac{5}{3}$&$\frac{5}{3}$&$\frac{1}{9}$\\
+\end{tabular}\right)
+\] 
+\underline{Tetraeder-Matrix}
+\[
+\mathcal{T}=\left(\begin{tabular}{ccc}
+ $\frac{3728}{189}$&$\frac{1112}{189}$& $\frac{248}{189}$\\
+ $\frac{1112}{189}$& $\frac{1808}{189}$& $\frac{8}{189}$ \\
+ $\frac{248}{189}$& $\frac{8}{189}$&$\frac{ 496}{63}$ \\
+\end{tabular}\right)
+\]
+\underline{Tetraeder-Polynom}
+\[
+  x^3-\frac{7024}{189}x^2+\frac{1954240}{5103}x-\frac{6109184}{5103} 
+\] 
+ \section{2-Taillen-freie Sphären}
+In diesem Abschnitt der Arbeit werden wir die Sphären mit 3-Taillen genauer betrachten. 
+\subsection{vertex-treue Sphären mit genau einem 3-Taille}
+Wir führen zunächst das Zusammensetzen zweier Sphären an einer 3-Taille ein. In 
 \begin{definition}
 Seien $X$ und $Y$ vertex-treue Sphären, die durch die Flächen-Träger $\xi_X$ bzw. $\xi_Y$ dargestellt werden. Um $X$ und $Y$ durch eine 3-Taille an Flächen $F\in X_2$ und $F'\in Y_2$ zu verbinden, muss die Annahme getroffen werden, dass
 $X_0(F)=Y_0(F')$ und $X_0\setminus X_0(F)\cap Y_0\setminus Y_0(F')=\emptyset.$ Dann bildet die Sphäre $X\#Y$ repräsentiert durch $\xi_W=\xi_X \Delta \xi_Y$ eine wohldefinierte simpliziale Fläche.
@@ -3510,7 +3649,7 @@ Obige Definition lässt sich leicht verallgemeinern. Falls $X_0$ und $Y_0$ disju
 \{\phi (y)\mid y\in \xi_Y \}.
 \]
 und bezeichnen die Sphäre, die durch das Zusammensetzen  entsteht mit $X\#_{\phi}Y.$\\
-Das Unterteilen einer vertex-treuen Sphäre mit einer 3-Taille in die disjunkte Vereinigung zweier vertex-treuer Sphären kann in ähnlicher Form skizziert werden. Sei $W\subseteq X_1$ eine 3-Taille. Nach Definition \text{red}{.....}\Cref{.} kann die Flächenmenge $X_2$ in die 3-Taillen Komponenten $M_1,M_2$ bezüglich $W$ aufgeteilt werden. Weiterhin seien $\{v_1,v_2,v_3\}=X_0(W)$ die Ecken der 3-Taille und $\{P_1,P_2,P_3\}\cap X_0=\emptyset,$ dann erhalten wir die Sphäre $X^W$ durch die Ecken-Flächen-Inzidenzen 
+Das Unterteilen einer vertex-treuen Sphäre mit einer 3-Taille in die disjunkte Vereinigung zweier vertex-treuer Sphären kann in ähnlicher Form skizziert werden. Sei $W\subseteq X_1$ eine 3-Taille. Nach Definition \ref{2waistk} kann die Flächenmenge $X_2$ in die 3-Taillen Komponenten $M_1,M_2$ bezüglich $W$ aufgeteilt werden. Weiterhin seien $\{V_1,V_2,V_3\}=X_0(W)$ die Ecken der 3-Taille und $\{P_1,P_2,P_3\}\cap X_0=\emptyset,$ dann erhalten wir die Sphäre $X^W$ durch die Ecken-Flächen-Inzidenzen 
 \begin{align*}
 \xi_W=&(\{\phi(X_0(m_1))\mid \, m_1\in M_1\}\cup \{\{P_1,P_2,P_3\}\}) \cup\\
  &(\{X_0(m_2)\mid \, m_2\in M_2\}\cup \{\{V_1,V_2,V_3\}\}),
@@ -3527,16 +3666,10 @@ Seien $X$ und $Y$ zwei Sphären. Weiterhin seien  $F$ eine Fläche in $X$ und $F
 Also ist die simpliziale Fläche $(X\#_\phi Y)$ eine Sphäre. 
 \begin{bsp}
 Der zweite Teil der obigen Bemerkung wird nun am Beispiel des Doppel-Tetraeders veranschaulicht.
-Zur Erinnerung geben wir an dieser Stelle den Flächen-Träger eines Doppel-Tetraeders an.
+Zur Erinnerung geben wir an dieser Stelle den Flächen-Träger eines Doppel-Tetraeders an:
 \[
-\{\{1,2,3\},\{1,2,4\},\{1,3,4\},\{5,2,3\},\{5,2,4\},\{5,3,4\}\}
+\xi_{DT}\{\{1,2,3\},\{1,2,4\},\{1,3,4\},\{5,2,3\},\{5,2,4\},\{5,3,4\}\}
 \]
-\begin{figure}[H]
-\begin{center}
-\includegraphics[viewport=22cm 12cm 5cm 17cm]{Image_DoubleTetraeder}
-\end{center}
-\caption{Doppel-Tetraeder}
-\end{figure}
 Dann bilden die Kanten $\{2,3\},\{3,4\}$ und $\{2,4\}$ eine 3-Taille. Also sind $M_1=\{\{1,2,3\},\{1,2,4\},\{1,3,4\}\}$ und $M_2=\{\{5,2,3\},\{5,2,4\},\{5,3,4\}\}$ die 3-Taillen Komponenten bezüglich $W,$ wobei die Flächen durch die inzidenten Flächen repräsentiert werden. Durch Einführen von neuen Ecken 6,7,8 und der Permutation $\phi=(2\, 6)(3\, 7)(4\,8)$ erhalten wir nun durch die simpliziale Fläche $DT^W$ als disjunkte Vereinigung von zwei Tetraedern mit zugehörigem Flächen-Träger
 \begin{align*}
 \xi_W=&(\{\phi(X_0(m_2))\mid \, m_2\in M_2\}\cup \{\{\{6,7,8\}\}\}) \cup \\
@@ -3545,8 +3678,8 @@ Dann bilden die Kanten $\{2,3\},\{3,4\}$ und $\{2,4\}$ eine 3-Taille. Also sind 
 \end{align*}
 \end{bsp}
 \begin{bemerkung}
-Wenn wir uns die vertex-treue Sphären ohne 3-Taillen als konvexe Figuren, eingebettet in den $\mathbb{R}^3$ vorstellen, dann kommt die obige Konstruktion dem Zusammensetzen oder vielmehr dem Zusammenkleben von jeweils Fläche der jeweiligen Sphäre gleich. Dafür gibt es genau 3 Möglichkeiten. Auf rein kombinatorischer Ebene jedoch, gibt es jedoch 6 Möglichkeiten, zwei Sphären $X$ und $Y$ auf obige Weise an 
-Flächen $F\in X_2$ und $F'\in Y_2$ zusammen zu setzen. Denn denn dies entspricht der Anzahl der Bijektionen $\phi:X_0(F)\to Y_0(F'),$ wobei verschiedene Bijektionen isomorphe Sphären hervorbringen können.
+Wenn wir uns die vertex-treue Sphären ohne 3-Taillen als konvexe Figuren, eingebettet in den $\mathbb{R}^3$ vorstellen, dann kommt die obige Konstruktion dem Zusammensetzen oder vielmehr dem Zusammenkleben der beiden Sphären an Flächen dieser Sphären gleich. Dafür gibt es genau 3 Möglichkeiten. Auf kombinatorischer Ebene jedoch, gibt es jedoch 6 Möglichkeiten, zwei Sphären $X$ und $Y$ auf obige Weise an 
+Flächen $F\in X_2$ und $F'\in Y_2$ zusammenzusetzen. Denn dies entspricht der Anzahl der Bijektionen $\phi:X_0(F)\to Y_0(F'),$ wobei verschiedene Bijektionen isomorphe Sphären hervorbringen können.
 \end{bemerkung}
 \begin{bemerkung}
 Sei $X$ eine vertex-treue Sphäre und $W_1,\ldots,W_n$ 3-Taillen in $X.$ Durch  $n$-maliges Anwenden der $\Cref{3waist}$ erhalten wir eine simpliziale Fläche $Y,$ die aus $n+1$ Zusammenhangskomponenten besteht. Es existieren also vertex-treue Sphären $Z_1,\ldots,Z_{n+1}$ ohne 3-Taillen, sodass
@@ -3566,50 +3699,9 @@ Seien $X$ bzw. $Y$ vertex-treue Sphären mit zugehörigen Blocktypen $\prod B_i^
 \]  
 ist.
 \end{lemma}
-Diese Aussage ist nur eine Umformung eines Resultates des Skriptes \emph{Simplicial Surfaces of Congruent Triangles} und der zugehörige Beweis kann diesem entnommen werden. Die Umkehrung gilt jedoch nicht, wie am Beispiel der Multi-Tetraeder zu erkennen ist. Diese Bilden vertex-treue Sphären vom Typ $B_4^n.$ Und für $n=3$ gibt es 3 nicht isomorphe Multi-Tetraeder mit demselben Blocktyp.
-  
-\begin{bemerkung}
-Sei $X$ eine vertex-treue Sphäre und $G$ seine Automorphismengruppe. Dann definieren wir die Menge $FV_X$ durch   
-\[
-\{(F,V_1,V_2,V_3)\mid \, F\in X_2,\, X_0(F)=\{V_1,V_2,V_3\}\}
-\]
-In Analogie zu \textcolor{red}{...} kann mithilfe dieser Menge die Gruppenoperation
-\[
-\Phi:G\times FV_x\to FV_X,(g,(F,V_1,V_2,V_3))\mapsto (\phi(F),\phi(V_1),\phi(V_2),\phi(V_3))
-\] 
-aufgestellt werden. Diese ist vom besonderem Interesse für die Bestimmung der Anzahl der Sphären $X\#Y,$ die bis auf Isomorphie aus $X$ und $Y$ hervorgehen.
-\end{bemerkung}
-\begin{bsp}
-\begin{itemize}
-\item 
-Sei $T$ der Tetraeder. Dann operiert $G$ transitiv auf $FV_T.$
-\item
+Diese Aussage ist nur eine Umformung eines Resultates des Skriptes \emph{Simplicial Surfaces of Congruent Triangles} und der zugehörige Beweis kann diesem entnommen werden. Die Umkehrung gilt jedoch nicht, wie am Beispiel der Multi-Tetraeder zu erkennen ist. Diese Bilden vertex-treue Sphären vom Typ $B_4^n.$ Und für $n=4$ gibt es 3 nicht isomorphe Multi-Tetraeder mit demselben Blocktyp.
 
-\end{itemize}
-\end{bsp}
-\textcolor{red}{!!!!!!!!!!!!!!!!!!!!!}
-\begin{lemma}
-Seien $X$ und $Y$ vertex-treue Sphären. Weiterhin operiere $
-\Aut(Y)$ transitiv auf $FV_Y.$ Die Anzahl der Sphären der Form $X\#Y$ erhalten wir dann durch die Anzahl der Bahnen der Operation $ \Phi_{X_2}.$ 
-\end{lemma}
-\begin{proof}
-Dieses Lemma bildet eine Verallgemeinerung von \textcolor{red}{...} und daher erhalten wir die Behauptung durch eine analoge Beweisführung.
-\end{proof}
-\begin{folgerung}
-Seien $X$ und $Y$ vertex-treue Sphären. Falls $\Aut(X)$ transitiv auf $FV_X$ und $\Aut(Y)$ transitiv auf $FV_Y$ operiert, dann gibt es bis auf Isomorphie genau eine Sphäre $X\#_{\phi}Y$ für eine geeignete Abbildung $\phi.$   
-\end{folgerung}
-\begin{lemma}
-Seien $X$ mit $F\in X_2$ und $Y$ mit $F'\in X_2$ vertex-treue Sphären ohne 3-Taillen. Weiterhin sei $f_X$ bzw. $f_y$ die Anzahl der Bahnen der Gruppenoperation $\Phi_{X_2}$ bzw. $\Phi_{Y_2}$ und $fv_X$ bzw. $fv_Y$ die Anzahl der Bahnen von $FV_X$ unter $\Aut(X)$ bzw.  $FV_Y$ unter $\Aut(Y).$ Falls $f_X,f_y\neq 1$ ist, dann ist die Anzahl der Sphären $Z$ mit $X$ und $Y$ als Blöcke gegeben durch 
-\[
-f_Xfv_Y=f_Yfv_X
-\]  
-\end{lemma}
-\begin{proof}
-Es reicht, die Anzahl der Möglichkeiten zu betrachten, wie $Y$ durch eine 3-Taille an $X$ gebunden werden kann. 
-Wir müssen zunächst einmal zeigen, dass das Verwenden von zwei Flächen aus einer Bahn in $X$ isomorphe Sphären $X\# Y$ hervorbringt.
-Seien also $F,F'\in X_2,$ sodass ein Isomorphismus $\phi$ mit $\phi(F')=F$ ist.Weiterhin seien $X_0(F)=\{V^X_1,V_2,V_3\}$ und $X_0(F')=\{V_1,V_2,V_3\}$  Sei $(F',V_1,V_2,V_3)\in FV_Y$  
-\end{proof}
-Mithilfe des SimplicialSurfaces Paket können die Sphären mit genau einer 3-Taille berechnen. Die folgende Tabelle zeigt die Anzahlen der Sphären mit genau einer 3-Taille und $n$ Flächen. 
+Mithilfe des SimplicialSurfaces Paket können die Sphären mit mindestens einer 3-Taille berechnet werden. Die folgende Tabelle zeigt die Anzahlen der Sphären mit mindestens einer 3-Taille und $n$ Flächen, die keine Multi-Tetraeder sind. 
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
@@ -3673,26 +3765,26 @@ n &Zshngs.-& Vertex- & Flächenzähler & Aut.\\
  \hline
 \end{tabular}
 \end{center}
-Beim Genaueren Hinschauen ist zu erkennen, das die Sphären, die einen Tetraeder als Zusammenhangskomponente haben, eine Automorphismengruppe von kleiner Ordnung haben. dies halten wir in folgender Bemerkung fest. 
+Beim Genaueren Hinschauen ist zu erkennen, das die Sphären, die einen Tetraeder als Zusammenhangskomponente haben, eine Automorphismengruppe von kleiner Ordnung haben. Eine genauere Erkenntnis halten wir in der nächsten Bemerkung fest.
 \begin{bemerkung}
 Sei $X$ eine Sphäre ohne Ecken vom Grad 3 und $F$ eine Fläche in $X$. Dann ist $\Aut(T^F(X))$ eine Untergruppe von $S_3.$ 
 \end{bemerkung}
 \begin{proof}
 Sei $V$ die Ecke vom Grad 3 in $T^F(X).$
-Da $X$ keine Ecken vom Grad 3 besitzt, gilt
+Da die Sphäre $X$ keine Ecken vom Grad 3 besitzt, muss
 \begin{itemize}
 \item $\phi(V)=V$
 \item $\phi (X_1(V))=X_1(V)$
 \item $\phi (X_2(V))=X_2(V)$
 \end{itemize}
-für jeden Isomorphismus $\phi:\Aut({T}^F(X))\mapsto \Aut({T}^F(X)).$ Für solch einen Isomorphismus kommen nur die Elemente der Gruppe $S_3$ in Frage. 
+für jeden Isomorphismus $\phi:\Aut({T}^F(X))\mapsto \Aut({T}^F(X))$ gelten. Falls $\phi(x)^k=x$ für ein $k \in \mathbb{N}$ und alle $x \in X_1(X_2(V))$ ist, muss $\phi(y)=y$ für alle $y\in T^F(X)$ gelten. Für solch einen Isomorphismus kommen nur die Elemente der Gruppe $S_3$ in Frage. 
 \end{proof}
 Diese Beobachtung kann verallgemeinert werden. Denn beim Genauerem Hinschauen ist zu erkennen, dass 
 \[
-S_3\cong\{\phi\in \Aut(T)\mid \phi(F)=F\}
+S_3\cong\{\phi\in \Aut(T)\mid \phi(F)=F\}=Stab(F)
 \] für eine Fläche $F\in T_2$ ist.
 \begin{bemerkung}
-Sobald die Voraussetzung fallen gelassen wird, dass $X$ eine Sphäre ohne Ecke vom Grad 3 ist, ist die Aussage falsch, denn die Automorphismengruppe des Doppel-Tetraeders ist isomorph zu der Gruppe $C_2\times S_3$ und wie bereits bekannt,geht der Doppel-Tetraeder durch eine Tetraeder-Erweiterung aus dem  Tetraeder hervor.
+Sobald die Voraussetzung fallen gelassen wird, dass $X$ eine Sphäre ohne Ecke vom Grad 3 ist, ist die Aussage falsch, denn die Automorphismengruppe des Doppel-Tetraeders ist isomorph zu der Gruppe $C_2\times S_3$ und wie bereits bekannt, geht der Doppel-Tetraeder durch eine Tetraeder-Erweiterung aus dem  Tetraeder hervor.
 \end{bemerkung}
 \begin{lemma}
 Seien $X$ und $Y$ zwei nicht isomorphe vertex-treue Sphären ohne 3-Taillen mit Flächen $F$ in $X$ bzw. $F'$ in $Y$. Sei zudem $\phi$ eine bijektive Abbildung von $X_0(F)$ nach $Y_0(F').$ Dann ist $\Aut(X\#_\phi Y)$ isomorph zu einer echten Untergruppe von $Stab_X(F)$ und zu einer echten Untergruppe von $Stab_Y(F').$
@@ -3704,10 +3796,17 @@ Sei $W=(e_1,e_2,e_3)$ die durch das Zusammensetzen entstandene 3-Taille und $M_1
 An dieser Stelle lässt sich wieder erkennen, dass das Abschwächen
 der Voraussetzung zu einem anderem Ergebnis führt.
 \end{bemerkung}
-Die Anzahlen aller Sphären mit mindestens einer 3-Taille und mit bis zu 26 Flächen,
-die keine Multi-Tetraeder sind, liefert uns folgende Tabelle.
 
+
+\begin{lemma}
+Seien $X$ und $Y$ vertex-treue Sphären. Weiterhin operiert $\Aut(Y)$ transitiv auf $Y.$ Dann ist die Anzahl der Sphären mit $X$ und $Y$ als 3-Taillen Komponenten die Anzahl der Bahnen der Gruppenoperation $\Phi_{X_2}.$
+\end{lemma}
+\begin{proof}
+Die Aussage wird analog zu \textcolor{red}{...} bewiesen.
+\end{proof}
 \subsection{Flächengraphen von Sphären mit 3-Taillen}
+Wir wollen nun die Auswirkungen der obigen Konstruktion auf die zugehörigen Flächengraphen der Sphären untersuchen.
+Hierfür werden im Folgenden erneut Ausschnitte von Flächengraphen präsentiert. Wir verwenden in diesen Abbildungen zwei unterschiedliche Farben für die Knotenmenge des Graphen, der sich durch diese Konstruktion ergibt, verwenden. Damit wollen wir andeuten das Knoten einer Farbe jeweils zu einer Sphäre gehören, die zum Zusammensetzen an der 3-Taille verwendet wurden.\\
 Seien $X$ mit $F\in X_2$ und $Y$ mit $F'\in Y_2$ zwei vertex-treue Sphären. Weiterhin sei die Abbildung $\phi:X_2(F)\to Y_2(F')$ bijektiv. An dieser Stelle wollen wir beschreiben, wie sich der Flächengraph der Sphäre $X\#_{\phi}Y$ aus den Flächengraphen der Sphären $X$ und $Y$ ergibt. Seien hierzu $F_1,F_2,F_3$ bzw. $F_1',F_2',F_3'$ die Nachbar-Flächen von $F$ in $X$ bzw. von $F'$ in $Y.$ Durch das Zusammensetzen der Sphären an den Flächen $F$ und $F'$ erhalten wir zum einen die konstruierte Sphäre $Z=X \#_\phi Y$ und eine 3-Taille $W=(e_1,e_2,e_3)$ in $Z,$ sodass ohne Einschränkung 
 \[
 Z_2(e_i)=\{F_i,F_i'\}
@@ -3740,9 +3839,44 @@ Da in $Z$ die Flächen $F_i$ und $F_i'$ benachbart sind, erhalten wir den zugeh�
 \end{center}
 \caption{Ausschnitt des Graphen $G_Z$}
 \end{figure}
+ Seien $X$ bzw. $Y$ zwei Oktaeder mit $X_2=\{1_X,\ldots,8_X\}$ bzw. $Y_2=\{1_Y,\ldots,8_Y\}.$
+Weiterhin seien die ordinalen Symbole der Sphären durch
+\begin{align*}
+&\mu(Z)= \mu(Y)=\\
+ &(6,12,8;(\{1,2\},\{1,3\},\{1,4\},\{1,5\},\{2,3\},\{2,5\},\\
+ &\{2,6\},\{3,4\},\{3,6\},\{4,5\},\{4,6\},\{5,6\});\\
+ &(\{1,2,5\},\{2,3,8\},\{3,4,10\},\{1,4,6\},\{5,7,9\},\\&\{8,9,11\},\{10,11,12\},\{6,7,12\})
+ \end{align*}
+ gegeben. Die zugehörigen Graphen erhalten wir deshalb durch 
+\begin{align*}
+G_X&=(V_X,E_X)=(X_2,\{X_2(e)\mid e\in X_1\})\\G_Y&=(V_Y,E_Y)=(Y_2,\{Y_2(e)\mid e\in Y_1\}).\\
+\end{align*}
+ \begin{figure}[H]
+\begin{center}
+\includegraphics[scale=1.1,viewport=0cm 23cm 12cm 27cm]{facegraphoct}
+\end{center}
+\caption{Ausschnitt der Sphäre $Z$}
+\end{figure}   
+Da $X_0(1_1)=\{V_1,V_2,V_3\}$ und $Y_0(3_2)=\{V_1',V_4',V_5'\}$ ist, können wir mit der Bijektion $\phi=(V_1,V_1')(V_2,V_4')(V_3,V_5')$ die Sphäre $Z=X\#_\phi Y$ konstruieren. In $Z$ bilden $(2_1,2_2)(4_1,4_2)$ und $(5_1,7_2)$ Paare benachbarter Flächen in $Z.$
+Die Knotenmenge des Graphen $G_Z$ bildet die Menge 
+\[
+V_Z=(V_X \cup V_Y)-\{1_1,3_2\}
+\]
+mit der zugehöriger Kantenmenge 
+\begin{align*}
+E_Z=&(E_X \cup E_Y\cup \{\{2_1,2_2\},\{5_1,7_2\},\{4_1,4_2\}\})-\\
+&\{\{1_1,4_1\},\{1_1,5_1\},\{1_1,2_1\},\{3_2,4_2\},\{2_2,3_2\},\{3_2,7_2\}\}.
+\end{align*}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=1.1,viewport=0cm 23cm 12cm 27cm]{facegraphoct2}
+\end{center}
+\caption{Ausschnitt der Sphäre $Z$}
+\end{figure}   
 \subsection{Färbungen auf Sphären mit 3-Taillen}
-\begin{bemerkung}
-Seien $X$ mit $F\in X_2$ und $Y$ mit $F'\in Y_2$ vertex-treue Sphären zusammen mit einer Bijektion $\phi:X_0(F)\mapsto Y_0(F')$. Weiterhin sei $\omega_X$ eine wilde Färbung auf $X$ und $\omega_Y$ eine wilde Färbung auf $Y.$
+In der \Cref{bemf} wollen wir zunächst eine Erkenntnis über die Färbung einer Sphäre, die sich durch Zusammensetzen zweier Sphären mithilfe einer 3-Taille ergibt, festhalten.
+\begin{bemerkung}\label{bemf}
+Seien $X$ mit $F\in X_2$ und $Y$ mit $F'\in Y_2$ vertex-treue Sphären zusammen mit einer Bijektion $\phi:X_0(F)\mapsto Y_0(F')$. Weiterhin seien $\omega_X$ eine wilde Färbung auf $X$ und $\omega_Y$ eine wilde Färbung auf $Y.$
 In dieser Bemerkung wird festgehalten, dass eine wilde Färbung auf der Sphäre $Z=X\#_{\phi}Y$ durch geeignetes Zusammensetzen der Färbungen $\omega_X$ und $\omega_Y$ konstruiert werden kann. Sei deshalb $W=(e_1,e_2,e_3)$ die 3-Taille der Sphäre $Z.$
  Dann gibt es Kanten $e_1^X,e_2^X,e_3^X$ in $X$ und Kanten $e_1^Y,e_2^Y,e_3^Y$ in $Y,$ sodass die Kanten $e_i^X$ und $e_i^Y$ bei der Konstruktion von $Z$ zu der Kante $e_i$ zusammengesetzt werden.
   In $X$ gibt es 
@@ -3756,7 +3890,7 @@ In dieser Bemerkung wird festgehalten, dass eine wilde Färbung auf der Sphäre 
 \end{figure}   
     Es reicht im Folgenden die Kanten $e_1^X$ und $e_1^Y$ für die Argumentation zu betrachten. In $X$ gibt es weitere Kanten $e_X,e_X'\in X_1(F_1)$ mit der Eigenschaft
 \[
-   X_0(e_X)\cap X_0(e_1^X)\cap X_0(e_2^X)\neq \emptyset 
+X_0(e_X)\cap X_0(e_1^X)\cap X_0(e_2^X)\neq \emptyset 
 \] 
 und 
 \[
@@ -3773,11 +3907,11 @@ und
 erfüllen. Durch die Konstruktion von $Z$ sind also $e_X$ und $e_Y$ zu derselben Ecke in $Z$ inzident. Selbiges gilt auch für die Kanten $e_X'$ und $e_Y'.$ 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[scale=0.5,viewport=0cm 15.5cm 19cm 26.5cm]{konst3waist}
+\includegraphics[scale=0.9,viewport=0cm 18.cm 19cm 26.5cm]{konst3waist}
 \end{center}
-\caption{Ausschnitt der Sphäre $Z$}
+\caption{Übergang von den sphären $X$ und $Y$ zu $Z$}
 \end{figure}   
-Schauen wir uns nun die Färbungen auf den jeweiligen Sphären an. Wir können ohne Einschränkung $\omega_X(e_1^X)=\omega_Y(e_1^Y)=a$ annehmen. Deshalb muss $
+Schauen wir uns nun die Färbungen auf den jeweiligen Sphären an. Wir können ohne Einschränkung $\omega_X(e_1^X)=\omega_Y(e_1^Y)=a$ annehmen. Aufgrund dessen muss dann $
 a\neq \omega_X(e_X) \neq\omega_X(e_X')$
 und $
 a\neq \omega_Y(e_Y) \neq\omega_Y(e_Y')$
@@ -3786,11 +3920,11 @@ b= \omega_X(e_X) =\omega_Y(e_Y)$ und $
 c= \omega_X(e_X') =\omega_Y(e_Y')$ annehmen dürfen.
 \begin{figure}[H]
 \begin{center}
-\includegraphics[scale=0.6,viewport=0cm 23cm 19cm 27cm]{konst3waist2}
+\includegraphics[scale=0.9,viewport=0cm 23.7cm 19cm 27cm]{konst3waist2}
 \end{center}
-\caption{Ausschnitt der Sphäre $Z$}
+\caption{Ausschnitt der Sphären $X$ und $Y$}
 \end{figure}
-Nehmen wir zusätzlich an, dass $\omega_X(e_2^X)=\omega_Y(e_2^Y)=b$ und $\omega_X(e_3^X)=\omega_Y(e_3^Y)=c$, dann erhalten wir durch die Abbildung 
+Wird nun zusätzlich $\omega_X(e_2^X)=\omega_Y(e_2^Y)=b$ und $\omega_X(e_3^X)=\omega_Y(e_3^Y)=c$ angenommen, dann erhalten wir durch die Abbildung 
 \[
 \omega: Z_1 \{a,b,c\},e\mapsto
  \begin{cases}
@@ -3804,45 +3938,47 @@ Nehmen wir zusätzlich an, dass $\omega_X(e_2^X)=\omega_Y(e_2^Y)=b$ und $\omega_
 eine wilde Färbung auf $Z.$
 \begin{figure}[H]
 \begin{center}
-\includegraphics[scale=0.6,viewport=0cm 23cm 11cm 26.5cm]{konst3waist3}
+\includegraphics[scale=0.9,viewport=0cm 23.8cm 8cm 27cm]{konst3waist3}
 \end{center}
 \caption{Ausschnitt der Sphäre $Z$}
 \end{figure}
 \end{bemerkung}
+Bei genauerer Beobachtung können wir sogar Aussagen darüber treffen, wie sich die Strukturen der einzelnen Sphären auf die zusammengesetzte Sphäre überträgt.
 \begin{lemma}
-Seien $X$ und $Y$ vertex-treue Sphären und $\omega_X$ eine zahme Färbung auf $X$ bzw. $\omega_Y$ eine zahme Färbung auf $Y.$ Weiterhin seien $F\in X_2$ und $F'\in Y_2$ zusammen mit einer bijektiven Abbildung $\phi:X_0(F)\to Y_0(F').$
+Seien $X$ und $Y$ vertex-treue Sphären und $\omega_X$ eine zahme Färbung auf $X$ bzw. $\omega_Y$ eine zahme Färbung auf $Y.$ Weiterhin seien $F\in X_2$ und $F'\in Y_2$ Flächen und $\phi:X_0(F)\to Y_0(F')$ eine bijektiven Abbildung. 
 Falls $X$ und $Y$ eine mmm-Struktur besitzen, dann existiert eine mmm-Struktur auf $X\#_{\phi}Y$.
 \end{lemma}
 \begin{proof}
- Sei  $(e_1,e_2,e_3)$ eine 3-Taille in $Z=X\#_{\phi}Y$. Dann existieren Kanten $e^X_1,e^X_2,e_3^X$ in $X$ und $e^Y_1,e^Y_2,e_3^Y$ in $Y,$ sodass bei der Konstruktion von $Z$ die Kanten $e_i^X$ und $e_i^Y$ zu der Kante $e_i$ zusammengeführt werden.Wir wollen eine zahme Färbung auf $Z$ durch eine geeignete Fortsetzung der bereits vorhandenen zahmen Färbungen konstruieren.  
+ Sei  $(e_1,e_2,e_3)$ eine 3-Taille in $Z=X\#_{\phi}Y$. Dann existieren Kanten $e^X_1,e^X_2,e_3^X$ in $X$ und $e^Y_1,e^Y_2,e_3^Y$ in $Y,$ sodass bei der Konstruktion von $Z$ die Kanten $e_i^X$ und $e_i^Y$ zu der Kante $e_i$ zusammengeführt werden. Insbesondere sind die Kanten $e_i^X$ zu $F$ und die Kanten $e_i^Y$ zu $F'$ inzident. Wir wollen eine zahme Färbung auf $Z$ durch eine geeignete Fortsetzung der bereits vorhandenen zahmen Färbungen konstruieren.  
 Wir können ohne Einschränkung 
 \begin{align*}
 \omega_X(e_1^X)=a=\omega_Y(e_1^Y),\\
  \omega_X(e_2^X)=b=\omega_Y(e_2^Y),\\
  \omega_X(e_3^X)=c=\omega_Y(e_3^Y)
 \end{align*}
-annehmen. Es reicht im Folgenden die Kante $e_1,$ die durch Zusammensetzen der Kanten $e_1^X$ und $e_1^Y$ entsteht, zu betrachten. Da $e_1^X$ eine Kante in $X$ ist, existiert eine Fläche $F_X$ mit $X_2(e_1^X)=\{F,F_X\}$. Weiterfinden finden wir zwei Kanten $e_X,e_X'\in X_1(F_1), $ die 
+annehmen. Es reicht im Folgenden die Kante $e_1,$ die durch Zusammensetzen der Kanten $e_1^X$ und $e_1^Y$ entsteht, zu betrachten. Da $e_1^X$ eine Kante in $X$ ist, existiert eine Fläche $F_X$ in $X$ mit $X_2(e_1^X)=\{F,F_X\}$. Weiterfinden gelten für die zwei anderen Kanten $e_X,e_X'\in X_1(F_X) $ die Gleichheiten
 \[
 X_0(e_1^X)\cap X_0(e_X) \cap X_0(e_2^X)\neq \emptyset
 \]
 und 
 \[
-X_0(e_1^X)\cap X_0(e_X') \cap X_0(e_3^X)\neq \emptyset
+X_0(e_1^X)\cap X_0(e_X') \cap X_0(e_3^X)\neq \emptyset.
 \]
-erfüllen. Analog erhalten wir eine Fläche $F_Y$ mit $Y_2(e_1^Y)=\{F',F_Y\}$ und Kanten $e_Y,e_Y'$ mit 
+ Analog erhalten wir eine Fläche $F_Y$ in $Y$ mit $Y_2(e_1^Y)=\{F',F_Y\}$ und zu $e_1^Y$ verschiedene Kanten $e_Y,e_Y'\in Y_1(F_Y)$ mit 
 \begin{align*}
 Y_0(e_1^Y)\cap Y_0(e_Y) \cap Y_0(e_2^Y)\neq \emptyset
 \end{align*}
 und 
 \[
-Y_0(e_1^Y)\cap Y_0(e_Y) \cap Y_0(e_3^Y)\neq \emptyset.
+Y_0(e_1^Y)\cap Y_0(e_Y') \cap Y_0(e_3^Y)\neq \emptyset.
 \]
-Somit gibt es in $Z$ eine Ecke die zu $e_X$ und $e_Y$ inzident ist und es existiert eine Ecke in $Z$ sodass  $e_X'$ und $e_Y'$ zu dieser inzident sind.
+Somit gibt es in $Z$ eine Ecke, die zu $e_X$ und $e_Y$ inzident ist und es existiert eine Ecke in $Z$ sodass  $e_X'$ und $e_Y'$ zu dieser inzident sind.
 Da $e_1^X$ und $e_1^Y$ beides m-Kanten sind, muss 
 \begin{align*}
-\omega_X(e_X)=b=\omega_Y(e_Y)
-\omega_X(e_X)=c=\omega_Y(e_Y')
+\omega_X(e_X)=b=\omega_Y(e_Y),\\
+\omega_X(e_X')=c=\omega_Y(e_Y')
 \end{align*}
+gelten.
 Wählen wir nun als Kandidaten für unsere zahme Färbung die Abbildung
 \[
 \omega: Z_1 \{a,b,c\},e\mapsto
@@ -3854,11 +3990,11 @@ Wählen wir nun als Kandidaten für unsere zahme Färbung die Abbildung
  \omega_Y(e), & e\in Y_1 \cap Z_1
  \end{cases}
 \]
-dann bilden $e_1,e_2,e_3$ wieder m-Kanten. Da alle anderen Kanten und Flächen bei der Konstruktion von $Z$ unberührt bleiben, bilden diese Kanten ebenfalls wieder m-Kanten und wir erhalten schlussendlich eine mmm-Struktur auf $Z.$  
-Damit bildet $e_1$ eine m-Kante. 
+dann bilden $e_1,e_2,e_3$ wieder m-Kanten. Da alle anderen Kanten und Flächen bei der Konstruktion von $Z$ unberührt bleiben, bilden die Kanten der Sphäre Kanten vom Typ $m$ und wir erhalten schlussendlich eine $mmm$-Struktur auf $Z.$  
+
 \end{proof}
 Salopp formuliert werden Spiegelungskanten unter der obigen Konstruktion wieder zu Spiegelungskanten.
-Dieselbe Aussage für Sphären mit einer $rrr-$Struktur zu formulieren, liefert kein richtiges Ergebnis. Denn beispielsweise der Tetraeder besitzt eine rrr-Struktur, jedoch existiert auf dem Doppel-Tetraeder, der sich bekanntlicher Weise aus Tetraedern zusammensetzt, keine zahme Färbung.
+Dieselbe Aussage für Sphären mit einer $rrr-$Struktur zu formulieren, liefert kein richtiges Ergebnis. Denn beispielsweise der Tetraeder besitzt eine $rrr$-Struktur, jedoch existiert auf dem Doppel-Tetraeder, der sich bekanntlicher Weise aus zwei Tetraedern zusammensetzt, keine zahme Färbung.
 \subsection{Der Sphären-Graph}
 Mithilfe der drehbaren Kantendrehungen und Kantensequenzen erhalten wir eine neue Anschauung der vertex-treuen Sphären. In diesem Abschnitt wollen wir die Menge der Sphären durch Einführen einer geeigneten Kantenmenge als ungerichteten Graphen auffassen. Daraufhin werden dann elementare Eigenschaften des sogenannten \emph{Sphären-Graphen} zusammengefasst und kleinere Beispiele dieses Graphen dargelegt. 
 
@@ -3883,9 +4019,9 @@ Sei $n\in \mathbb{N}$ gerade. Dann definieren wir den \emph{Sphären-Graph} $\ma
  Da $1_11_2$ jedoch durch eine Kantendrehung aus dem Oktaeder hervorgeht, sind die zugehörigen Knoten durch eine Kante verbunden. Da es Kanten in $1_11_2$ gibt, sodass Drehen dieser wieder die Sphäre $1_11_2$ hervorbringt, erhalten wir zudem einen nicht einfachen Graphen.
  \begin{figure}[H]
 \begin{center}
-\includegraphics[viewport=0cm 25cm 5cm 27cm]{spgr}
+\includegraphics[viewport=0cm 26.5cm 5cm 27.5cm]{spgr}
 \end{center}
-\caption{Ausschnitt einer simplizialen Fläche}
+\caption{Der Graph $\mathcal{G}_8^3$}
 \end{figure}
  \item In dem Sphären-Graph $\mathcal{G}_{12}^3$ gibt es 14 Knoten. Nämlich 
  \begin{itemize}
@@ -3937,7 +4073,7 @@ Sei $n\in \mathbb{N}$ gerade. Dann definieren wir den \emph{Sphären-Graph} $\ma
  \end{bemerkung}
  Da wir besonders an den Sphären ohne 2- oder 3-Taillen interessiert sind, können wir durch das Einführen von gewichteten Kanten einen Graphen für die Menge $\mathcal{S}_n$ aufstellen.
  \begin{definition}
-Sei $n\in \mathbb{N}$ gerade. Dann definiert das Tripel $\mathcal{G}_n=(V,E,c)$ den \emph{taillenfreien Sphären-Graph}. Die Kantenmenge erhalten wir durch $V=\mathcal{S}_n.$ Zwei Knoten $V_X,V_Y$ mit zugehörigen vertex-treuen Sphären $X,Y$ sind durch eine Kante verbunden, falls $X^e\cong Y$ für eine Kante $e\in X_1$ ist oder es eine drehbare Kantensequenz $E=(e_1,\ldots,e_m)$ in $X$ gibt, sodass $X^E\cong Y$ ist und für alle $1\leq i < m $ die Sphäre $X^{(e_1,\ldots,e_i)}$ eine 3-Taille besitzt. Die Gewichtsfunktion $c:E\to\mathbb{Z}^+$  erhalten wir folgendermaßen: Sei $\{V_X,V_Y\}=e\in E.$ Das Gewicht $c(e)$ ist die minimale Länge einer Kantensequenz, die $X$ isomorph in $Y$ umwandelt und obige Bedingung erfüllt.
+Sei $n\in \mathbb{N}$ gerade. Dann definiert das Tripel $\mathcal{G}_n=(V,E,c)$ den \emph{taillen-freien Sphären-Graph}. Die Kantenmenge erhalten wir durch $V=\mathcal{S}_n.$ Zwei Knoten $V_X,V_Y$ mit zugehörigen vertex-treuen Sphären $X,Y$ sind durch eine Kante verbunden, falls $X^e\cong Y$ für eine Kante $e\in X_1$ ist oder es eine drehbare Kantensequenz $E=(e_1,\ldots,e_m)$ in $X$ gibt, sodass $X^E\cong Y$ ist und für alle $1\leq i < m $ die Sphäre $X^{(e_1,\ldots,e_i)}$ eine 3-Taille besitzt. Die Gewichtsfunktion $c:E\to\mathbb{Z}^+$  erhalten wir folgendermaßen: Sei $\{V_X,V_Y\}=e\in E.$ Das Gewicht $c(e)$ ist die minimale Länge einer Kantensequenz, die $X$ isomorph in $Y$ umwandelt und obige Bedingung erfüllt.
  \end{definition}
  Betrachten wir nun einmal den Graphen $\mathcal{G}_{14}.$
 Dieser besitzt vier Knoten, da es bis auf Isomorphie genau vier Sphären ohne 2- oder 3-Taillen gibt. Diese sind durch die Symbole $(7)^2,(5)\overline{4}(5),(5)\overline{4}(4)$ und $(6)\overline{2}(6)$ gegeben. Zur Vereinfachung bezeichnen wir die Knoten im Graphen mit denselben Symbolen. Mit etwas Hilfe von Gap können wir den Graphen genau bestimmen. An dieser Stelle geben wir uns mit einer bildlichen Veranschaulichung des Graphen zufrieden.
@@ -3945,20 +4081,19 @@ Dieser besitzt vier Knoten, da es bis auf Isomorphie genau vier Sphären ohne 2-
 \begin{center}
 \includegraphics[scale=0.7,viewport=1cm 15.5cm 24cm 22cm]{spheregraph}
 \end{center}
-\caption{der taillenfreie Sphären-Graph $\mathcal{G}_{14}$}
+\caption{der taillen-freie Sphären-Graph $\mathcal{G}_{14}$}
 \end{figure}
  \begin{bemerkung}
  \begin{itemize}
  \item Der zum Doppel-$n$-Gon zugehörige Knoten ist zu allen Knoten inzident, deren Sphären eine Ecke vom Grad 4 besitzen.
- \item Der taillenfreie Sphären-Graph ist im Allgemeinen nicht einfach.
- \item Der taillenfreie Sphären-Graph ist im Allgemeinen nicht vollständig. Denn in $\mathcal{G}_{20}$ gibt es beispielsweise genau eine Sphäre, die bis auf Isomorphie durch eine Kantendrehung aus dem Ikosaeder hervorgeht. Diese enthält keine 2- oder 3-Taillen. Also ist der Grad des zum Ikosaeder zugehörigen Knoten in dem taillenfreien Sphären-Graph gleich 1. Und die von diesem Knoten ausgehende Kante hat die Gewichtung 1.
+ \item Der taillen-freie Sphären-Graph ist im Allgemeinen nicht einfach.
+ \item Der taillen-freie Sphären-Graph ist im Allgemeinen nicht vollständig. Denn in $\mathcal{G}_{20}$ gibt es beispielsweise genau eine Sphäre, die bis auf Isomorphie durch eine Kantendrehung aus dem Ikosaeder hervorgeht. Diese enthält keine 2- oder 3-Taillen. Also ist der Grad des zum Ikosaeder zugehörigen Knoten in dem taillen-freien Sphären-Graph gleich 1. Und die von diesem Knoten ausgehende Kante hat die Gewichtung 1.
  \end{itemize}
  \end{bemerkung}
-\section{Multi-Sphären}
-In diesem Kapitel dieser Arbeit wollen wir die in Kapitel 6 vorgestellte Konstruktion von Multi-Tetraedern durch Tetraeder-Erweiterungen für beliebige vertex-treue Flächen erweitern.   
-\subsection{Konstruktion}
+\subsection{Multi-Sphären}
+In diesem Kapitel dieser Arbeit wollen wir die in Kapitel 6 vorgestellte Konstruktion von Multi-Tetraedern durch Tetraeder-Erweiterungen für beliebige vertex-treue Sphären ohne 3-Taillen erweitern.   
 \begin{definition}
-Sei $X$ eine vertex-treue Sphäre. Wir nennen $X$ eine \emph{Multi-Sphäre}, falls es $k,n \in \mathbb{N}$ gibt, sodass $X$ eine Sphäre vom Blocktyp $B_n^k$ ist und weiterhin
+Sei $X$ eine vertex-treue Sphäre ohne 3-Taillen. Wir nennen $X$ eine \emph{Multi-Sphäre}, falls es natürliche Zahlen $k,n$ gibt, sodass $X$ eine Sphäre vom Blocktyp $B_n^k$ ist und weiterhin
 \[
 Z_1\cong \ldots\cong Z_k
 \]
@@ -3970,13 +4105,7 @@ für die Blöcke $Z_1,\ldots,Z_k$ gilt.
 \item Multi-Tetraeder sind Multi-Sphären vom Blocktyp $B_4^k.$
 \end{itemize}
 \end{bemerkung}
-\begin{satz}
-Sei $X$ eine Multi-Sphäre mit Basis $Y.$ Falls $\Aut(Y)$ auflösbar ist, dann folgt die Auslösbarkeit von $\Aut(X).$ 
-\end{satz}
-\begin{proof}
-Wir führen den Beweis induktiv. Für $,$
-\end{proof}
-
+\begin{comment}
 In Analogie zu dem Tetraeder-Symbol wollen wir nun ein Symbol für Multi-Sphären einführen. 
 Hierfür schauen wir uns als motivierendes Beispiel Multi-Sphären bestehend aus Oktaedern an. Die Bezeichnung der Ecken, Kanten und Flächen ist hier von großer Bedeutung, deshalb geben wir die des Oktaeders durch folgendes Symbol an:
 \begin{align*}
@@ -3987,46 +4116,39 @@ Hierfür schauen wir uns als motivierendes Beispiel Multi-Sphären bestehend aus
  An dieser Stelle wurde bewusst auf die Disjunktheit der Mengen $O_0,O_1$ und $O_2$ verzichtet.
   Wir wollen einen Multi-Oktaeder vom Blocktyp $B_8^2$ konstruieren. Hierfür betrachten wir die Oktaeder $Y$ und $Z,$ die durch die Symbole 
 \begin{align*}
- \mu((Y,<))=&(6,12,8;(\{1_1,1_2\},\{1_1,1_3\},\{1_1,1_4\},\{1_1,1_5\},\{1_2,1_3\},\{1_2,1_5\},\\
- &\{1_2,1_6\},\{1_3,1_4\},\{1_3,1_6\},\{1_4,1_5\},\{1_4,1_6\},\{1_5,1_6\});\\
- &(\{1_1,1_2,1_5\},\{1_6,1_7,1_{12}\},\{1_1,1_4,1_6\},\{1_5,1_7,1_9\},\{1_3,1_4,1_{10}\},\\&\{1_8,1_9,1_{11}\},\{1_2,1_3,1_8\},\{1_{10},1_{11},1_{12}\}))
+ \mu((Y,<))=&(6,12,8;(\{1_1,2_1\},\{1_1,3_1\},\{1_1,4_1\},\{1_1,5_1\},\{2_1,3_1\},\{2_1,5_1\},\\
+ &\{2_1,6_1\},\{3_1,4_1\},\{3_1,6_1\},\{4_1,5_1\},\{4_1,6_1\},\{5_1,6_1\});\\
+ &(\{1_1,2_1,5_1\},\{6_1,7_1,{12}_1\},\{1_1,4_1,6_1\},\{5_1,7_1,9_1\},\{3_1,4_1,{10}_1\},\\&\{8_1,9_1,{11}_1\},\{2_1,3_1,8_1\},\{{10}_1,{11}_1,{12}_1\}))
  \end{align*}
 und 
 \begin{align*}
- \mu((Z,<))=&(6,12,8;(\{2_1,2_2\},\{2_1,2_3\},\{2_2,2_4\},\{2_1,2_5\},\{2_2,2_3\},\{2_2,2_5\},\\
- &\{2_2,2_6\},\{2_3,2_4\},\{2_3,2_6\},\{2_4,2_5\},\{2_4,2_6\},\{2_5,2_6\});\\
- &(\{2_1,2_2,2_5\},\{2_6,2_7,2_{12}\},\{2_1,2_4,2_6\},\{2_5,2_7,2_9\},\{2_3,2_4,2_{10}\},\\&\{2_8,2_9,2_{11}\},\{2_2,2_3,2_8\},\{2_{10},2_{11},2_{12}\}))
+ \mu((Z,<))=&(6,12,8;(\{1_2,2_2\},\{1_2,3_2\},\{1_2,4_2\},\{1_2,5_2\},\{2_2,3_2\},\{2_2,5_2\},\\
+ &\{2_2,6_2\},\{3_2,4_2\},\{3_2,6_2\},\{4_2,5_2\},\{4_2,6_2\},\{5_2,6_2\});\\
+ &(\{1_2,2_2,5_2\},\{6_2,7_2,{12}_2\},\{1_2,4_2,6_2\},\{5_2,7_2,9_2\},\{3_2,4_2,{10}_2\},\\&\{8_2,9_2,{11}_2\},\{2_2,3_2,8_2\},\{{10}_2,{11}_2,{12}_2\}))
  \end{align*}
- Die Abbildungen $\phi_1:Z\to X,1_j \mapsto j$ und $\phi_2:Z\to X,2_j \mapsto j$ bilden also unter der Berücksichtigung, das Ecken auf Ecken, Kanten auf Kanten und Flächen wieder auf Flächen abgebildet werden, Isomorphismen. Die Fläche $\{1,2,3\}$ in $X$ kann also mit der Fläche $\{1_1,1_2,1_3\}$ in $Y$ bzw. mit der Fläche $\{2_1,2_2,2_3\}$ in $Z$ identifiziert werden. Durch $\phi=(1_1\, 2_1) (1_2\, 2_2) (1_3\, 2_3)$ erhalten wir also den Doppel-Oktaeder $Y\#_{\phi} Z.$ Bezeichnen wir die Flächenmenge des Oktaeders $Y$ bzw. $Z$ mit $\{1_1,\ldots,1_8\}$ dann gilt
+ sind. Wir betrachten also exakte Kopien des Oktaeders $O,$ wobei wir zur Unterscheidung der Sphären eine Indexschreibweise einführen.
+ Dadurch bilden die Abbildungen $\phi_1:Y_0\cup Y_1\to X,j_1 \mapsto j$ und $\phi_2:Z_0\cup Z_1\to X,j_2 \mapsto j$ unter der Berücksichtigung, das Ecken auf Ecken und Kanten auf Kanten abgebildet werden, Abbildungen, die zu Isomorphismen $Y\to X $ bzw. $Z\to X$ erweitert werden können. Die Fläche $1\in X_2$ mit $X_0(1)=\{1,2,3\}$ in $X$ kann also mit der Fläche $1_1$ in $Y$ bzw. mit der Fläche $1_2$ in $Z$ identifiziert werden. Durch $\phi=(1_1\, 1_2) (2_1\, 2_2) (3_1\, 3_2)$ erhalten wir also den Doppel-Oktaeder $Y\#_{\phi} Z.$ Bezeichnen wir die Flächenmenge des Oktaeders $Y$ bzw. $Z$ mit $\{1_1,\ldots,1_8\}$ bzw. $\{1_1,\ldots,1_8\}$ dann gilt
  \[
 (Y\#_{\phi} Z)_2=\{1_2,\ldots,1_8,2_2,\ldots 2_8\}. 
  \]
- Falls wir die Ecken, die durch diese Konstruktion entstanden sind, mit $\{1_1,2_1\}^V,\{1_2,2_2\}^V$ und $\{1_3,2_3\}^V$ bezeichnen, dann erhalten wir 
-\begin{align*}
-\{&\{\{1_1,2_1\}^V,\{1_3,2_3\}^V,1_4\},\{\{1_1,2_1\}^V,1_4,1_5\},\{\{1_1,2_1\}^V,\{1_2,2_2\}^V,1_5\},\\
-&\{1_6,\{1_2,2_2\}^V,\{1_3,2_3\}^V\},\{1_6,\{1_3,2_3\}^V,1_4\},\{1_6,1_4,1_5\},\{1_6,\{1_2,2_2\}^V,1_5\}\\
-,&\{\{1_1,2_1\}^V,\{1_3,2_3\}^V,2_4\},\{\{1_1,2_1\}^V,2_4,2_5\},\{\{1_1,2_1\}^V,\{1_2,2_2\}^V,2_5\},\\
-&\{2_6,\{1_2,2_2\}^V,\{1_3,2_3\}^V\},\{2_6,\{1_3,2_3\}^V,2_4\},\{2_6,2_4,2_5\},\{2_6,\{1_2,2_2\}^V,2_5\}\}
-\end{align*}
- als Flächen-Träger der neuen Sphäre.
  Dieses Vorgehen wollen wir nun iterieren und für beliebige Sphären ohne 3-Taillen formulieren.
- Sei deshalb $X$ eine vertex-treue Sphäre ohne 3-Taillen mit $n$ Flächen. Zur Vereinfachung nehmen wir an, dass $X_2$ durch $\{1,\ldots,n\},$ $X_1$ durch $\{1,\ldots,k\}$ und $X_0$ durch $\{1,\ldots,k\}$ gegeben ist. Es wird an dieser Stelle und in dem nachstehendem Absatz bewusst auf die Disjunktheit der Ecken-,Kanten- und Flächenmengen verzichtet, um das generelle Vorgehen möglichst einfach zu skizzieren. Mit $l$ bezeichnen wir die Länge des Symbols und ist ebenfalls gleichbedeutend mit der Anzahl der 3-Taillen in der Konstruierten Sphäre. Dies werden wir wie folgt aufbauen:
+ Sei deshalb $X$ eine vertex-treue Sphäre ohne 3-Taillen mit $n$ Flächen. Zur Vereinfachung nehmen wir an, dass $X_2$ durch $\{1,\ldots,n\},$ $X_1$ durch $\{1,\ldots,k\}$ und $X_0$ durch $\{1,\ldots,m\}$ gegeben ist. Es wird an dieser Stelle und in dem nachstehendem Absatz bewusst auf die Disjunktheit der Ecken-,Kanten- und Flächenmengen verzichtet, um das generelle Vorgehen möglichst einfach zu skizzieren. Mit $l$ bezeichnen wir die Länge des Symbols. Damit ist $l$  ebenfallls die Anzahl der 3-Taillen in der konstruierten Sphäre. Dieses Symbol werden wir wie folgt aufbauen:
 \begin{itemize}
 \item Mit $()_X$ bezeichnen wir das leere Symbol und die dadurch konstruierte Sphäre ist die uns bekannte Sphäre $X.$
-\item \textbf{Für $l=1$ erhalten wir Symbole der Form $(1_{k_1\,k_2})^\phi)_X,$ wobei $k_1,k_2\in \{1,\ldots,n\}$ und $\phi:Y_0()$ist.}
+\item 
 Für $l=1$ wollen wir also ein Symbol für eine Sphäre vom Typ $B_n^2$ aufstellen.
  Konstruieren wir zunächst die besagte Sphäre. Hierfür benötigen wir die Sphären $Y$ und $Z$ mit $X\cong Y\cong Z.$ 
 Die Ecken-, Kanten- und Flächenmengen müssen nun zum Wohle der Konstruktion genauer angegeben werden.
 An dieser Stelle sei wieder angemerkt, dass bewusst auf die Disjunktheit der einzelnen Mengen einer Sphäre verzichtet wurde.
 Wir nehmen also an, dass die Flächenmengen durch
 \begin{align*}
-Y_2=\{1_1,\ldots,1_n\},\\ 
-Z_2=\{2_1,\ldots,2_n\},
+Y_2=\{1_1,\ldots,n_1\},\\ 
+Z_2=\{1_2,\ldots,n_2\},
 \end{align*}
 die Kantenmengen durch
 \begin{align*}
-Y_1=\{1_1,\ldots,1_m\}, \\
-Z_1=\{2_1,\ldots,2_m\},
+Y_1=\{1_1,\ldots,m_1\}, \\
+Z_1=\{1_2,\ldots,m_2\},
 \end{align*}
 und die Eckenmengen durch 
 \begin{align*}
@@ -4034,28 +4156,36 @@ Y_0=\{1_1,\ldots,1_k\}, \\
 Z_0=\{2_1,\ldots,2_k\},
 \end{align*}
 dargestellt werden. 
-Außerdem nehmen wir an, dass $\phi_1:Y\to X,1_j \mapsto j$ und $\phi_2:Z\to X,2_j \mapsto j$ unter der Berücksichtigung, das Ecken auf Ecken, Kanten auf Kanten und Flächen wieder auf Flächen abgebildet werden, Isomorphismen bilden.
-Seien nun $f_1,f_2\in \{1,\ldots,n\},$ sodass $1_{f_1}\in Y_2$ und $2_{f_2}\in Z_2$ ist und außerdem $Y_0(1_{f_1})=\{1_{i_1},1_{i_2},1_{i_3}\}$ und $Z_0(2_{f_2})=\{2_{j_1},2_{j_2},2_{j_3}\}$ gelte.
- Mithilfe einer Bijektion $\phi:Y_0(1_{f_1})\to Z_0(2_{f_2})$ erhalten wir dann die gewünschte Sphäre durch $Y\#_{\phi}Z.$ Um diese Sphäre zu Charakterisieren, beschreiben wir diese durch das Symbol $(1_{f_1\, f_2}^\phi)_X.$ Falls $X$ aus dem Kontext heraus bekannt ist, schreiben wir nur $1_{f_1\, f_2}^\phi.$ Die neu entstandenen Ecken bezeichnen wir mit $\{1_{i_1},\phi(1_{i_1})\}^V,\{1_{i_2}\{\phi(1_{i_2})\}^V,\{1_{i_3},\phi(1_{i_3})\}^V.$ Falls der Kontext es erlaubt können jedoch auch die alten Bezeichnungen verwendet werden. Das heißt, falls klar ist, dass im Kontext die Sphäre $Y\#_{\phi}Z$ gemeint ist, machen wir beispielsweise bei $1_{i_1},\,\phi(1_{i_1})$ und $\{1_{i_1},\,\phi(1_{i_1})\}$ keine Unterscheidung und sprechen damit immer dieselbe Ecke in der Sphäre $Y\#_{\phi}Z$ an.  
-\item Sei nun $l> 1$ und $(1_{f_1}^{\phi_1}\ldots p_{f_{l-1}}^{\phi_{l-1}})_X$ ein Symbol der Länge $l-1$ mit zugehöriger Sphäre $Y.$ Durch Anhängen der Sphäre $X$ an $Y$ durch eine 3-Taille wie in \textcolor{red}{...} beschrieben erhalten wir eine Multi-Sphäre mit Basis $X$ und wollen nun wieder ein Symbol für diese angeben.
+ Wir betrachten also exakte Kopien der Sphäre $X,$ wobei wir zur Unterscheidung der Sphären eine Indexschreibweise einführen.
+Außerdem nehmen wir an, dass $\phi_1:Y\to X,j_1 \mapsto j$ und $\phi_2:Z\to X,j_2 \mapsto j$ unter der Berücksichtigung, dass Ecken auf Ecken, Kanten auf Kanten und Flächen wieder auf Flächen abgebildet werden, Isomorphismen bilden.
+Seien nun $f,f'\in \{1,\ldots,n\},$ sodass ${f}_1\in Y_2$ und ${f'}_2\in Z_2$ ist.
+ Mithilfe einer Bijektion $\phi:Y_0({f_1})\to Z_0({f'}_2)$ erhalten wir dann die gewünschte Sphäre durch $Y\#_{\phi}Z.$ Um diese Sphäre zu charakterisieren, beschreiben wir diese durch das Symbol $(1_{f_1\, {f'}_2}^\phi)_X.$ Falls $X$ aus dem Kontext heraus bekannt ist, schreiben wir nur $1_{f_1\, f_2}^\phi.$ Durch das Zusammensetzen der Sphären entstehen unter anderem drei neue Ecken. Diese bezeichnen wir für ein $x\in Y_0(f_1)$ mit
+ \[
+\{x,\phi(x)\}^V. 
+ \]
+  Falls der Kontext es erlaubt können jedoch auch die alten Bezeichnungen der Sphären Sphären $Y$ bzw. $Z$ verwendet werden. Das heißt, falls klar ist, dass im Kontext die Sphäre $Y\#_{\phi}Z$ gemeint ist, machen wir beispielsweise zwischen $x,\,\phi(x)$ und $\{x,\,\phi(x)\}$ keine Unterscheidung und sprechen damit immer dieselbe Ecke in der Sphäre $Y\#_{\phi}Z$ an.  
+\item Sei nun $l> 1$ und $(1_{f_1g_2}^{\phi_1}\ldots p_{f_{l-1}g_{l-2}}^{\phi_{l-1}})_X$ ein Symbol der Länge $l-1$ mit zugehöriger Sphäre $Y.$ Durch Anhängen der Sphäre $X$ an $Y$ durch eine 3-Taille, erhalten wir eine Multi-Sphäre mit zu $X$ isomorphen Blöcken und wollen nun wieder ein Symbol für diese angeben.
 Sei $Z$ eine Sphäre mit $Z\cong X$, sodass die Eckenmenge durch 
 \[
-Z_0=\{l_1,\ldots,l_k\},
+Z_0=\{1_l,\ldots,k_l\},
 \]
 die Kantenmenge durch 
 \[
-Z_1=\{l_1,\ldots,l_m\},
+Z_1=\{1_l,\ldots,m_l\},
 \]
 und die Flächenmenge durch 
 \[
-Z_2=\{l_1,\ldots,l_n\},
+Z_2=\{1_l,\ldots,n_l\},
 \]
-gegeben sind. Die Abbildung $\phi':Z\to X,l_i\mapsto i$ soll unter der Berücksichtigung, dass Ecken auf Ecken, Kanten auf Kanten und Flächen wieder auf Flächen abgebildet werden, einen Isomorphismus bilden. Sei nun $F_1\in Y_2$ und $F_2\in Z_2.$ Somit gilt  $F_1=r_f$ und $F_2=l_{f'}$  für $r\in \{1,\ldots,l-1\}$ und $f,f'\in \{1,\ldots,n \}$. Gelte nun ebenfalls $Y_0(r_f)=\{r_{i_1},r_{i_2},r_{i_3}\}$ und $Y_0(l_{f'})=\{l_{j_1},l_{j_2},l_{j_3}\}$. Dann erhalten wir für eine Bijektion $\phi:Y_0(r_f)\to l_{f'}$ die gewünschte Sphäre durch $Y\#_{\phi } Z.$ Diese umschreiben wir mit dem Symbol $(1_{f_1}^{\phi_1}\ldots p_{f_{l-1}}^{\phi_{l-1}},r^\phi_{f})_X.$ Falls $X$ Kontext im klar ist, schreiben wir nur $1_{f_1}^{\phi_1}\ldots p_{f_{l-1}}^{\phi_{l-1}},r^\phi_{f}.$ Falls $X$
+gegeben sind. Es sei hier wieder angemerkt, dass $Z$ eine Kopie von $X$ ist. Die Abbildung $\phi:Z\to X,i_l\mapsto i$ soll unter der Berücksichtigung, dass Ecken auf Ecken, Kanten auf Kanten und Flächen wieder auf Flächen abgebildet werden, einen Isomorphismus bilden. Sei nun $F_1\in Y_2$ und $F_2\in Z_2.$ Somit gilt  $F_1=f_r$ und $F_2={f'}_l$  für $r\in \{1,\ldots,l-1\}$ und $f,f'\in \{1,\ldots,n \}$. Dann erhalten wir für eine Bijektion $\phi:Y_0(f_r)\to Z_0({{f'}_l})$ die gewünschte Sphäre durch $Y\#_{\phi } Z.$ Diese umschreiben wir mit dem Symbol $(1_{f_1}^{\phi_1}\ldots p_{f_{l-1}}^{\phi_{l-1}},r^\phi_{f})_X.$ Falls $X$ Kontext im klar ist, schreiben wir nur $1_{f_1}^{\phi_1}\ldots p_{f_{l-1}}^{\phi_{l-1}},r^\phi_{f}.$ Falls $X$
 \end{itemize}
-
+\end{comment}
+\[
+\textcolor{red}{comment}
+\]
 Schauen wir uns beispielsweise Multi-Oktaeder an.
 \begin{itemize}
-\item Der Oktaeder wird durch das leere Symbol $()_O$ dargestellt.
+\item Der Oktaeder bildet den kleinsten Multi-Oktaeder.
 \begin{center}
 $\fbox{
 \parbox{13cm}{
@@ -4067,7 +4197,7 @@ simplicial surface (6 vertices, 12 edges, and 8 faces) \newline
 }}$
 \end{center}
 
-\item Bis auf Isomorphie gibt es genau einen Multi-Oktaeder mit einem Symbol der Länge 1. Diesen erhalten wir durch folgende Rechnung in GAP.
+\item Bis auf Isomorphie gibt es genau einen Doppel-Oktaeder. Diesen erhalten wir durch folgende Rechnung in GAP.
 \begin{center}
 $\fbox{
 \parbox{13cm}{
@@ -4075,8 +4205,7 @@ $\fbox{
 [ simplicial surface (9 vertices, 21 edges, and 14 faces) ]
 }}$
 \end{center}
-\item Bis auf Isomorphie gibt es genau drei Multi-Oktaeder die sich aus drei Oktaedern Zusammensetzen diese ergeben sich durch die Symbole $1_11_2,\, 1_11_3$ und $1_11_7$
-
+\item Bis auf Isomorphie gibt es genau drei Multi-Oktaeder die sich aus drei Oktaedern Zusammensetzen.
 \begin{center}
 $\fbox{
 \parbox{13cm}{
@@ -4096,7 +4225,7 @@ Sei $X$ eine vertex-treue Sphäre ohne 3-Taillen.
 \item Für eine vertex-treue Sphäre $Y$ mit $\vert Y_2 \vert > 2\vert X_2 \vert-2$ definieren wir $Y^{(1)_X}$ wie folgt:
 Seien $W_1,\ldots,W_k$ die 3-Taillen der Sphäre $Y$ und $Z^0:=Y.$ 
 Zudem sei für $0\leq i < k$ die Sphäre $Z^i$ bereits konstruiert.
-Falls die simplziale Fläche $X^{W_{i+1}}$ eine Zusammenhangskomponente $Z'$ mit $Z'\cong X,$ dann definieren wir $Z^{i+1}$ durch die Flächenmenge 
+Falls die simplziale Fläche $X^{W_{i+1}}$ eine Zusammenhangskomponente $Z'$ mit $Z'\cong X$ hat, dann definieren wir $Z^{i+1}$ durch die Flächenmenge 
 \[
 (Z^{i+1})_2=((Z^{i})^{W_{i+1}})_2-Z'_2,
 \]
@@ -4109,24 +4238,25 @@ und die Eckenmenge
 (Z^{i+1})_0=((Z^{i})^{W_{i+1}})_0-Z'_0.
 \]
 und die zugehörige Inzidenz erhalten wir durch Einschränkung der Inzidenz auf $((Z^{i})^{W_{i+1}})$
-Falls jedoch $X^{W_{i+1}}$ keine Zusammenhangskomponente besitzt, die isomorph zu $X$ ist, dann definieren wir $Z^{i+1}=Z^i.$ Wir setzen also $Y^{(1)_X}:=Z^k.$ 
+Falls jedoch $X^{W_{i+1}}$ keine Zusammenhangskomponente besitzt, die isomorph zu $X$ ist, dann definieren wir $Z^{i+1}=Z^i.$ Wir setzen also $Y^{(1)_X}:=Z^{k+1}.$ 
 Für $j>1$ definieren wir analog 
 \[
 Y^{(i)_X}:={(Y^{(i-1)_X})}^{(1_X)}
 \]
-\item Wir nennen $Y$ eine Multi-Sphäre mit Basis $X$ vom Grad $k$ falls $Y^{(k)_X}$ isomorph zu $X$ oder genau einen 3-Waist $W$ hat und die beiden Zusammenhangskomponenten von $(Y^{(k)_X})^W$ isomorph zu $X$ sind.
+\item Wir nennen $Y$ eine Multi-Sphäre mit zu $X$ isomorphen Blöcken vom Grad $k,$ falls $Y^{(k)_X}$ isomorph zu $X$ ist oder genau einen 3-Waist $W$ hat und die beiden Zusammenhangskomponenten von $(Y^{(k)_X})^W$ isomorph zu $X$ sind.
 \end{itemize}
 \end{definition}
-
-\begin{lemma}
- Sei $X$ eine vertex-treue Sphäre und $\Aut(X)$ die Automorphismengruppe von $X$. Weiterhin ist $Y$ eine Multi-Sphäre mit Basis $X.$ Falls $\Aut(X)$ auflösbar ist, dann ist $\Aut(Y)$ auflösbar.
-\end{lemma}
+In Kapitel \ref{cactus} haben wir nachgewiesen, dass die Automorphismengruppen von Multi-Tetraedern auflösbar sind. Der nächste Satz formuliert eine Verallgemeinerung dieses Resultats. 
+\begin{satz}
+Sei $Y$ eine Multi-Sphäre mit zu der Sphäre $X$ isomorphen Blöcken. Falls $\Aut(Y)$ auflösbar ist, dann folgt die Auslösbarkeit von $\Aut(X).$ 
+\end{satz}
 \begin{proof}
-Wir führen den Beweis induktiv. Sei $Y$ eine Multi-Sphäre mit Basis $X,$ die nicht isomorph zu $X$ ist und $G=\Aut(X)$ die zugehörige Automorphismengruppe. Zudem sei $Z$ definiert als die Sphäre $Y^{(1)_X}.$ Dann gibt es 3-Taillen $W_1,\ldots,W_k,$ sodass das k-malige Anwenden der zweiten Konstruktion in Bemerkung \textcolor{red}{...} uns die Sphäre $Z$ hervorbringt. Zu den 3-Taillen $W_1,\ldots W_k$ gibt es zugehörige 3-Taillen Komponenten $Y^1,\ldots,Y^k.$  Für $1\leq t\leq k$ definieren wir deshalb die Mengen 
+Wir führen den Beweis induktiv. Sei $Y$ eine Multi-Sphäre mit zu $X$ isomorphen Blöcken. Wir können annehmen, dass die Anzahl der 3-Taillen in $Y$ mindestens 2 ist. Weiterhin sei $G$ die Automorphismengruppe von $Y$ und $Z:=Y^{(1)_X}.$ Dann gibt es 3-Taillen $W_1,\ldots,W_k,$ sodass das k-malige Anwenden der zweiten Konstruktion in Bemerkung \ref{3waist} uns die Sphäre $Z$ hervorbringt.
+ Für $1\leq i \leq k$ sei $Y^i$ eine 3-Taillen Komponente mit $\vert Y^i\vert =\vert X_2\vert -1.$ Für diese definieren wir die Mengen 
 \[
 M_t:=Y^t\cup Y_1(Y^t)\cup Y_0(Y^t).
-\] Da eine 3-Taille unter einem Automorphismus wieder auf eine 3-Taille abgebildet werden, müssen die Mengen $M_t$ in $Y$ bei einer Anwendung eines Automorphismus untereinander permutiert werden. In $Z$ werden die 3-Taillen Komponenten durch Flächen $F_1,\ldots,F_k$ ersetzt.
-Wir betrachten nun in Analogie zum Beweis \textcolor{red}{...} den Homomorphismus $\psi:G\to \Aut(Z),$ der durch
+\] Da eine der 3-Taille $W_i$ unter einem Automorphismus auf eine der obigen 3-Taillen $W_j$ abgebildet werden muss, werden die Mengen $M_t$ in $Y$ bei einer Anwendung eines Automorphismus untereinander permutiert. In $Z$ werden die 3-Taillen Komponenten durch Flächen $F_1,\ldots,F_k$ ersetzt.
+Wir betrachten nun in Analogie zum oben genannten Beweis die Abbildung $\psi:G\to \Aut(Z),$ der durch
 \[
 \Psi(\phi)(x)=\Biggl\{
 \begin{tabular}[l]{lcr}
@@ -4135,13 +4265,13 @@ x,& sonst\\
 \end{tabular}
 \]
 für alle $\phi\in G$ definiert ist.
-$\Psi(G)$ bildet eine Untergruppe von $\Aut(Z)$ und ist somit als Untergruppe einer auflösbaren Gruppe ebenfalls auflösbar. Sei also $l\in \mathbb{N}$ mit der Eigenschaft $\Aut(\Psi(G))^l=\{id\},$ dann gilt für alle $x\in Y-\bigcup_{t=1}^kM_t$ und für alle $\phi \in G^l$ die Gleichheit
+$\Psi(G)$ bildet eine Untergruppe von $\Aut(Z)$ und ist somit als Untergruppe einer auflösbaren Gruppe ebenfalls auflösbar. Sei also $l\in \mathbb{N}$ mit der Eigenschaft $\Psi(G)^l=\{id\},$ dann gilt für alle $x\in Y-\bigcup_{t=1}^kM_t$ und für alle $\phi_l \in G^l$ die Gleichheit
 \[
-\phi(x)=\Psi(\phi)(x)=x.
+\phi_l(x)=\Psi(\phi_l)(x)=x.
 \]
-Also muss schon $\phi(M_t)=M_t$ gelten. Da für alle $1\leq t\leq k$ die Menge $G_t:=\{\phi_{\bar M_t}\mid \phi\in G^l\}$ eine Untergruppe von $\Aut(X)$ ist erhalten wir die Auflösbarkeit von $G_t$ und damit insgesamt die Auflösbarkeit der Gruppe $G.$
+Also muss schon $\phi(M_t)=M_t$ gelten. Es müssen also nur noch die Komponenten $Y^1,\ldots,Y^k$ betrachtet werden. Da für alle $1\leq t\leq k$ die Menge $G_t:=\{\phi_{\mid M_t}\mid \phi\in G^l\}$ eine Untergruppe von $\Aut(X)$ ist erhalten wir die Auflösbarkeit von $G_t$ als Untergruppe einer auflösbaren Gruppe und damit insgesamt die Auflösbarkeit der Gruppe $G.$
  \end{proof}
-Die Umkehrung des obigen Satzes gilt jedoch nicht. Hierfür betrachten wir den Ikosaeder und führen wir folgende Rechnung in GAP an:
+Die Umkehrung des obigen Satzes gilt jedoch nicht. Hierfür betrachten wir den Ikosaeder und führen folgende Rechnung in GAP an:
 \begin{center}
 $\fbox{
 \parbox{14cm}{
@@ -4166,7 +4296,7 @@ $\fbox{
     ,\newline
   simplicial surface (30 vertices, 84 edges, and 56 faces)
  ]\newline
-\textcolor{red}{gap$>$}\textcolor{blue}{ List(last,g->Order(AutomorphismGroup(g)));}\newline
+\textcolor{red}{gap$>$}\textcolor{blue}{ List(last,g-$>$Order(AutomorphismGroup(g)));}\newline
 [ 4, 2, 2, 4, 12 ]
 }}$
 \end{center}
@@ -4203,16 +4333,35 @@ Falls bei der obigen Formulierung des Satzes auf die Voraussetzung der Vertex-Tr
 \end{comment}
 
 \section*{Appendix}
-\textbf{benötigte Vorkenntnisse} \\
-$\fbox{
-\parbox{14cm}{\begin{itemize}
-\item Grundlagen
-\item vertex-treue Sphaeren
-\end{itemize}
-}}$\\
-Liste der verwendeten Sphären.
- 
 
+  
+\begin{bemerkung}
+Sei $X$ eine vertex-treue Sphäre und $G$ seine Automorphismengruppe. Dann definieren wir die Menge $FV_X$ durch   
+\[
+\{(F,V_1,V_2,V_3)\mid \, F\in X_2,\, X_0(F)=\{V_1,V_2,V_3\}\}
+\]
+In Analogie zu \textcolor{red}{...} kann mithilfe dieser Menge die Gruppenoperation
+\[
+\Phi:G\times FV_x\to FV_X,(g,(F,V_1,V_2,V_3))\mapsto (\phi(F),\phi(V_1),\phi(V_2),\phi(V_3))
+\] 
+aufgestellt werden. Diese ist vom besonderem Interesse für die Bestimmung der Anzahl der Sphären $X\#Y,$ die bis auf Isomorphie aus $X$ und $Y$ hervorgehen.
+\end{bemerkung}
+\begin{bsp}
+\begin{itemize}
+\item 
+Sei $T$ der Tetraeder. Dann operiert $G$ transitiv auf $FV_T.$
+\item
+
+\end{itemize}
+\end{bsp}
+\textcolor{red}{!!!!!!!!!!!!!!!!!!!!!}
+\begin{lemma}
+Seien $X$ und $Y$ vertex-treue Sphären. Weiterhin operiere $
+\Aut(Y)$ transitiv auf $FV_Y.$ Die Anzahl der Sphären der Form $X\#Y$ erhalten wir dann durch die Anzahl der Bahnen der Operation $ \Phi_{X_2}.$ 
+\end{lemma}
+\begin{proof}
+Dieses Lemma bildet eine Verallgemeinerung von \textcolor{red}{...} und daher erhalten wir die Behauptung durch eine analoge Beweisführung.
+\end{proof}
 \pagestyle{empty}
 \end{document}
 

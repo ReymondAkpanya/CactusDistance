@@ -264,78 +264,75 @@
 
 
 
-\begin{tikzpicture}[vertexBall, edgeDouble, faceStyle, scale=1.5]
+\begin{tikzpicture}[vertexBall, edgeDouble, faceStyle, scale=1.]
 
 % Define the coordinates of the vertices
-\coordinate (V1_1) at (0,0);
-\coordinate (V2_1) at (0,1*2);
-\coordinate (V3_1) at (-0.8660254037844386*2,0.5*2);
-\coordinate (V4_1) at (0.8660254037844386*2,0.5*2);
+\coordinate (V1_1) at (2, 0);
+\coordinate (V2_1) at (0, -2);
+\coordinate (V3_1) at (-2,0);
+\coordinate (V4_1) at (0,2);
+\coordinate (V5_1) at (1, 0);
+\coordinate (V6_1) at (0, -1);
+\coordinate (V7_1) at (-1,0);
+\coordinate (V8_1) at (0,1);
 
-\coordinate (V1_2) at (2.5*2,0);
-\coordinate (V2_2) at (2.5*2,1*2);
-\coordinate (V3_2) at (1.634*2,0.5*2);
-\coordinate (V4_2) at (3.366*2,0.5*2);
-
-\coordinate (V1_3) at (1.25*2,-2*2);
-\coordinate (V2_3) at (1.25*2,-1*2);
-\coordinate (V3_3) at (0.384*2,-1.5*2);
-\coordinate (V4_3) at (2.116*2,-1.5*2);
+\coordinate (V1_2) at (2+5, 0);
+\coordinate (V2_2) at (0+5, -2);
+\coordinate (V3_2) at (-2+5,0);
+\coordinate (V4_2) at (5,2);
+\coordinate (V5_2) at (1+5, 0);
+\coordinate (V6_2) at (0+5, -1);
+\coordinate (V7_2) at (-1+5,0);
+\coordinate (V8_2) at (0+5,1);
 % Fill in the faces
-\fill[face]  (1*2,-.1*2) -- (1*2,1.1*2) -- (-1*2,1.1*2) -- (-1*2,-.1*2)-- cycle;
-%\fill[face]  (3.5*2,-.1*2) -- (3.5*2,1.1*2) -- (1.5*2,1.1*2) -- (1.5*2,-.1*2)-- cycle;
+%\fill[face]  (V2_1) -- (V3_1) -- (V1_1) -- cycle;
+%\node[faceLabel] at (barycentric cs:V2_1=1,V3_1=1,V1_1=1) {$F_1$};
 
-%\fill[face]  (2.25*2,-2.1*2) -- (2.25*2,-0.9*2) -- (.25*2,-0.9*2) -- (.25*2,-2.1*2)-- cycle;
-\fill[face]  (V3_1) -- (V2_1) -- (V4_1) -- (V1_1)-- cycle;
-
-%\fill[face]  (V3_2) -- (V2_2) -- (V4_2) -- (V1_2)-- cycle;
-
-%\fill[face]  (V3_3) -- (V2_3) -- (V4_3) -- (V1_3)-- cycle;
-\node[faceLabel] at (barycentric cs:V1_1=1,V2_1=1,V3_1=1) {$F_1 $};
-\node[faceLabel] at (barycentric cs:V1_1=1,V2_1=1,V4_1=1) {$F_1' $};
-%\node[faceLabel] at (barycentric cs:V1_2=1,V2_2=1,V3_2=1) {$F' $};
-%\node[faceLabel] at (barycentric cs:V1_2=1,V2_2=1,V4_2=1) {$F_1' $};
-%\node[faceLabel] at (barycentric cs:V1_3=1,V2_3=1,V3_3=1) {$F_1$};
-%\node[faceLabel] at (barycentric cs:V1_3=1,V2_3=1,V4_3=1) {$F_1'$};
-%\node[faceLabel] at (1.65*2-0.3,-0.4*2) {$X\#_{\phi}Y$};
 
 % Draw the edges
-\huge
-\draw[edge=green] (V2_1) --  node[edgeLabel] {$e_X$} (V3_1);
-\draw[edge=green] (V2_1) --  node[edgeLabel] {$e_Y$}(V4_1);
-\draw[edge=blue] (V1_1) --  node[edgeLabel] {$e_X'$}(V3_1);
-\draw[edge=blue] (V1_1) --  node[edgeLabel] {$e_Y'$}(V4_1);
-\draw[edge=red] (V2_1) --  node[edgeLabel] {$e_1$}(V1_1);
+\draw[edge] (V2_1) -- (V1_1);
+\draw[edge] (V1_1) -- (V4_1);
+\draw[edge] (V3_1) -- (V2_1);
+\draw[edge] (V3_1) --  (V4_1);
+\draw[edge] (V5_1) --  (V1_1);
+\draw[edge] (V6_1) --  (V2_1);
+\draw[edge] (V3_1) --  (V7_1);
+\draw[edge] (V8_1) --  (V4_1);
+\draw[edge] (V8_1) --  (V5_1);
+\draw[edge] (V8_1) --  (V7_1);
+\draw[edge] (V5_1) --  (V6_1);
+\draw[edge] (V6_1) --  (V7_1);
 
-%\draw[edge=green] (V2_2) --  node[edgeLabel] {$e_2^Y$} (V3_2);
-%\draw[edge=green] (V2_2) --  node[edgeLabel] {$e_Y$} (V4_2);
-%\draw[edge=blue] (V1_2) --   node[edgeLabel] {$e_3^Y$}(V3_2);
-%\draw[edge=blue] (V1_2) --  node[edgeLabel] {$e_Y'$} (V4_2);
-%\draw[edge=red] (V2_2) --  node[edgeLabel] {$e_1^X$} (V1_2);
+\draw[edge] (V2_2) -- (V1_2);
+\draw[edge] (V1_2) -- (V4_2);
+\draw[edge] (V3_2) -- (V2_2);
+\draw[edge] (V3_2) --  (V4_2);
+\draw[edge] (V5_2) --  (V1_2);
+\draw[edge] (V6_2) --  (V2_2);
+\draw[edge] (V3_2) --  (V7_2);
+\draw[edge] (V8_2) --  (V4_2);
+\draw[edge] (V8_2) --  (V5_2);
+\draw[edge] (V8_2) --  (V7_2);
+\draw[edge] (V5_2) --  (V6_2);
+\draw[edge] (V6_2) --  (V7_2);
 
-%\draw[edge] (V2_3) --  node[edgeLabel] {$e$}(V3_3);
-%\draw[edge] (V2_3) --  node[edgeLabel] {$e_Y$}(V4_3);
-%\draw[edge] (V1_3) --  node[edgeLabel] {$e_X'$}(V3_3);
-%\draw[edge] (V1_3) --  node[edgeLabel] {$e_Y'$}(V4_3);
-%\draw[edge] (V2_3) --  node[edgeLabel] {$e_1$}(V1_3);
-
-%\draw[edge] (1.25*2,-0.2*2) -- (1.25*2,-.7*2);
-%\draw[edge] (1.15*2,-0.55*2) -- (1.25*2,-.7*2);
-%\draw[edge] (1.35*2,-0.55*2) -- (1.25*2,-.7*2);
 % Draw the vertices
-\vertexLabelR{V1_1}{left}{$ $}
-%\vertexLabelR{V1_2}{left}{$ $}
-%\vertexLabelR{V1_3}{left}{$ $}
-\vertexLabelR{V2_1}{left}{$ $}
-%\vertexLabelR{V2_2}{left}{$ $}
-%\vertexLabelR{V2_3}{left}{$ $}
-\vertexLabelR{V3_1}{left}{$ $}
-%\vertexLabelR{V3_2}{left}{$ $}
-%\vertexLabelR{V3_3}{left}{$ $}
-\vertexLabelR{V4_1}{left}{$ $}
-%\vertexLabelR{V4_2}{left}{$ $}
-%\vertexLabelR{V4_3}{left}{$ $}
-
+\vertexLabelR{V1_1}{left}{$1_1$}
+\vertexLabelR{V2_1}{left}{$2_1$}
+\vertexLabelR{V3_1}{left}{$3_1$}
+\vertexLabelR{V4_1}{left}{$4_1$}
+\vertexLabelR{V5_1}{left}{$5_1$}
+\vertexLabelR{V6_1}{left}{$6_1$}
+\vertexLabelR{V7_1}{left}{$7_1$}
+\vertexLabelR{V8_1}{left}{$8_1$}
+\vertexLabelR{V1_2}{left}{$1_2$}
+\vertexLabelR{V2_2}{left}{$2_2$}
+\vertexLabelR{V3_2}{left}{$3_2$}
+\vertexLabelR{V4_2}{left}{$4_2$}
+\vertexLabelR{V5_2}{left}{$5_2$}
+\vertexLabelR{V6_2}{left}{$6_2$}
+\vertexLabelR{V7_2}{left}{$7_2$}
+\vertexLabelR{V8_2}{left}{$8_2$}
 
 \end{tikzpicture}
 \end{document}

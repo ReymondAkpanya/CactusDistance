@@ -264,7 +264,7 @@
 
 
 
-\begin{tikzpicture}[vertexBall, edgeDouble, faceStyle, scale=2]
+\begin{tikzpicture}[vertexBall, edgeDouble, faceStyle, scale=1.5]
 
 % Define the coordinates of the vertices
 \coordinate (V1_1) at (0,0);
@@ -282,6 +282,8 @@
 \coordinate (V3_3) at (0.384*2,-1.5*2);
 \coordinate (V4_3) at (2.116*2,-1.5*2);
 % Fill in the faces
+\node[faceLabel] at (7.2,2.) {$Y$};
+\node[faceLabel] at (-2.2,2.) {$X$};
 \fill[face]  (1*2,-.1*2) -- (1*2,1.1*2) -- (-1*2,1.1*2) -- (-1*2,-.1*2)-- cycle;
 \fill[face]  (3.5*2,-.1*2) -- (3.5*2,1.1*2) -- (1.5*2,1.1*2) -- (1.5*2,-.1*2)-- cycle;
 
@@ -311,7 +313,7 @@
 \draw[edge=green] (V2_2) --  node[edgeLabel] {$e_Y$} (V4_2);
 \draw[edge=blue] (V1_2) --   node[edgeLabel] {$e_3^Y$}(V3_2);
 \draw[edge=blue] (V1_2) --  node[edgeLabel] {$e_Y'$} (V4_2);
-\draw[edge=red] (V2_2) --  node[edgeLabel] {$e_1^X$} (V1_2);
+\draw[edge=red] (V2_2) --  node[edgeLabel] {$e_1^Y$} (V1_2);
 
 %\draw[edge] (V2_3) --  node[edgeLabel] {$e$}(V3_3);
 %\draw[edge] (V2_3) --  node[edgeLabel] {$e_Y$}(V4_3);

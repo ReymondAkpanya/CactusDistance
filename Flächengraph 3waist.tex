@@ -1,0 +1,114 @@
+\documentclass[12pt,titlepage,twoside,cleardoublepage]{article}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,lmargin={4cm},rmargin={2cm},
+tmargin={2.5cm},bmargin = {2.5cm}]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pdfpages} 
+%\usepackage[pdftex,article]{geometry}
+\usepackage{amsthm}
+%\usepackage{ngerman,amsthm}
+\usepackage{lineno} 
+\usepackage{lineno, blindtext} 
+\usepackage{cleveref}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{thmtools}
+\usepackage{tabularx}
+\linespread{1.25}
+\usepackage{color}
+\usepackage{verbatim}
+\newcommand{\gelb}{0.550000011920929}
+\usepackage{pgf,tikz,pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+%\numberwithin{equation}{chapter}
+%\usepackage{scrheadings}
+\pagestyle{headings}
+\usepackage{titlesec}     
+\usepackage{tikz}           % für Kontrolle der Abschnittüberschriften
+\begin{comment}
+\makeatother
+\theoremstyle{nummermitklammern}
+\theorembodyfont{\rmfamily}
+\theoremsymbol{\ensuremath{\diamond}}
+\newtheorem{temp}{}[section]
+\newtheorem{vor}[temp]{Vorüberlegung}
+\newtheorem{lemma}[temp]{Lemma}
+\newtheorem{folgerung}[temp]{Folgerung}
+\newtheorem{bsp}[temp]{Beispiel}
+\newtheorem{herleitung}[temp]{Herleitung}
+\newtheorem{definition}[temp]{Definition}
+\newtheorem{bemerkung}[temp]{Bemerkung}
+\newtheorem{satz}[temp]{Satz}
+\newtheorem{beweisidee}[temp]{Beweisidee}
+\theoremsymbol{\ensuremath{\square}}
+\end{comment}
+%\begin{comment}
+\newtheorem{zahl}{}[section]
+%\setcounter{zahl}{1}
+%\newtheorem{section}{section}[section]
+\newtheorem{definition}[zahl]{Definition}
+\newtheorem{vor}[zahl]{Vorüberlegung}
+\newtheorem{lemma}[zahl]{Lemma}
+\newtheorem{folgerung}[zahl]{Folgerung}
+\newtheorem{bsp}[zahl]{Beispiel}
+\newtheorem{herleitung}[zahl]{Herleitung}
+\newtheorem{bemerkung}[zahl]{Bemerkung}
+\newtheorem{satz}[zahl]{Satz}
+\newtheorem{beweisidee}[zahl]{Beweisidee}
+\numberwithin{equation}{section}
+
+
+%-----------------------------------------------
+
+%\end{comment}
+ %Nummerierung mit Kapitelnummern
+%-------------------------
+%\newcommand{\secnumbering}[1]{% 
+ % \setcounter{chapter}{0}% 
+  %\setcounter{section}{0}% 
+  %\renewcommand{\thechapter}{\csname #1\endcsname{chapter}.}% nach Duden gehört 
+                                  % der Punkt hier hin bei gemischten Zählungen 
+%  \renewcommand{\thesection}{\thechapter\csname #1\endcsname{section}}% 
+%}
+%------------------------------
+\begin{document}
+
+\subsection{Flächengraphen von Sphären mit 3-Waists}
+Seien $X$ mit $F\in X_2$ und $Y$ mit $F'\in Y_2$ zwei vertex-treue Sphären. Weiterhin sei die Abbildung $\phi:X_2(F)\to Y_2(F')$ bijektiv. An dieser Stelle wollen wir beschreiben, wie sich der Flächengraph der Sphäre $X\#_{\phi}Y$ aus den Flächengraphen der Sphären $X$ und $Y$ ergibt. Seien hierzu $F_1,F_2,F_3$ bzw. $F_1',F_2',F_3'$ die Nachbar-Flächen von $F$ in $X$ bzw. von $F'$ in $Y.$ Durch das Zusammensetzen der Sphären an den Flächen $F$ und $F'$ erhalten wir die konstruierte Sphäre $Z=X \#_\phi Y$ und einen 3-Waist $W=(e_1,e_2,e_3)$ in $Z,$ sodass ohne Einschränkung 
+\[
+Z_2(e_i)=\{F_i,F_i'\}
+\] für $i=1,2,3$ gilt. Also sind $F_i$ und $F_i'$ benachbarte Flächen in $Z$.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=4cm 23.5cm 5cm 27.5cm]{3waist}
+\end{center}
+\caption{Ausschnitt der Sphäre $Z$}
+\end{figure}   
+ Weiterhin sei nun $G_X=(V_X,E_X)$ bzw. $G_Y=(V_Y,E_Y)$ der zu $X$ bzw. $Y$ gehörige Flächengraph. Den Flächengraph $G_Z$ erhalten wir durch folgende Konstruktion:
+Sei $G=(V_X\cup V_Y,E_X \cup E_Y)$ die Vereinigung der Graphen $G_X$ und $G_Y.$
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=14cm 18.5cm 5cm 23cm]{Image_fg10}
+\end{center}
+\caption{Ausschnitt der Vereinigung der Graphen $G_X$ und $G_Y$}
+\end{figure}
+Als erstes müssen die zu den Flächen $F$ und $F'$ gehörigen Knoten in $G$ und damit auch die inzidenten Kanten dem Graphen entnommen werden. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=14cm 18.5cm 5cm 23cm]{Image_fg11}
+\end{center}
+\caption{Ausschnitt eines aus dem Graphen $G$ konstruiertem Graphen}
+\end{figure}
+Da in $Z$ die Flächen $F_i$ und $F_i'$ benachbart sind, erhalten wir den zugehörigen Flächengraphen, indem wir nun die Kanten $\{F_1,F_1'\},\{F_1,F_1'\},\{F_1,F_1'\}$ dem zuvor konstruierten Graphen hinzufügen. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=14cm 18.5cm 5cm 22.5cm]{Image_fg12}
+\end{center}
+\caption{Ausschnitt des Graphen $G_Z$}
+\end{figure}
+\end{document}

@@ -264,30 +264,55 @@
 
 
 
-\begin{tikzpicture}[vertexBall, edgeDouble, faceStyle, scale=2.3]
+\begin{tikzpicture}[vertexBall, edgeDouble, faceStyle, scale=3]
 
 % Define the coordinates of the vertices
-\coordinate (V2_1) at (0, 0);
-\coordinate (V3_1) at (0, 1);
-\coordinate (V1_1) at (0.8660254037844386,0.4999999999999999);
-\coordinate (V4_1) at (-0.8660254037844386,0.4999999999999999);
+\coordinate (V1_1) at (0, 0);
+\coordinate (V2_1) at (1, 0);
+\coordinate (V3_1) at (0.4999999999999999, 0.8660254037844386);
+
+\coordinate (V4_1) at (1.5, 0);
+\coordinate (V5_1) at (2.5, 0);
+\coordinate (V6_1) at (2., 0.8660254037844386);
+
+\coordinate (V7_1) at (3, 0);
+\coordinate (V8_1) at (4, 0);
+\coordinate (V9_1) at (3.5, 0.8660254037844386);
 
 % Fill in the faces
 \fill[face]  (V2_1) -- (V3_1) -- (V1_1) -- cycle;
-\node[faceLabel] at (barycentric cs:V2_1=1,V3_1=1,V1_1=1) {$F_2$};
-\fill[face]  (V2_1) -- (V3_1) -- (V4_1) -- cycle;
-\node[faceLabel] at (barycentric cs:V2_1=1,V3_1=1,V4_1=1) {$F_1$};
+\node[faceLabel] at (barycentric cs:V2_1=1,V3_1=1,V1_1=1) {$F_1$};
+\fill[face]  (V5_1) -- (V6_1) -- (V4_1) -- cycle;
+\node[faceLabel] at (barycentric cs:V5_1=1,V6_1=1,V4_1=1) {$F_2$};
+\fill[face]  (V8_1) -- (V9_1) -- (V7_1) -- cycle;
+\node[faceLabel] at (barycentric cs:V8_1=1,V9_1=1,V7_1=1) {$F_3$};
+
 
 % Draw the edges
-\draw[edge] (V2_1) -- node[edgeLabel] {$e_3$} (V1_1);
-\draw[edge] (V1_1) -- node[edgeLabel] {$e_4$} (V3_1);
-\draw[edge] (V3_1) -- node[edgeLabel] {$e_1$} (V2_1);
-\draw[edge] (V3_1) -- node[edgeLabel] {$e_2$} (V4_1);
-\draw[edge] (V2_1) -- node[edgeLabel] {$e_3$} (V4_1);
+\draw[edge] (V2_1) -- node[edgeLabel] {$e_1^1$} (V1_1);
+\draw[edge] (V1_1) -- node[edgeLabel] {$e_2^1$} (V3_1);
+\draw[edge] (V3_1) -- node[edgeLabel] {$e_3^1$} (V2_1);
+
+
+\draw[edge] (V5_1) -- node[edgeLabel] {$e_1^2$} (V4_1);
+\draw[edge] (V4_1) -- node[edgeLabel] {$e_2^2$} (V6_1);
+\draw[edge] (V6_1) -- node[edgeLabel] {$e_3^2$} (V5_1);
+
+\draw[edge] (V8_1) -- node[edgeLabel] {$e_3$} (V7_1);
+\draw[edge] (V7_1) -- node[edgeLabel] {$e_2^3$} (V9_1);
+\draw[edge] (V9_1) -- node[edgeLabel] {$e_3^3$} (V8_1);
 % Draw the vertices
-\vertexLabelR{V1_1}{left}{$V_1$}
-\vertexLabelR{V2_1}{left}{$V_2$}
-\vertexLabelR{V3_1}{left}{$V_3$}
-\vertexLabelR{V4_1}{left}{$V_1$}
+\vertexLabelR{V1_1}{left}{$V_1^1$}
+\vertexLabelR{V2_1}{left}{$V_2^1$}
+\vertexLabelR{V3_1}{left}{$V_3^1$}
+
+\vertexLabelR{V4_1}{left}{$V_1^2$}
+\vertexLabelR{V5_1}{left}{$V_2^2$}
+\vertexLabelR{V6_1}{left}{$V_3^2$}
+
+\vertexLabelR{V7_1}{left}{$V_1^3$}
+\vertexLabelR{V8_1}{left}{$V_2^3$}
+\vertexLabelR{V9_1}{left}{$V_3^3$}
 \end{tikzpicture}
+
 \end{document}

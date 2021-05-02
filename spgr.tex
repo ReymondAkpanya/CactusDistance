@@ -264,30 +264,60 @@
 
 
 
-\begin{tikzpicture}[vertexBall, edgeDouble, faceStyle, scale=2.3]
+\begin{tikzpicture}[vertexBall, edgeDouble, faceStyle, scale=2]
 
 % Define the coordinates of the vertices
-\coordinate (V2_1) at (0, 0);
-\coordinate (V3_1) at (0, 1);
-\coordinate (V1_1) at (0.8660254037844386,0.4999999999999999);
-\coordinate (V4_1) at (-0.8660254037844386,0.4999999999999999);
+
+\coordinate (h14) at (0.8+0.2,0.732+0.2);
+\coordinate (h24) at (1.01+0.2,0.55+0.2);
+\coordinate (h34) at (1.0+0.2,0.732+0.2);
+\coordinate (h44) at (0.81+0.2,0.53+0.2);
+\coordinate (h54) at (0.81+0.25,0.53+0.25);
+\coordinate (h64) at (0.81+0.04+0.2,0.53-0.07+0.2);
+\coordinate (a) at (0.89,.82);
+\coordinate (b) at (-0.3,.82);
+\coordinate (a1) at (0.7,.82);
+\coordinate (b1) at (-0.1,.82);
+%\coordinate (h12) at (0.5 -0.5*0.75,0.8660-0.5*0.433);
+%\coordinate (h13) at (0.5 -0.5*0.75,0.8660-0.5*0.433+2*0.2165);
+%\coordinate (h14) at (0.5 +0.5*0.75,0.8660-0.5*0.433);
+
+%\coordinate (h22) at (0.5 -0.8*0.75,0.8660-0.8*0.433);
+%\coordinate (h23) at (0.5 -0.8*0.75,0.8660+0.8*0.433);
+%\coordinate (h24) at (0.5 +0.8*0.75,0.8660-0.8*0.433);
+
+
 
 % Fill in the faces
-\fill[face]  (V2_1) -- (V3_1) -- (V1_1) -- cycle;
-\node[faceLabel] at (barycentric cs:V2_1=1,V3_1=1,V1_1=1) {$F_2$};
-\fill[face]  (V2_1) -- (V3_1) -- (V4_1) -- cycle;
-\node[faceLabel] at (barycentric cs:V2_1=1,V3_1=1,V4_1=1) {$F_1$};
 
 % Draw the edges
-\draw[edge] (V2_1) -- node[edgeLabel] {$e_3$} (V1_1);
-\draw[edge] (V1_1) -- node[edgeLabel] {$e_4$} (V3_1);
-\draw[edge] (V3_1) -- node[edgeLabel] {$e_1$} (V2_1);
-\draw[edge] (V3_1) -- node[edgeLabel] {$e_2$} (V4_1);
-\draw[edge] (V2_1) -- node[edgeLabel] {$e_3$} (V4_1);
+
+%\draw[edge=black] (V11_1) --  (V12_1);
+%\draw[edge=black] (V11_1) --  (V13_1);
+%\draw[edge] (V9_1) to[bend left=90]  (V8_1);
+%\draw[edge] (V9_1) to[bend right=90]  (V8_1);
+%\draw[edge=black] (V9_1) to[bend left=40]  (V10_1);
+%\draw[edge=black] (V8_1) to[bend right=40]  (V10_1);
+%\draw[edge=black] (V8_1) to[bend left=40]  (V11_1);
+
+
+\draw[edge=black] (a1) to (b1);
+%\draw[edge=black] (h21) to[bend right=40]  (h31);
+%\draw[edge=black] (h21) to[bend left=40]  (h41);
+%\draw[edge=black] (h51) to  (h41);
+%\draw[edge=black] (h61) to  (h41);
+
+\node[faceLabel] at (a) {$1_11_2$};
+\node[faceLabel] at (b) {$(4)^2$};
+
+\draw[edge=black] (h24) to[bend right=40]  (h34);
+\draw[edge=black] (h14) to[bend left=40]  (h34);
+\draw[edge=black] (h24) to[bend left=40]  (h44);
+%\draw[edge=black] (h54) to  (h44);
+%\draw[edge=black] (h64) to  (h44);
+%\draw[edge] (h14) to[bend left=90]  (h24);
 % Draw the vertices
-\vertexLabelR{V1_1}{left}{$V_1$}
-\vertexLabelR{V2_1}{left}{$V_2$}
-\vertexLabelR{V3_1}{left}{$V_3$}
-\vertexLabelR{V4_1}{left}{$V_1$}
+%\vertexLabelR{a}{left}{$1_11_2$}
+
 \end{tikzpicture}
 \end{document}

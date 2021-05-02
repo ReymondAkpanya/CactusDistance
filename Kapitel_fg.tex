@@ -1,0 +1,448 @@
+\documentclass[12pt,titlepage,twoside,cleardoublepage]{article}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,lmargin={4cm},rmargin={2cm},
+tmargin={2.5cm},bmargin = {2.5cm}]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pdfpages} 
+%\usepackage[pdftex,article]{geometry}
+\usepackage{amsthm}
+%\usepackage{ngerman,amsthm}
+\usepackage{lineno} 
+\usepackage{lineno, blindtext} 
+\usepackage{cleveref}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{thmtools}
+\usepackage{tabularx}
+\linespread{1.25}
+\usepackage{color}
+\usepackage{verbatim}
+\newcommand{\gelb}{0.550000011920929}
+\usepackage{pgf,tikz,pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+%\numberwithin{equation}{chapter}
+%\usepackage{scrheadings}
+\pagestyle{headings}
+\usepackage{titlesec}     
+\usepackage{tikz}           % für Kontrolle der Abschnittüberschriften
+\begin{comment}
+\makeatother
+\theoremstyle{nummermitklammern}
+\theorembodyfont{\rmfamily}
+\theoremsymbol{\ensuremath{\diamond}}
+\newtheorem{temp}{}[section]
+\newtheorem{vor}[temp]{Vorüberlegung}
+\newtheorem{lemma}[temp]{Lemma}
+\newtheorem{folgerung}[temp]{Folgerung}
+\newtheorem{bsp}[temp]{Beispiel}
+\newtheorem{herleitung}[temp]{Herleitung}
+\newtheorem{definition}[temp]{Definition}
+\newtheorem{bemerkung}[temp]{Bemerkung}
+\newtheorem{satz}[temp]{Satz}
+\newtheorem{beweisidee}[temp]{Beweisidee}
+\theoremsymbol{\ensuremath{\square}}
+\end{comment}
+%\begin{comment}
+\newtheorem{zahl}{}[section]
+%\setcounter{zahl}{1}
+%\newtheorem{section}{section}[section]
+\newtheorem{definition}[zahl]{Definition}
+\newtheorem{vor}[zahl]{Vorüberlegung}
+\newtheorem{lemma}[zahl]{Lemma}
+\newtheorem{folgerung}[zahl]{Folgerung}
+\newtheorem{bsp}[zahl]{Beispiel}
+\newtheorem{herleitung}[zahl]{Herleitung}
+\newtheorem{bemerkung}[zahl]{Bemerkung}
+\newtheorem{satz}[zahl]{Satz}
+\newtheorem{beweisidee}[zahl]{Beweisidee}
+\numberwithin{equation}{section}
+
+
+%-----------------------------------------------
+
+%\end{comment}
+ %Nummerierung mit Kapitelnummern
+%-------------------------
+%\newcommand{\secnumbering}[1]{% 
+ % \setcounter{chapter}{0}% 
+  %\setcounter{section}{0}% 
+  %\renewcommand{\thechapter}{\csname #1\endcsname{chapter}.}% nach Duden gehört 
+                                  % der Punkt hier hin bei gemischten Zählungen 
+%  \renewcommand{\thesection}{\thechapter\csname #1\endcsname{section}}% 
+%}
+%------------------------------
+\begin{document}
+
+\section{Der Flächengraph}
+\textbf{benötigte Vorkenntnisse}\\
+$\fbox{
+\parbox{14cm}{\begin{itemize} 
+\item elementare Eigenschaften simplizialer Fl\"achen
+\item Manipulation simplizialer Fl\"achen
+\end{itemize}
+}}$\\\\
+In diesem Abschnitt der Arbeit wird der Flächengraph einer simplizialen Fläche behandelt. Genauer gesagt wird thematisiert, wie viel Informationen die Kanten-Flächen-Inzidenzen in einer simplizialen Fläche zur Beschreibung dieser liefern können. Deshalb wird im ersten Teil des Kapitels eine Einleitung in die Thematik der Flächengraphen gegeben. Das Hauptresultat des ersten Abschnittes ist jedoch das Aufstellen einer Normalform der Flächen-Inzidenz Matrix einer Sphäre mit einer 2- oder 3-Taille. Im zweiten Teil widmen wir uns dann den in Kapitel \ref{manipulation} vorgestellten Prozeduren zum Manipulieren einer Sphäre. Genauer untersuchen wir, wie sich eine Manipulation der Sphäre auf den zugehörigen Flächengraph auswirkt.  
+Wir nehmen zur Vereinfachung an, dass die Flächenmenge einer simplizialen Fläche mit $n$ Flächen  durch $\{1,\ldots,n\}$ gegeben ist.
+\subsection{Grundlagen}
+\begin{definition}
+Sei $X$ eine Sphäre. Wir definieren den Flächengraph $G_X=(V,E)$ von $X$ durch die Knotenmenge $V=X_2$ und die Kantenmenge $E=X_1.$ Zwei Knoten $F,F'$ des Graphen sind adjazent, falls es eine Kante $e\in X_1$ gibt, die $X_2(e)=\{F,F'\}$ erfüllt. 
+\end{definition}
+\begin{bemerkung}
+Da wir in diesem Abschnitt nur geschlossene simpliziale Flächen betrachten, sind die zugehörigen Graphen einfach. 
+\end{bemerkung}
+\begin{bsp}
+Der Flächengraph des Tetraeders bildet einen vollständigen Graphen mit vier Knoten.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=1.5cm 20.5cm 20cm 23cm]{Image_FaceGraphTetraeder}
+\end{center}
+\caption{Flächengraph des Tetraeders}
+\end{figure}
+\end{bsp}
+\begin{bemerkung}
+Abgesehen vom Tetraeder ist jeder Flächengraph einer Sphäre mit höchstens $3$ Farben färbbar.
+\end{bemerkung}
+\begin{definition}
+Sei $X$ eine Sphäre. Dann definieren wir die Matrix 
+$F_X\in \{0,1\}^{n \times n}$ durch
+\[
+F_{i,j}=
+\Biggl\{
+\begin{tabular}[l]{lcr}
+1,&\textcolor{black}{falls $\{i,j\}\in X_2(X_1)$} \\
+0,& sonst\\
+\end{tabular}
+\] und nennen $F_X$ die Flächen-Inzidenz Matrix. 
+\end{definition}
+\begin{bsp}
+Für einen Tetraeder erhalten wir die Flächen-Inzidenz-Matrix  durch  
+\[
+F_T=
+\left( \begin{array}{rrrrrrrr}
+0 & 1 & 1 & 1 \\ 
+1 & 0 & 1 & 1 \\
+1 & 1 & 0 & 1 \\
+1 & 1 & 1 & 0  
+\end{array}
+\right)
+\]
+
+\end{bsp}
+
+\begin{bemerkung}
+\begin{itemize}
+\item In jeder Spalte und Zeile der Flächen-Inzidenz-Matrix einer vertex-treuen simplizialen Fläche befinden sich genau 3 Einsen. 
+\item Die Flächen-Inzidenz-Matrix einer simplizialen Fläche  ist symmetrisch.
+\item $\lambda =3$ ist ein Eigenwert der Flächen-Inzidenz-Matrix einer vertex-treuen Sphäre. 
+\end{itemize}
+\end{bemerkung}
+\begin{lemma}
+Seien $X$ und $Y$ zwei isomorphe Sphären. Dann existiert eine Permutationsmatrix $P\in \{0,1\}^{n \times n}$ so, dass 
+\[
+F_X=PF_YP^{-1}
+\] 
+\end{lemma}
+\begin{proof}
+Dieser Zusammenhang ist dem Skript \emph{Simplicial Surfaces of Congruent Triangles} zu entnehmen.
+\end{proof}
+\begin{comment}
+\begin{proof}
+Sei $\alpha:X \to Y $ ein Isomorphismus von $X$ nach $Y$. Dieser induziert eine bijektive Abbildung $\beta :X_2\to Y_2$, wobei $X_2=Y_2=\{1,\ldots,n\}$ gilt. Mithilfe der Abbildung $\beta,$ kann die Permutationsmatrix $P\in \{0,1\}^n$ mit
+\[
+P_{i,j}=
+\Biggl\{
+\begin{tabular}[l]{lcr}
+1,&\textcolor{black}{$\beta(i)=j$} \\
+0,& sonst\\
+\end{tabular}
+\]
+konstruiert werden.
+Dies liefert die obige Behauptung, denn es gilt
+\[
+(PM_YP^{-1})_{ij}=(M_Y)_{\beta(i),\beta(j)}=(M_X)_{i,j}
+\] .
+\end{proof}
+\end{comment}
+\begin{bemerkung}
+Die Umkehrung ist jedoch nur richtig, wenn wir uns auf den Fall $\chi(X)=2$ beschränken.  Dies wird hier jedoch nicht ausgeführt. 
+\end{bemerkung}
+In Kapitel \ref{Grundlagen} haben wir bereits Sphären mit 2-Taillen kennengelernt. Die Flächen-Inzidenz Matrix solcher Sphären lässt sich als eine Blockmatrix schreiben, was im Folgenden skizziert wird.
+\begin{definition}
+Für $k\leq l$ und $k\leq m$ ist die Matrix $I^{l,m}_k\in \{0,1\}^{l \times m}$ definiert als
+\[
+\left( 
+\begin{array}{cccc} 
+  I_k & 0_{k,m-k} \\
+  0_{l-k,k} & 0_{l-k,m-k}\\
+\end{array} 
+\right).
+\]
+\end{definition}
+Mithilfe dieser Matrix können wir die oben erwähnte Normalform für die Flächen-Inzidenz Matrix von Sphären mit 2-Taillen aufstellen.
+\begin{satz}\label{mat2w}
+Sei $X$ eine Sphäre mit einer 2-Taille. Dann gibt es eine Permutationsmatrix $P\in \{0,1\}^{n\times n}$ so, dass die Flächen-Inzidenz Matrix $F_X$ sich in die Gestalt 
+\[
+PF_XP^{-1}=
+\left[ 
+\begin{array}{c|c} 
+  A & I^{k,n-k}_2 \\ 
+  \hline 
+  I^{n-k,k}_2 & B 
+\end{array} 
+\right]
+\] 
+bringen lässt, wobei $k$ die Anzahl der Flächen in der 2-Taillen Komponente $M_1$ ist und $A,B$ symmetrische Matrizen sind.
+\end{satz}
+\begin{proof}
+Sei $W=(e_1,e_2)$ für Kanten $e_1,e_2\in X_1$ eine 2-Taille in $X.$ Dann gibt es die zu $W$ zugehörigen 2-Taillen Komponenten $M_1,M_2\subseteq X_2$ mit $M_1=\{i_1,\ldots,i_k\}$ und $M_2=\{j_1,\ldots,j_{n-k}\}$. Zudem seien ohne Einschränkung die Flächen $i_1\in M_1$ und $j_1\in M_2$ inzident zu $e_1$ und die Flächen $i_2\in M_1$ und $j_2\in M_2$ durch $e_2$ verbunden. Dann werden die folgenden Zeilen und Spalten der Matrix $F_X$ vertauscht:
+\begin{itemize}
+\item Die $i_1-te$ Zeile wird mit der ersten Zeile und die  $i_1-$te Spalte mit der ersten Spalte vertauscht.
+\item Die $i_2-te$ Zeile wird mit der zweiten Zeile und die $i_2-$te Spalte mit der zweiten Spalte vertauscht.
+\item Die $j_1-te$ Zeile wird mit der $k+1$-ten Zeile und die $j_1-$te Spalte mit der $k+1$-ten Spalte vertauscht.
+\item Die $j_2-te$ Zeile wird mit der $k+2$-ten Zeile und die $j_2-$te Spalte mit der $k+1$-ten Spalte vertauscht.
+\item Falls $i\in M_2$ für $3\leq i \leq k$ ist, dann existiert ein $k+3\leq j\leq n$ mit $j \in M_1.$ 
+Wir tauschen dann die $i$-te Zeile mit der $j$-ten Zeile und die $i$-te Spalte mit der $j$-ten Spalte.
+\end{itemize} 
+So erhalten wir eine Flächen-Inzidenz Matrix, in der die ersten $k$ Zeilen bzw. Spalten zu Flächen in $M_1$ und die restlichen $n-k$ Zeilen bzw. Spalten zu Flächen in $M_2$  gehören. Bei genauerer Betrachtung ist die gewünschte Gestalt  bei der durch Vertauschen der Zeilen und Spalten entstandenen Matrix zu erkennen. Da diese Gestalt ausschließlich durch simultanes Vertauschen der Zeilen bzw. Spalten der Matrix $F_X$ erzielt wurde, existiert also eine Permutationsmatrix $P\in\{0,1\}^{n\times n}$, sodass die Multiplikation von links und die Multiplikation des Inversen von rechts  die skizzierte Form hervorbringt.
+\end{proof}
+
+\begin{satz}
+Sei $X$ eine Sphäre mit einer 3-Taille. Dann gibt es eine Permutationsmatrix $P\in \{0,1\}^{n \times n}$ so, dass $F_X$ sich auf die Gestalt 
+\[
+PF_XP=
+\left[ 
+\begin{array}{c|c} 
+  A & I^{l,n-l}_3 \\ 
+  \hline 
+  I^{n-l,l}_3 & B 
+\end{array} 
+\right]
+\] 
+bringen lässt, wobei $A\in \{0,1\}^{l}$ und $B\in \{0,1\}^{n-l}$ symmetrische Matrizen sind und $k$ die Anzahl der Flächen inder 3-Taillen Komponente $M_1$ ist.
+\end{satz}
+\begin{proof}
+Diese Aussage wird analog zum Beweis von \Cref{mat2w} geführt.
+\end{proof}
+
+\subsection{Manipulation des Flächengraphen }
+Wie bereits erwähnt studieren wir hier den Zusammenhang der Flächengraphen von Sphären, die durch eine Manipulation der Ecken, Kanten und Flächen auseinander hervorgehen. Es sei angemerkt, dass die ausführliche Definition der in Kapitel \ref{manipulation} vorgestellten Prozeduren hier eher nebensächlich ist. Deswegen werden die Voraussetzungen zum Anwenden dieser eher oberflächlich aufgestellt. Diese können jedoch bei Bedarf in Kapitel \ref{manipulation} nachgelesen werden. Zur Vereinfachung nehmen wir hier zur Annahme $\vert X_2 \vert =\{1,\ldots,n\}$ zusätzlich an, dass $X$ eine Sphäre mit zugehörigem Flächengraph $G_X$ und zugehöriger Flächen-Inzidenz Matrix $F_X$ ist.
+\begin{enumerate}
+\item Schmetterlings-Entfernung
+\begin{itemize}
+\item Sei $e$ eine Kante in $X,$ sodass die Schmetterlings-Entfernung durchführbar ist. Dann ist $X_2(e)=\{i',j'\}$ für geeignete $i',j'.$ Es gibt dann genau zwei Flächen $i_1,i_2\in X_2,$ die zu $i'$ und genau zwei Flächen $j_1,j_2\in X_2,$ die zu $j'$ adjazent sind. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=2cm 21.5cm 5cm 26.5cm]{Image_butfac}
+\end{center}
+\caption{Ausschnitt der Sphäre $X$}
+\end{figure}
+Zudem sei $F\in \{0,1\}^{n\times n}$ die Matrix, die durch
+ \[
+F_{i,j}=
+\Biggl{\{\begin{tabular}[l]{lcr}
+1,&\textcolor{black}{$(i,j)\in \{(i_1,i_2),(i_2,i_1)\}$} \\
+1,&\textcolor{black}{$(i,j)\in \{(j_1,j_2),(j_2,j_1)\}$} \\
+$(F_{X})_{i,j}$,& sonst\\
+\end{tabular}}
+\] definiert ist. Dann geht die Flächen-Inzidenz Matrix der Sphäre ${}^e\beta(X)$ durch Streichen der Zeilen $i',j'$ und der Spalten $i',j'$ aus $F$ hervor.\\
+Beim Betrachten des zugehörigen Flächengraphen $G_X$ und den zu den obigen Flächen zugehörigen Knoten in $G_X$ ergibt sich folgender Zusammenhang:
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=2cm 18.cm 19cm 22.5cm]{Image_fg4}
+\end{center}
+\caption{Ausschnitt des Flächengraphen der Sphäre $X$}
+\end{figure}
+Zunächst werden die zu $i'$ und $j'$ zugehörigen Knoten und damit auch die inzidenten Kanten aus dem Graphen entfernt. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=2cm 18cm 19cm 22.5cm]{Image_fg5}
+\end{center}
+\caption{Ausschnitt eines aus dem Flächengraph der Sphäre $X$ konstruierten Graph}
+\end{figure}
+Daraufhin werden die Kanten $\{i_1,i_2\}$ und $\{j_1,j_2\}$ hinzugefügt, um so den Flächengraph der Sphäre ${}^e\beta(X)$ zu konstruieren. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=2cm 18cm 19cm 22.5cm]{Image_fg6}
+\end{center}
+\caption{Ausschnitt des Flächengraphen der Sphäre ${}^e\beta(X)$}
+\end{figure}
+\end{itemize}
+\item Schmetterlings-Erweiterung
+\begin{itemize}
+\item Seien $e_1,e_2$ Kanten in $X,$ für die eine Schmetterlings-Erweiterung durchführbar ist. Dann existieren geeignete Flächen, sodass $X_2(e_1)=\{i_1,i_2\}$ und $X_2(e_2)=\{j_1,j_2\}$ gilt. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=2cm 23.5cm 4cm 26.5cm]{Image_butint}
+\end{center}
+\caption{Ausschnitt der Sphäre $X$}
+\end{figure}
+Zudem sei $F\in \{0,1\}^{n\times n} $ die Matrix, die durch   
+\[
+F_{i,j}=
+\Biggl{\{\begin{tabular}[l]{lcr}
+0,&\textcolor{black}{$(i,j)\in \{(i_1,i_2),(i_2,i_1)\}$} \\
+0,&\textcolor{black}{$(i,j)\in \{(j_1,j_2),(j_2,j_1)\}$} \\
+$(F_{X})_{i,j}$,& sonst\\
+\end{tabular}}
+\]
+definiert ist. Mithilfe der Vektoren $v\in \{0,1\}^n $ mit 
+\[
+v_{i}=
+\Biggl{\{\begin{tabular}[l]{lcr}
+1,& $i=i_1,i_2$\\
+0,& sonst\\
+\end{tabular}}
+\]
+und $w\in \{0,1\}^n $ mit 
+\[
+w_{i}=
+\Biggl{\{\begin{tabular}[l]{lcr}
+1,& $i=j_1,j_2$\\
+0,& sonst\\ 
+\end{tabular}}
+\]
+erhalten wir die Flächen-Inzidenz Matrix der Sphäre $\beta_{e_1,e_2}(X)
+,$ indem wir die Blockmatrix 
+\[
+\left[ 
+\begin{array}{c|cc} 
+  F & v& w \\ 
+  \hline 
+  v^{tr}& 0 &1 \\
+  w^{tr} &1 &0  \\
+\end{array} 
+\right]
+\]
+zusammensetzen. Betrachten wir nun die Auswirkungen dieser Manipulation auf den Flächengraph. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=2cm 18cm 19cm 22.5cm]{Image_fg6}
+\end{center}
+\caption{Ausschnitt des Flächengraphen von $X$}
+\end{figure}
+Im ersten Schritt werden $\{i_1,i_2\}$ und $\{j_1,j_2\}$ aus der Menge der Kanten entfernt.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=2cm 18cm 19cm 22.5cm]{Image_fg5}
+\end{center}
+\caption{Ausschnitt eines aus dem Flächengraph der Sphäre $X$ konstruierten Graph}
+\end{figure}
+Dann werden neue Knoten $i'$ und $j'$ eingeführt. Außerdem müssen die Kanten 
+\[
+\{i',i_1\},\{i',i_2\},\{j',j_1\},\{j',j_2\},\{i',j'\}
+\]
+ergänzt werden, um so den Flächengraph der Sphäre $\beta_{e_1,e_2}(X)$ zu erhalten. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=2cm 18cm 19cm 22.5cm]{Image_fg4}
+\end{center}
+\caption{Ausschnitt des Flächengraphen der Sphäre $\beta_{e_1,e_2}(X)$}
+\end{figure}
+In den Flächengraphen der Sphären ist also der Zusammenhang zwischen der Schmetterlings-Erweiterung und Schmetterlings-Entfernung ebenfalls erkennbar. 
+\end{itemize} 
+\item Kantendrehung
+\begin{itemize} 
+
+\item Sei $e \in X_1$ eine drehbare Kante und $X_2(e)=\{i_1,i_2\}.$ Dann existieren geeignete Flächen $j_1,j_2,j_3,j_4,$ die 
+
+\begin{align*}
+&X_2(X_1(i_1))-\{i_1,i_2\}=\{j_1,j_3\},\\
+&X_2(X_1(i_2))-\{i_1,i_2\}=\{j_2,j_4\},\\
+\end{align*}
+und 
+\begin{align*}
+&X_0(e)\cap X_0(j_1) \cap X_0(j_2)\neq \emptyset\\
+ &X_0(e)\cap X_0(j_3) \cap X_0(j_4)\neq \emptyset\\
+\end{align*}
+erfüllen.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=2cm 21.5cm 5cm 26.5cm]{facgraKan}
+\end{center}
+\caption{Ausschnitt der Sphäre $X$}
+\end{figure}
+ Die Flächen-Inzidenz-Matrix $F_{X^e}\in \{0,1\}^{n\times n}$ erhalten wir bis auf Äquivalenz durch
+\[
+{F_{X^e}}_{i,j}=
+\Biggl{\{\begin{tabular}[l]{lcr}
+1,&\textcolor{black}{$(i,j)\in \{(i_1,j_2),(j_2,i_1)\}$} \\
+0,&\textcolor{black}{$(i,j)\in \{(i_1,j_3),(j_3,i_1)\}$} \\
+1,&\textcolor{black}{$(i,j)\in \{(i_2,j_3),(j_3,i_2)\}$} \\
+0,&\textcolor{black}{$(i,j)\in \{(i_2,j_2),(j_2,i_2)\}$} \\
+$(F_{X})_{i,j}$,& sonst\\
+\end{tabular}}
+\]
+Betrachten wir nun wieder den zugehörigen Flächengraph $G_X.$ 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=2cm 18cm 19cm 22.5cm]{Image_fg8}
+\end{center}
+\caption{Ausschnitt des Flächengraphen der Sphäre $X$}
+\end{figure}
+Beim Drehen der Kanten $e$ werden die Kanten $\{i_1,j_3\}$ und $\{i_2,j_2\}$ aus dem Graphen entfernt und die Kanten $\{i_2,j_2\}$ und $\{i_2,j_2\}$ zu der Kantenmenge hinzugefügt. Auf diese Art und Weise erhalten wir den Flächengraph der Sphäre $X^e.$ 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=2cm 18cm 19cm 22.5cm]{Image_fg9}
+\end{center}
+\caption{Ausschnitt des Flächengraphen der Sphäre $X^e$}
+\end{figure}
+\end{itemize}
+\item Tetraeder-Erweiterung
+\begin{itemize}  
+\item Seien $i$ eine Fläche in $X$ und die Nachbar-Flächen von $i$ durch geeignete $j,k,l$ gegeben.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=2cm 23.cm 4cm 27cm]{Image_tetfac}
+\end{center}
+\caption{Ausschnitt der Sphäre $X$}
+\end{figure}
+Weiterhin sei $F$ die Matrix, die durch Streichen der $i$-ten Zeile und Spalte aus $F_X$ hervorgeht. Dann ergibt sich die Flächen-Inzidenz Matrix von $T^i(X)$ durch die Blockmatrix
+\[
+\left[ 
+\begin{array}{c|ccc} 
+  F & e_j& e_k &e_l \\ 
+  \hline 
+  {e_j}^{tr} & 0 & 1 & 1  \\
+  {e_k}^{tr} & 1 & 0 & 1 \\
+  {e_l}^{tr} & 1 & 1 & 0 \\
+\end{array} 
+\right]
+\]
+wobei $e_j,e_k,e_l$ die zugehörigen Einheitsvektoren in $n-1$ Eintragen sind. 
+\item Sei $V\in X_0$ eine Ecke vom Grad 3 in $X$ mit $X_2(V)=\{i_1,i_2,i_3\}.$ Dann ist $X_2(X_1(X_2(V)))-X_2(V)=\{j,k,l\}$ für geeignete $j,k,l$. Diese bilden die Nachbarn der Flächen $i_1,i_2,i_3.$ Genauer nehmen wir an, dass $i_1$ zu $j$, $i_2$ zu $k$ und $i_3$ zu $l$ benachbart ist.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=2cm 23.cm 4cm 27cm]{Image_tetfac2}
+\end{center}
+\caption{Ausschnitt der Sphäre $X$}
+\end{figure}  
+Sei $F\in \{0,1\}^{n-3\times n-3}$ die Matrix, die durch Streichen der $i_1-ten,i_2-ten$ und $i_3-ten$ Zeilen und Spalten  aus $F_X$ entsteht und $v\in \{0,1\}^{n-3}$ der Vektor mit
+\[
+v_{i}=
+\Biggl{\{\begin{tabular}[l]{lcr}
+1,&\textcolor{black}{$i\in \{j,k,l\}$} \\
+0& sonst\\
+\end{tabular}}
+\] Dann ist $F_{T_V(X)}$ durch 
+\[
+\left[ 
+\begin{array}{c|ccc} 
+  F & v \\ 
+  \hline 
+  {v}^{tr} & 0\\
+\end{array} 
+\right]
+\]
+gegeben.
+Die Auswirkungen auf den Flächengraph werden wir zu einem späteren Zeitpunkt noch genauer formulieren. Dies wird im Kontext der Multi-Tetraeder geschehen.
+\end{itemize}
+\end{enumerate}
+
+
+
+\end{document}

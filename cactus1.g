@@ -1141,7 +1141,9 @@ newcactusdistance:=function(S)
 		for comb in temp do 
 			tempS:=S;
 			for j in comb do 
-				tempS:=EdgeTurn(tempS,j);
+				if IsTurnableEdge(tempS,j) then 
+					tempS:=EdgeTurn(tempS,j);
+				fi;
 			od;
 			if IsCactus(tempS) then
 				return Length(comb);
@@ -1225,6 +1227,47 @@ C3W:=function(S1,S2)
 	#return L;
 end;
 
+
+C3Wtest:=function(S1,S2)
+	local f1,f2,V1,V2,m1,m2,m3,V,L,M1,M2,M3;
+	L:=[];
+#	Print(Help(S1)," ",Help(S2));
+	for f1 in Help(S1) do
+		for f2 in Help(S2) do
+			V1:=VerticesOfFace(S1,f1);
+			V2:=VerticesOfFace(S2,f2);	
+			m1:=MapVert(S1,[[V1[1],V2[1]],[V1[2],V2[2]],[V1[3],V2[3]]]);
+			m2:=MapVert(S1,[[V1[1],V2[2]],[V1[2],V2[3]],[V1[3],V2[1]]]);
+			m3:=MapVert(S1,[[V1[1],V2[3]],[V1[2],V2[1]],[V1[3],V2[2]]]);
+#######################			
+			m4:=MapVert(S1,[[V1[1],V2[1]],[V1[2],V2[3]],[V1[3],V2[2]]]);
+			m5:=MapVert(S1,[[V1[1],V2[3]],[V1[2],V2[2]],[V1[3],V2[1]]]);
+			m6:=MapVert(S1,[[V1[1],V2[1]],[V1[2],V2[2]],[V1[3],V2[3]]]);
+#######################
+			V:=VerticesOfFaces(S2);				
+			M1:=symdif(m1,V);
+			M2:=symdif(m2,V);
+			M3:=symdif(m3,V);
+##########################
+			M4:=symdif(m4,V);
+			M5:=symdif(m5,V);
+			M6:=symdif(m6,V);
+#############################
+			Add(L,SimplicialSurfaceByVerticesInFaces(M1));
+			Add(L,SimplicialSurfaceByVerticesInFaces(M2));
+			Add(L,SimplicialSurfaceByVerticesInFaces(M3));
+
+######################
+			Add(L,SimplicialSurfaceByVerticesInFaces(M4));
+			Add(L,SimplicialSurfaceByVerticesInFaces(M5));
+			Add(L,SimplicialSurfaceByVerticesInFaces(M6));
+
+#######################
+		od;
+	od;
+	return IsomorphismRepresentatives(L);
+	#return L;
+end;
 C3W1:=function(i,j)
 	local L1,L2,s1,s2,L;
 	L:=[];
@@ -1384,7 +1427,8 @@ Compare2:=function(L,VL,VC,file)
 		L1:=Filtered(L1,g ->not g in tempL);
 		Print("tempL ist ",Length(tempL),"\n");
 		tempL:=List(tempL,h->L[h]);
-		temp:=List(tempL,g->SimplicialSurfaceByVerticesInFaces(List(g,h->VerticesInFacesHelp[h])));		
+# aederung	temp:=List(tempL,g->SimplicialSurfaceByVerticesInFaces(List(g,h->VerticesInFacesHelp[h])));		
+temp:=List(tempL,g->SimplicialSurfaceByVerticesInFaces(g));		
 		temp:=IsomorphismRepresentatives(temp);
 		write(temp,file);
 		Print(sum," ",sum1, " t=",t," Laenge=",Length(temp),"\n");		
@@ -1504,17 +1548,15 @@ BlockTyp:=function(S)
 	Fac:=ShallowCopy(Faces(S1));
 	L:=[];
 	while Fac<>[] do 
-	#Print("blocktyp \n");
-		temp:=List(tempFac,g->NeighbourFacesOfFace(S1,g));
+		temp:=List(tempFac, g->NeighbourFacesOfFace(S1,g));
 		temp:=Union(temp);		
-		if Difference(temp,tempFac)<>[] then
+		if Difference(temp, tempFac)<>[] then
 			Append(tempFac,temp);
 			sum:=sum+Length(temp);
-			
 		else
 			Add(L,sum);
 			Fac:=Difference(Fac,tempFac);	
-			if Length(Fac)>0 then 	
+			if Length(Fac)>0 then
 				tempFac:=[Fac[1]];
 			fi;
 			sum:=1;		
@@ -1527,6 +1569,19 @@ BlockTyp:=function(S)
 	od; 
 	temp:=Filtered(temp,g->g[2]<>0);
 	return temp;
+end;
+BT2:=function(S)
+	local L,temp,tempL,t;
+	L:=BBH2(S);
+	L:=ConnectedComponents(L);
+#	temp:=List([4,8,10,12,14,16,18,20,22,24,26,28],g->[g,0]);
+#	for g in L do 
+#		t:=Filtered(temp,h->h[1]=g)[1];
+#		temp[Position(temp,t)][2]:=temp[Position(temp,t)][2]+1;
+#	od; 
+#	temp:=Filtered(temp,g->g[2]<>0);
+#	return temp;
+	return L;
 end;
 
 Divide:=function(L)
@@ -1635,9 +1690,14 @@ end;
 
 
 IsTurnableEdge:=function(S,e)
-	local g,voe;
+	local g,voe,temp;
 	voe:=VerticesOfEdge(S,e);
+	temp:=FacesOfEdge(S,e);
+	temp:=Union(VerticesOfFace(S,temp[1]),VerticesOfFace(S,temp[2]));
+	voe:=Difference(temp,voe);
+		
 	for g in Edges(S) do
+#		Print(VerticesOfEdge(S,g)," ",voe,"\n");
 		if g <> e and Set(VerticesOfEdge(S,g))=Set(voe)  then
 			return false;
 		fi;
@@ -1656,9 +1716,51 @@ testeigenvalue:=function(S)
 		sum:=sum+g;
 	od;
 	for g in [1..Length(Coor)] do 
-		temp[g]:=Coor[g]-sum;
+		temp[g]:=Coor[g]-sum/Length(Coor);
 	od;
-	temp:=temp*TransposedMat(temp);
+	temp:=TransposedMat(temp)*temp;
 	return [temp, Eigenvalues(Rationals,temp),Length(Eigenvectors(Rationals,temp))];
 end;
+
+Spheregraph:=function(spheres)
+	local s,temp,g,L,t,h;
+	L:=[];
+	for s in spheres do 
+		temp:=[];
+		temp:=List([1..Length(spheres)],g->0);
+		edges:=Filtered(Edges(s),g->IsTurnableEdge(s,g));
+		surf:=List(edges,g->EdgeTurn(s,g));
+		surf:=IsomorphismRepresentatives(surf);
+		for h in surf do 
+			t:=Filtered([1..Length(spheres)],g->IsIsomorphic(spheres[g],h));
+			if t<>[] then 
+				temp[t[1]]:=1;
+			fi;
+		od;
+		Add(L,temp);
+	od;
+	
+	return L;
+end;
+
+
+
+
+Ve:=function(s)
+	local l;
+	l:=[];
+	for F in Faces(s) do 
+		f:=VerticesOfFace(s,F);
+		Add(l,[f[1],f[2],f[3]]);
+		Add(l,[f[3],f[1],f[2]]);
+		Add(l,[f[2],f[3],f[1]]);
+		Add(l,[f[1],f[3],f[2]]);
+		Add(l,[f[2],f[1],f[3]]);
+		Add(l,[f[3],f[2],f[1]]);
+	od;
+	return l;
+end;
+
+
+
 

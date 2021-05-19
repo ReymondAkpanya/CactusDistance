@@ -125,6 +125,8 @@ tmargin={2.5cm},bmargin = {2.5cm}]{geometry}
 \setcounter{page}{1}
 %\cleardoubelepage
 \section{Einleitung}
+Diese Arbeit beschäftigt sich mit 
+In Kapitel 2 und 3 werden grundlegende Konzepte, die wir 
 \subsection{Herangehensweise}
 \subsection{Aufbau dieser Arbeit}
 \subsection{Vorkenntnisse und Notationen}
@@ -1745,7 +1747,7 @@ Die Kante 1 des Tetraeders ist nicht drehbar, aber ist zu zwei Ecken inzident de
 Es stellt sich die Frage, ob das Ausschließen der Sphären mit 2-Taillen bei der Konstruktion der Kantensequenzen zur Folge hat, dass die minimale Anzahl an Kantendrehungen, die es braucht, um zwei Sphären ineinander zu transformieren, erhöht wird. Für Kantensequenzen bei denen Sphären mit ausschließlich trivialen 2-Taillen, also Ecken vom Grad 2 erzeugt werden, kann gezeigt werden, dass es eine drehbare Kantensequenz derselben Länge gibt, die das selbe Ergebnis herbeiführt. Der allgemeinere Fall ist etwas schwieriger zu kontrollieren.
 \end{bemerkung}
 \subsection{Kantendrehungen am Schirmzeiger}
-Ziel dieses Kapitels ist es die oben definierte Kantendrehung auf der Ebene der Schirmzeiger durchzuführen. Hierfür muss dieser zunächst eingeführt werden.
+Ziel dieses Kapitels ist es die oben definierte Kantendrehung auf der Ebene der Schirmzeiger durchzuführen. Es wird also der Zusammenhang zwischen den Schirmzeigern der Sphären, die aus einer Kantendrehung auseinander hervorgehen, skizziert. Hierfür muss dieser zunächst eingeführt werden.
 
 \begin{definition}
 Sei $X$ eine Sphäre und $V\in X_0$ eine Ecke in $X.$ Dann wird der \emph{Schirmzeiger} von $X$ durch 
@@ -3958,10 +3960,10 @@ Der Ikosaeder hat also eine Automorphismengruppe, die nicht auflösbar ist. Wir 
 \begin{center}
 $\fbox{
 \parbox{14cm}{
-\textcolor{red}{gap$>$} \textcolor{blue}{C3W2([S],[S]);}\newline
+\textcolor{red}{gap$>$} \textcolor{blue}{AllSphereswithThreeWaistComponents([S],[S]);}\newline
 [ simplicial surface (21 vertices, 57 edges, and 38 faces)
  ]\newline
-\textcolor{red}{gap$>$} \textcolor{blue}{C3W2(last,[S]);}\newline
+\textcolor{red}{gap$>$} \textcolor{blue}{AllSphereswithThreeWaistComponents(last,[S]);}\newline
 [ simplicial surface (30 vertices, 84 edges, and 56 faces)
     ,\newline simplicial surface (30 vertices, 84 edges, and 56 faces)
     , \newline simplicial surface (30 vertices, 84 edges, and 56 faces)
@@ -4266,7 +4268,7 @@ Dieser besitzt vier Knoten, da es bis auf Isomorphie genau vier Sphären ohne 2-
 Das Computeralgebra System GAP spielt in dieser Arbeit eine große Rolle.
 Die in den Kapiteln vorgestellten Resultate wurden nämlich in GAP zunächst einmal genauer untersucht und durch Rechnungen verifiziert.
 An verschiedenen Stellen dieser Arbeit tauchen diese Rechnungen auf, um die Motivation hinter den Ideen transparent zu machen.
- Dieses Kapitel soll die Funktionsweise einiger Funktionen erläutern, die bei der Behandlung der angeführten Thematiken von großem Nutzen waren. Für die restlichen Funktionen verweise ich auf die Dokumentation in \textcolor{red}{quelle}
+ Dieses Kapitel soll die Funktionsweise einiger Funktionen erläutern, die bei der Behandlung der angeführten Thematiken von großem Nutzen waren. Für die restlichen Funktionen verweise ich auf die Dokumentation in meiner Programme.
 
 \subsection{EdgeTurn}
 \begin{large}
@@ -4441,7 +4443,7 @@ $\fbox{
 }
 }$
 \end{center}
-\subsection{AllSphereswithThreeWaistComponents}
+\subsection{AllSpheresWithThreeWaistComponents}
 \begin{large}
 \texttt{AllSpheresWithThreeWaistComponents(list1,list2)}
 \end{large}\\
@@ -4547,6 +4549,8 @@ Hier befindet sich eine Liste der Funktionalitäten, die zur Untersuchung, der i
 
 
 \end{itemize}
+
+
 \begin{comment}
 \begin{bemerkung}
 Sei $X$ eine vertex-treue Sphäre und $G$ die zugehörige Automorphismengruppe. Dann definieren wir die Menge $\mathcal{V}_X$ durch   

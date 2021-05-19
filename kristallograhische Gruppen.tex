@@ -1,0 +1,471 @@
+\documentclass{beamer} 
+\usetheme{Warsaw}             % Falls Ihnen das Layout nicht gefÃ¤llt, kÃ¶nnen Sie hier
+                              % auch andere Themes wÃ¤hlen. Ein Verzeichnis der mÃ¶glichen 
+                              % Themes finden Sie im Kapitel 15 des beameruserguide.
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+
+\usepackage{verbatim}
+\newcommand{\gelb}{0.550000011920929}
+\usepackage{pgf,tikz,pgfplots}
+\pgfplotsset{compat=1.15}
+\usetikzlibrary{arrows}
+\AtBeginSection[]{\frame<beamer>{\frametitle{Übersicht} \tableofcontents[current]}}
+
+\newcommand{\defin}[1]{\textit{\color{blue}#1}}
+
+% ========== AbkÃ¼rzungen ==========
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+\author{Reymond Akpanya}
+\title{Erweiterungen frei abelscher durch endliche Gruppen}
+\date{14.05.2021 }
+
+\begin{document}
+\frame{\maketitle}
+%\frame{\tableofcontents[currentsection]}
+\begin{frame}{Gliederung}
+\tableofcontents
+\end{frame}
+\section{Derivationen}
+\begin{frame}
+\begin{block}{Gruppenring}
+Sei $G$ eine Gruppe und $R$ ein kommutativer Ring. Der Gruppenring $RG$ ist die $R$-Algebra definiert als freier $R$-Modul mit $R$-Basis $G$ durch 
+\[
+RG:=\underset{g\in G}{\bigoplus}Rg
+\]
+mit der Gruppenmultiplikation (wie beim Cauchy-Produkt) $R$-bilinear auf $RG$ fortgesetzt:
+\[
+(\sum_{h\in G}a_hh)(\sum_{k\in G}b_kk)=\sum_{g\in G}(\underset{hk=g}{\sum_{k,h\in G,}}a_h b_k)g
+\]
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{block}{Bemerkung}
+Jeder $R-$Modul auf dem $G$ als Gruppe $R-$linear operiert, kann als $RG-$Modul aufgefasst werden.
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Bemerkung 2.21}
+Sei $G$ eine Gruppe und $A$ ein $\mathbb{Z}G$-Modul. Für eine Abbildung $\delta:G\to A$ ist 
+\[
+\{(\delta(g),g)\in A\rtimes G \mid g\in G\}
+\]
+genau dann ein Komplement von $A$ in $A \rtimes G,$ wenn für alle $g,h\in G:$ gilt:
+\[
+\delta(gh)=\delta(g)+g\delta(h).
+\]
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{block}{Definition 2.22}
+Sei $R$ ein Ring mit einem $R,R$-Bimodul $M.$ Eine additive Abbildung $\delta:R\to M$ heißt \emph{Derivation} von $R$ mit Werten in $M,$ falls für alle $r,s\in R$ gilt:
+\[
+\delta(rs)=\delta(r)s+r\delta(s).
+\]
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{block}{Bemerkung}
+Die $\mathbb{Z}-$lineare Fortsetzung von $\delta$ aus der Bemerkung 2.21 ist also eine Derivation des Gruppenringes mit Werten in $A$, wenn man $A$ so mit einer Bimodulstruktur ausstattet das $\mathbb{Z}G$ von links durch gewöhnliche Multiplikation und von rechts mit der Augmentation operiert. 
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{block}{Lemma 2.23}
+Ist $\delta:G\to A$ eine Derivation in den $\mathbb{Z}G-$ Modul $A,$ dann gilt:
+\begin{itemize}
+\item \[
+Ke(\delta):=\delta^{-1}(\{0\})
+\]
+ist eine Untergruppe von $G.$
+\item 
+\[
+A\rtimes G\to A\rtimes G: (a,g)\mapsto (a+\delta(g),g)
+\]
+ist ein Automorphismus von $A\rtimes G.$
+\end{itemize}
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{itemize}
+\item $\delta(1)$ \pause $=\delta(1)+\delta(1)$\pause $\Leftrightarrow 0=\delta(1)$\pause 
+\item Seien $g,h\in Ke(\delta).$ \pause Dann gilt:
+\[
+\delta(gh)=\delta(g)+g\delta(h)=0.
+\]
+\pause 
+Also ist $gh\in Ke(\delta)$\pause
+\item Sei $g\in Ke(\delta).$ \pause Dann ist\pause  
+\begin{align*}
+&0=\delta(1)=\delta(g^{-1}g)=\delta(g^{-1})+g^{-1}\delta(g)\\
+\Leftrightarrow &\delta(g^{-1})=-g^{-1}\delta(g)
+\end{align*}
+\end{itemize}
+\end{frame}
+\begin{frame}
+Für $(a,g),(a',g')\in A\rtimes G$ gilt\pause
+\begin{align*}
+&\phi((a,g))\phi((a',g'))\\ 
+=&(a+\delta(g),g)(a'+\delta(g'),g')\\
+=&(a+\delta(g)+ga'+g\delta(g'),gg')\\
+=&(a+ga' +\delta(gg'),gg')\\
+=&\phi((a+ga',gg'))\\
+=&\phi((a,g)(a',g'))
+\end{align*}
+
+\pause
+Umkehrabbildung:
+\[
+A\rtimes G \to A\rtimes G,(a,g)\mapsto (a-\delta(g),g)
+\]
+\end{frame}
+\begin{frame}
+Sei $A$ ein $\mathbb{Z}G-$Modul und $a\in A.$ Dann ist 
+\[
+\delta_a:G\to A:g\mapsto (1-g)a
+\]
+eine Derivation von $G$ in $A.$ Wir nennen sie eine \emph{innere Derivation.}
+\end{frame}
+\begin{frame}
+Sei $A\trianglelefteq G$ ein abelscher Normalteiler von endlichem Index und $S:=\{s_1,\ldots,s_n\}$ ein Vertretersystem von $A$ in $G.$ Dann ist 
+\[
+\delta_S:G\to A:g\mapsto \prod_{i=1}^ngs_is_{gi}^{-1}
+\]
+eine Derivation, wobei $gi$ definiert ist durch $gs_iA=s_{gi}A.$
+\end{frame}
+\begin{frame}
+Für $g,h\in G$ gilt:
+\[
+\delta_S(gh)=\prod_{i=1}^nghs_is_{ghi}^{-1}=\prod_{i=1}^nghs_is_{hi}^{-1}g^{-1}gs_{hi}s_{ghi}^{-1}={}^g\delta_S(h)\delta_S(g)
+\]
+\end{frame}
+\begin{frame}
+\begin{block}{Satz 2.25(Schur, Zassenhaus)}
+Sei $A\trianglelefteq G$ ein abelscher Normalteiler der endlichen Gruppe $G,$ sodass $[G:A]$ und $\vert A\vert$ teilerfremd sind. Dann gilt:
+\begin{itemize}
+\item $G$ zerfällt über $A.$
+\item Alle Komplemente von $A$ in $G$ sind konjugiert.
+\end{itemize}
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{itemize}
+\item sei $S$ eine Transversale von $A$ in $G$ und $\delta_S$ obige Derivation.\pause 
+\item Beh: $Ke(\delta_S)$ ist ein Kompliment von $A$ in $G$ \pause 
+\item für alle $a\in A$ gilt $\delta_S(a)=a^{\vert G/A\vert }$\pause
+\item wegen Teilerfremdheit gilt $A\cap Kern(\delta_S)=\{1\}$\pause 
+\item für $g\in G$ gilt $\delta_S(g)=b^{\vert G/A\vert}$ für ein $b\in A$(Teilerfremdheit)\pause 
+\item Zerlegung: $g=bb^{-1}g$\pause 
+\item Wollen also zeigen $b^{-1}g\in Ke(\delta_S)$
+\item es gilt \pause 
+\begin{align*}
+&\delta_S(b^{-1}g)=\delta_S(b^{-1})\cdot{}^{b^{-1}}\delta_S(g)=\delta_S(b^{-1})\cdot\delta_S(g)=\\
+&b^{\vert G/A\vert}b^{-\vert G/A\vert}=1
+\end{align*}
+\end{itemize}
+\end{frame}
+\begin{frame}
+\begin{itemize}
+\item wir können $A\rtimes H$ annehmen \pause
+\item $C\leq G$ ein weiteres Komplement $A$ in $G$ \pause 
+\item $C=\{(\delta(g),g)\in A\rtimes H\mid g\in H\}$ für eine Derivation $\delta:H\mapsto A$\pause 
+\item dann ist $\delta$ eine innere Derivation \pause
+\item es existiert also ein $a\in A$ mit $\delta(g)=(1-g)a$ für alle $g\in H$\pause
+\item $C$ geht aus $H$ durch den von $(a,1)$ induzierten inneren Automorphismus hervor
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Lemma 2.26}
+Sei $G$ eine Gruppe und $A$ ein $RG$-Modul.
+\begin{itemize}
+\item Die Derivationen von $G$ in $A$ bilden einen $R$-Modul $Der(G,A)\leq A^G.$
+\item Die inneren Derivationen bilden einen $R-$Teilmodul 
+\[
+InnDer(G,A)\leq Der(G,A).
+\]
+Der Restklassenmodul $H^1(G,A):=Der(G,A) /InnDer(G,A)$ heißt auch die \emph{erste Kohomologiegruppe} von $G$ mit Werten in $A.$
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Lemma 2.26}
+\begin{itemize}
+\item Ist $G$ endlich, so gilt:
+\[
+\vert G\vert Der(G,A)\leq InnDer(G,A),
+\]
+d.h. $\vert G\vert H^1(G,A)=0.$ Insbesondere ist $H^1(G,A)=\{0\},$ falls die Multiplikation mit $\vert G\vert$ ein Automorphismus von $A$ ist.
+\end{itemize}
+\end{block}
+\end{frame}
+\begin{frame}
+3) Wir summieren beide Seiten von $\delta(gh)=\delta(g)+g\delta(h)$ über $h\in G.({a:=\sum_{g\in G}\delta(g)})$\pause
+\begin{align*}
+&\sum_{h\in G}\delta(gh)=\sum_{h\in G}\delta(g)+\sum_{h\in H}g\delta(h)\\
+{\Leftrightarrow} &\sum_{g\in G}\delta(g)=\vert G \vert\delta(g)+\sum_{h\in G}g\delta(h)\\
+\Leftrightarrow & a=\vert G \vert \delta(g) + ga\\
+\Leftrightarrow &a-ga=\vert G\vert \delta(g)\\
+\Leftrightarrow &(1-g)a=\vert G\vert \delta(g).
+\end{align*}
+\end{frame}
+\begin{frame}
+\begin{block}{Bemerkung 2.27}
+Nimmt man als Voraussetzung in Satz 2.25, dass $A\trianglelefteq G$ ein abelscher Normalteiler von endlichem Index $n$ ist, für den $a\mapsto a^n$ ein Automorphismus ist, so bleibt die Behauptung gültig.
+\end{block}
+\end{frame}
+\begin{frame}
+Wir nutzen Lemma 2.26 3), um die Unendlichkeit von endlich präsentierten Gruppen nachzuweisen:\\\pause
+Sei $G=\langle a,b\mid a^2 , b^2 \rangle$ mit der Darstellung \[
+G\to \mathbb{Q}^*:a\mapsto -1,b\mapsto -1
+\]
+ und $A:=\mathbb{Q}.$\pause
+ \begin{itemize}
+ \item Bestimme $Der(G,A):$\pause
+ 
+ \[
+a\mapsto \left( \begin{tabular}{cc}
+-1&$\alpha$\\
+0&1\\
+\end{tabular} \right),
+a\mapsto \left( \begin{tabular}{cc}
+-1&$\beta$\\
+0&1\\
+\end{tabular}\right)
+ \]
+ erfüllen die definierenden Relationen von $G$\pause
+ \item $Dim_{\mathbb{Q}}(Der(G,A))=2$ \pause
+ \item  $Dim_{\mathbb{Q}}(InnDer(G,A))=1$ 
+ \end{itemize}
+ \end{frame}
+\begin{frame}
+Als ist 
+\[
+H^1(G,A)\cong \{(\alpha,\beta) \mid \alpha,\beta\in \mathbb{Q}\}/\{(2\alpha,2\alpha)\mid \alpha \in \mathbb{Q}\}\cong \mathbb{Q}
+\]
+Somit kann $H^1(G,A)$ keinen endlichen Exponenten haben, und $G$ muss Ordnung unendlich haben.
+\end{frame}
+\section{Fox-Ableitung}
+\begin{frame}
+\begin{block}{Definition 2.33}
+Sei $F$ die freie Gruppe auf der Menge $X.$ Für $x\in X$ sei $\frac{\delta}{\delta x}$ die Derivation definiert auf den Erzeugern von $F$ durch
+\[
+\frac{\delta}{\delta x}:F\to \mathbb{Z}F:y\mapsto \begin{cases}
+1,&y=x\\
+0,&y\in X-\{x\}.
+\end{cases}
+\]
+Diese Derivation heißt auch \emph{Fox-Ableitung}
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{block}{Beispiel 2.34}
+\begin{enumerate}
+\item $\frac{\delta x^n}{\delta x}=1+x+\ldots+x^{n-1}$ für $n\in \mathbb{N}.$
+\item $\frac{\delta x^{-n}}{\delta x}=-x^{-1}-\ldots-x^{-n}$ für $n\in \mathbb{N}.$
+\item $\frac{\delta w}{\delta x}=0$ für $w\in \langle X-\{x\}\rangle.$
+\item $\frac{\delta [x,w]}{\delta x}=1-xwx^{-1}$ für $w\in \langle X-\{x\}\rangle.$
+\item $\frac{\delta w^{-1}}{\delta x}=-w^{-1}\frac{\delta w}{\delta x}$ für $w\in F.$
+\end{enumerate}
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{block}{Lemma 2.35}
+Sei $w=y_1\cdots y_k\in F(X)$ reduziert mit $y_i\in X\cup X^{-1}$ und $x\in X.$ Dann gilt:
+\[
+\frac{\delta w}{\delta x}=\sum_{i=1}^ka_i\, mit \,a_i:=\begin{cases}
+y_1\ldots y_{i-1},&y_i=x\\
+-y_1\ldots y_{i},&y_i=x^{-1}\\
+0,& sonst
+\end{cases}
+\]
+\end{block}
+\end{frame}
+\begin{comment}
+\begin{frame}
+\begin{block}{Lemma 2.36 (Kettenregel)}
+Seien $v_i$ Worte in den $x_j^{\pm 1}$ und $w$ ein Wort in den $v_i^{\pm 1}.$ Dann gilt:
+\[
+\frac{\delta w}{\delta x_i}=\sum_j \frac{\delta w}{\delta v_j}\frac{\delta v_j}{\delta x_i}
+\]
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{block}{Satz 2.37}
+Sei $X=\{x_1,\ldots,x_n\}.$ Für $w\in F(X)$(freie Gruppe auf $X$) gilt:
+\[
+\sum_i\frac{\delta w}{\delta x_i}=w-1
+\]
+\end{block}
+\end{frame}
+\end{comment}
+\begin{frame}
+Wir wollen $H^1(GL(3,2),\mathbb{F}_2^{3\times 1})$ bestimmen.\pause Die Gruppe wird erzeugt von 
+\[
+x=\left[\begin{tabular}{ccc}
+1&1&0\\
+0&1&0\\
+0&0&1\\
+\end{tabular}\right],
+y=\left[\begin{tabular}{ccc}
+0&0&1\\
+1&0&0\\
+0&1&0\\
+\end{tabular}\right]
+\]
+mit $x^2=y^3=(xy)^7=[x,y]^4=1.$\pause
+ $\,$ Wegen Lemma 2.26  3) können wir $\delta(y)=0$ annehmen.\pause $ $ Also müssen wir noch $\delta(x)\in \mathbb{F}_2^{3\times 1}$ bestimmen.
+\end{frame}
+\begin{frame}
+Es gilt:
+\begin{align*}
+&0=\delta(x^2)=(1+x)\delta(x)\\
+&0=\delta(y^3)\\
+&0=\delta((xy)^7)=(1+xy+\ldots+(xy)^6)\delta(x)\\
+&0=\delta([x,y]^4)=(1+[x,y]+\ldots+[x,y]^3)(1-xyx^{-1})\delta(x)\\
+\end{align*}
+\end{frame}
+\begin{frame}
+Also haben wir insgesamt $H^1(G,\mathbb{F}_2^{3\times 1})\cong \mathbb{F}_2$ repräsentiert durch die äußere Derivation $\delta$ mit $\delta(x)=e_3,\delta(y)=0.$
+\end{frame}
+\section{Erweiterungen frei abelscher durch endliche Gruppen}
+\begin{frame}
+\begin{block}{Definition 2.39}
+Eine Gruppe $R$ heißt endlich über frei abelsch, falls sie einen endlich erzeugten frei abelschen Normalteiler $T$ hat mit $G=R/ T$ endlich. Sie heißt \emph{kristallographische Raumgruppe,} falls $C_R(T)=T$ ist, d.h., $G$ operiert treu auf $T$ durch Konjugation.
+\end{block}
+\end{frame}
+\begin{frame}
+Es liegt also eine exakte Sequenz von Gruppen vor:
+\[
+0 \rightarrow \mathbb{Z}^{n\times 1} \rightarrow R \rightarrow G \rightarrow 1,
+\]
+also insbesondere ein Gruppenhomomorphismus $\Delta :G\to GL(n,\mathbb{Z})\equiv Aut(\mathbb{Z}^{n\times 1}),$ welcher injektiv ist, genau dann wenn eine Raumgruppe vorliegt.
+\end{frame}
+\begin{frame}
+$G:=C_2(a)$ sei mit $\Delta:G\to GL(2,\mathbb{Z}):a\mapsto \left(\begin{tabular}{cc}
+1&0\\
+0&-1\\
+\end{tabular}\right)$ gegeben. Dann definiert 
+$\delta(a)=\left(\begin{tabular}{c}
+$\frac{1}{2}$\\
+0\\
+\end{tabular}\right)+\mathbb{Z}^{2\times 1}$ eine nicht innere Derivation aus $Der(G,\mathbb{Q}^{2\times 1}).$ \pause 
+Wir werden sehen, dass dies äquivalent dazu ist, dass
+\[
+T\biguplus \left(\begin{tabular}{cc}
+1&0\\
+0&-1\\
+\hline
+0&0\\
+\end{tabular}\vline
+\begin{tabular}{c}
+$\frac{1}{2}$\\
+0\\
+\hline
+1\\
+\end{tabular}\right)T
+\]
+mit 
+\[
+\langle \left(\begin{tabular}{cc}
+1&0\\
+0&1\\
+\hline
+0&0\\
+\end{tabular}\vline
+\begin{tabular}{c}
+1\\
+0\\
+\hline
+1\\
+\end{tabular}\right) ,\left(\begin{tabular}{cc}
+1&0\\
+0&1\\
+\hline
+0&0\\
+\end{tabular}\vline
+\begin{tabular}{c}
+0\\
+1\\
+\hline
+1\\
+\end{tabular}\right) \rangle\cong \mathbb{Z}^{2\times 1}
+\]
+eine Raumgruppe, die über $T$ nicht zerfällt.
+\end{frame}
+\begin{frame}
+\begin{block}{Satz 2.41(Bieberbach, Frobenius, Zassenhaus)}
+Sei $G$ endlich und $\Delta:G\to GL(n,\mathbb{Z})$ ein Homomorphismus mit zugehörigem $\mathbb{Z}G$-Modul $\mathbb{Z}^{n\times 1},$ welcher eingebettet ist in dem ebenfalls durch $\Delta$ induzierten $\mathbb{Q}G-$Modul $\mathbb{Q}^{n\times 1}.$
+\begin{itemize}
+\item Jedes Element $\delta\in Der(G,\mathbb{Q}^{n\times 1}/\mathbb{Z}^{n\times 1})$ liefert eine Erweiterung $E(G,\Delta,\delta)$ von $\mathbb{Z}^{n\times 1}$ mit $G:$
+\[
+E(G,\Delta,\delta):=\{(a,g)\in \mathbb{Q}^{n\times 1}\rtimes G\mid a+\mathbb{Z}^{n\times 1}=\delta(g)\}
+\]
+\item Für $\delta_1,\delta_2\in Der(G,\mathbb{Q}^{n\times 1}/\mathbb{Z}^{n\times 1})$ mit $\delta_1-\delta_2\in InnDer(G,\mathbb{Q}^{n\times 1}/\mathbb{Z}^{n\times 1})$ sind $E(G,\Delta,\delta_1)$ und $E(G,\Delta,\delta_2)$ konjugiert in $\mathbb{Q}^{n\times 1}\rtimes G.$
+\item $E(G,\Delta,\delta)$ zerfällt über $\mathbb{Z}^{n \times 1}$ genau dann, wenn $\delta \in InnDer(G,\mathbb{Q}^{n\times 1}/\mathbb{Z}^{n\times 1})$ ist.
+ 
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Satz 2.41(Bieberbach, Frobenius, Zassenhaus)}
+\begin{itemize}
+\item Jede Erweiterung von $\mathbb{Z}^{n\times 1}$ mit $G$ und Operation $\Delta$ ist isomorph zu einem $E(G,\Delta,\delta)$ für ein geeignetes $\delta \in Der(G,\mathbb{Q}^{n\times 1}/\mathbb{Z}^{n\times 1}).$
+\end{itemize}
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{itemize}
+\item sei $E$ die gegebene Erweiterung von $\mathbb{Z}^{n\times 1}$ mit $G.$ \pause
+\item wir betrachten
+\[
+X:=(\mathbb{Q}^{n\times 1} \times E)/\{(l,l)\in \mathbb{Q}^{n\times 1}\times E\mid l\in \mathbb{Z}^{n\times 1}\} 
+\]\pause 
+\item Wegen 
+\[
+(\mathbb{Q}^{n\times 1}\times \mathbb{Z}^{n\times 1})/\{(l,l)\in \mathbb{Q}^{n\times 1}\times \mathbb{Z}^{n\times 1}\mid l\in \mathbb{Z}^{n\times 1}\} \pause \cong \mathbb{Q}^{n\times 1}
+\] \pause 
+ist $X$ eine Erweiterung von $\mathbb{Q}^{n\times 1}$ mit $G,$ die $E$ als Untergruppe enthält \pause 
+\item nach Bemerkung 2.27 zerfällt $\mathbb{Q}^{n\times 1}\,(X=\mathbb{Q}^{n\times 1}\rtimes G).$ \pause 
+\item also entspricht $E/\mathbb{Z}^{n\times 1}$ einem Kompliment von $\mathbb{Q}^{n\times 1}$ in $X/ \mathbb{Z}^{n\times 1}=\mathbb{Q}^{n\times 1}/\mathbb{Z}^{n\times 1}\rtimes G,$ welches nach Definition von Derivationen einem $\delta \in Der(G,\mathbb{Q}^{n\times 1}/\mathbb{Z}^{n\times 1})$ entspricht  
+\end{itemize}
+\end{frame}
+\begin{comment}
+\begin{frame}
+Sei $G=D_8=\langle a ,b\mid a^4,b^2,(ab)^2\rangle$ und 
+\[
+\Delta:G\to GL(2,\mathbb{Z}):a\mapsto \left(\begin{tabular}{cc}
+0&-1\\
+1&0\\
+\end{tabular}\right),b\mapsto \left(\begin{tabular}{cc}
+1&0\\
+0&-1\\
+\end{tabular}\right),
+\]
+wodurch $\mathbb{Z}^{2\times 1}$ zu einem $\mathbb{Z}G-$Modul wird. Wir bestimmen alle Derivationen $\delta \in Der(G,\mathbb{Q}^{2\times 1}/\mathbb{Z}^{2\times 1}).$ Die Paare $(\delta(a),\delta(b))=(\alpha +\mathbb{Z}^{2\times 1},\beta +\mathbb{Z}^{2\times 1})$ sind charakterisiert durch 
+\begin{align*}
+&0=\delta(a^4)=(1+a+a^2+a^3)\delta(a)\\
+&0=\delta(b^2)=(1+b)\delta(b)\\
+&0=\delta((ab)^2)=(1+ab)\delta(a)+(1+ab)a\delta(b)
+\end{align*}
+Wenn wir die inneren Derivationen herausfaktorisieren, erhalten wir 
+\[
+H^1(G,\mathbb{Q}^{2\times 1}/\mathbb{Z}^{2\times 1})\cong \mathbb{Z}/2\mathbb{Z}.
+\]
+\end{frame}
+\end{comment}
+\end{document}

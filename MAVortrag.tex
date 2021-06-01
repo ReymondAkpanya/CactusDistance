@@ -1,0 +1,232 @@
+\documentclass{beamer} 
+\usetheme{Warsaw}             % Falls Ihnen das Layout nicht gefÃ¤llt, kÃ¶nnen Sie hier
+                              % auch andere Themes wÃ¤hlen. Ein Verzeichnis der mÃ¶glichen 
+                              % Themes finden Sie im Kapitel 15 des beameruserguide.
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+
+\usepackage{verbatim}
+\newcommand{\gelb}{0.550000011920929}
+\usepackage{pgf,tikz,pgfplots}
+\pgfplotsset{compat=1.15}
+\usetikzlibrary{arrows}
+\AtBeginSection[]{\frame<beamer>{\frametitle{Übersicht} \tableofcontents[current]}}
+
+\newcommand{\defin}[1]{\textit{\color{blue}#1}}
+
+% ========== AbkÃ¼rzungen ==========
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\DeclareMathOperator{\Pot}{Pot}
+
+\DeclareMathOperator{\Aut}{Aut}
+\author{Reymond Akpanya}
+\title{Klassifikation der Sphären ohne Zweier Taillen}
+\date{14.05.2021 }
+
+\begin{document}
+\frame{\maketitle}
+\frame{\tableofcontents[currentsection]}
+\begin{frame}{Gliederung}
+\tableofcontents
+\end{frame}
+\section{Kantendrehung}
+\subsection{Transitivität der Kantendrehung}
+\begin{frame}{definition}
+Sei $X$ eine vertex-treue Sphäre. Eine Kante $e\in X_1$ heißt  \emph{drehbar}, falls es keine Kante $e'\in X_1\setminus \{e\}$ mit $X_0(e')=X_0(X_2(e))-X_0(e)$ gibt.
+\end{frame}
+\begin{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=17cm 17cm 5cm 20.7cm]{Image_Octahedron}
+\end{center}
+\caption{Oktaeder}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=1cm 23.6cm 5.5cm 26.7cm]{ET_Example1}
+\end{center}
+\caption{Tetraeder}
+\end{figure}
+\end{frame}
+\begin{frame}{definition}
+Sei $X$ eine vertex-treue Sphäre, $\xi$ der zugehörige Flächen-Träger und $e$ eine drehbare Kante in $X$. Dann definieren wir die durch die Kantendrehung $e$ entstandene Sphäre $X^e$ durch den Flächen-Träger $\xi \Delta \Pot_3(X_0(X_2(e))).$
+\end{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=5cm 22.5cm 4cm 27cm]{Image_Kantendrehung}
+\end{center}
+\caption{Kantendrehung}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=12cm 11cm 18cm 18cm,scale=0.85]{Double6gon}
+\end{center}
+\caption{Doppel-6-Gon}
+\end{figure}
+\begin{frame}
+
+\begin{block}{Definition}
+Sei $X$ eine Sphäre in $X$ und $e_1,\ldots,e_n$ Kanten in $X$. Wir nennen $E=(e_1,\ldots,e_n)$ eine \emph{drehbare Kantensequenz}, falls Folgendes erfüllt ist: 
+\begin{itemize}
+\item Die Kante $e_1$ ist eine drehbare Kante in $X^{()}:=X.$ 
+\item Für alle $1\leq i < n$ ist die Kante $e_{i+1}$ eine drehbare Kante in 
+\[
+X^{(e_1,\ldots,e_i)}:=(X^{(e_1,\ldots,e_{i-1})})^{e_i}.
+\] 
+\end{itemize}
+Wir nennen $X^E$ die durch die Kantensequenz $E$ entstandene Sphäre. 
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{block}{Lemma 5.6}
+Sei $X$ eine vertex-treue Sphäre und $V$ eine beliebige Ecke in $X,$ die $\deg(X)\geq 4$ erfüllt. Dann gibt es eine drehbare Kante in $X_1(V).$ 
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{block}{Satz 5.7}
+Sei $X$ eine vertex-treue Sphäre mit $2n$ Flächen, wobei $n\geq 3$ ist. Dann existiert eine drehbare Kantensequenz $E,$ sodass $X^E$ zum Doppel-$n$-Gon isomorph ist. 
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=18cm 22.5cm -3cm 27cm]{Image_Tetraedererweiterung}
+\end{center}
+\caption{Tetraeder-Erweiterung und Tetraeder-Entfernung}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}[H]
+\includegraphics[scale=.95,viewport=0cm 17cm 19cm 27cm]{comute}
+\caption{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{block}{satz}
+Seien $X$ und $Y$ vertex-treue Sphären mit $\vert X_2\vert=\vert Y_2\vert=2n$.
+Dann existiert eine drehbare Kantensequenz $E=(e_1,\ldots,e_l)$ in $X,$ sodass  $X^E$ zu $Y$ isomorph ist. 
+\end{block}
+\end{frame}
+
+\section{Multi-Tetraeder}
+\subsection{Konstruktion und Klassifikation}
+\begin{frame}
+\begin{block}{Definition 6.1}
+\begin{enumerate}
+\item Sei $X$ eine geschlossene simpliziale Fläche mit $\vert X_0\vert > 6.$
+ Die simpliziale Fläche, die durch Entfernen aller Tetraeder entsteht, bezeichnen wir mit $X^{(1)}$. Für $i>1$ definieren wir analog 
+\[
+X^{(i)}:=(X^{(i-1)})^{(1)}.
+\]
+\item Wir nennen $X$ einen \emph{Multi-Tetraeder vom Grad} $k$, falls $X^{(k-1)}$ ein Tetraeder oder ein Doppel-Tetraeder ist. Hierfür bezeichne $a_0$ die Anzahl der Ecken vom Grad 3 in $X_0$ oder anders gesagt die Anzahl der Tetraeder, die von $X$ entfernt wurden und analog bezeichne $a_i$ die Anzahl der Ecken vom Grad 3 in $X^{(i)}$. Falls $X^{(i)}$ ein Tetraeder ist, so ist $a_i$ als 1 definiert. Das damit konstruierte Tupel $(a_0,a_1,\ldots,a_k)$ nennen wir den \emph{Typ} von $X$ und $T:=\sum_{i=0}^{k} a_i$ die \emph{Tetraeder-Zahl} von $X$.\\
+\end{enumerate}
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=22cm 12.5cm 5cm 17cm]{Image_DoubleTetraeder}
+\end{center}
+\caption{Doppel-Tetraeder}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=24cm 14cm 0cm 19cm]{Image_Parallelepiped}
+\end{center}
+\caption{Parallelepiped}
+\end{figure}
+\end{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=19cm 19cm 0cm 23cm]{Image_MultiTetraeder1}
+\end{center}
+\caption{Multi-Tetraeder mit 8 Flächen}
+\end{figure}
+\begin{frame}
+\begin{block}{Definition 6.9}
+Seien $X$ und $Y$ Multi-Tetraeder. Falls $X=Y^{(1)}$ ist, dann nennen wir $Y$ einen \emph{Enkel} von $X.$ 
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{block}{Lemma 6.21}
+Sei $X$ ein Multi-Tetraeder und $\phi \in \Aut(X).$ Für eine Überdeckung $M\in U_X^l$ mit  $0\leq l\leq \vert X_2\vert -a_k$ ist $\{\phi(m)\mid m\in M\}$ wieder eine $a_k+l$-elementige Überdeckung.
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{block}{Bemerkung 6.15}
+Sei $X$ ein Multi-Tetraeder vom Typ $(a_0,\ldots ,a_k)$ und $G$ seine Automorphismengruppe.
+Durch die obige Erkenntnis kann nun die in 6.10 eingeführte Gruppenoperation leicht abgeändert werden, um so die Anzahl der Enkel eines Multi-Tetraeders zu bestimmen. Für $0\leq l\leq \vert X_2 \vert -a_k$ ist die Abbildung
+\[
+\theta_l: G\times U_X^l \to U_X^l, (\phi, M)\mapsto \phi(M):=\{\phi(F)\mid F\in M\}
+\] 
+wohldefiniert und es lässt sich leicht nachprüfen, dass diese eine Gruppenoperation bildet.
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{block}{Satz 6.17}
+Sei $X$ ein Multi-Tetraeder und $\Aut(X)$ die Automorphismengruppe von $X$. Dann ist $\Aut(X)$ auflösbar.
+Weiterhin seien $l,l'$ minimal mit der Eigenschaft, dass
+\[
+\vert \Aut(X)^l\vert=\vert \Aut(X^{(1)})^{l'}\vert =1
+\] ist. Dann gilt $l\leq l'$.
+\end{block}
+\end{frame}
+\subsection{Kaktus-Distanz}
+\begin{frame}
+\begin{block}{Definition 6.18}
+Sei $X$ eine vertex-treue Sphäre. Die minimale Anzahl an Kantendrehungen, die es braucht, um aus $X$ einen Multi-Tetraeder zu  konstruieren, nennen wir die \emph{Kaktus-Distanz} $\zeta(X)$ von $X$.
+\end{block}
+\end{frame}
+\subsection{Wilde Färbungen auf Multi-Tetraedern}
+\section{2-taillenfreie Sphären}
+\subsection{Multi-Sphären}
+\begin{frame}
+\begin{block}{Satz 7.16}
+Sei $Y$ eine Multi-Sphäre und $X$ eine Sphäre, sodass die Blöcke von $Y$ zu $X$ isomorph sind. Falls $\Aut(X)$ auflösbar ist, dann folgt die Auslösbarkeit von $\Aut(Y).$ 
+
+\end{block}
+\end{frame}
+\subsection{Flächengraph von Sphären mit 3-Taillen}
+\subsection{Der Sphären Graph}
+\begin{frame}
+\begin{block}{Definition 7.19}
+Sei $n\in \mathbb{N}$ gerade. Die Menge der Isomorphieklassen der Sphären ohne 2- oder 3-Taillen bezeichnen wir mit $\mathcal{S}_n.$ Weiterhin bezeichnen wir die Menge der Isomorphieklassen der Sphären ohne 2-Taillen mit $\mathcal{S}_n^3.$
+\end{block}
+\end{frame}
+\begin{frame}
+Es gilt $\mathcal{S}_2=\mathcal{S}_2^3=\emptyset.$ 
+ Für $n=4$ ist $\mathcal{S}_n^3=\mathcal{S}_n=\{T\},$ wobei $T$ ein Tetraeder ist.
+ Falls $n\geq 6$ ist, dann herrscht eine echte Teilmengenbeziehung zwischen $\mathcal{S}_n$ und $\mathcal{S}_n^3.$ Beispielsweise ist 
+ \[
+ \mathcal{S}_6=\emptyset \subset \{DT\}=\mathcal{S}_6^3.
+ \]
+\end{frame}
+\begin{frame}
+\begin{block}{Definition 7.23}
+Sei $n\in \mathbb{N}$ gerade. Dann definiert das Tripel $\mathcal{G}_n=(V,E,c)$ den \emph{taillenfreien Sphären-Graph}. Die Knotenmenge erhalten wir durch $V=\mathcal{S}_n.$ Zwei Knoten $V_X,V_Y$ mit zugehörigen vertex-treuen Sphären $X,Y$ sind durch eine Kante verbunden, falls $X^e\cong Y$ für eine drehbare Kante $e\in X_1$ ist oder es eine drehbare Kantensequenz $E=(e_1,\ldots,e_m)$ in $X$ gibt, sodass $X^E\cong Y$ ist und für alle $1\leq i < m $ die Sphäre $X^{(e_1,\ldots,e_i)}$ eine 3-Taille besitzt. Die Gewichtsfunktion $c:E\to\mathbb{Z}^+$  erhalten wir folgendermaßen: Sei $\{V_X,V_Y\}=e\in E.$ Das Gewicht $c(e)$ ist die minimale Länge einer Kantensequenz, die $X$ isomorph in $Y$ umwandelt und obige Bedingung erfüllt.
+\end{block}
+\end{frame}
+ \begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.7,viewport=1cm 15.5cm 24cm 22cm]{spheregraph}
+\end{center}
+\caption{der taillenfreie Sphären-Graph $\mathcal{G}_{14}$}
+\end{figure}
+
+\end{document}

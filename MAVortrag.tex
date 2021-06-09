@@ -12,6 +12,7 @@
 \usepackage{graphicx}
 \usepackage{pdfpages}
 
+
 \usepackage{verbatim}
 \newcommand{\gelb}{0.550000011920929}
 \usepackage{pgf,tikz,pgfplots}
@@ -31,56 +32,193 @@
 
 \DeclareMathOperator{\Aut}{Aut}
 \author{Reymond Akpanya}
-\title{Klassifikation der Sphären ohne Zweier Taillen}
+\title{Klassifikation der Sphären ohne Zweier-Taillen}
 \date{14.05.2021 }
 
 \begin{document}
 \frame{\maketitle}
 \frame{\tableofcontents[currentsection]}
+\begin{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=1cm 23.6cm 5.5cm 26.7cm]{DSC_0050}
+\end{center}
+%\caption{Tetraeder}
+\end{figure}
+\end{frame}
 \begin{frame}{Gliederung}
 \tableofcontents
 \end{frame}
 \section{Kantendrehung}
-\subsection{Transitivität der Kantendrehung}
-\begin{frame}{definition}
+\begin{frame}
+\textbf{5 Kantendrehungen}
+\begin{itemize}
+\item 5.1 Transitivität der Kantendrehung
+\item 5.2 Kantendrehung am Schirmzeiger
+\end{itemize}
+\end{frame}
+\begin{frame}
+\textbf{5 Kantendrehungen}
+\begin{itemize}
+\item \textcolor{red}{5.1 Transitivität der Kantendrehung}
+\item 5.2 Kantendrehung am Schirmzeiger
+\end{itemize}
+\end{frame}
+%\subsection{Transitivität der Kantendrehung}
+\begin{frame}
+\begin{block}{Definition 3.7}
 Sei $X$ eine vertex-treue Sphäre. Eine Kante $e\in X_1$ heißt  \emph{drehbar}, falls es keine Kante $e'\in X_1\setminus \{e\}$ mit $X_0(e')=X_0(X_2(e))-X_0(e)$ gibt.
+\end{block}
 \end{frame}
 \begin{frame}
-\begin{figure}[H]
-\begin{center}
-\includegraphics[viewport=17cm 17cm 5cm 20.7cm]{Image_Octahedron}
-\end{center}
-\caption{Oktaeder}
-\end{figure}
-\end{frame}
-\begin{frame}
+\textbf{Tetraeder:}
+\begin{columns}
+
+    \column{0.5\textwidth}
 \begin{figure}[H]
 \begin{center}
 \includegraphics[viewport=1cm 23.6cm 5.5cm 26.7cm]{ET_Example1}
 \end{center}
-\caption{Tetraeder}
+%\caption{Tetraeder}
+\end{figure}
+
+    \column{0.5\textwidth}
+
+\end{columns}
+\end{frame}
+\begin{frame}
+\textbf{Tetraeder:}
+\begin{columns}
+
+    \column{0.5\textwidth}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=1cm 23.6cm 5.5cm 26.7cm]{etvortrag1}
+\end{center}
+%\caption{Tetraeder}
+\end{figure}
+
+    \column{0.5\textwidth}
+  \pause  $X_0(X_2(e_2))-X_0(e_2)=\{2,4\}$\\%\pause
+    
+\end{columns}
+\end{frame}
+\begin{frame}
+\textbf{Tetraeder:}
+\begin{columns}
+
+    \column{0.5\textwidth}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=1cm 23.6cm 5.5cm 26.7cm]{etvortrag2}
+\end{center}
+%\caption{Tetraeder}
+\end{figure}
+
+    \column{0.5\textwidth}
+    $X_0(X_2(e_2))-X_0(e_2)=\{2,4\}$\\%\pause
+     $=X_0(e_5)$
+\end{columns}
+\end{frame}
+\begin{frame}
+\textbf{Oktaeder:}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=17cm 17cm 5cm 20.7cm]{Image_Octahedron}
+\end{center}
+%\caption{Oktaeder}
 \end{figure}
 \end{frame}
-\begin{frame}{definition}
+\begin{frame}
+\begin{block}{Definition 3.8}
 Sei $X$ eine vertex-treue Sphäre, $\xi$ der zugehörige Flächen-Träger und $e$ eine drehbare Kante in $X$. Dann definieren wir die durch die Kantendrehung $e$ entstandene Sphäre $X^e$ durch den Flächen-Träger $\xi \Delta \Pot_3(X_0(X_2(e))).$
+\end{block}
 \end{frame}
+\begin{frame}
+\textbf{Kantendrehung in einer Skizze:}
 \begin{figure}[H]
 \begin{center}
 \includegraphics[viewport=5cm 22.5cm 4cm 27cm]{Image_Kantendrehung}
 \end{center}
-\caption{Kantendrehung}
+%\caption{Kantendrehung}
 \end{figure}
+\end{frame}
 
+\begin{frame}
+\textbf{Doppel-6-Gon:}
 \begin{figure}[H]
 \begin{center}
-\includegraphics[viewport=12cm 11cm 18cm 18cm,scale=0.85]{Double6gon}
+\includegraphics[scale=0.85,viewport=12cm 11cm 18cm 18cm,scale=0.85]{Double6gon}
 \end{center}
-\caption{Doppel-6-Gon}
+%\caption{Doppel-6-Gon}
 \end{figure}
+\end{frame}
+\begin{comment}
 \begin{frame}
+\textbf{Ausschnitt einer Sphäre}:
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=2cm 21.5cm 5cm 26.5cm]{facgraKan}
+\end{center}
+%\caption{Ausschnitt der Sphäre $X$}
+\end{figure}
+\end{frame}
 
-\begin{block}{Definition}
-Sei $X$ eine Sphäre in $X$ und $e_1,\ldots,e_n$ Kanten in $X$. Wir nennen $E=(e_1,\ldots,e_n)$ eine \emph{drehbare Kantensequenz}, falls Folgendes erfüllt ist: 
+\begin{frame}
+\textbf{Ausschnitt einer Sphäre}:
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=2cm 21.5cm 5cm 26.5cm]{fgVortrag}
+\end{center}
+\end{figure}
+\end{frame}
+\begin{frame}{Beispiel}
+
+\begin{columns}
+    \column{0.5\textwidth}
+   %\center{simpliziale Fläche $Y$}\\
+   \includegraphics[scale=0.5,viewport=0cm 15.5cm 5cm 26.5cm]{facgraKan}\\
+ %  \includegraphics[scale=0.5,viewport=0cm 21.5cm 5cm 28cm]{fgVortrag}
+    \column{0.5\textwidth}
+
+\includegraphics[scale=0.6,viewport=8cm 12cm 19cm 22.5cm]{Image_fg8}\\
+%\includegraphics[scale=0.6,viewport=8cm 18cm 19cm 22.5cm]{Image_fg9}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Beispiel}
+
+\begin{columns}
+    \column{0.5\textwidth}
+   %\center{simpliziale Fläche $Y$}\\
+   \includegraphics[scale=0.5,viewport=0cm 15.5cm 5cm 26.5cm]{fgvortrag1}\\
+ %  \includegraphics[scale=0.5,viewport=0cm 21.5cm 5cm 28cm]{fgVortrag}
+    \column{0.5\textwidth}
+
+\includegraphics[scale=0.6,viewport=8cm 12cm 19cm 22.5cm]{fg8vortrag}\\
+%\includegraphics[scale=0.6,viewport=8cm 18cm 19cm 22.5cm]{Image_fg9}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Beispiel}
+
+\begin{columns}
+    \column{0.5\textwidth}
+   %\center{simpliziale Fläche $Y$}\\
+   \includegraphics[scale=0.5,viewport=0cm 21.5cm 5cm 26.5cm]{facgraKan}\\
+   \includegraphics[scale=0.5,viewport=0cm 21.5cm 5cm 28cm]{fgVortrag}
+    \column{0.5\textwidth}
+
+\includegraphics[scale=0.6,viewport=8cm 17cm 19cm 22.5cm]{Image_fg8}\\
+\includegraphics[scale=0.6,viewport=8cm 18cm 19cm 22.5cm]{Image_fg9}
+\end{columns}
+\end{frame}
+
+\end{comment}
+\begin{frame}
+\begin{block}{Definition 5.6}
+Sei $X$ eine Sphäre und $e_1,\ldots,e_n$ Kanten in $X$. Wir nennen $E=(e_1,\ldots,e_n)$ eine \emph{drehbare Kantensequenz}, falls Folgendes erfüllt ist: 
 \begin{itemize}
 \item Die Kante $e_1$ ist eine drehbare Kante in $X^{()}:=X.$ 
 \item Für alle $1\leq i < n$ ist die Kante $e_{i+1}$ eine drehbare Kante in 
@@ -92,92 +230,321 @@ Wir nennen $X^E$ die durch die Kantensequenz $E$ entstandene Sphäre.
 \end{block}
 \end{frame}
 \begin{frame}
-\begin{block}{Lemma 5.6}
-Sei $X$ eine vertex-treue Sphäre und $V$ eine beliebige Ecke in $X,$ die $\deg(X)\geq 4$ erfüllt. Dann gibt es eine drehbare Kante in $X_1(V).$ 
-\end{block}
+\textbf{Frage:} Gibt es für zwei beliebige Sphären $X,Y$ eine drehbare Kantensequenz $E$ in $X,$ sodass $X^E\cong Y$ ist?
 \end{frame}
 \begin{frame}
-\begin{block}{Satz 5.7}
-Sei $X$ eine vertex-treue Sphäre mit $2n$ Flächen, wobei $n\geq 3$ ist. Dann existiert eine drehbare Kantensequenz $E,$ sodass $X^E$ zum Doppel-$n$-Gon isomorph ist. 
-\end{block}
-\end{frame}
-\begin{frame}
-\begin{figure}[H]
-\begin{center}
-\includegraphics[viewport=18cm 22.5cm -3cm 27cm]{Image_Tetraedererweiterung}
-\end{center}
-\caption{Tetraeder-Erweiterung und Tetraeder-Entfernung}
-\end{figure}
-\end{frame}
-\begin{frame}
-\begin{figure}[H]
-\includegraphics[scale=.95,viewport=0cm 17cm 19cm 27cm]{comute}
-\caption{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung}
-\end{figure}
-\end{frame}
-\begin{frame}
-\begin{block}{satz}
+\begin{block}{Satz 5.9}
 Seien $X$ und $Y$ vertex-treue Sphären mit $\vert X_2\vert=\vert Y_2\vert=2n$.
 Dann existiert eine drehbare Kantensequenz $E=(e_1,\ldots,e_l)$ in $X,$ sodass  $X^E$ zu $Y$ isomorph ist. 
 \end{block}
 \end{frame}
 
-\section{Multi-Tetraeder}
-\subsection{Konstruktion und Klassifikation}
 \begin{frame}
-\begin{block}{Definition 6.1}
+\textbf{Beweisidee:} Wir zeigen induktiv, dass jede Sphäre durch eine drehbare Kantensequenz in einen Doppel-$n$-Gon umgeformt werden kann. \pause (Induktion über die Anzahl der Flächen)
+\end{frame}
+\begin{frame}
 \begin{enumerate}
-\item Sei $X$ eine geschlossene simpliziale Fläche mit $\vert X_0\vert > 6.$
- Die simpliziale Fläche, die durch Entfernen aller Tetraeder entsteht, bezeichnen wir mit $X^{(1)}$. Für $i>1$ definieren wir analog 
-\[
-X^{(i)}:=(X^{(i-1)})^{(1)}.
-\]
-\item Wir nennen $X$ einen \emph{Multi-Tetraeder vom Grad} $k$, falls $X^{(k-1)}$ ein Tetraeder oder ein Doppel-Tetraeder ist. Hierfür bezeichne $a_0$ die Anzahl der Ecken vom Grad 3 in $X_0$ oder anders gesagt die Anzahl der Tetraeder, die von $X$ entfernt wurden und analog bezeichne $a_i$ die Anzahl der Ecken vom Grad 3 in $X^{(i)}$. Falls $X^{(i)}$ ein Tetraeder ist, so ist $a_i$ als 1 definiert. Das damit konstruierte Tupel $(a_0,a_1,\ldots,a_k)$ nennen wir den \emph{Typ} von $X$ und $T:=\sum_{i=0}^{k} a_i$ die \emph{Tetraeder-Zahl} von $X$.\\
+\item Wie wird aus einer Sphäre $X$ mit $2n$ Flächen eine Sphäre $Y$ mit $2n-2$ Flächen konstruiert?
 \end{enumerate}
+\end{frame}
+\begin{frame}
+\begin{itemize}
+\item Wir können die Existenz einer Ecke vom Grad 3 in $X$ annehmen\pause
+\item die Sphäre $Y=T_V(X)$ hat dann $2n-2$ Flächen
+\end{itemize}
+\end{frame}
+\begin{frame}
+\textbf{Tetraeder-Erweiterung und Tetraeder-Entfernung:}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8,viewport=18cm 22.5cm -3cm 27cm]{TetraedererwVortrag}
+\end{center}
+%\caption{Tetraeder-Erweiterung und Tetraeder-Entfernung}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{itemize}
+\item Wir können die Existenz einer Ecke vom Grad 3 in $X$ annehmen\pause
+\item die Sphäre $Y=T_V(X)$ hat dann $2n-2$ Flächen\pause
+\item es existiert eine drehbare Kantensequenz $E'$ in $Y$ mit $Y^{E'}\cong (n-1)^2$  
+\end{itemize}
+\end{frame}
+\begin{frame}
+\begin{enumerate}
+\item Wie wird aus einer Sphäre $X$ mit $2n$ Flächen eine Sphäre $Y$ mit $2n-2$ Flächen konstruiert?
+\item Wie wird eine drehbare Kantensequenz auf $Y$ zu einer drehbaren Kantensequenz auf $X$ übersetzt? 
+\end{enumerate}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%55
+\begin{frame}
+\textbf{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung:}
+\begin{figure}[H]
+\includegraphics[scale=.65,viewport=0cm 17cm 16cm 26.3cm]{comutevortrag1}
+%\caption{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung:}
+\begin{figure}[H]
+\includegraphics[scale=.65,viewport=0cm 17cm 16cm 26.3cm]{comutevortrag2}
+%\caption{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung:}
+\begin{figure}[H]
+\includegraphics[scale=.65,viewport=0cm 17cm 16cm 26.3cm]{comutevortrag3}
+%\caption{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung:}
+\begin{figure}[H]
+\includegraphics[scale=.65,viewport=0cm 17cm 16cm 26.3cm]{comutevortrag4}
+%\caption{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung:}
+\begin{figure}[H]
+\includegraphics[scale=.65,viewport=0cm 17cm 16cm 26.3cm]{comutevortrag5}
+%\caption{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung:}
+\begin{figure}[H]
+\includegraphics[scale=.65,viewport=0cm 17cm 16cm 26.3cm]{comutevortrag6}
+%\caption{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung:}
+\begin{figure}[H]
+\includegraphics[scale=.65,viewport=0cm 17cm 16cm 26.3cm]{comutevortrag7}
+%\caption{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung}
+\end{figure}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\begin{frame}
+\textbf{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung:}
+\begin{figure}[H]
+\includegraphics[scale=.65,viewport=0cm 17cm 16cm 26.3cm]{comutevortrag9}
+%\caption{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung:}
+\begin{figure}[H]
+\includegraphics[scale=.65,viewport=0cm 17cm 16cm 26.3cm]{comutevortrag81}
+%\caption{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung:}
+\begin{figure}[H]
+\includegraphics[scale=.65,viewport=0cm 17cm 16cm 26.3cm]{comutevortrag82}
+%\caption{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung:}
+\begin{figure}[H]
+\includegraphics[scale=.65,viewport=0cm 17cm 16cm 26.3cm]{comutevortrag8}
+%\caption{Verträglichkeit der Tetraeder-Erweiterung und Kantendrehung}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{itemize}
+\item Wegen Lemma 5.6 kann also die Existenz einer Ecke vom Grad 3 in $X$ angenommen werden
+\item die Sphäre $Y=T_V(X)$ hat dann $2n-2$ Flächen und die Fläche $F\in Y_2$ ersetzt den Tetraeder an der Stelle $V$
+\item es existiert eine drehbare Kantensequenz $E'$ in $Y$ mit $Y^{E'}\cong (n-1)^2$  
+\item es existiert eine drehbare Kantensequenz $E$ mit 
+\[
+X^{E}\cong T^F(Y^{E'})=T^F((n-1)^2)
+\] 
+\end{itemize}
+\end{frame}
+\begin{frame}
+\begin{block}{Definition 7.20}
+Sei $n\in \mathbb{N}$ gerade. Dann definieren wir den \emph{Sphären-Graphen} $\mathcal{G}^3_n$ durch die Knotenmenge $\mathcal{S}^3_n.$ Zwei Knoten $V,V'$ sind in diesem Graphen durch eine ungerichtete Kante verbunden, falls die zu $V$ zugehörige Sphäre durch genau eine Kantendrehung aus der zu $V'$ zugehörigen Sphäre hervorgeht. 
 \end{block}
 \end{frame}
 \begin{frame}
-\begin{figure}[H]
+\textbf{Oktaeder:}
+\begin{figure}
 \begin{center}
-\includegraphics[viewport=22cm 12.5cm 5cm 17cm]{Image_DoubleTetraeder}
+\includegraphics[viewport=17cm 17cm 5cm 20.7cm]{Image_Octahedron}
 \end{center}
-\caption{Doppel-Tetraeder}
+%\caption{Oktaeder}
 \end{figure}
 \end{frame}
 \begin{frame}
-\begin{figure}[H]
-\begin{center}
-\includegraphics[viewport=24cm 14cm 0cm 19cm]{Image_Parallelepiped}
-\end{center}
-\caption{Parallelepiped}
-\end{figure}
-\end{frame}
+\textbf{Sphäre mit 8 Flächen:}
 \begin{figure}[H]
 \begin{center}
 \includegraphics[viewport=19cm 19cm 0cm 23cm]{Image_MultiTetraeder1}
 \end{center}
-\caption{Multi-Tetraeder mit 8 Flächen}
+%\caption{Multi-Tetraeder mit 8 Flächen}
 \end{figure}
+\end{frame}
+
 \begin{frame}
-\begin{block}{Definition 6.9}
-Seien $X$ und $Y$ Multi-Tetraeder. Falls $X=Y^{(1)}$ ist, dann nennen wir $Y$ einen \emph{Enkel} von $X.$ 
-\end{block}
+
+\textbf{Der Sphären-Graph $\mathcal{G}_8^3$:}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=0cm 26.5cm 5cm 27.5cm]{spgr}
+\end{center}
+%\caption{der Graph $\mathcal{G}_8^3$}
+\end{figure}
+\end{frame}
+\section{Multi-Tetraeder}
+\begin{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.14,viewport=0cm 30.5cm 60cm 32.5cm]{bild10}
+\end{center}
+%\caption{der Graph $\mathcal{G}_8^3$}
+\end{figure}
 \end{frame}
 \begin{frame}
-\begin{block}{Lemma 6.21}
-Sei $X$ ein Multi-Tetraeder und $\phi \in \Aut(X).$ Für eine Überdeckung $M\in U_X^l$ mit  $0\leq l\leq \vert X_2\vert -a_k$ ist $\{\phi(m)\mid m\in M\}$ wieder eine $a_k+l$-elementige Überdeckung.
-\end{block}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.15,viewport=0cm 20.5cm 66cm 20.5cm]{bild11}
+\end{center}
+%\caption{der Graph $\mathcal{G}_8^3$}
+\end{figure}
 \end{frame}
 \begin{frame}
-\begin{block}{Bemerkung 6.15}
-Sei $X$ ein Multi-Tetraeder vom Typ $(a_0,\ldots ,a_k)$ und $G$ seine Automorphismengruppe.
-Durch die obige Erkenntnis kann nun die in 6.10 eingeführte Gruppenoperation leicht abgeändert werden, um so die Anzahl der Enkel eines Multi-Tetraeders zu bestimmen. Für $0\leq l\leq \vert X_2 \vert -a_k$ ist die Abbildung
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.15,viewport=0cm 20.5cm 66cm 33.5cm]{bild13}
+\end{center}
+%\caption{der Graph $\mathcal{G}_8^3$}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{6 Multi-Tetraeder}
+\begin{itemize}
+\item 6.1 Konstruktion und Klassifikation
+\item 6.2 Kaktus-Distanz
+\item 6.3 Tetraeder-Zerlegung
+\item 6.4 Wilde Färbungen auf Multi-Tetraedern
+\item 6.5 Flächengraphen von Multi-Tetraedern
+\item 6.6 Das Tetraeder-Polynom
+\end{itemize}
+\end{frame}
+\begin{frame}
+\textbf{6 Multi-Tetraeder}
+\begin{itemize}
+\item \textcolor{red}{6.1 Konstruktion und Klassifikation}
+\item \textcolor{red}{6.2 Kaktus-Distanz}
+\item 6.3 Tetraeder-Zerlegung
+\item \textcolor{red}{6.4 Wilde Färbungen auf Multi-Tetraedern}
+\item 6.5 Flächengraphen von Multi-Tetraedern
+\item 6.6 Das Tetraeder-Polynom
+\end{itemize}
+\end{frame}
+%\subsection{Konstruktion und Klassifikation}
+\begin{frame}
+\begin{block}{Definition 6.1}
+\begin{enumerate}
+\item Sei $X$ eine geschlossene simpliziale Fläche mit $\vert X_0\vert \geq 6.$
+ Die simpliziale Fläche, die durch Entfernen aller Tetraeder entsteht, bezeichnen wir mit $X^{(1)}$. Für $i>1$ definieren wir analog 
 \[
-\theta_l: G\times U_X^l \to U_X^l, (\phi, M)\mapsto \phi(M):=\{\phi(F)\mid F\in M\}
-\] 
-wohldefiniert und es lässt sich leicht nachprüfen, dass diese eine Gruppenoperation bildet.
+X^{(i)}:=(X^{(i-1)})^{(1)}.
+\]
+\item Wir nennen $X$ einen \emph{Multi-Tetraeder vom Grad} $k$, falls $X^{(k-1)}$ ein Tetraeder oder ein Doppel-Tetraeder ist.
+\end{enumerate}
 \end{block}
 \end{frame}
+\begin{frame}
+\textbf{Tetraeder:}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=19cm 19cm 0cm 23cm]{MultiVortrag2}
+\end{center}
+%\caption{Multi-Tetraeder mit 8 Flächen}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{Doppel-Tetraeder:}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=22cm 12.5cm 5cm 17cm]{Image_DoubleTetraeder}
+\end{center}
+%\caption{Doppel-Tetraeder}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{Sphäre mit 8 Flächen:}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=19cm 19cm 0cm 23cm]{Image_MultiTetraeder1}
+\end{center}
+%\caption{Multi-Tetraeder mit 8 Flächen}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{Tetraeder:}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=19cm 19cm 0cm 23cm]{MultiVortrag}
+\end{center}
+%\caption{Multi-Tetraeder mit 8 Flächen}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{simpliziale Parallelepiped $P$:}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8,viewport=28cm 14cm 0cm 19cm]{Image_Parallelepiped}
+\end{center}
+%\caption{Parallelepiped}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{simpliziale Fläche $P^{(1)}$:}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8,viewport=28cm 14cm 0cm 19cm]{OctaVortrag}
+\end{center}
+%\caption{Parallelepiped}
+\end{figure}
+\end{frame}
+
+%\end{center}
+\begin{frame}
+\textbf{Frage:} Wieviele Multi-Tetraeder mit einer gegebenen Anzahl von Flächen gibt es?
+\end{frame}
+\begin{frame}
+\textbf{Anzahl der Multi-Tetraeder:}
+\begin{center}
+\begin{tabular}[h]{|c|c|c|c|c|c|c|}
+\hline
+\textbf{ 4} &  \textbf{6}& \textbf{8} &\textbf{ 10} &\textbf{ 12} & \textbf{14}&\textbf{16}\\
+\hline
+ 1& 1& 1& 3& 7& 24& 93\\
+\hline
+\end{tabular}
+\end{center}
+\textcolor{white}{..}\\
+\begin{center}
+\begin{tabular}[h]{|c|c|c|c|c|c|}
+\hline
+\textbf{18}&\textbf{20}&\textbf{22}&\textbf{24}&\textbf{26}&\textbf{28}\\
+\hline
+ 434& 2110& 11003& 58598& 321726& 1614848
+ \\
+ \hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+
 \begin{frame}
 \begin{block}{Satz 6.17}
 Sei $X$ ein Multi-Tetraeder und $\Aut(X)$ die Automorphismengruppe von $X$. Dann ist $\Aut(X)$ auflösbar.
@@ -187,46 +554,624 @@ Weiterhin seien $l,l'$ minimal mit der Eigenschaft, dass
 \] ist. Dann gilt $l\leq l'$.
 \end{block}
 \end{frame}
-\subsection{Kaktus-Distanz}
+\begin{frame}
+\textbf{Beweisskizze:}
+\begin{itemize}
+\item Sei $X$ ein Multi-Tetraeder mit $\vert X_2\vert >6$ und $G$ die zugehörige Automorphismengruppe\pause
+\item $V_1,\ldots,V_k$ die Ecken vom Grad 3 in $X$\pause 
+\item Definiere $M_t:=\{V_t\} \cup X_1(V_t) \cup X_2(V_t)$\pause
+\item dann gilt $\phi(M_t)=M_{\pi(t)}$ für alle $\phi \in G$\pause
+\item in $Y=X^{(1)}$ werden die Tetraeder an den Ecken $V_1,\ldots,V_k$ durch Fläche $F_1,\ldots,F_k$ ersetzt
+\end{itemize}
+\end{frame}
+\begin{frame}
+\begin{itemize}
+\item betrachte die Abbildung $\psi:G\to \Aut(Y),$ die durch  
+\[
+\psi(\phi)(x)=
+\begin{cases}
+F_t,&\text{falls } x\in M_t, \\
+x,& \text{sonst},\\
+\end{cases}
+\]\pause
+\item $\psi(G)$ ist eine Untergruppe von $Aut(Y)$\pause
+\item $\psi(G)$ ist als Untergruppe einer auflösbaren Untergruppe ebenfalls auflösbar
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.14,viewport=0cm 20.5cm 63cm 40.5cm]{bild9}
+\end{center}
+%\caption{der Graph $\mathcal{G}_8^3$}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.14,viewport=0cm 20.5cm 85cm 30.5cm]{bild3}
+\end{center}
+%\caption{der Graph $\mathcal{G}_8^3$}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.2,viewport=0cm 5.5cm 48cm 35.5cm]{bild4}
+\end{center}
+%\caption{der Graph $\mathcal{G}_8^3$}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.1,viewport=0cm 5.5cm 80cm 73.5cm]{bild7}
+\end{center}
+%\caption{der Graph $\mathcal{G}_8^3$}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.15,viewport=0cm 5.5cm 55cm 45cm]{bild6}
+\end{center}
+%\caption{der Graph $\mathcal{G}_8^3$}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{Verallgemeierung:}
+\begin{block}{Satz 7.16}
+Sei $Y$ eine Multi-Sphäre und $X$ eine Sphäre, sodass die Blöcke von $Y$ zu $X$ isomorph sind. Falls $\Aut(X)$ auflösbar ist, dann folgt die Auflösbarkeit von $\Aut(Y).$ 
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{center}
+\huge{Kaktus-Distanz}
+\end{center}
+\end{frame}
 \begin{frame}
 \begin{block}{Definition 6.18}
 Sei $X$ eine vertex-treue Sphäre. Die minimale Anzahl an Kantendrehungen, die es braucht, um aus $X$ einen Multi-Tetraeder zu  konstruieren, nennen wir die \emph{Kaktus-Distanz} $\zeta(X)$ von $X$.
 \end{block}
 \end{frame}
-\subsection{Wilde Färbungen auf Multi-Tetraedern}
-\section{2-taillenfreie Sphären}
-\subsection{Multi-Sphären}
 \begin{frame}
-\begin{block}{Satz 7.16}
-Sei $Y$ eine Multi-Sphäre und $X$ eine Sphäre, sodass die Blöcke von $Y$ zu $X$ isomorph sind. Falls $\Aut(X)$ auflösbar ist, dann folgt die Auslösbarkeit von $\Aut(Y).$ 
-
+\begin{block}{Lemma 6.20}
+Für alle Sphären ist die Kaktus-Distanz endlich.
 \end{block}
-\end{frame}
-\subsection{Flächengraph von Sphären mit 3-Taillen}
-\subsection{Der Sphären Graph}
-\begin{frame}
-\begin{block}{Definition 7.19}
-Sei $n\in \mathbb{N}$ gerade. Die Menge der Isomorphieklassen der Sphären ohne 2- oder 3-Taillen bezeichnen wir mit $\mathcal{S}_n.$ Weiterhin bezeichnen wir die Menge der Isomorphieklassen der Sphären ohne 2-Taillen mit $\mathcal{S}_n^3.$
-\end{block}
+\pause
+\begin{itemize}
+\item folgt direkt aus der Transitivität der Kantendrehung
+\end{itemize}
 \end{frame}
 \begin{frame}
-Es gilt $\mathcal{S}_2=\mathcal{S}_2^3=\emptyset.$ 
- Für $n=4$ ist $\mathcal{S}_n^3=\mathcal{S}_n=\{T\},$ wobei $T$ ein Tetraeder ist.
- Falls $n\geq 6$ ist, dann herrscht eine echte Teilmengenbeziehung zwischen $\mathcal{S}_n$ und $\mathcal{S}_n^3.$ Beispielsweise ist 
- \[
- \mathcal{S}_6=\emptyset \subset \{DT\}=\mathcal{S}_6^3.
- \]
-\end{frame}
-\begin{frame}
-\begin{block}{Definition 7.23}
-Sei $n\in \mathbb{N}$ gerade. Dann definiert das Tripel $\mathcal{G}_n=(V,E,c)$ den \emph{taillenfreien Sphären-Graph}. Die Knotenmenge erhalten wir durch $V=\mathcal{S}_n.$ Zwei Knoten $V_X,V_Y$ mit zugehörigen vertex-treuen Sphären $X,Y$ sind durch eine Kante verbunden, falls $X^e\cong Y$ für eine drehbare Kante $e\in X_1$ ist oder es eine drehbare Kantensequenz $E=(e_1,\ldots,e_m)$ in $X$ gibt, sodass $X^E\cong Y$ ist und für alle $1\leq i < m $ die Sphäre $X^{(e_1,\ldots,e_i)}$ eine 3-Taille besitzt. Die Gewichtsfunktion $c:E\to\mathbb{Z}^+$  erhalten wir folgendermaßen: Sei $\{V_X,V_Y\}=e\in E.$ Das Gewicht $c(e)$ ist die minimale Länge einer Kantensequenz, die $X$ isomorph in $Y$ umwandelt und obige Bedingung erfüllt.
-\end{block}
-\end{frame}
- \begin{figure}[H]
 \begin{center}
-\includegraphics[scale=0.7,viewport=1cm 15.5cm 24cm 22cm]{spheregraph}
+$\fbox{
+\parbox{10cm}{
+\textcolor{red}{gap$>$} \textcolor{blue}{IsCactus(O);}\\
+false\\
+\textcolor{red}{gap$>$}\textcolor{blue}{ O;}\\
+simplicial surface (6 vertices, 12 edges, and 8 faces)\\
+\textcolor{red}{gap$>$} \textcolor{blue}{EdgeTurn(O,1);}\\
+simplicial surface (6 vertices, 12 edges, and 8 faces)\\
+\textcolor{red}{gap$>$} \textcolor{blue}{IsCactus(last);}\\
+true
+}}$
 \end{center}
-\caption{der taillenfreie Sphären-Graph $\mathcal{G}_{14}$}
+\end{frame}
+\begin{frame}
+\begin{block}{Lemma 6.21}
+Sei $X$ eine vertex-treue Sphäre ohne 3-Taillen, die  sich durch eine Kantendrehung in einen Multi-Tetraeder umformen lässt. Dann ist $X$  zum Doppel-$n$-Gon isomorph.[6]
+\end{block}
+\end{frame}
+\begin{frame}
+Falls vertex-treue Sphären mit 3-Taillen zugelassen werden, dann ist die Aussage falsch. \pause
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8,viewport=28cm 14cm 0cm 19cm]{Image_Parallelepiped}
+\end{center}
+%\caption{Parallelepiped}
 \end{figure}
+\end{frame}
+\begin{frame}
+Falls vertex-treue Sphären mit 3-Taillen zugelassen werden, dann ist die Aussage falsch. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8,viewport=28cm 14cm 0cm 19cm]{ppvortrag4}
+\end{center}
+%\caption{Parallelepiped}
+\end{figure}
+\end{frame}
+\begin{frame}
+Falls vertex-treue Sphären mit 3-Taillen zugelassen werden, dann ist die Aussage falsch. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8,viewport=28cm 14cm 0cm 19cm]{ppvortrag2}
+\end{center}
+%\caption{Parallelepiped}
+\end{figure}
+\end{frame}
+\begin{frame}
+Falls vertex-treue Sphären mit 3-Taillen zugelassen werden, dann ist die Aussage falsch. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8,viewport=28cm 14cm 0cm 19cm]{ppvortrag1}
+\end{center}
+%\caption{Parallelepiped}
+\end{figure}
+\end{frame}
+\begin{frame}
+Falls vertex-treue Sphären mit 3-Taillen zugelassen werden, dann ist die Aussage falsch. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8,viewport=28cm 14cm 0cm 19cm]{ppvortrag3}
+\end{center}
+%\caption{Parallelepiped}
+\end{figure}
+\end{frame}
+\begin{frame}
+Falls vertex-treue Sphären mit 3-Taillen zugelassen werden, dann ist die Aussage falsch. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8,viewport=28cm 14cm 0cm 19cm]{ppvortrag6}
+\end{center}
+%\caption{Parallelepiped}
+\end{figure}
+\end{frame}
+\begin{frame}
+Falls vertex-treue Sphären mit 3-Taillen zugelassen werden, dann ist die Aussage falsch. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8,viewport=28cm 14cm 0cm 19cm]{ppvortrag5}
+\end{center}
+%\caption{Parallelepiped}
+\end{figure}
+\end{frame}
 
+\begin{frame}
+\begin{block}{Satz 6.24}
+Sei $X$ eine vertex-treue Sphäre, die $\zeta(X)=1$ erfüllt. Dann existiert ein $n\in \mathbb{N}, $ sodass $X$ zum Doppel-$n$-Gon isomorph ist oder durch eine endliche Anzahl von Tetraeder-Erweiterungen aus diesem hervorgeht.
+
+\end{block}
+\end{frame}
+\begin{frame}
+\textbf{Beweisskizze}\\
+Fallunterscheidung:
+\begin{itemize}
+\item $X$ ist eine vertex-treue Sphäre ohne 3-Taillen\pause
+\item $X$ ist eine vertex-treue Sphäre mit mindestens zwei  ohne Ecken vom Grad 3\pause 
+\item $X$ ist eine vertex-treue Sphäre mit einer Ecke vom Grad 3
+\end{itemize}
+\end{frame}
+\begin{frame}
+\begin{center}
+\begin{huge}
+\center{Algorithmus 1}
+\end{huge}
+\end{center}
+\end{frame}
+\begin{frame}
+Wir benötigen:
+\begin{itemize}
+\item Zwei Ecken $V_1$ und $V_2$ einer Sphäre $X$ sind nicht benachbart und erfüllen
+\[
+X_0(X_1(V_1))\cap X_0(X_1(V_2))\neq \emptyset.
+\] 
+\end{itemize}
+  \begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.6,viewport=-1cm 22.5cm 7cm 26.5cm]{kantenvortrag}
+\end{center}
+%\caption{Ausschnitt der Sphäre $X$}
+\end{figure}
+\pause
+Wir betrachten als Beispiel, die Sphäre $(6)\overline{6}(6).$
+\end{frame}
+\begin{frame}
+\textbf{Doppel-6-Gon:}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.85,viewport=12cm 11cm 18cm 18cm,scale=0.85]{Double6gon}
+\end{center}
+%\caption{Doppel-6-Gon}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{Doppel-6-Gon:}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.85,viewport=12cm 11cm 18cm 18cm,scale=0.85]{d6gvortrag}
+\end{center}
+%\caption{Doppel-6-Gon}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{6-Streifen:}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=1cm 25.5cm 8cm 26.5cm]{nstreifen}
+\end{center}
+%\caption{ $n$-Streifen für $n=6$}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=8cm 21.7cm 5cm 26.5cm]{n2lnV}
+\end{center}
+%\caption{Eine Skizze der Sphäre $(6)\overline{6}(6)$; der einsetzte 6-Strip ist durch die grüne Farbe hervorgehoben}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=8cm 21.7cm 5cm 26.5cm]{n2lnVortrag}
+\end{center}
+%\caption{Eine Skizze der Sphäre $(6)\overline{6}(6)$; der einsetzte 6-Strip ist durch die grüne Farbe hervorgehoben}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=8cm 21.7cm 5cm 26.5cm]{n2lnVortrag1}
+\end{center}
+%\caption{Eine Skizze der Sphäre $(6)\overline{6}(6)$; der einsetzte 6-Strip ist durch die grüne Farbe hervorgehoben}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=8cm 21.7cm 5cm 26.5cm]{n2lnVortrag2}
+\end{center}
+%\caption{Eine Skizze der Sphäre $(6)\overline{6}(6)$; der einsetzte 6-Strip ist durch die grüne Farbe hervorgehoben}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=8cm 21.7cm 5cm 26.5cm]{n2lnVortrag3}
+\end{center}
+%\caption{Eine Skizze der Sphäre $(6)\overline{6}(6)$; der einsetzte 6-Strip ist durch die grüne Farbe hervorgehoben}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=8cm 21.7cm 5cm 26.5cm]{n2lnVortrag4}
+\end{center}
+%\caption{Eine Skizze der Sphäre $(6)\overline{6}(6)$; der einsetzte 6-Strip ist durch die grüne Farbe hervorgehoben}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=8cm 21.7cm 5cm 26.5cm]{n2lnVortrag5}
+\end{center}
+%\caption{Eine Skizze der Sphäre $(6)\overline{6}(6)$; der einsetzte 6-Strip ist durch die grüne Farbe hervorgehoben}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=8cm 21.7cm 5cm 26.5cm]{n2lnVortrag6}
+\end{center}
+%\caption{Eine Skizze der Sphäre $(6)\overline{6}(6)$; der einsetzte 6-Strip ist durch die grüne Farbe hervorgehoben}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=8cm 21.7cm 5cm 26.5cm]{n2lnVortrag7}
+\end{center}
+%\caption{Eine Skizze der Sphäre $(6)\overline{6}(6)$; der einsetzte 6-Strip ist durch die grüne Farbe hervorgehoben}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=8cm 21.7cm 5cm 26.5cm]{n2lnVortrag8}
+\end{center}
+%\caption{Eine Skizze der Sphäre $(6)\overline{6}(6)$; der einsetzte 6-Strip ist durch die grüne Farbe hervorgehoben}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=8cm 21.7cm 5cm 26.5cm]{n2lnVortrag9}
+\end{center}
+%\caption{Eine Skizze der Sphäre $(6)\overline{6}(6)$; der einsetzte 6-Strip ist durch die grüne Farbe hervorgehoben}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=8cm 21.7cm 5cm 26.5cm]{n2lnVortrag10}
+\end{center}
+%\caption{Eine Skizze der Sphäre $(6)\overline{6}(6)$; der einsetzte 6-Strip ist durch die grüne Farbe hervorgehoben}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{block}{Satz 6.27}
+Sei $X$ eine vertex-treue Sphäre, die kein Multi-Tetraeder ist. Dann ist 
+\[
+\zeta(X)\leq m+1,
+\] wobei $m:=\underset{{(V,V')\in D}}{\min}\left\{\left|\frac{\vert X_2 \vert}{2}-\deg_X(V)\right| +\left| \frac{\vert X_2 \vert}{2}-\deg_X(V')\right|\right\}$
+ ist.
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{block}{Lemma 6.34}
+Seien $n\in \mathbb{N}$ und $0\leq l \leq n.$ Dann ist 
+\[
+\zeta((n)\overline{2l}(n))\leq 2l+1.
+\]
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+
+$\textbf{X}$&$\textbf{$\zeta$(X)}$&\textbf{Algorithmus 1}\\
+\hline
+$T$&0&0\\
+\hline
+$(4)^2$&1&1\\
+\hline
+$(5)^2$&1&1\\
+\hline
+$(6)^2$&1&1\\
+\hline
+$(5)\overline{2}(5)$&2&3\\
+\hline
+$(6)\overline{2}(6)$&2&3\\
+\hline
+$(7)^2$&1&1\\
+\hline
+$(6)\overline{3}(5)$&2&4\\
+\hline
+$(5)\overline{4}(5)$&3&5\\
+\hline
+\end{tabular}
+\end{center}
+
+\end{frame}
+\begin{frame}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+
+$\textbf{X}$&$\textbf{$\zeta$(X)}$&\textbf{Algorithmus 1}\\
+\hline
+$T$&0&0\\
+\hline
+$(4)^2$&1&1\\
+\hline
+$(5)^2$&1&1\\
+\hline
+$(6)^2$&1&1\\
+\hline
+\colorbox{yellow}{$(5)\overline{2}(5)$}&\colorbox{yellow}{2}&\colorbox{yellow}{3}\\
+\hline
+$(6)\overline{2}(6)$&2&3\\
+\hline
+$(7)^2$&1&1\\
+\hline
+$(6)\overline{3}(5)$&2&4\\
+\hline
+$(5)\overline{4}(5)$&3&5\\
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
+\begin{frame}
+\begin{block}{Satz 6.38}
+Sei $n \geq 4.$ Dann ist $\zeta((n)\overline{2}(n))=2.$
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{block}{Folgerung 6.39}
+Sei $n \geq 4.$ Dann ist $\zeta((n+1)\overline{3}(n))=2.$
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{center}
+\huge{Flächengraphen von Multi-Tetraedern}
+\end{center}
+\end{frame}
+\begin{frame}
+\textbf{Ausschnitt eines Flächengraphen}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=3cm 19.1cm 14cm 23.5cm]{Image_fg1}
+\end{center}
+%\caption{Ausschnitt eines Flächengraphen eines Multi-Tetraeders}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{Ausschnitt eines Flächengraphen}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=3cm 19.1cm 14cm 23.5cm]{Image_fg2}
+\end{center}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{Ausschnitt eines Flächengraphen}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=3cm 19.1cm 14cm 23.5cm]{Image_fg3}
+\end{center}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{Flächengraph des Tetraeders:}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8,viewport=10cm 19.5cm 5cm 22.5cm]{mttry1}
+
+\end{center}
+%\caption{Kantendrehung}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{Flächengraph des Doppel-Tetraeders:}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=10cm 19.5cm 5cm 23.cm]{Mttry4}
+\end{center}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{Flächengraph eines Multi-Tetraeders mit 8 Flächen}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.5,viewport=16cm 14.5cm 5cm 24cm]{bsp9}
+\end{center}
+
+\end{figure}
+\end{frame}
+\begin{frame}
+
+\textbf{Flächengraph eines Multi-Tetraeders mit 10 Flächen}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.6,viewport=15.5cm 14.cm 5cm 23cm]{bsp10}
+\end{center}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{Flächengraph eines Multi-Tetraeders mit 12 Flächen}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.6,viewport=16cm 14cm 5cm 23cm]{bsp11}
+\end{center}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{center}
+\huge{Wilde Färbungen}
+\end{center}
+\end{frame}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=0cm 23.7cm 6cm 28cm,scale=1.3]{colouredTriangle}
+\end{center}
+%\caption{Ausschnitt der wild gefärbten Sphäre $Y$}
+\end{figure}
+\begin{frame}
+\begin{block}{Satz 6.44}
+Sei $X$ ein Multi-Tetraeder. Dann besitzt $X$ bis auf Permutation der Farben $a,b,c$ genau eine wilde Färbung.
+\end{block}
+\end{frame}
+\begin{frame}
+Die gleichschenkligen Färbungen der Multi-Tetraeder sind jedoch nicht eindeutig.
+\end{frame}
+\begin{frame}
+\textbf{Doppel-Tetraeder:}
+\begin{columns}
+
+    \column{0.5\textwidth}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=24cm 12.5cm 5cm 17cm]{coloureddbvortrag1}
+\end{center}
+%\caption{Doppel-Tetraeder}
+\end{figure}  
+  \column{0.5\textwidth}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[viewport=24cm 12.5cm 5cm 17cm]{coloureddbvortrag2}
+\end{center}
+%\caption{Doppel-Tetraeder}
+\end{figure}  
+\end{columns}
+\end{frame}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=1.3,viewport=1.5cm 24.cm 13cm 28.4cm]{deffaerbung}
+\end{center}
+%\caption{Typen einer Kante einer wild gefärbten Sphäre}
+\end{figure}
+\begin{frame}
+\begin{block}{Lemma 6.45}
+Sei $X$ ein Multi-Tetraeder. Falls $X$ eine zahme Färbung besitzt, muss diese eine $rrr$-Struktur sein.
+\end{block}
+\end{frame}
+
+\begin{frame}
+\textbf{Ausschnitt eines Multi-Tetraeders:}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8,viewport=0cm 19.5cm 10cm 26.5cm]{notcol3gon}
+\end{center}
+%\caption{Ausschnitt der Sphäre $X$}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}
+\textbf{Ausschnitt eines Multi-Tetraeders:}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8,viewport=0cm 19.5cm 10cm 26.5cm]{col3gonvortrag1}
+\end{center}
+%\caption{Ausschnitt der Sphäre $X$}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{Ausschnitt eines Multi-Tetraeders:}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8,viewport=0cm 19.5cm 10cm 26.5cm]{col3gonvortrag2}
+\end{center}
+%\caption{Ausschnitt der Sphäre $X$}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{Ausschnitt eines Multi-Tetraeders:}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8,viewport=0cm 19.5cm 10cm 26.5cm]{col3gonvortrag3}
+\end{center}
+%\caption{Ausschnitt der Sphäre $X$}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{Ausschnitt eines Multi-Tetraeders:}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8,viewport=0cm 19.5cm 10cm 26.5cm]{col3gonvortrag4}
+\end{center}
+%\caption{Ausschnitt der Sphäre $X$}
+\end{figure}
+\end{frame}
+\begin{frame}
+\textbf{Ausschnitt eines Multi-Tetraeders:}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8,viewport=0cm 19.5cm 10cm 26.5cm]{col3gonvortrag5}
+\end{center}
+%\caption{Ausschnitt der Sphäre $X$}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+
+\textbf{Ausschnitt eines Multi-Tetraeders:}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8,viewport=0cm 19.5cm 10cm 26.5cm]{col3gon2}
+\end{center}
+%\caption{Ausschnitt der Sphäre $X$}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{block}{Lemma 7.18}
+Seien $X$ und $Y$ vertex-treue Sphären und $\omega_X$ beziehungsweise $\omega_Y$ eine zahme Färbung auf $X$ beziehungsweise $Y.$ Weiterhin seien $F\in X_2$ beziehungsweise $F'\in Y_2$ eine Fläche und $\phi:X_0(F)\to Y_0(F')$ eine bijektive Abbildung. 
+Falls $X$ und $Y$ $mmm$-Strukturen besitzen, dann existiert eine $mmm$-Struktur auf $X\#_{\phi}Y$.
+\end{block}
+\end{frame}
 \end{document}
